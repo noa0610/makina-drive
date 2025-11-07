@@ -1,15 +1,21 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class StatusManager
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Dictionary<Status, float> _statusAmount = new();
+    private StatusManager Initialize(UnitStatusData data)
     {
-        
+        return this;
     }
+    // private StateInfo AddStatus(Status status, float amount, bool isDynamic = true)
+    // {
+    //     _statusAmount[status, amount];
+    //     return 
+    // }
 
-    // Update is called once per frame
-    void Update()
+    private void TakeDamage(float damage)
     {
         
     }
