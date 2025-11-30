@@ -15,6 +15,7 @@ public class TestAttaker : MonoBehaviour
 
         // Unitかどうかの判定
         UnitBase hitUnit = hitObject.GetComponent<UnitBase>();
+
         if (hitUnit == null) return;
 
         // 指定されたレイヤーマスクとの判定
@@ -24,8 +25,8 @@ public class TestAttaker : MonoBehaviour
             Debug.Log($"Unit [{unitName}] を検知");
             
             // ダメージ処理
-            hitUnit.TakeDamage(damage);
-            Debug.Log($"Unit [{unitName}] に {damage} ダメージを与えた (現在HP: {hitUnit.currentHP})");
+            hitUnit.TakeDamage(hitUnit, damage);
+            Debug.Log($"Unit [{unitName}] に {damage} ダメージを与えた (現在HP: {hitUnit.statusManager.ReadValue(Status.HP)})");
         }
         else
         {

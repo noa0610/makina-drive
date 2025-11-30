@@ -17,4 +17,11 @@ MonoBehaviour:
   description: 
   maxHp: 20
   hp: 20
-  speed: 0
+  atk: 5
+  def: 5
+  speed: 5
+  collectionRange: 0
+  stamina: 0
+  knockbackPower: 0
+  damageTakeScale: 1
+  tags: 0

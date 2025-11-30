@@ -7,5 +7,10 @@ public enum Status
     ATK,
     DEF,
     Speed,
+    DashSpeed,
     Lv,
+    DamageRatio,
+    CollectionRange,
+    Stamina,
+    KnockbackPower
 }
