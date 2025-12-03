@@ -13,7 +13,7 @@ public class StatusManager
         _statusAmounts.Clear();
 
         // 基礎ステータスを一括登録
-        var hp = AddStatus(Status.HP, data.maxHp, false, true);
+        var hp = AddStatus(Status.HP, data.hp, false, true);
         var mHp = AddStatus(Status.MaxHP, data.maxHp, false, true);
         mHp.OnAmountChanged += (_, after) =>
         {
@@ -23,7 +23,7 @@ public class StatusManager
         AddStatus(Status.Speed, data.speed);
         AddStatus(Status.ATK, data.atk);
         AddStatus(Status.DEF, data.def);
-        AddStatus(Status.DamageRatio, 1f);
+        AddStatus(Status.DamageRatio, data.damageTakeScale);
         AddStatus(Status.CollectionRange, data.collectionRange);
         AddStatus(Status.Stamina, data.stamina);
         AddStatus(Status.KnockbackPower, data.knockbackPower);
@@ -91,7 +91,7 @@ public class StatusManager
     {
         var s = _statusAmounts[Status.HP];
         s.CurrentAmount -= value;
-        Debug.Log($"TakeDamage: {value}, HP: {s.CurrentAmount}/{_statusAmounts[Status.MaxHP].CurrentAmount}");
+        // Debug.Log($"TakeDamage: {value}, HP: {s.CurrentAmount}/{_statusAmounts[Status.MaxHP].CurrentAmount}");
         return s.CurrentAmount <= 0;
     }
 }

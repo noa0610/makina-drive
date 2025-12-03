@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 using System;
 using System.Linq;
 
-[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(UnityEngine.InputSystem.PlayerInput))]
 public partial class Freya : UnitBase
 {
@@ -38,6 +37,9 @@ public partial class Freya : UnitBase
         TurnAround();
     }
 
+    /// <summary>
+    ///  振り向き
+    /// </summary>
     private void TurnAround()
     {
         if (Direction.x != 0)
@@ -49,6 +51,11 @@ public partial class Freya : UnitBase
 
     }
 
+    /// <summary>
+    /// 現在ステートの判別
+    /// </summary>
+    /// <param name="state"></param>
+    /// <returns></returns>
     private bool IsMatchingState(States state)
     {
         return _stateMachine.CurrentState.key == _stateNames[state];

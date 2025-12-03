@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnitStatusData
   id: 0
   unitName: TestUnit
-  description: 
+  description: "\u30C6\u30B9\u30C8\u30D7\u30EC\u30A4\u7528\u30D7\u30EC\u30A4\u30E4\u30FC\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
   maxHp: 20
   hp: 20
   atk: 5

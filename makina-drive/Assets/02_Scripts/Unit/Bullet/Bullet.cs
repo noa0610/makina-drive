@@ -151,7 +151,7 @@ public class Bullet : MonoBehaviour
                 if (target.IsInvincible)
                     return;
 
-                // UnitManager.instance.AddDamage(target, _parent, _status.damage);
+                UnitManager.instance.AddDamage(target, _parent, _status.damage);
             }
 
             if (Hit()) NotifyDestoy();

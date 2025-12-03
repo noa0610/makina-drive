@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UniRx;
 
+[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator)), Serializable]
 public abstract class UnitBase : MonoBehaviour, IUnit
 {
@@ -79,6 +80,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
             _animator = GetComponent<Animator>();
         _statusManager = new StatusManager();
         _body2D = GetComponent<Rigidbody2D>();
+        _body2D.gravityScale = 0;
 
         // UnitManager.instance.AddUnit(this);
         _stateMachine = new StateMachine(this, new AnimatorAnimationDriver(_animator));

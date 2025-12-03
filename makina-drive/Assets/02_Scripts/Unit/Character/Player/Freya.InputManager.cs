@@ -40,7 +40,6 @@ public partial class Freya
     private void OnFire(InputValue value) => OnFire(value.isPressed);
     public void OnFire(bool isPressed)
     {
-        Debug.Log("Attack");
         if (isPressed)
         {
             _stateMachine.ChangeState(Triggers.attackInput);
