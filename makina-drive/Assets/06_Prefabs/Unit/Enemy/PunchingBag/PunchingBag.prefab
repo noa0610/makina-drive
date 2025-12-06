@@ -9,12 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 394950376808625852}
+  - component: {fileID: 130119518987412118}
   - component: {fileID: 3496915198864457483}
   - component: {fileID: 5906377345652737587}
-  - component: {fileID: 130119518987412118}
-  m_Layer: 0
+  - component: {fileID: 204333455457329068}
+  - component: {fileID: 2573103763774312922}
+  m_Layer: 7
   m_Name: PunchingBag
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +37,29 @@ Transform:
   - {fileID: 5362255775485345815}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &130119518987412118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287801561116780659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96aa2b36924680245b9618b42defc613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PunchingBag
+  _status: {fileID: 11400000, guid: c763e7e8dfebe3048bb67456b7aea39c, type: 2}
+  _attackLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _animator: {fileID: 5906377345652737587}
+  _muzzle: {fileID: 6287801561116780659}
+  _moveDir: {x: 0, y: 0}
+  _shootDir: {x: 1, y: 0}
+  _StartDirection: 0
+  _enableVisuableInvincible: 1
+  _currentState: 
 --- !u!50 &3496915198864457483
 Rigidbody2D:
   serializedVersion: 5
@@ -47,7 +72,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 1000
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -84,28 +109,78 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &130119518987412118
-MonoBehaviour:
+--- !u!58 &204333455457329068
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6287801561116780659}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96aa2b36924680245b9618b42defc613, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PunchingBag
-  _status: {fileID: 0}
-  _attackLayer:
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 7f97f864fcd35dc40b900b3e564f3444, type: 2}
+  m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  _animator: {fileID: 0}
-  _muzzle: {fileID: 0}
-  _moveDir: {x: 0, y: 0}
-  _shootDir: {x: 1, y: 0}
-  _enableVisuableInvincible: 0
-  _currentState: 
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.3
+--- !u!58 &2573103763774312922
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287801561116780659}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!1001 &4920963011979007113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -157,6 +232,10 @@ PrefabInstance:
     - target: {fileID: 3289093042888418166, guid: 2d0f27395cbd23e42a7cbee12dc5b546, type: 3}
       propertyPath: m_Name
       value: PunchingBag_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289093042888418166, guid: 2d0f27395cbd23e42a7cbee12dc5b546, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

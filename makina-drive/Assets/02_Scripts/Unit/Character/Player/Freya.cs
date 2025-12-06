@@ -17,8 +17,29 @@ public partial class Freya : UnitBase
     [SerializeField] private float _accel = 30f;
     [SerializeField] private float _decel = 20f;
 
-    [Header("攻撃")]
-    [SerializeField] private BulletData bulletData;
+    [Header("攻撃共通")]
+    [SerializeField] private float _createPos = 4f;
+
+    [Header("通常攻撃１")]
+    [SerializeField] private BulletData N1_bulletData;
+    [SerializeField] private float N1_inputReceptionTime = 0.2f;
+    [SerializeField] private float N1_stateChangeTime = 0.7f;
+    [SerializeField] private float N1_inputEndTime = 0.9f;
+    [SerializeField] private float N1_attackStartTime = 0.3f;
+
+    [Header("通常攻撃２")]
+    [SerializeField] private BulletData N2_bulletData;
+    [SerializeField] private float N2_inputReceptionTime = 0.2f;
+    [SerializeField] private float N2_stateChangeTime = 0.7f;
+    [SerializeField] private float N2_inputEndTime = 0.8f;
+    [SerializeField] private float N2_attackStartTime = 0.3f;
+
+    [Header("通常攻撃３")]
+    [SerializeField] private BulletData N3_bulletData;
+    [SerializeField] private float N3_inputReceptionTime = 0.2f;
+    [SerializeField] private float N3_stateChangeTime = 0.8f;
+    [SerializeField] private float N3_inputEndTime = 1.2f;
+    [SerializeField] private float N3_attackStartTime = 0.4f;
 
     protected override void Start()
     {

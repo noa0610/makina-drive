@@ -152,6 +152,7 @@ public class Bullet : MonoBehaviour
                     return;
 
                 UnitManager.instance.AddDamage(target, _parent, _status.damage);
+                // Debug.Log($"parent:{_parent.name}");
             }
 
             if (Hit()) NotifyDestoy();

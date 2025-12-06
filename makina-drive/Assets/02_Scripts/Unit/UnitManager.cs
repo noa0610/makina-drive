@@ -27,8 +27,10 @@ public class UnitManager : SingletonBehavior<UnitManager>
 
     public void AddDamage(UnitBase target, IUnit from, float damage)
     {
-        if(_damegeLog) Debug.Log($"{target.name} : Take Damage {damage}. HP : {target.statusManager.ReadValue(Status.HP)}");
-
+        if(_damegeLog) 
+        {
+            Debug.Log($"{target.name} : Take Damage {damage}.  HP: {target.statusManager.ReadValue(Status.HP) - damage} /{target.statusManager.ReadValue(Status.MaxHP)}");
+        }
         target.TakeDamage(from, damage);
     }
 

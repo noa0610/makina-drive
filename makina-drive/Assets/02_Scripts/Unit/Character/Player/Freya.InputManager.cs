@@ -44,9 +44,5 @@ public partial class Freya
         {
             _stateMachine.ChangeState(Triggers.attackInput);
         }
-        else
-        {
-            _stateMachine.ChangeState(Triggers.attackConplete);
-        }
     }
 }

@@ -28,6 +28,7 @@ public class StateComp : IState
     {
 
     }
+    
     public virtual bool AllowChange(IState nextState, UnitBase parent)
     {
         // _waitFrameが指定されている場合、待機フレーム完了まで遷移を許可しない

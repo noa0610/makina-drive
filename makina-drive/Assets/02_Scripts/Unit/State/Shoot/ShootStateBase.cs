@@ -49,6 +49,10 @@ public class ShootStateBase : StateComp
         _direction = newDirection.normalized;
         return this;
     }
+    public void SetCreatMisalignment(float misalignment)
+    {
+        _createPos = misalignment;
+    }
     public override void Enter(IState preview, UnitBase parent)
     {
         base.Enter(preview, parent);

@@ -4,7 +4,9 @@ using UnityEngine.InputSystem;
 
 public partial class Freya
 {
-    [SerializeField] private ShootForward N_attack1;
+    private ShootCombo N_attack1;
+    private ShootCombo N_attack2;
+    private ShootCombo N_attack3;
     private enum States
     {
         none,
@@ -17,16 +19,15 @@ public partial class Freya
 
         // 移動
         move,
+
+        // 回避
         dodge,
 
         // 通常攻撃
-        N_attack1,
-        N_attack2,
-        N_attack3,
+        N_attack1, N_attack2, N_attack3,
 
         // 強攻撃
-        S_attack,
-        S_chargeAttack,
+        S_attack, S_chargeAttack,
 
         // ドライブダッシュ
         dlivedash,
@@ -44,6 +45,8 @@ public partial class Freya
 
         // スタン
         stan,
+
+        // 死亡
         dead
     }
 
@@ -72,19 +75,30 @@ public partial class Freya
         var idleTrigger = new[]
         {
             (Triggers.moveInput, States.move, ""),
-            (Triggers.attackInput, States.N_attack1, ""),
+            (Triggers.attackInput, States.N_attack1, "AttackInput"),
             (Triggers.died, States.dead, "")
         };
         var moveTrigger = new[]
         {
             (Triggers.moveCancel, States.idle,""),
-            (Triggers.attackInput, States.N_attack1,""),
+            (Triggers.attackInput, States.N_attack1,"AttackInput"),
             (Triggers.died, States.dead,"")
         };
         var n_attack1Trigger = new[]
         {
-            (Triggers.attackConplete, States.idle,""),
-            (Triggers.attackInput, States.N_attack1,""),
+            (Triggers.attackConplete, States.idle,"AttackEnd"),
+            (Triggers.attackInput, States.N_attack2,"AttackInput"),
+            (Triggers.died, States.dead,"")
+        };
+        var n_attack2Trigger = new[]
+        {
+            (Triggers.attackConplete, States.idle,"AttackEnd"),
+            (Triggers.attackInput, States.N_attack3,"AttackInput"),
+            (Triggers.died, States.dead,"")
+        };
+        var n_attack3Trigger = new[]
+        {
+            (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.died, States.dead,"")
         };
 
@@ -92,7 +106,9 @@ public partial class Freya
         _stateMachine
             .AddTransition(States.idle, idleTrigger)
             .AddTransition(States.move, moveTrigger)
-            .AddTransition(States.N_attack1, n_attack1Trigger);
+            .AddTransition(States.N_attack1, n_attack1Trigger)
+            .AddTransition(States.N_attack2, n_attack2Trigger)
+            .AddTransition(States.N_attack3, n_attack3Trigger);
 
         /* 待機 */
         var idle = new Idle();
@@ -105,12 +121,28 @@ public partial class Freya
         _stateMachine.AddState(States.move, move);
 
         /* 通常攻撃1 */
-        N_attack1 = new ShootForward(bulletData, AttackLayer);
+        N_attack1 = new ShootCombo(N1_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
+        N_attack1.SetTime(N1_inputReceptionTime, N1_stateChangeTime, N1_inputEndTime, N1_attackStartTime);
         N_attack1.SetGameObject(_muzzle);
-        N_attack1.onShootComplete.AddListener(() =>
-        {
-            _stateMachine.ChangeState(Triggers.attackConplete);
-        });
+        N_attack1.SetCreatMisalignment(_createPos);
+        // N_attack1.onShootComplete.AddListener(() =>
+        // {
+            
+        // });
         _stateMachine.AddState(States.N_attack1, N_attack1);
+
+        /* 通常攻撃2 */
+        N_attack2 = new ShootCombo(N2_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
+        N_attack2.SetTime(N2_inputReceptionTime, N2_stateChangeTime, N2_inputEndTime, N2_attackStartTime);
+        N_attack2.SetGameObject(_muzzle);
+        N_attack2.SetCreatMisalignment(_createPos);
+        _stateMachine.AddState(States.N_attack2, N_attack2);
+
+        /* 通常攻撃3 */
+        N_attack3 = new ShootCombo(N3_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
+        N_attack3.SetTime(N3_inputReceptionTime, N3_stateChangeTime, N3_inputEndTime, N3_attackStartTime);
+        N_attack3.SetGameObject(_muzzle);
+        N_attack3.SetCreatMisalignment(_createPos);
+        _stateMachine.AddState(States.N_attack3, N_attack3);
     }
 }

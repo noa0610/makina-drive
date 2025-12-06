@@ -51,6 +51,13 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     }
     public Vector2 MoveDirection { get => _moveDir; set => _moveDir = value; }
     public Vector2 AttackDirection { get => _shootDir; set => _shootDir = value; }
+
+    public enum StartDirection
+    {
+        Left,
+        Right
+    }
+    [SerializeField] private StartDirection _StartDirection = StartDirection.Left;
     #endregion
 
 
@@ -72,6 +79,8 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
     protected virtual void BeforeRegisterStats() { }
     protected abstract void RegisterStats();
+
+    
     protected void Awake()
     {
         BeforeAwake();
@@ -100,10 +109,29 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         AfterAwake();
     }
 
+    private void InitDirection()
+    {
+        switch (_StartDirection)
+        {
+            case StartDirection.Left:
+                MoveDirection = Vector2.left;
+                Direction = Vector2.left;
+
+                break;
+            case StartDirection.Right:
+                MoveDirection = Vector2.right;
+                Direction = Vector2.right;
+                break;
+        }
+
+        var scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * (Direction.x >= 0f ? 1f : -1f);
+        transform.localScale = scale;
+    }
 
     protected virtual void Start()
     {
-
+        
     }
     #endregion
 
@@ -154,7 +182,14 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
     public virtual void OnDeath()
     {
-        Debug.Log($"{_status.name}が死亡した");
+        if (_status.unitName != null)
+        {
+            Debug.Log($"{_status.unitName}が死亡した");
+        }
+        else
+        {
+            Debug.Log($"{_status.name}が死亡した");
+        }
     }
     #endregion
 

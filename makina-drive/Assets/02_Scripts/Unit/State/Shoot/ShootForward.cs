@@ -16,7 +16,7 @@ public class ShootForward : ShootStateBase
             Debug.Log("Do not set bullet.");
         }
         // 弾の生成位置
-        Vector3 spawnPos = _muzzle.transform.position + new Vector3(unit.Direction.x * _createPos, 0, 0);
+        Vector3 spawnPos = _muzzle.transform.position + new Vector3(unit.Direction.x, unit.Direction.y) * _createPos;
         // 弾を生成
         Bullet instantiatedBullet = GameObject.Instantiate(b, spawnPos, Quaternion.identity);
         float angle = Mathf.Atan2(unit.Direction.y, unit.Direction.x) * Mathf.Rad2Deg;
