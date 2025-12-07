@@ -45,4 +45,26 @@ public partial class Freya
             _stateMachine.ChangeState(Triggers.attackInput);
         }
     }
+    
+    private void OnDash(InputValue value) => OnDash(value.isPressed);
+    public void OnDash(bool isPressed)
+    {
+        if (isPressed)
+        {
+            _stateMachine.ChangeState(Triggers.dashInput);
+        }
+        else
+        {
+            _stateMachine.ChangeState(Triggers.dashCancel);
+        }
+    }
+
+    private void OnS_Attack(InputValue value) => OnS_Attack(value.isPressed);
+    public void OnS_Attack(bool isPressed)
+    {
+        if (isPressed)
+        {
+            _stateMachine.ChangeState(Triggers.TestShoot);
+        }
+    }
 }

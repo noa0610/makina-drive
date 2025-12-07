@@ -36,6 +36,7 @@ public class ShootCombo : ShootStateBase
 
     private float _time;
 
+    // === Constractor ===
     public ShootCombo(BulletData data, LayerMask targetLayer, string lazeChange, string comboChange,
                         float inputReceptionTIme, float inputEndTime, float stateChangeTime, float attackStartTime) : base(data, targetLayer)
     {
@@ -46,7 +47,6 @@ public class ShootCombo : ShootStateBase
         _stateChangeTime = stateChangeTime;
         _attackStartTime = attackStartTime;
     }
-
     public ShootCombo(BulletData data, LayerMask targetLayer, string lazeChange, string comboChange = null) : base(data, targetLayer)
     {
         _lazechange = lazeChange;
@@ -54,6 +54,7 @@ public class ShootCombo : ShootStateBase
     }
     public ShootCombo() : base() { }
 
+    // === Public ===
     public void SetTime(float inputReceptionTIme, float inputEndTime, float stateChangeTime, float attackStartTime)
     {
         _inputReceptionTime = inputReceptionTIme;
@@ -156,11 +157,11 @@ public class ShootCombo : ShootStateBase
     public override void Exit(IState nextState, UnitBase parent)
     {
         base.Exit(nextState, parent);
-        UnityEngine.Object.Destroy(instantiatedBullet.gameObject);
+        if (instantiatedBullet != null) UnityEngine.Object.Destroy(instantiatedBullet.gameObject);
         OnCompleted?.Invoke();
     }
 
-    protected override async UniTask Shoot(UnitBase unit)
+    protected override async UniTask Shoot(UnitBase parent)
     {
         var b = _data.prefab;
         if (b == null)
@@ -168,12 +169,12 @@ public class ShootCombo : ShootStateBase
             Debug.Log("Do not set bullet.");
         }
         // 弾の生成位置
-        Vector3 spawnPos = _muzzle.transform.position + new Vector3(unit.Direction.x, unit.Direction.y) * _createPos;
+        Vector3 spawnPos = _muzzle.transform.position + new Vector3(parent.AttackDirection.x, parent.AttackDirection.y) * _createPos;
         // 弾を生成
         instantiatedBullet = GameObject.Instantiate(b, spawnPos, Quaternion.identity, _muzzle.transform);
-        float angle = Mathf.Atan2(unit.Direction.y, unit.Direction.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(parent.AttackDirection.y, parent.AttackDirection.x) * Mathf.Rad2Deg;
         instantiatedBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        InitBullet(instantiatedBullet, unit.AttackDirection);
-        await base.Shoot(unit);
+        InitBullet(instantiatedBullet, parent.AttackDirection);
+        await base.Shoot(parent);
     }
 }

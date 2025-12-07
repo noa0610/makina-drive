@@ -9,5 +9,5 @@ public class MoveStateBase : StateComp, IRigidbodyUser
         rigidbody2D = rb;
     }
 
-    protected virtual Vector2 GetDirection(UnitBase unit) => unit.Direction.normalized;
+    protected virtual Vector2 GetDirection(UnitBase unit) => unit.MoveDirection.normalized;
 }

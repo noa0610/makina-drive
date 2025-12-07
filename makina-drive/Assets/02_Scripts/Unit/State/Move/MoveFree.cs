@@ -29,7 +29,7 @@ public class MoveFree : MoveStateBase
         base.Stay(parent, deltaTime);
         if (rigidbody2D == null) return;
 
-        var input = parent.Direction;                   // 期待：(-1..1, -1..1)
+        var input = parent.MoveDirection;                   // 期待：(-1..1, -1..1)
         var hasInput = input.sqrMagnitude > (_deadZone * _deadZone);
 
         var maxSpeed = parent.statusManager.ReadValue(Status.Speed);

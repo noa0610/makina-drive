@@ -40,15 +40,12 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     #endregion
 
     #region === Reactive & Direction ===
+    [SerializeField] private Vector2 _Dir = Vector2.zero;
     [SerializeField] private Vector2 _moveDir = Vector2.zero;
     [SerializeField] private Vector2 _shootDir = Vector2.right;
     private ReactiveProperty<Vector2> _reactiveDirection = new(new(1, 0));
     public IObservable<Vector2> ReactiveDirection => _reactiveDirection;
-    public Vector2 Direction
-    {
-        get => _reactiveDirection.Value;
-        set => _reactiveDirection.Value = value;
-    }
+    public Vector2 Direction { get => _Dir; set => _Dir = value; }
     public Vector2 MoveDirection { get => _moveDir; set => _moveDir = value; }
     public Vector2 AttackDirection { get => _shootDir; set => _shootDir = value; }
 
@@ -80,7 +77,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     protected virtual void BeforeRegisterStats() { }
     protected abstract void RegisterStats();
 
-    
+
     protected void Awake()
     {
         BeforeAwake();
@@ -131,7 +128,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
     protected virtual void Start()
     {
-        
+
     }
     #endregion
 

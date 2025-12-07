@@ -30,7 +30,7 @@ public partial class Freya
         S_attack, S_chargeAttack,
 
         // ドライブダッシュ
-        dlivedash,
+        drivedash,
 
         // ダッシュ通常攻撃
         N_dashAttack,
@@ -48,6 +48,9 @@ public partial class Freya
 
         // 死亡
         dead
+
+        // テスト用
+        ,Shoot
     }
 
     private enum Triggers
@@ -66,6 +69,8 @@ public partial class Freya
         attackConplete,
         stan,
         died
+        ,TestShoot
+        ,ShootEnd
     }
 
     // ステート登録
@@ -76,11 +81,20 @@ public partial class Freya
         {
             (Triggers.moveInput, States.move, ""),
             (Triggers.attackInput, States.N_attack1, "AttackInput"),
+            (Triggers.dashInput, States.drivedash, ""),
             (Triggers.died, States.dead, "")
+            ,(Triggers.TestShoot, States.Shoot,"")
         };
         var moveTrigger = new[]
         {
             (Triggers.moveCancel, States.idle,""),
+            (Triggers.attackInput, States.N_attack1,"AttackInput"),
+            (Triggers.died, States.dead,"")
+            ,(Triggers.TestShoot, States.Shoot,"")
+        };
+        var drivedashTrigger = new[]
+        {
+            (Triggers.dashCancel, States.idle,""),
             (Triggers.attackInput, States.N_attack1,"AttackInput"),
             (Triggers.died, States.dead,"")
         };
@@ -101,14 +115,21 @@ public partial class Freya
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.died, States.dead,"")
         };
+        var ShootTrigger = new[]
+        {
+            (Triggers.ShootEnd, States.idle,""),
+            (Triggers.died, States.dead,"")
+        };
 
         // ステートマシンにStatesの移動先の追加
         _stateMachine
             .AddTransition(States.idle, idleTrigger)
             .AddTransition(States.move, moveTrigger)
+            .AddTransition(States.drivedash, drivedashTrigger)
             .AddTransition(States.N_attack1, n_attack1Trigger)
             .AddTransition(States.N_attack2, n_attack2Trigger)
-            .AddTransition(States.N_attack3, n_attack3Trigger);
+            .AddTransition(States.N_attack3, n_attack3Trigger)
+            .AddTransition(States.Shoot, ShootTrigger);
 
         /* 待機 */
         var idle = new Idle();
@@ -119,6 +140,11 @@ public partial class Freya
         move.SetAccel(_accel);
         move.SetDecel(_decel);
         _stateMachine.AddState(States.move, move);
+
+        /* ドライブダッシュ */
+        var drivedash = new DashAttack(Dash_bulletData, AttackLayer, true);
+        drivedash.SetGameObject(_muzzle);
+        _stateMachine.AddState(States.drivedash, drivedash);
 
         /* 通常攻撃1 */
         N_attack1 = new ShootCombo(N1_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
@@ -144,5 +170,15 @@ public partial class Freya
         N_attack3.SetGameObject(_muzzle);
         N_attack3.SetCreatMisalignment(_createPos);
         _stateMachine.AddState(States.N_attack3, N_attack3);
+
+        /* テスト用 */
+        var shoot = new ShootForward(N1_bulletData, AttackLayer);
+        shoot.SetGameObject(_muzzle);
+        shoot.SetCreatMisalignment(_createPos);
+        shoot.onShootComplete.AddListener(() =>
+        {
+            _stateMachine.ChangeState(Triggers.ShootEnd);
+        });
+        _stateMachine.AddState(States.Shoot, shoot);
     }
 }

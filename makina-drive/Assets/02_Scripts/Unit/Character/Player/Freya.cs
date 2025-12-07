@@ -17,6 +17,9 @@ public partial class Freya : UnitBase
     [SerializeField] private float _accel = 30f;
     [SerializeField] private float _decel = 20f;
 
+    [Header("ドライブダッシュ")]
+    [SerializeField] private BulletData Dash_bulletData;
+
     [Header("攻撃共通")]
     [SerializeField] private float _createPos = 4f;
 

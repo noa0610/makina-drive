@@ -19,6 +19,7 @@ public class ShootStateBase : StateComp
         get => _onShootComplete;
         set => _onShootComplete = value;
     }
+    
     // === Constractor ===
     public ShootStateBase(BulletData data, LayerMask targetLayer)
     {
