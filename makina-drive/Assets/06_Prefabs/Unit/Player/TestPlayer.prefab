@@ -55,6 +55,7 @@ MonoBehaviour:
     m_Bits: 128
   _animator: {fileID: 3591420865838479836}
   _muzzle: {fileID: 8493058101267245791}
+  _Dir: {x: 0, y: 0}
   _moveDir: {x: 0, y: 0}
   _shootDir: {x: 1, y: 0}
   _StartDirection: 1
@@ -62,20 +63,23 @@ MonoBehaviour:
   _currentState: 
   _accel: 30
   _decel: 20
-  bulletData: {fileID: 11400000, guid: 429c6e0451d919e44bb5b0a7587b8968, type: 2}
+  Dash_bulletData: {fileID: 11400000, guid: 1be7dc159402de34d8ccc28987bb0935, type: 2}
   _createPos: 1
-  N_attack1:
-    _parentName: 
-    _targetLayer:
-      serializedVersion: 2
-      m_Bits: 128
-    _data: {fileID: 11400000, guid: 429c6e0451d919e44bb5b0a7587b8968, type: 2}
-    _createPos: 0.35
-    _direction: {x: 1, y: 0}
-    _muzzle: {fileID: 8493058101267245791}
-    _onShootComplete:
-      m_PersistentCalls:
-        m_Calls: []
+  N1_bulletData: {fileID: 11400000, guid: 429c6e0451d919e44bb5b0a7587b8968, type: 2}
+  N1_inputReceptionTime: 0.2
+  N1_stateChangeTime: 0.7
+  N1_inputEndTime: 0.9
+  N1_attackStartTime: 0.1
+  N2_bulletData: {fileID: 11400000, guid: 4f5e14d8c6ae14a4dbb859989749c1cd, type: 2}
+  N2_inputReceptionTime: 0.2
+  N2_stateChangeTime: 0.7
+  N2_inputEndTime: 0.8
+  N2_attackStartTime: 0.1
+  N3_bulletData: {fileID: 11400000, guid: 3d09bf5ee5f58374d8da40329937438a, type: 2}
+  N3_inputReceptionTime: 0.2
+  N3_stateChangeTime: 0.8
+  N3_inputEndTime: 1.2
+  N3_attackStartTime: 0.1
 --- !u!50 &1537163214950532227
 Rigidbody2D:
   serializedVersion: 5

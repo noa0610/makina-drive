@@ -144,6 +144,7 @@ public partial class Freya
         /* ドライブダッシュ */
         var drivedash = new DashAttack(Dash_bulletData, AttackLayer, true);
         drivedash.SetGameObject(_muzzle);
+        drivedash.SetRB2(rb);
         _stateMachine.AddState(States.drivedash, drivedash);
 
         /* 通常攻撃1 */
