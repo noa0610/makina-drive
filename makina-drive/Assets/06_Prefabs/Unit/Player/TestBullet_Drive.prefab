@@ -51,6 +51,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _direction: {x: 0, y: 0}
+  CanSelfMove: 1
 --- !u!50 &815352225641853240
 Rigidbody2D:
   serializedVersion: 5

@@ -44,6 +44,9 @@ public partial class Freya : UnitBase
     [SerializeField] private float N3_inputEndTime = 1.2f;
     [SerializeField] private float N3_attackStartTime = 0.4f;
 
+    private Vector2 _dashDirection = Vector2.right;
+    private bool _inputDash = false;
+
     protected override void Start()
     {
 
@@ -59,6 +62,17 @@ public partial class Freya : UnitBase
     protected override void BeforeFixedUpdate()
     {
         TurnAround();
+
+        Debug.Log("inputDash: " + _inputDash);
+
+        if(IsMatchingState(States.drivedash))
+        {
+            _dashDirection = drivedash.GetDashDirection();
+            if(_inputDash == false)
+            {
+                _stateMachine.ChangeState(Triggers.dashCancel);
+            }
+        }
     }
 
     /// <summary>
@@ -74,6 +88,18 @@ public partial class Freya : UnitBase
         }
 
     }
+
+    
+    // --- シーンビューに方向を描画 ---
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)_dashDirection);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)Direction);
+    }
+
 
     /// <summary>
     /// 現在ステートの判別

@@ -20,6 +20,7 @@ MonoBehaviour:
   atk: 5
   def: 5
   speed: 5
+  dashSpeed: 8
   collectionRange: 0
   stamina: 0
   knockbackPower: 0

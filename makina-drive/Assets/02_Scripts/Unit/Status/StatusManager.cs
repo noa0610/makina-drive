@@ -21,6 +21,7 @@ public class StatusManager
         };
         AddStatus(Status.DamageRatio, data.damageTakeScale);
         AddStatus(Status.Speed, data.speed);
+        AddStatus(Status.DashSpeed, data.dashSpeed);
         AddStatus(Status.ATK, data.atk);
         AddStatus(Status.DEF, data.def);
         AddStatus(Status.DamageRatio, data.damageTakeScale);

@@ -6,15 +6,18 @@ using Cysharp.Threading.Tasks;
 public class DashAttack : ShootOnMoveBase
 {
     [SerializeField] private bool _isStopInExit = false;
-    [SerializeField] private float _startDashTime = 0.5f;
-    [SerializeField] private float _turnSpeed = 10f;
+    [SerializeField] private float _graceDashTime = 0.5f;
+
+    [SerializeField, Min(0f)] protected float _accel = 60f;
+
+    [Header("回転速度（度/秒）")]
+    public float rotateSpeed = 360f;
     private float _dashSpeed;
     private float _time;
     private Vector2 _dashDirection;
     private bool _isBlock = true;
     private Bullet instantiatedBullet;
 
-    
     public event Action OnCompleted;
 
     public bool IsStopInExit { get => _isStopInExit; set => _isStopInExit = value; }
@@ -29,13 +32,18 @@ public class DashAttack : ShootOnMoveBase
     }
     public DashAttack() : base() { }
 
+    public DashAttack SetAccel(float accel)
+    {
+        _accel = Mathf.Max(0f, accel);
+        return this;
+    }
     public void SetDashDirection(Vector2 direction)
     {
         _dashDirection = direction.normalized;
     }
     public void SetStateDashTime(float startDashTime)
     {
-        _startDashTime = startDashTime;
+        _graceDashTime = startDashTime;
     }
     public void SetBlock(bool isBlock)
     {
@@ -47,36 +55,46 @@ public class DashAttack : ShootOnMoveBase
     {
         base.Enter(previousState, parent);
         _dashSpeed = parent.statusManager.ReadValue(Status.DashSpeed);
-        _dashDirection = parent.MoveDirection.normalized;
+        _dashDirection = parent.Direction.normalized;
         _time = 0;
         _isBlock = true;
-        _ = Shoot(parent);
     }
 
     public override void Stay(UnitBase parent, float deltaTime)
     {
         base.Stay(parent, deltaTime);
+        if (rigidbody2D == null) return;
 
         _time += deltaTime;
 
-        // 目標方向
-        Vector2 goal = parent.MoveDirection.sqrMagnitude > 1e-6f ? parent.MoveDirection.normalized : _dashDirection;
+        // Debug.Log("time: " + _time);
 
-        // 角度差を計算
-        float angle = Vector2.SignedAngle(_dashDirection, goal);
-        float maxDelta = _turnSpeed * deltaTime;
-        float turn = Mathf.Clamp(angle, -maxDelta, maxDelta);
-        _dashDirection = Rotate(_dashDirection, turn).normalized;
-
-        // 移動（物理を用いる場合は MovePosition を推奨）
-        Vector2 move = _dashDirection * _dashSpeed * deltaTime;
-        rigidbody2D.MovePosition(rigidbody2D.position + move);
-
-        // スタートダッシュ時間終了時、遷移可能
-        if (_time >= _startDashTime)
+        Debug.Log("_isBlock: " + _isBlock);
+        if (_time >= _graceDashTime)
         {
             _isBlock = false;
         }
+
+        var maxSpeed = parent.statusManager.ReadValue(Status.DashSpeed);
+
+        if (parent.MoveDirection.sqrMagnitude < 0.0001f)
+        {
+            // _dashDirection を使い続ける
+        }
+        else
+        {
+            _dashDirection = RotateTowards(
+                _dashDirection,
+                parent.Direction,
+                rotateSpeed * Mathf.Deg2Rad * deltaTime
+            );
+        }
+        var targetVel = _dashDirection * maxSpeed;
+
+        var changePerSec = _accel;
+        var maxDelta = changePerSec * Mathf.Max(deltaTime, 0f);
+
+        rigidbody2D.linearVelocity = Vector2.MoveTowards(rigidbody2D.linearVelocity, targetVel, maxDelta);
     }
 
     public override void Exit(IState nextState, UnitBase parent)
@@ -90,15 +108,33 @@ public class DashAttack : ShootOnMoveBase
     // 状態変更をブロックする
     public override bool AllowChange(IState nextState, UnitBase parent)
     {
-        if (_isBlock) return false;
+        if (_isBlock)
+        {
+            Debug.Log("DashAttack: Change is blocked.");
+            return false;
+        }
         return base.AllowChange(nextState, parent);
     }
 
-    private Vector2 Rotate(Vector2 v, float deg)
+    /// <summary>
+    /// from を to に向けて maxRadiansDelta だけ回転させる
+    /// </summary>
+    Vector2 RotateTowards(Vector2 from, Vector2 to, float maxRadiansDelta)
     {
-        float rad = deg * Mathf.Deg2Rad;
-        float ca = Mathf.Cos(rad), sa = Mathf.Sin(rad);
-        return new Vector2(v.x * ca - v.y * sa, v.x * sa + v.y * ca);
+        float angle = Vector2.SignedAngle(from, to);
+        float angleRad = angle * Mathf.Deg2Rad;
+
+        // 角度が小さければ to へスナップ
+        if (Mathf.Abs(angleRad) <= maxRadiansDelta)
+        {
+            return to.normalized;
+        }
+
+        // 回転方向に maxRadiansDelta 分だけ回す
+        float newAngleRad = Mathf.Clamp(angleRad, -maxRadiansDelta, maxRadiansDelta);
+        float newAngleDeg = newAngleRad * Mathf.Rad2Deg;
+
+        return Quaternion.Euler(0, 0, newAngleDeg) * from;
     }
 
     protected override async UniTask Shoot(UnitBase parent)
@@ -112,9 +148,15 @@ public class DashAttack : ShootOnMoveBase
         Vector3 spawnPos = _muzzle.transform.position + new Vector3(parent.AttackDirection.x, parent.AttackDirection.y) * _createPos;
         // 弾を生成
         instantiatedBullet = GameObject.Instantiate(b, spawnPos, Quaternion.identity, _muzzle.transform);
+        instantiatedBullet.CanSelfMove = false;
         float angle = Mathf.Atan2(parent.AttackDirection.y, parent.AttackDirection.x) * Mathf.Rad2Deg;
         instantiatedBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         InitBullet(instantiatedBullet, parent.AttackDirection);
         await base.Shoot(parent);
+    }
+
+    public Vector2 GetDashDirection()
+    {
+        return _dashDirection;
     }
 }

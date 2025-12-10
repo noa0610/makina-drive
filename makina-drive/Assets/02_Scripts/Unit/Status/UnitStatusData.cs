@@ -11,6 +11,7 @@ public class UnitStatusData : ScriptableObject
     public float atk;             // 攻撃力
     public float def;             // 防御力
     public float speed;           // 速度
+    public float dashSpeed;       // ダッシュ速度
     public float collectionRange; // 収集範囲
     public float stamina;         // スタミナ
     public float knockbackPower;  // ノックバック力

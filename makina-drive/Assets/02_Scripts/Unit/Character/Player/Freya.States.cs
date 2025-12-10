@@ -7,6 +7,7 @@ public partial class Freya
     private ShootCombo N_attack1;
     private ShootCombo N_attack2;
     private ShootCombo N_attack3;
+    private DashAttack drivedash;
     private enum States
     {
         none,
@@ -89,6 +90,7 @@ public partial class Freya
         {
             (Triggers.moveCancel, States.idle,""),
             (Triggers.attackInput, States.N_attack1,"AttackInput"),
+            (Triggers.dashInput, States.drivedash, ""),
             (Triggers.died, States.dead,"")
             ,(Triggers.TestShoot, States.Shoot,"")
         };
@@ -142,9 +144,10 @@ public partial class Freya
         _stateMachine.AddState(States.move, move);
 
         /* ドライブダッシュ */
-        var drivedash = new DashAttack(Dash_bulletData, AttackLayer, true);
+        drivedash = new DashAttack(Dash_bulletData, AttackLayer, true);
         drivedash.SetGameObject(_muzzle);
         drivedash.SetRB2(rb);
+        drivedash.SetCreatMisalignment(0);
         _stateMachine.AddState(States.drivedash, drivedash);
 
         /* 通常攻撃1 */

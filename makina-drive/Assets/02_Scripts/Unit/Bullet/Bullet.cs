@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
         public Transform Transform => transform;
         public UnitBase Parent => _parent;
         public LayerMask TargetLayer { get => _targetLayer; set => _targetLayer = value; }
-        public virtual bool CanSelfMove => true;
+        public bool CanSelfMove = true;
         public float Damage => _status.damage;
         #endregion
 
@@ -48,6 +48,7 @@ public class Bullet : MonoBehaviour
         }
         public void SetDirection(Vector2 dir) { _direction = dir; OrientToDirection(dir); }
         public void SetParent(UnitBase parent) => _parent = parent;
+        public void SetCanselfMode(bool canCanself) => CanSelfMove = canCanself;
 
         public void Reflect() { _direction = -_direction; OrientToDirection(_direction); }
         #endregion
