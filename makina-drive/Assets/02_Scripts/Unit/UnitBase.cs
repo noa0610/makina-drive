@@ -95,6 +95,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         BeforeRegisterStats();
         _statusManager.Initialize(_status);
         RegisterStats();
+        InitDirection();
 
 #if UNITY_EDITOR
         // ログ設定切り替え可

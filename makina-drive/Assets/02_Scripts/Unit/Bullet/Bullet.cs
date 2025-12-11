@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     #region === Inspector ===
         [Header("Collision Layers")]
         [SerializeField, Tooltip("常に衝突可能なレイヤー")]
-        private LayerMask _canHitLayer;
+        protected LayerMask _canHitLayer;
         [SerializeField, Tooltip("初期方向")]
         protected Vector2 _direction;
         #endregion
@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
         #endregion
 
         #region === Events ===
-        public event Action<Bullet> OnDestoryHandle;
+        protected event Action<Bullet> OnDestoryHandle;
         #endregion
 
         #region === Setup & Initialization ===
@@ -60,7 +60,7 @@ public class Bullet : MonoBehaviour
             OrientToDirection(_direction);
         }
 
-        public void FixedUpdate()
+        public virtual void FixedUpdate()
         {
             if (CanSelfMove)
             {
@@ -181,7 +181,7 @@ public class Bullet : MonoBehaviour
         #endregion
 
         // （1,0）が右向きになるようにスプライトの向きを調整
-        private void OrientToDirection(Vector2 dir)
+        protected void OrientToDirection(Vector2 dir)
         {
             if (dir.sqrMagnitude < 1e-6f) return;
             transform.right = new Vector3(dir.x, dir.y, 0f);

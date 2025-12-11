@@ -69,6 +69,7 @@ public class DashAttack : ShootOnMoveBase
 
         // Debug.Log("time: " + _time);
 
+
         Debug.Log("_isBlock: " + _isBlock);
         if (_time >= _graceDashTime)
         {
@@ -95,6 +96,12 @@ public class DashAttack : ShootOnMoveBase
         var maxDelta = changePerSec * Mathf.Max(deltaTime, 0f);
 
         rigidbody2D.linearVelocity = Vector2.MoveTowards(rigidbody2D.linearVelocity, targetVel, maxDelta);
+
+        // 弾の位置を更新
+        instantiatedBullet.transform.localPosition = new Vector3(parent.transform.position.x, parent.transform.position.y, parent.transform.position.z);
+
+        // 弾の向きをダッシュ方向に合わせる
+        instantiatedBullet.transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1), _dashDirection);
     }
 
     public override void Exit(IState nextState, UnitBase parent)
@@ -147,10 +154,9 @@ public class DashAttack : ShootOnMoveBase
         // 弾の生成位置
         Vector3 spawnPos = _muzzle.transform.position + new Vector3(parent.AttackDirection.x, parent.AttackDirection.y) * _createPos;
         // 弾を生成
-        instantiatedBullet = GameObject.Instantiate(b, spawnPos, Quaternion.identity, _muzzle.transform);
+        instantiatedBullet = GameObject.Instantiate(b, spawnPos, Quaternion.identity);
         instantiatedBullet.CanSelfMove = false;
-        float angle = Mathf.Atan2(parent.AttackDirection.y, parent.AttackDirection.x) * Mathf.Rad2Deg;
-        instantiatedBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        // float angle = Mathf.Atan2(parent.AttackDirection.y, parent.AttackDirection.x) * Mathf.Rad2Deg;
         InitBullet(instantiatedBullet, parent.AttackDirection);
         await base.Shoot(parent);
     }

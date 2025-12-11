@@ -66,4 +66,11 @@ public class PunchingBag : UnitBase
     {
         return _stateMachine.CurrentState.key == _stateNames[state];
     }
+
+    public override void OnDeath()
+    {
+        base.OnDeath();
+        UnitManager.instance.RemoveUnit(this);
+        Destroy(gameObject);
+    }
 }
