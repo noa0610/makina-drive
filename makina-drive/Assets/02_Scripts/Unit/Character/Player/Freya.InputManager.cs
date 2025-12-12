@@ -46,21 +46,6 @@ public partial class Freya
         }
     }
 
-    private void OnDash(InputValue value) => OnDash(value.isPressed);
-    public void OnDash(bool isPressed)
-    {
-        if (isPressed)
-        {
-            _inputDash = true;
-            _stateMachine.ChangeState(Triggers.dashInput);
-        }
-        else
-        {
-            Debug.Log("Dash input released");
-            _inputDash = false;
-            _stateMachine.ChangeState(Triggers.dashCancel);
-        }
-    }
 
     private void OnS_Attack(InputValue value) => OnS_Attack(value.isPressed);
     public void OnS_Attack(bool isPressed)
@@ -70,4 +55,41 @@ public partial class Freya
             _stateMachine.ChangeState(Triggers.TestShoot);
         }
     }
+
+    private void OnDodge(InputValue value) => OnDodge(value.isPressed);
+    public void OnDodge(bool isPressed)
+    {
+        if (isPressed)
+        {
+            _stateMachine.ChangeState(Triggers.dodgeInput);
+        }
+    }
+
+    private void OnDash(InputValue value) => OnDash(value.isPressed);
+    public void OnDash(bool isPressed)
+    {
+        if (isPressed)
+        {
+            _stateMachine.ChangeState(Triggers.dashInput);
+        }
+    }
+
+    // 押された瞬間のコールバック
+    public void OnPress(InputAction.CallbackContext context)
+    {
+        // 押された瞬間でPerformedとなる
+        if (!context.performed) return;
+
+        Debug.Log("Press");
+    }
+
+    // 離された瞬間のコールバック
+    public void OnRelease(InputAction.CallbackContext context)
+    {
+        // 離された瞬間でPerformedとなる
+        if (!context.performed) return;
+
+        Debug.Log("Release");
+    }
+
 }

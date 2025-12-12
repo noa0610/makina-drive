@@ -58,6 +58,8 @@ public partial class Freya
     {
         none,
         entry,
+        dodgeInput,
+        dodgeCancel,
         moveInput,
         moveCancel,
         dashInput,
@@ -83,6 +85,7 @@ public partial class Freya
             (Triggers.moveInput, States.move, ""),
             (Triggers.attackInput, States.N_attack1, "AttackInput"),
             (Triggers.dashInput, States.drivedash, ""),
+            (Triggers.dodgeInput, States.dodge, "DodgeInput"),
             (Triggers.died, States.dead, "")
             ,(Triggers.TestShoot, States.Shoot,"")
         };
@@ -91,8 +94,17 @@ public partial class Freya
             (Triggers.moveCancel, States.idle,""),
             (Triggers.attackInput, States.N_attack1,"AttackInput"),
             (Triggers.dashInput, States.drivedash, ""),
+            (Triggers.dodgeInput, States.dodge, "DodgeInput"),
             (Triggers.died, States.dead,"")
             ,(Triggers.TestShoot, States.Shoot,"")
+        };
+        var dodgeTrigger = new[]
+        {
+            (Triggers.dodgeCancel, States.idle,"DodgeEnd"),
+            (Triggers.moveInput, States.move,"DodgeEnd"),
+            (Triggers.attackInput, States.N_attack1,"AttackInput"),
+            (Triggers.dashInput, States.drivedash,"DodgeEnd"),
+            (Triggers.died, States.dead,"")
         };
         var drivedashTrigger = new[]
         {
@@ -127,6 +139,7 @@ public partial class Freya
         _stateMachine
             .AddTransition(States.idle, idleTrigger)
             .AddTransition(States.move, moveTrigger)
+            .AddTransition(States.dodge, dodgeTrigger)
             .AddTransition(States.drivedash, drivedashTrigger)
             .AddTransition(States.N_attack1, n_attack1Trigger)
             .AddTransition(States.N_attack2, n_attack2Trigger)
@@ -143,8 +156,14 @@ public partial class Freya
         move.SetDecel(_decel);
         _stateMachine.AddState(States.move, move);
 
+        /* 回避 */
+        var dodge = new MoveInvincible(_invincibleTime, _dodgeRecoveryTime, false, Triggers.dodgeCancel.ToString());
+        dodge.SetAccel(_dodgeAccel);
+        dodge.SetDecel(_dodgeDecel);
+        _stateMachine.AddState(States.dodge, dodge);
+
         /* ドライブダッシュ */
-        drivedash = new DashAttack(Dash_bulletData, AttackLayer, true);
+        drivedash = new DashAttack(Dash_bulletData, AttackLayer, true, Triggers.dashCancel.ToString());
         drivedash.SetGameObject(_muzzle);
         drivedash.SetRB2(rb);
         drivedash.SetCreatMisalignment(0);

@@ -11,7 +11,8 @@ public class DashAttack : ShootOnMoveBase
     [SerializeField, Min(0f)] protected float _accel = 60f;
 
     [Header("回転速度（度/秒）")]
-    public float rotateSpeed = 360f;
+    [SerializeField] private float rotateSpeed = 360f;
+    private string _lazechange;  // ステート終了時の遷移先
     private float _dashSpeed;
     private float _time;
     private Vector2 _dashDirection;
@@ -24,11 +25,12 @@ public class DashAttack : ShootOnMoveBase
 
 
     // === Constractor ===
-    public DashAttack(BulletData data, LayerMask targetLayer, bool isStopInExit = false) : base(data, targetLayer)
+    public DashAttack(BulletData data, LayerMask targetLayer, bool isStopInExit = false, string lazeChange = null) : base(data, targetLayer)
     {
         _data = data;
         _targetLayer = targetLayer;
         IsStopInExit = isStopInExit;
+        _lazechange = lazeChange;
     }
     public DashAttack() : base() { }
 
@@ -44,10 +46,6 @@ public class DashAttack : ShootOnMoveBase
     public void SetStateDashTime(float startDashTime)
     {
         _graceDashTime = startDashTime;
-    }
-    public void SetBlock(bool isBlock)
-    {
-        _isBlock = isBlock;
     }
 
     // === Public ===
@@ -74,6 +72,8 @@ public class DashAttack : ShootOnMoveBase
         if (_time >= _graceDashTime)
         {
             _isBlock = false;
+            if (_lazechange != null)
+                parent.stateMachine.LazyChange(_lazechange);
         }
 
         var maxSpeed = parent.statusManager.ReadValue(Status.DashSpeed);

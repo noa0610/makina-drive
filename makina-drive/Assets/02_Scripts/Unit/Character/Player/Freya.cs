@@ -17,6 +17,12 @@ public partial class Freya : UnitBase
     [SerializeField] private float _accel = 30f;
     [SerializeField] private float _decel = 20f;
 
+    [Header("回避")]
+    [SerializeField] private float _dodgeAccel = 10f;
+    [SerializeField] private float _dodgeDecel = 10f;
+    [SerializeField] private float _invincibleTime = 0.5f;   // 無敵時間
+    [SerializeField] private float _dodgeRecoveryTime = 0.7f; // 無敵解除後の後隙回復時間
+
     [Header("ドライブダッシュ")]
     [SerializeField] private BulletData Dash_bulletData;
 
@@ -63,15 +69,11 @@ public partial class Freya : UnitBase
     {
         TurnAround();
 
-        Debug.Log("inputDash: " + _inputDash);
+        // Debug.Log("inputDash: " + _inputDash);
 
         if(IsMatchingState(States.drivedash))
         {
             _dashDirection = drivedash.GetDashDirection();
-            if(_inputDash == false)
-            {
-                _stateMachine.ChangeState(Triggers.dashCancel);
-            }
         }
     }
 

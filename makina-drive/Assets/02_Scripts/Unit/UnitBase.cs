@@ -189,6 +189,11 @@ public abstract class UnitBase : MonoBehaviour, IUnit
             Debug.Log($"{_status.name}が死亡した");
         }
     }
+
+    public void SetInvincible(bool isInvincible)
+    {
+        IsInvincible = isInvincible;
+    }
     #endregion
 
     #region === Pause & Play ===
