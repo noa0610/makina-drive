@@ -70,26 +70,22 @@ public partial class Freya
     {
         if (isPressed)
         {
+            _inputDash = true;
             _stateMachine.ChangeState(Triggers.dashInput);
+        }
+        else
+        {
+            _inputDash = false;
+            _stateMachine.ChangeState(Triggers.dashCancel);
         }
     }
 
-    // 押された瞬間のコールバック
-    public void OnPress(InputAction.CallbackContext context)
+    private void OnJump(InputValue value) => OnJump(value.isPressed);
+    public void OnJump(bool isPressed)
     {
-        // 押された瞬間でPerformedとなる
-        if (!context.performed) return;
-
-        Debug.Log("Press");
+        if (isPressed)
+        {
+            _stateMachine.ChangeState(Triggers.jumpInput);
+        }
     }
-
-    // 離された瞬間のコールバック
-    public void OnRelease(InputAction.CallbackContext context)
-    {
-        // 離された瞬間でPerformedとなる
-        if (!context.performed) return;
-
-        Debug.Log("Release");
-    }
-
 }

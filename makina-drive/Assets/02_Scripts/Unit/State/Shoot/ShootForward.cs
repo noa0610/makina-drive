@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 
+/// <summary>
+/// 前方射撃ステート
+/// </summary>
 [Serializable]
 public class ShootForward : ShootStateBase
 {

@@ -4,6 +4,9 @@ using Cysharp.Threading.Tasks;
 using NUnit.Framework;
 using Unity.VisualScripting;
 
+/// <summary>
+/// コンボステート
+/// </summary>
 [Serializable]
 public class ShootCombo : ShootStateBase
 {

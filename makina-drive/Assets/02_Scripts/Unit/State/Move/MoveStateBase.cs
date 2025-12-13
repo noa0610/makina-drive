@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 移動ステート基底クラス
+/// </summary>
 public class MoveStateBase : StateComp, IRigidbodyUser
 {
     public Rigidbody2D rigidbody2D { get; protected set; }

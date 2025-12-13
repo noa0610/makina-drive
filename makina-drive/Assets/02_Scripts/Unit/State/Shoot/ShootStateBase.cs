@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using Cysharp.Threading.Tasks;
 
+/// <summary>
+/// 射撃ステート基底クラス
+/// </summary>
 [Serializable]
 public class ShootStateBase : StateComp
 {

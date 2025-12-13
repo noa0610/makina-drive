@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using System.Linq;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(UnityEngine.InputSystem.PlayerInput))]
 public partial class Freya : UnitBase
@@ -28,6 +29,20 @@ public partial class Freya : UnitBase
 
     [Header("攻撃共通")]
     [SerializeField] private float _createPos = 4f;
+
+    [Header("ジャンプ開始")]
+    [SerializeField] private float _jumpStartTime = 1f;
+
+    [Header("落下狙い")]
+    [SerializeField] private float _fallAimAccel = 40f;
+    [SerializeField] private float _fallAimDecel = 30f;
+
+    [Header("落下")]
+    [SerializeField] private float _fallTime = 0.12f;
+
+    [Header("落下攻撃")]
+    [SerializeField] private BulletData FallAttack_bulletData;
+    [SerializeField] private float _fallAttackTime = 1.0f;
 
     [Header("通常攻撃１")]
     [SerializeField] private BulletData N1_bulletData;
@@ -73,6 +88,10 @@ public partial class Freya : UnitBase
 
         if(IsMatchingState(States.drivedash))
         {
+            if(_inputDash == false)
+            {
+                stateMachine.ChangeState(Triggers.dashCancel);
+            }
             _dashDirection = drivedash.GetDashDirection();
         }
     }

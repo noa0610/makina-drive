@@ -42,6 +42,7 @@ public partial class Freya
         // ジャンプ
         jumpstart,
         jumpfallAim,
+        fall,
         fallAttack,
 
         // スタン
@@ -65,9 +66,9 @@ public partial class Freya
         dashInput,
         dashCancel,
         jumpInput,
-        jumpCancel,
         jumpAir,
         jumpConplete,
+        jumpCancel,
         attackInput,
         attackConplete,
         stan,
@@ -86,6 +87,7 @@ public partial class Freya
             (Triggers.attackInput, States.N_attack1, "AttackInput"),
             (Triggers.dashInput, States.drivedash, ""),
             (Triggers.dodgeInput, States.dodge, "DodgeInput"),
+            (Triggers.jumpInput, States.jumpstart, "JumpInput"),
             (Triggers.died, States.dead, "")
             ,(Triggers.TestShoot, States.Shoot,"")
         };
@@ -95,6 +97,7 @@ public partial class Freya
             (Triggers.attackInput, States.N_attack1,"AttackInput"),
             (Triggers.dashInput, States.drivedash, ""),
             (Triggers.dodgeInput, States.dodge, "DodgeInput"),
+            (Triggers.jumpInput, States.jumpstart,"JumpInput"),
             (Triggers.died, States.dead,"")
             ,(Triggers.TestShoot, States.Shoot,"")
         };
@@ -129,6 +132,26 @@ public partial class Freya
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.died, States.dead,"")
         };
+        var jumpstartTrigger = new[]
+        {
+            (Triggers.jumpAir, States.jumpfallAim,""),
+            (Triggers.died, States.dead,"")
+        };
+        var jumpfallAimTrigger = new[]
+        {
+            (Triggers.jumpInput, States.fall,"JumpInput"),
+            (Triggers.died, States.dead,"")
+        };
+        var fallTrigger = new[]
+        {
+            (Triggers.jumpConplete, States.fallAttack,""),
+            (Triggers.died, States.dead,"")
+        };
+        var fallAttackTrigger = new[]
+        {
+            (Triggers.jumpCancel, States.idle,"JumpEnd"),
+            (Triggers.died, States.dead,"")
+        };
         var ShootTrigger = new[]
         {
             (Triggers.ShootEnd, States.idle,""),
@@ -144,6 +167,10 @@ public partial class Freya
             .AddTransition(States.N_attack1, n_attack1Trigger)
             .AddTransition(States.N_attack2, n_attack2Trigger)
             .AddTransition(States.N_attack3, n_attack3Trigger)
+            .AddTransition(States.jumpstart, jumpstartTrigger)
+            .AddTransition(States.jumpfallAim, jumpfallAimTrigger)
+            .AddTransition(States.fall, fallTrigger)
+            .AddTransition(States.fallAttack, fallAttackTrigger)
             .AddTransition(States.Shoot, ShootTrigger);
 
         /* 待機 */
@@ -163,7 +190,7 @@ public partial class Freya
         _stateMachine.AddState(States.dodge, dodge);
 
         /* ドライブダッシュ */
-        drivedash = new DashAttack(Dash_bulletData, AttackLayer, true, Triggers.dashCancel.ToString());
+        drivedash = new DashAttack(Dash_bulletData, AttackLayer, true);
         drivedash.SetGameObject(_muzzle);
         drivedash.SetRB2(rb);
         drivedash.SetCreatMisalignment(0);
@@ -193,6 +220,35 @@ public partial class Freya
         N_attack3.SetGameObject(_muzzle);
         N_attack3.SetCreatMisalignment(_createPos);
         _stateMachine.AddState(States.N_attack3, N_attack3);
+
+        /* ジャンプ開始 */
+        var jumpstart = new Idle_LazyChange(Triggers.jumpAir.ToString(), _jumpStartTime);
+        jumpstart.OnCompleted += () =>
+        {
+            // 無敵付与
+            SetInvincible(true);
+        };
+        _stateMachine.AddState(States.jumpstart, jumpstart);
+
+        /* 落下狙い */
+        var jumpfallAim = new MoveFree(true);
+        jumpfallAim.SetAccel(_fallAimAccel);
+        jumpfallAim.SetDecel(_fallAimDecel);
+        _stateMachine.AddState(States.jumpfallAim, jumpfallAim);
+
+        /* 落下 */
+        var fall = new Idle_LazyChange(Triggers.jumpConplete.ToString(), _fallTime);
+        fall.OnCompleted += () =>
+        {
+            // 無敵解除
+            SetInvincible(false);
+        };
+        _stateMachine.AddState(States.fall, fall);
+
+        /* 落下攻撃 */
+        var fallAttack = new ShootForward_LazyChange(FallAttack_bulletData, AttackLayer, Triggers.jumpCancel.ToString(), _fallAttackTime);
+        fallAttack.SetGameObject(_muzzle);
+        _stateMachine.AddState(States.fallAttack, fallAttack);
 
         /* テスト用 */
         var shoot = new ShootForward(N1_bulletData, AttackLayer);

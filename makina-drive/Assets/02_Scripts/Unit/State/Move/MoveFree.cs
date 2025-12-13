@@ -1,6 +1,9 @@
 using UnityEngine;
 using System;
 
+/// <summary>
+/// 自由移動ステート
+/// </summary>
 public class MoveFree : MoveStateBase
 {
     [SerializeField] private bool _isStopInExit = false;

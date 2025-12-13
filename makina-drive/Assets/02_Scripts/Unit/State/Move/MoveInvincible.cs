@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 無敵移動ステート
+/// </summary>
 public class MoveInvincible : MoveStateBase
 {
     [SerializeField] private bool _isStopInExit = false;

@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Cysharp.Threading.Tasks;
 
+/// <summary>
+/// ダッシュ攻撃ステート
+/// </summary>
 public class DashAttack : ShootOnMoveBase
 {
     [SerializeField] private bool _isStopInExit = false;

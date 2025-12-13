@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 移動が可能な射撃ステート基底クラス
+/// </summary>
 public class ShootOnMoveBase : ShootStateBase
 {
     public Rigidbody2D rigidbody2D { get; protected set; }

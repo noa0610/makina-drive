@@ -65,6 +65,10 @@ MonoBehaviour:
   _currentState: 
   _accel: 30
   _decel: 20
+  _dodgeAccel: 10
+  _dodgeDecel: 10
+  _invincibleTime: 0.5
+  _dodgeRecoveryTime: 0.7
   Dash_bulletData: {fileID: 11400000, guid: 1be7dc159402de34d8ccc28987bb0935, type: 2}
   _createPos: 1
   N1_bulletData: {fileID: 11400000, guid: 429c6e0451d919e44bb5b0a7587b8968, type: 2}
