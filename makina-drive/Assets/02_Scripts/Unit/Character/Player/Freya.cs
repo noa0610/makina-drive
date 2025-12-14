@@ -27,22 +27,10 @@ public partial class Freya : UnitBase
     [Header("ドライブダッシュ")]
     [SerializeField] private BulletData Dash_bulletData;
 
+    
     [Header("攻撃共通")]
     [SerializeField] private float _createPos = 4f;
 
-    [Header("ジャンプ開始")]
-    [SerializeField] private float _jumpStartTime = 1f;
-
-    [Header("落下狙い")]
-    [SerializeField] private float _fallAimAccel = 40f;
-    [SerializeField] private float _fallAimDecel = 30f;
-
-    [Header("落下")]
-    [SerializeField] private float _fallTime = 0.12f;
-
-    [Header("落下攻撃")]
-    [SerializeField] private BulletData FallAttack_bulletData;
-    [SerializeField] private float _fallAttackTime = 1.0f;
 
     [Header("通常攻撃１")]
     [SerializeField] private BulletData N1_bulletData;
@@ -64,6 +52,22 @@ public partial class Freya : UnitBase
     [SerializeField] private float N3_stateChangeTime = 0.8f;
     [SerializeField] private float N3_inputEndTime = 1.2f;
     [SerializeField] private float N3_attackStartTime = 0.4f;
+
+    
+    [Header("ジャンプ開始")]
+    [SerializeField] private float _jumpStartTime = 1f;
+
+    [Header("落下狙い")]
+    [SerializeField] private float _fallAimAccel = 40f;
+    [SerializeField] private float _fallAimDecel = 30f;
+
+    [Header("落下")]
+    [SerializeField] private float _fallTime = 0.12f;
+
+    [Header("落下攻撃")]
+    [SerializeField] private BulletData FallAttack_bulletData;
+    [SerializeField] private float _fallAttackTime = 1.0f;
+
 
     private Vector2 _dashDirection = Vector2.right;
     private bool _inputDash = false;

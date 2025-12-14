@@ -19,12 +19,14 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     protected IStateMachine _stateMachine;
     private StatusManager _statusManager;
     private Rigidbody2D _body2D;
+    protected RecoveryStatus _recoveryStatus;
     #endregion
 
 
     #region === Properties ===
     public IStateMachine stateMachine => _stateMachine;
     public StatusManager statusManager => _statusManager;
+    public RecoveryStatus recoveryStatus => _recoveryStatus;
     public UnitStatusData UnitStatusData => _status;
     public Rigidbody2D Rigidbody2D => _body2D;
     public GameObject Muzzle => _muzzle;
@@ -93,10 +95,16 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         _statusManager = new StatusManager();
 
         BeforeRegisterStats();
+
         _statusManager.Initialize(_status);
         RegisterStats();
         InitDirection();
-
+        
+        // ひとまず固定値
+        const float RECOVERY_RATE = 10f; 
+        const float RECOVERY_DELAY = 1f; 
+        _recoveryStatus = new RecoveryStatus(statusManager, Status.Stamina, RECOVERY_RATE, RECOVERY_DELAY);
+        
 #if UNITY_EDITOR
         // ログ設定切り替え可
         _stateMachine.Awake(StartState, ShoudBeLogging);
@@ -149,6 +157,9 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
         var dt = Time.deltaTime;
         _stateMachine.UpdateMachine(dt);
+
+        // スタミナの自動回復
+        _recoveryStatus?.Tick(dt);
 
         AfterUpdate();
     }

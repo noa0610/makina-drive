@@ -23,7 +23,7 @@ MonoBehaviour:
   speed: 0
   dashSpeed: 0
   collectionRange: 0
-  stamina: 0
+  stamina: 1
   knockbackPower: 0
   damageTakeScale: 1
   tags: 2

@@ -26,7 +26,7 @@ public class StatusManager
         AddStatus(Status.DEF, data.def);
         AddStatus(Status.DamageRatio, data.damageTakeScale);
         AddStatus(Status.CollectionRange, data.collectionRange);
-        AddStatus(Status.Stamina, data.stamina);
+        AddStatus(Status.Stamina, data.stamina, false);
         AddStatus(Status.KnockbackPower, data.knockbackPower);
         return this;
     }
@@ -67,6 +67,19 @@ public class StatusManager
     public StatusInfo GetStatus(Status status)
     {
         return _statusAmounts[status];
+    }
+
+    public void AddValue(Status status, float value)
+    {
+        if (TryGetStatus(status, out var info))
+        {
+            info.CurrentAmount += value; 
+            Debug.Log($"Status {status} changed by {value}. New value: {info.CurrentAmount}");
+        }
+        else
+        {
+            Debug.LogWarning($"Status {status} is not registered. Cannot add value.");
+        }
     }
 
     public float ReadValue(Status status)

@@ -61,7 +61,19 @@ public partial class Freya
     {
         if (isPressed)
         {
+            Debug.Log("stamina: " + statusManager.ReadValue(Status.Stamina));
+            if(statusManager.ReadValue(Status.Stamina) < 20f)
+            {
+                // スタミナ不足で回避できない
+                return;
+            }
+            if(IsMatchingState(States.dodge))
+            {
+                // すでに回避中
+                return;
+            }
             _stateMachine.ChangeState(Triggers.dodgeInput);
+            statusManager.AddValue(Status.Stamina, -20f);
         }
     }
 
