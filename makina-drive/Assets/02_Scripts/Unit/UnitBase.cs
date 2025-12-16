@@ -51,6 +51,8 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public Vector2 MoveDirection { get => _moveDir; set => _moveDir = value; }
     public Vector2 AttackDirection { get => _shootDir; set => _shootDir = value; }
 
+    public Vector2 AttackerDirection { get; private set; } = Vector2.right; // 攻撃を受けた方向
+
     public enum StartDirection
     {
         Left,
@@ -99,12 +101,12 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         _statusManager.Initialize(_status);
         RegisterStats();
         InitDirection();
-        
+
         // ひとまず固定値
-        const float RECOVERY_RATE = 10f; 
-        const float RECOVERY_DELAY = 1f; 
+        const float RECOVERY_RATE = 10f;
+        const float RECOVERY_DELAY = 1f;
         _recoveryStatus = new RecoveryStatus(statusManager, Status.Stamina, RECOVERY_RATE, RECOVERY_DELAY);
-        
+
 #if UNITY_EDITOR
         // ログ設定切り替え可
         _stateMachine.Awake(StartState, ShoudBeLogging);
@@ -188,6 +190,13 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
         OnTakeDamage(from, damage);
     }
+
+    public void SetAttackerDirection(UnitBase from, Vector2 hitPoint)
+    {
+        var dir = (hitPoint - (Vector2)from.Transform.position).normalized;
+        AttackerDirection = dir;
+    }
+
 
     public virtual void OnDeath()
     {

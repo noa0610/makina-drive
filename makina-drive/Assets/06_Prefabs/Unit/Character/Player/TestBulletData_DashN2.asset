@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e0c689f82f5adb4584ec7437b4f3cbb, type: 3}
-  m_Name: TestBulletData_N2
+  m_Name: TestBulletData_DashN2
   m_EditorClassIdentifier: Assembly-CSharp::BulletData
-  bulletName: TestBullet_N2
-  prefab: {fileID: 2000457579168479987, guid: 3ff13c6d263048f4093201af29735226, type: 3}
+  bulletName: TestBullet_DashN2
+  prefab: {fileID: 7172799108212829760, guid: 8281f9d0de2c1b94591f78bd3caa0362, type: 3}
   originalstatus:
-    hp: 5
+    hp: 999
     time: 1
-    damage: 5
+    damage: 8
     speed: 0

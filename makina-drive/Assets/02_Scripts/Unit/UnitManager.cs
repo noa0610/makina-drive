@@ -25,6 +25,12 @@ public class UnitManager : SingletonBehavior<UnitManager>
         return _unitList;
     }
 
+    /// <summary>
+    /// ダメージを与える
+    /// </summary>
+    /// <param name="target">ダメージを受ける側</param>
+    /// <param name="from">ダメージを与える側</param>
+    /// <param name="damage"></param>
     public void AddDamage(UnitBase target, IUnit from, float damage)
     {
         if(_damegeLog) 
@@ -32,6 +38,17 @@ public class UnitManager : SingletonBehavior<UnitManager>
             Debug.Log($"{target.name} : Take Damage {damage}.  HP: {target.statusManager.ReadValue(Status.HP) - damage} /{target.statusManager.ReadValue(Status.MaxHP)}");
         }
         target.TakeDamage(from, damage);
+    }
+
+    /// <summary>
+    /// 攻撃を受けた方向をセットする
+    /// </summary>
+    /// <param name="target">攻撃した側</param>
+    /// <param name="from">攻撃された側</param>
+    /// <param name="hitPoint"></param>
+    public void AddAttackDirection(UnitBase target, UnitBase from, Vector2 hitPoint)
+    {
+        target.SetAttackerDirection(from, hitPoint);
     }
 
     public void Pause(bool pause, bool isTimeStop = true)

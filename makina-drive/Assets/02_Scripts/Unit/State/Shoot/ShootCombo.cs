@@ -175,8 +175,9 @@ public class ShootCombo : ShootStateBase
         Vector3 spawnPos = _muzzle.transform.position + new Vector3(parent.AttackDirection.x, parent.AttackDirection.y) * _createPos;
         // 弾を生成
         instantiatedBullet = GameObject.Instantiate(b, spawnPos, Quaternion.identity, _muzzle.transform);
-        float angle = Mathf.Atan2(parent.AttackDirection.y, parent.AttackDirection.x) * Mathf.Rad2Deg;
-        instantiatedBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        instantiatedBullet.CanSelfMove = false;
+        // float angle = Mathf.Atan2(parent.AttackDirection.y, parent.AttackDirection.x) * Mathf.Rad2Deg;
+        // instantiatedBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         InitBullet(instantiatedBullet, parent.AttackDirection);
         await base.Shoot(parent);
     }

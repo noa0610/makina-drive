@@ -53,6 +53,28 @@ public partial class Freya : UnitBase
     [SerializeField] private float N3_inputEndTime = 1.2f;
     [SerializeField] private float N3_attackStartTime = 0.4f;
 
+
+    [Header("ダッシュ通常攻撃１")]
+    [SerializeField] private BulletData DashN1_bulletData;
+    [SerializeField] private float DashN1_inputReceptionTime = 0.1f;
+    [SerializeField] private float DashN1_stateChangeTime = 0.6f;
+    [SerializeField] private float DashN1_inputEndTime = 0.8f;
+    [SerializeField] private float DashN1_attackStartTime = 0.2f;
+
+    [Header("ダッシュ通常攻撃２")]
+    [SerializeField] private BulletData DashN2_bulletData;
+    [SerializeField] private float DashN2_inputReceptionTime = 0.2f;
+    [SerializeField] private float DashN2_stateChangeTime = 0.6f;
+    [SerializeField] private float DashN2_inputEndTime = 0.9f;
+    [SerializeField] private float DashN2_attackStartTime = 0.2f;
+
+    [Header("ダッシュ通常攻撃３")]
+    [SerializeField] private BulletData DashN3_bulletData;
+    [SerializeField] private float DashN3_inputReceptionTime = 0.3f;
+    [SerializeField] private float DashN3_stateChangeTime = 0.6f;
+    [SerializeField] private float DashN3_inputEndTime = 1f;
+    [SerializeField] private float DashN3_attackStartTime = 0.4f;
+
     
     [Header("ジャンプ開始")]
     [SerializeField] private float _jumpStartTime = 1f;

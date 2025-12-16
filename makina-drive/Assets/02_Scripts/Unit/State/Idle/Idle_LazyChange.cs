@@ -7,12 +7,12 @@ using UnityEngine.Events;
 /// </summary>
 public class Idle_LazyChange : Idle
 {
-    [SerializeField] private float _lazyChangeTime = 1.0f;
+    [SerializeField] protected float _lazyChangeTime = 1.0f;
     protected bool _isBlock = false;
     public event Action OnCompleted;
 
-    private string _lazyChange;
-    private float _time = 0f;
+    protected string _lazyChange;
+    protected float _time = 0f;
 
 
     /// <param name="lazyChange">一定時間後に遷移するステート</param>
@@ -42,6 +42,7 @@ public class Idle_LazyChange : Idle
     {
         base.Stay(parent, deltaTime);
         _time += deltaTime;
+        Debug.Log("_time: " + _time);
 
         if (_time >= _lazyChangeTime)
         {
