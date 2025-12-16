@@ -28,7 +28,7 @@ public partial class Freya
         dodge,
 
         // 通常攻撃
-        N_attack1, N_attack2, N_attack3,
+        N1_attack, N2_attack, N3_attack,
 
         // 強攻撃
         S_attack, S_chargeAttack,
@@ -87,7 +87,7 @@ public partial class Freya
         var idleTrigger = new[]
         {
             (Triggers.moveInput, States.move, ""),
-            (Triggers.attackInput, States.N_attack1, "AttackInput"),
+            (Triggers.attackInput, States.N1_attack, "AttackInput"),
             (Triggers.dashInput, States.drivedash, ""),
             (Triggers.dodgeInput, States.dodge, "DodgeInput"),
             (Triggers.jumpInput, States.jumpstart, "JumpInput"),
@@ -97,7 +97,7 @@ public partial class Freya
         var moveTrigger = new[]
         {
             (Triggers.moveCancel, States.idle,""),
-            (Triggers.attackInput, States.N_attack1,"AttackInput"),
+            (Triggers.attackInput, States.N1_attack,"AttackInput"),
             (Triggers.dashInput, States.drivedash, ""),
             (Triggers.dodgeInput, States.dodge, "DodgeInput"),
             (Triggers.jumpInput, States.jumpstart,"JumpInput"),
@@ -108,7 +108,7 @@ public partial class Freya
         {
             (Triggers.dodgeCancel, States.idle,"DodgeEnd"),
             (Triggers.moveInput, States.move,"DodgeEnd"),
-            (Triggers.attackInput, States.N_attack1,"AttackInput"),
+            (Triggers.attackInput, States.N1_attack,"AttackInput"),
             (Triggers.dashInput, States.drivedash,"DodgeEnd"),
             (Triggers.died, States.dead,"")
         };
@@ -121,14 +121,14 @@ public partial class Freya
         var n1_attackTrigger = new[]
         {
             (Triggers.attackConplete, States.idle,"AttackEnd"),
-            (Triggers.attackInput, States.N_attack2,"AttackInput"),
+            (Triggers.attackInput, States.N2_attack,"AttackInput"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
             (Triggers.died, States.dead,"")
         };
         var n2_attackTrigger = new[]
         {
             (Triggers.attackConplete, States.idle,"AttackEnd"),
-            (Triggers.attackInput, States.N_attack3,"AttackInput"),
+            (Triggers.attackInput, States.N3_attack,"AttackInput"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
             (Triggers.died, States.dead,"")
         };
@@ -190,9 +190,9 @@ public partial class Freya
             .AddTransition(States.move, moveTrigger)
             .AddTransition(States.dodge, dodgeTrigger)
             .AddTransition(States.drivedash, drivedashTrigger)
-            .AddTransition(States.N_attack1, n1_attackTrigger)
-            .AddTransition(States.N_attack2, n2_attackTrigger)
-            .AddTransition(States.N_attack3, n3_attackTrigger)
+            .AddTransition(States.N1_attack, n1_attackTrigger)
+            .AddTransition(States.N2_attack, n2_attackTrigger)
+            .AddTransition(States.N3_attack, n3_attackTrigger)
             .AddTransition(States.dashN1_Attack, dashn1_attackTrigger)
             .AddTransition(States.dashN2_Attack, dashn2_attackTrigger)
             .AddTransition(States.dashN3_Attack, dashn3_attackTrigger)
@@ -225,37 +225,49 @@ public partial class Freya
         drivedash.SetCreatMisalignment(0);
         _stateMachine.AddState(States.drivedash, drivedash);
 
+        #region   ===== N_Attack State =====
+
         /* 通常攻撃1 */
         N_attack1 = new ShootCombo(N1_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
         N_attack1.SetTime(N1_inputReceptionTime, N1_stateChangeTime, N1_inputEndTime, N1_attackStartTime);
         N_attack1.SetGameObject(_muzzle);
         N_attack1.SetCreatMisalignment(_createPos);
+        N_attack1.SetRB2(rb);
+        N_attack1.SetAccel(_attackAccel);
         // N_attack1.onShootComplete.AddListener(() =>
         // {
             
         // });
-        _stateMachine.AddState(States.N_attack1, N_attack1);
+        _stateMachine.AddState(States.N1_attack, N_attack1);
 
         /* 通常攻撃2 */
         N_attack2 = new ShootCombo(N2_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
         N_attack2.SetTime(N2_inputReceptionTime, N2_stateChangeTime, N2_inputEndTime, N2_attackStartTime);
         N_attack2.SetGameObject(_muzzle);
         N_attack2.SetCreatMisalignment(_createPos);
-        _stateMachine.AddState(States.N_attack2, N_attack2);
+        N_attack2.SetRB2(rb);
+        N_attack2.SetAccel(_attackAccel);
+        _stateMachine.AddState(States.N2_attack, N_attack2);
 
         /* 通常攻撃3 */
         N_attack3 = new ShootCombo(N3_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
         N_attack3.SetTime(N3_inputReceptionTime, N3_stateChangeTime, N3_inputEndTime, N3_attackStartTime);
         N_attack3.SetGameObject(_muzzle);
         N_attack3.SetCreatMisalignment(_createPos);
-        _stateMachine.AddState(States.N_attack3, N_attack3);
+        N_attack3.SetRB2(rb);
+        N_attack3.SetAccel(_attackAccel);
+        _stateMachine.AddState(States.N3_attack, N_attack3);
+        #endregion
 
+        #region   ===== DashN_Attack State =====
 
         /* ダッシュ通常攻撃1 */
         DashN1_attack = new ShootCombo(DashN1_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
         DashN1_attack.SetTime(DashN1_inputReceptionTime, DashN1_stateChangeTime, DashN1_inputEndTime, DashN1_attackStartTime);
         DashN1_attack.SetGameObject(_muzzle);
         DashN1_attack.SetCreatMisalignment(_createPos);
+        DashN1_attack.SetRB2(rb);
+        DashN1_attack.SetAccel(_attackAccel * 1.5f);
         _stateMachine.AddState(States.dashN1_Attack, DashN1_attack);
 
         /* ダッシュ通常攻撃2 */
@@ -263,6 +275,8 @@ public partial class Freya
         DashN2_attack.SetTime(DashN2_inputReceptionTime, DashN2_stateChangeTime, DashN2_inputEndTime, DashN2_attackStartTime);
         DashN2_attack.SetGameObject(_muzzle);
         DashN2_attack.SetCreatMisalignment(_createPos);
+        DashN2_attack.SetRB2(rb);
+        DashN2_attack.SetAccel(_attackAccel * 1.5f);
         _stateMachine.AddState(States.dashN2_Attack, DashN2_attack);
 
         /* ダッシュ通常攻撃3 */
@@ -270,7 +284,10 @@ public partial class Freya
         DashN3_attack.SetTime(DashN3_inputReceptionTime, DashN3_stateChangeTime, DashN3_inputEndTime, DashN3_attackStartTime);
         DashN3_attack.SetGameObject(_muzzle);
         DashN3_attack.SetCreatMisalignment(_createPos);
+        DashN3_attack.SetRB2(rb);
+        DashN3_attack.SetAccel(_attackAccel * 1.5f);
         _stateMachine.AddState(States.dashN3_Attack, DashN3_attack);
+        #endregion
 
 
         /* ジャンプ開始 */

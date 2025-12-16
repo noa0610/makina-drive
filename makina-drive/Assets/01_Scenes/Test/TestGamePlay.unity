@@ -4443,6 +4443,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8427920785510080762, guid: cd224cb2d7df05b46bd37d01787cc867, type: 3}
+      propertyPath: _attackAccel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427920785510080762, guid: cd224cb2d7df05b46bd37d01787cc867, type: 3}
       propertyPath: DashN1_bulletData
       value: 
       objectReference: {fileID: 11400000, guid: efa3792b0a887554fbb87de36497b775, type: 2}

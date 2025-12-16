@@ -36,6 +36,15 @@ public class Stun : Idle_LazyChange
         }
     }
 
+    public override void Exit(IState nextState, UnitBase parent)
+    {
+        base.Exit(nextState, parent);
+        if(_rigidbody2D != null)
+        {
+            _rigidbody2D.linearVelocity = Vector2.zero;
+        }
+    }
+
     public void SetKnockbackDirection(Vector2 direction)
     {
         _knockbackDirection = direction.normalized;

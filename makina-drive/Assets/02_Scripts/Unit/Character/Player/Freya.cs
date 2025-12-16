@@ -30,6 +30,7 @@ public partial class Freya : UnitBase
     
     [Header("攻撃共通")]
     [SerializeField] private float _createPos = 4f;
+    [SerializeField] private float _attackAccel = 5f;
 
 
     [Header("通常攻撃１")]

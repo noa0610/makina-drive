@@ -20,7 +20,6 @@ public class DashAttack : ShootOnMoveBase
     private float _time;
     private Vector2 _dashDirection;
     private bool _isBlock = true;
-    private Bullet instantiatedBullet;
 
     public event Action OnCompleted;
 

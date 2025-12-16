@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShootOnMoveBase : ShootStateBase
 {
     public Rigidbody2D rigidbody2D { get; protected set; }
-    private Bullet instantiatedBullet;
+    protected Bullet instantiatedBullet;
 
     // === Constractor ===
     public ShootOnMoveBase(BulletData data, LayerMask targetLayer)
