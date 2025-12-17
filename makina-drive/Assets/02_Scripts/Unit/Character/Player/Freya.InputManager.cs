@@ -62,18 +62,18 @@ public partial class Freya
         if (isPressed)
         {
             Debug.Log("stamina: " + statusManager.ReadValue(Status.Stamina));
-            if(statusManager.ReadValue(Status.Stamina) < 20f)
+            if (statusManager.ReadValue(Status.Stamina) < _dodgeStaminaLostAmount)
             {
-                // スタミナ不足で回避できない
+                // スタミナ不足
                 return;
             }
-            if(IsMatchingState(States.dodge))
+            if (IsMatchingState(States.dodge))
             {
                 // すでに回避中
                 return;
             }
             _stateMachine.ChangeState(Triggers.dodgeInput);
-            statusManager.AddValue(Status.Stamina, -20f);
+            statusManager.AddValue(Status.Stamina, -_dodgeStaminaLostAmount);
         }
     }
 
@@ -82,11 +82,16 @@ public partial class Freya
     {
         if (isPressed)
         {
+            IsRecovery = false;
             _inputDash = true;
             _stateMachine.ChangeState(Triggers.dashInput);
         }
         else
         {
+            if (IsMatchingState(States.drivedash))
+            {
+                IsRecovery = true;
+            }
             _inputDash = false;
             _stateMachine.ChangeState(Triggers.dashCancel);
         }
@@ -97,6 +102,15 @@ public partial class Freya
     {
         if (isPressed)
         {
+            _stateMachine.ChangeState(Triggers.jumpInputNext);
+
+            if (statusManager.ReadValue(Status.Stamina) < _jumpStaminaLostAmount)
+            {
+                // スタミナ不足
+                return;
+            }
+            IsRecovery = false;
+            statusManager.AddValue(Status.Stamina, -_jumpStaminaLostAmount);
             _stateMachine.ChangeState(Triggers.jumpInput);
         }
     }

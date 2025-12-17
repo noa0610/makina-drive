@@ -23,11 +23,13 @@ public partial class Freya : UnitBase
     [SerializeField] private float _dodgeDecel = 10f;
     [SerializeField] private float _invincibleTime = 0.5f;   // 無敵時間
     [SerializeField] private float _dodgeRecoveryTime = 0.7f; // 無敵解除後の後隙回復時間
+    [SerializeField] private float _dodgeStaminaLostAmount = 20;
 
     [Header("ドライブダッシュ")]
     [SerializeField] private BulletData Dash_bulletData;
+    [SerializeField] private float _dashStaminaFrameLostAmount = 0.05f;
 
-    
+
     [Header("攻撃共通")]
     [SerializeField] private float _createPos = 4f;
     [SerializeField] private float _attackAccel = 5f;
@@ -76,9 +78,10 @@ public partial class Freya : UnitBase
     [SerializeField] private float DashN3_inputEndTime = 1f;
     [SerializeField] private float DashN3_attackStartTime = 0.4f;
 
-    
+
     [Header("ジャンプ開始")]
     [SerializeField] private float _jumpStartTime = 1f;
+    [SerializeField] private float _jumpStaminaLostAmount = 80f;
 
     [Header("落下狙い")]
     [SerializeField] private float _fallAimAccel = 40f;
@@ -113,12 +116,14 @@ public partial class Freya : UnitBase
 
         // Debug.Log("inputDash: " + _inputDash);
 
-        if(IsMatchingState(States.drivedash))
+        if (IsMatchingState(States.drivedash))
         {
-            if(_inputDash == false)
+            if (_inputDash == false || statusManager.ReadValue(Status.Stamina) <= 0)
             {
+                IsRecovery = true;
                 stateMachine.ChangeState(Triggers.dashCancel);
             }
+            statusManager.AddValue(Status.Stamina, -_dashStaminaFrameLostAmount);
             _dashDirection = drivedash.GetDashDirection();
         }
     }
@@ -137,7 +142,7 @@ public partial class Freya : UnitBase
 
     }
 
-    
+
     // --- シーンビューに方向を描画 ---
     private void OnDrawGizmos()
     {

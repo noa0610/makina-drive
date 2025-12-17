@@ -69,6 +69,7 @@ public partial class Freya
         dashInput,
         dashCancel,
         jumpInput,
+        jumpInputNext,
         jumpAir,
         jumpConplete,
         jumpCancel,
@@ -165,7 +166,7 @@ public partial class Freya
         };
         var jumpfallAimTrigger = new[]
         {
-            (Triggers.jumpInput, States.fall,"JumpInput"),
+            (Triggers.jumpInputNext, States.fall,"JumpInput"),
             (Triggers.died, States.dead,"")
         };
         var fallTrigger = new[]
@@ -309,6 +310,7 @@ public partial class Freya
         var fall = new Idle_LazyChange(Triggers.jumpConplete.ToString(), _fallTime);
         fall.OnCompleted += () =>
         {
+            IsRecovery = true;
             // 無敵解除
             SetInvincible(false);
         };

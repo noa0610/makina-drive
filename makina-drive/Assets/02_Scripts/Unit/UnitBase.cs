@@ -39,6 +39,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     }
     public bool IsInvincible { get; set; }
     public bool IsArrivals { get; set; } = true;
+    public bool IsRecovery { get; set; } = true;
     #endregion
 
     #region === Reactive & Direction ===
@@ -160,8 +161,11 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         var dt = Time.deltaTime;
         _stateMachine.UpdateMachine(dt);
 
-        // スタミナの自動回復
-        _recoveryStatus?.Tick(dt);
+        if (IsRecovery)
+        {
+            // スタミナの自動回復
+            _recoveryStatus?.Tick(dt);
+        }
 
         AfterUpdate();
     }
