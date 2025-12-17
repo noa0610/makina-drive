@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 265d6fb3813b2fb4e8f7d9f8f2aef49f, type: 3}
-  m_Name: Enemy_Normal Status
+  m_Name: Enemy_Sniper Status
   m_EditorClassIdentifier: Assembly-CSharp::UnitStatusData
-  id: 4
-  unitName: Normal
+  id: 5
+  unitName: Sniper
   description: 
-  maxHp: 10
-  hp: 10
+  maxHp: 20
+  hp: 20
   atk: 1
   def: 0
-  speed: 2
+  speed: 1
   dashSpeed: 1
   collectionRange: 0
   stamina: 1

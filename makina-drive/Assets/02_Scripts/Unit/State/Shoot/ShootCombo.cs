@@ -35,7 +35,8 @@ public class ShootCombo : ShootOnMoveBase
     private bool _canInput;         // 入力許可
     private bool _ComboStateChange; // コンボ先へ
 
-    private Vector2 _initialVelocity; // ステート開始時初速度
+    private Vector2 _initialVelocity;  // ステート開始時初速度
+    private Vector2 _initialDirection; // ステート開始時移動方向
 
     public event Action OnCompleted;
 
@@ -75,8 +76,9 @@ public class ShootCombo : ShootOnMoveBase
             rigidbody2D.linearVelocity = Vector2.zero;
             // 移動方向に一瞬加速する
             rigidbody2D.AddForce(parent.MoveDirection.normalized * _accel, ForceMode2D.Impulse);
-            // 加速後の速度を保存
+            // 加速後の速度、方向を保存
             _initialVelocity = rigidbody2D.linearVelocity;
+            _initialDirection = parent.MoveDirection.normalized;
         }
 
     }
@@ -91,6 +93,13 @@ public class ShootCombo : ShootOnMoveBase
         {
             _ = Shoot(parent);
             _isAttackEnd = true;
+        }
+
+        if(instantiatedBullet != null)
+        {
+            // 弾を移動方向に_createPosの距離を空けて追従させる
+            Vector3 targetPos = parent.transform.position + new Vector3(_initialDirection.x, _initialDirection.y) * _createPos;
+            instantiatedBullet.transform.position = Vector3.Lerp(instantiatedBullet.transform.position, targetPos, 0.5f);
         }
 
         // 移動減速処理
@@ -161,10 +170,8 @@ public class ShootCombo : ShootOnMoveBase
         // 弾の生成位置
         Vector3 spawnPos = _muzzle.transform.position + new Vector3(parent.AttackDirection.x, parent.AttackDirection.y) * _createPos;
         // 弾を生成
-        instantiatedBullet = GameObject.Instantiate(b, spawnPos, Quaternion.identity, _muzzle.transform);
+        instantiatedBullet = GameObject.Instantiate(b, spawnPos, Quaternion.identity);
         instantiatedBullet.CanSelfMove = false;
-        // float angle = Mathf.Atan2(parent.AttackDirection.y, parent.AttackDirection.x) * Mathf.Rad2Deg;
-        // instantiatedBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         InitBullet(instantiatedBullet, parent.AttackDirection);
         await base.Shoot(parent);
     }
