@@ -1,6 +1,10 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// モノビヘイビア継承のシングルトンパターン
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public abstract class SingletonBehavior<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T _instance = null;
