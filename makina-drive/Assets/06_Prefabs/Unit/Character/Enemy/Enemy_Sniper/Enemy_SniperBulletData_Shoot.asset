@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0c689f82f5adb4584ec7437b4f3cbb, type: 3}
+  m_Name: Enemy_SniperBulletData_Shoot
+  m_EditorClassIdentifier: Assembly-CSharp::BulletData
+  bulletName: Enemy_SniperBullet_Shoot
+  prefab: {fileID: 4852771228298297618, guid: 3a04c33b567e2d24ca6ce49470b8d5bc, type: 3}
+  originalstatus:
+    hp: 1
+    time: 10
+    damage: 3
+    speed: 3
