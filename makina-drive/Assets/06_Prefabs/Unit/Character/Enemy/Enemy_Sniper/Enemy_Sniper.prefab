@@ -97,7 +97,8 @@ MonoBehaviour:
   _accel: 30
   _decel: 20
   _ShootRange: 15
-  _ShootCreatePos: 1.5
+  _ShootCreatePos: 0.5
+  _ShootStateChangeTime: 5
   _ShootBulletData: {fileID: 11400000, guid: 3e3db0022e1f22a4f8aec1cd95d6ffd6, type: 2}
   _stanTime: 0.5
 --- !u!50 &2366887908436795336

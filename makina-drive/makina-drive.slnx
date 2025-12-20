@@ -1,5 +1,6 @@
 ﻿<Solution>
   <Project Path="UniRx.csproj" />
+  <Project Path="MackySoft.SerializeReferenceExtensions.Editor.csproj" />
   <Project Path="UniTask.csproj" />
   <Project Path="UniTask.Linq.csproj" />
   <Project Path="UniTask.Addressables.csproj" />
@@ -9,4 +10,5 @@
   <Project Path="UniTask.TextMeshPro.csproj" />
   <Project Path="UniTask.Editor.csproj" />
   <Project Path="UniTask.DOTween.csproj" />
+  <Project Path="MackySoft.SerializeReferenceExtensions.csproj" />
 </Solution>
