@@ -9,7 +9,7 @@ using UnityEngine;
 [Serializable]
 public class SpawnSide : ISpawnComponent
 {
-    public enum SpawnDirection
+    private enum SpawnDirection
     {
         Right,
         Left,
@@ -20,7 +20,7 @@ public class SpawnSide : ISpawnComponent
         LowerRight,
         LowerLeft
     }
-    public SpawnDirection spawnDirection;
+    [SerializeField] private SpawnDirection spawnDirection;
     public GameObject target { get; set; }
 
     public List<UnitBase> Execute(List<UnitBase> pool)
@@ -29,19 +29,23 @@ public class SpawnSide : ISpawnComponent
         foreach (var unit in pool)
         {
             Vector3 viewportPos = new Vector3(0.5f, 0.5f, 10);
-            
+
             switch (spawnDirection)
             {
-                case SpawnDirection.Right: viewportPos.x = 1.2f; break;
-                case SpawnDirection.Left:  viewportPos.x = -0.2f; break;
-                case SpawnDirection.Up:    viewportPos.y = 1.2f; break;
-                case SpawnDirection.Down:  viewportPos.y = -0.2f; break;
+                case SpawnDirection.Right: viewportPos.x = 1.1f; break;
+                case SpawnDirection.Left: viewportPos.x = -0.1f; break;
+                case SpawnDirection.Up: viewportPos.y = 1.1f; break;
+                case SpawnDirection.Down: viewportPos.y = -0.1f; break;
+                case SpawnDirection.UpperRight: viewportPos = new Vector3(1.1f, 1.1f, 10); break;
+                case SpawnDirection.UpperLeft: viewportPos = new Vector3(-0.1f, 1.1f, 10); break;
+                case SpawnDirection.LowerRight: viewportPos = new Vector3(1.1f, -0.1f, 10); break;
+                case SpawnDirection.LowerLeft: viewportPos = new Vector3(-0.1f, -0.1f, 10); break;
             }
-            
-            // 指定方向の反対側の軸はランダムに散らす
+
+            // 上下左右のみの場合は、もう一方の軸をランダムにする
             if (spawnDirection == SpawnDirection.Right || spawnDirection == SpawnDirection.Left)
                 viewportPos.y = UnityEngine.Random.value;
-            else
+            else if (spawnDirection == SpawnDirection.Up || spawnDirection == SpawnDirection.Down)
                 viewportPos.x = UnityEngine.Random.value;
 
             Vector3 worldPos = cam.ViewportToWorldPoint(viewportPos);

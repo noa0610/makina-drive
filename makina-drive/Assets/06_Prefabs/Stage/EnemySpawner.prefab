@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8592315154310279877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1951268768190115079}
+  - component: {fileID: 4195258513890433148}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1951268768190115079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8592315154310279877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.49122, y: 2.70475, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4195258513890433148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8592315154310279877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65937c22b5b4e44cb26b8590edc6292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  _targetObject: {fileID: 0}
+  _timer: {fileID: 0}
+  spawnInfos:
+  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+    comp:
+      rid: 5159238869754839110
+    spawnCount: 10
+    sameTimeSpawnCount: 1
+    spawnTime: 1
+    spawnEndTime: 0
+    spawnInterval: 3
+    statusRate: 1
+    destroyTime: 0
+  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+    comp:
+      rid: 5159238910236164164
+    spawnCount: 10
+    sameTimeSpawnCount: 1
+    spawnTime: 30
+    spawnEndTime: 0
+    spawnInterval: 2
+    statusRate: 1
+    destroyTime: 0
+  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+    comp:
+      rid: 5159238910236164165
+    spawnCount: 10
+    sameTimeSpawnCount: 1
+    spawnTime: 30
+    spawnEndTime: 0
+    spawnInterval: 2
+    statusRate: 1
+    destroyTime: 0
+  - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
+    comp:
+      rid: 5159238910236164166
+    spawnCount: 1
+    sameTimeSpawnCount: 1
+    spawnTime: 60
+    spawnEndTime: 0
+    spawnInterval: 0
+    statusRate: 1
+    destroyTime: 0
+  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+    comp:
+      rid: 5159238910236164167
+    spawnCount: 10
+    sameTimeSpawnCount: 1
+    spawnTime: 60
+    spawnEndTime: 0
+    spawnInterval: 3
+    statusRate: 1
+    destroyTime: 0
+  - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+    comp:
+      rid: 5159238910236164167
+    spawnCount: 5
+    sameTimeSpawnCount: 1
+    spawnTime: 80
+    spawnEndTime: 0
+    spawnInterval: 2
+    statusRate: 1
+    destroyTime: 0
+  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+    comp:
+      rid: 5159238910236164168
+    spawnCount: 5
+    sameTimeSpawnCount: 1
+    spawnTime: 90
+    spawnEndTime: 0
+    spawnInterval: 2
+    statusRate: 1
+    destroyTime: 0
+  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+    comp:
+      rid: 5159238910236164169
+    spawnCount: 5
+    sameTimeSpawnCount: 1
+    spawnTime: 90
+    spawnEndTime: 0
+    spawnInterval: 2
+    statusRate: 1
+    destroyTime: 0
+  - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+    comp:
+      rid: 5159238910236164170
+    spawnCount: 5
+    sameTimeSpawnCount: 1
+    spawnTime: 95
+    spawnEndTime: 0
+    spawnInterval: 2
+    statusRate: 1
+    destroyTime: 0
+  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+    comp:
+      rid: 5159238910236164171
+    spawnCount: 5
+    sameTimeSpawnCount: 1
+    spawnTime: 105
+    spawnEndTime: 0
+    spawnInterval: 2
+    statusRate: 1
+    destroyTime: 0
+  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+    comp:
+      rid: 5159238910236164172
+    spawnCount: 5
+    sameTimeSpawnCount: 1
+    spawnTime: 105
+    spawnEndTime: 0
+    spawnInterval: 2
+    statusRate: 1
+    destroyTime: 0
+  - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
+    comp:
+      rid: 5159238910236164173
+    spawnCount: 1
+    sameTimeSpawnCount: 1
+    spawnTime: 120
+    spawnEndTime: 0
+    spawnInterval: 2
+    statusRate: 1
+    destroyTime: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 5159238869754839110
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164164
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 0
+    - rid: 5159238910236164165
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 1
+    - rid: 5159238910236164166
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164167
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164168
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 2
+    - rid: 5159238910236164169
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 0
+    - rid: 5159238910236164170
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164171
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 0
+    - rid: 5159238910236164172
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 0
+    - rid: 5159238910236164173
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 

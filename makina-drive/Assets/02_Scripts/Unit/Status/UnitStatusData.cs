@@ -14,7 +14,8 @@ public class UnitStatusData : ScriptableObject
     public float dashSpeed;       // ダッシュ速度
     public float collectionRange; // 収集範囲
     public float stamina;         // スタミナ
-    public float knockbackPower;  // ノックバック力
+    public float knockbackMultiplier; // ノックバック力
+    public float knockbackResistance; // ノックバック抵抗
     public float damageTakeScale = 1f; // 受けるダメージの割合（2なら2倍の被ダメージ）
     public UnitTags tags;
 }

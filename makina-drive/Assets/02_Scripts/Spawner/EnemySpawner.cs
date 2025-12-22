@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 /// <summary>
@@ -6,62 +8,117 @@ using UnityEngine;
 /// </summary>
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _targetObject; // プレイヤー
-    [Header("敵生成情報リスト")]
-    [SerializeField] private List<UnitSpawnInfo> spawnInfos = new List<UnitSpawnInfo>();
-    private float _elapsedTime = 0;
+    public event Action<int> OnWaveChange;               // ウェーブ数変更イベント
+    [SerializeField] private GameObject _targetObject;   // プレイヤー
+    [SerializeField] private float _waveDuration = 60f;  // 1ウェーブの時間
+    [SerializeField] private int _currentWaveNumber = 1; // ウェーブ数
+    [SerializeField] private TimerCount _timer;
 
-    // 各スポーン設定ごとのタイマーを保持
+    [Header("敵生成情報リスト")]
+    [SerializeField] private List<WaveData> _normalWaves = new List<WaveData>();
+
+    [Header("エンドレスウェーブ設定")]
+    [SerializeField] private List<WaveData> _endlessWaves = new List<WaveData>();
+
+    private float _elapsedTime = 0;     // 経過時間
+
+    // 現在のウェーブ内での敵生成進捗
     private List<float> _spawnTimers = new List<float>();
     private List<int> _currentSpawnCounts = new List<int>();
     private List<bool> _isFinished = new List<bool>();
+    private int _lastProcessedWaveIndex = -1;
 
     private void Start()
     {
-        // 管理用リストを初期化
-        foreach (var info in spawnInfos)
+        if (_timer == null)
         {
-            _spawnTimers.Add(0f);
-            _currentSpawnCounts.Add(0);
-            _isFinished.Add(false);
+            Debug.Log("タイマーを指定してください。");
         }
     }
 
     private void Update()
     {
-        _elapsedTime += Time.deltaTime;
-
-        for (int i = 0; i < spawnInfos.Count; i++)
+        if (_timer != null)
         {
-            if (_isFinished[i]) continue;
+            _elapsedTime = _timer.currentTime;
+        }
+        // else
+        // {
+        //     _elapsedTime += Time.deltaTime;
+        // }
 
-            var info = spawnInfos[i];
+        int newWaveNumber = Mathf.FloorToInt(_elapsedTime / _waveDuration) + 1;
 
-            // ～強制終了時間のチェック～
-            if (_elapsedTime >= info.spawnEndTime && info.spawnEndTime != 0)
-            {
-                _isFinished[i] = true;
-                Debug.Log($"{info.unitBase.name} の生成フェーズが終了時間に達しました。");
-                continue;
-            }
+        if (newWaveNumber != _currentWaveNumber)
+        {
+            _currentWaveNumber = newWaveNumber;
+            OnWaveChange?.Invoke(_currentWaveNumber);
+            ResetWaveProgress();
+        }
 
-            // ～生成開始時間のチェック～
-            if (_elapsedTime < info.spawnTime) continue;
+        ProcessCurrentWave();
+
+    }
+
+    // 次のウェーブ初期化
+    private void ResetWaveProgress()
+    {
+        _spawnTimers.Clear();
+        _currentSpawnCounts.Clear();
+
+        WaveData currentWave = GetCurrentWaveData();
+        foreach (var info in currentWave.spawnInfos)
+        {
+            _spawnTimers.Add(0f);
+            _currentSpawnCounts.Add(0);
+        }
+    }
+
+    // ウェーブリストのデータ取得
+    private WaveData GetCurrentWaveData()
+    {
+        int index = _currentWaveNumber - 1;
+
+        // 通常ウェーブの範囲内か
+        if (index < _normalWaves.Count)
+        {
+            return _normalWaves[index];
+        }
+        else
+        {
+            // エンドレス用のリスト内でループさせる
+            int endlessIndex = (index - _normalWaves.Count) % _endlessWaves.Count;
+            return _endlessWaves[endlessIndex];
+        }
+    }
+
+    // 現在のウェーブの生成確認処理
+    private void ProcessCurrentWave()
+    {
+        WaveData currentWave = GetCurrentWaveData();
+        float timeInWave = _elapsedTime % _waveDuration;
+
+        if (_spawnTimers.Count != currentWave.spawnInfos.Count)
+        {
+            ResetWaveProgress();
+        }
+
+        for (int i = 0; i < currentWave.spawnInfos.Count; i++)
+        {
+            var info = currentWave.spawnInfos[i];
+
+            // 生成終了時間を過ぎたか、生成回数上限の場合はスキップ
+            if ((info.spawnEndTime > 0 && timeInWave >= info.spawnEndTime) || _currentSpawnCounts[i] >= info.spawnCount) continue;
+
+            // 生成開始時間のチェック
+            if (timeInWave < info.spawnTime) continue;
 
             _spawnTimers[i] += Time.deltaTime;
 
-            // ～スポーン間隔のチェック～
             if (_spawnTimers[i] >= info.spawnInterval)
             {
                 SpawnGroup(i, info);
                 _spawnTimers[i] = 0;
-
-                // ～生成数のチェック～
-                if (_currentSpawnCounts[i] >= info.spawnCount)
-                {
-                    _isFinished[i] = true;
-                    Debug.Log($"{info.unitBase.name} が指定数（{info.spawnCount}体）に達したため終了します。");
-                }
             }
         }
     }
@@ -75,17 +132,18 @@ public class EnemySpawner : MonoBehaviour
 
         List<UnitBase> groupList = new List<UnitBase>();
 
+        float powerMultiplier = _currentWaveNumber * info.statusRate;
+
         for (int j = 0; j < info.sameTimeSpawnCount; j++)
         {
             UnitBase unit = Instantiate(info.unitBase);
-            
+
             // TODO UnitBase内に倍率を受け取りステータスを強化する処理を用意する、現在未実装
             // 敵の強化ロジック（適当な例）
-            // float powerMultiplier = 1.0f + (_elapsedTime * info.statusRate);
-            // unit.ApplyStatusMultiplier(powerMultiplier); 
+            // unit.ApplyStatusMultiplier(powerMultiplier);
 
             if (info.destroyTime > 0) Destroy(unit.gameObject, info.destroyTime);
-            
+
             groupList.Add(unit);
         }
 

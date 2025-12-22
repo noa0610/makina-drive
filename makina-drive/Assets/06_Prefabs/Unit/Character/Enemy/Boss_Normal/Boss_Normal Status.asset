@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 265d6fb3813b2fb4e8f7d9f8f2aef49f, type: 3}
-  m_Name: TestUnit Status
+  m_Name: Boss_Normal Status
   m_EditorClassIdentifier: Assembly-CSharp::UnitStatusData
-  id: 3
-  unitName: TestUnit
-  description: "\u30C6\u30B9\u30C8\u30D7\u30EC\u30A4\u7528\u30D7\u30EC\u30A4\u30E4\u30FC\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
+  id: 5
+  unitName: NormalBoss
+  description: 
   maxHp: 100
   hp: 100
-  atk: 5
-  def: 5
-  speed: 5
-  dashSpeed: 8
-  collectionRange: 5
-  stamina: 100
-  knockbackPower: 0
+  atk: 1
+  def: 0
+  speed: 1.5
+  dashSpeed: 1
+  collectionRange: 0
+  stamina: 1
+  knockbackPower: 1
   damageTakeScale: 1
-  tags: 1
+  tags: 2

@@ -92,7 +92,7 @@ public partial class Freya
             (Triggers.dashInput, States.drivedash, ""),
             (Triggers.dodgeInput, States.dodge, "DodgeInput"),
             (Triggers.jumpInput, States.jumpstart, "JumpInput"),
-            (Triggers.died, States.dead, "")
+            (Triggers.died, States.dead, "Dide")
             ,(Triggers.TestShoot, States.Shoot,"")
         };
         var moveTrigger = new[]
@@ -102,7 +102,7 @@ public partial class Freya
             (Triggers.dashInput, States.drivedash, ""),
             (Triggers.dodgeInput, States.dodge, "DodgeInput"),
             (Triggers.jumpInput, States.jumpstart,"JumpInput"),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
             ,(Triggers.TestShoot, States.Shoot,"")
         };
         var dodgeTrigger = new[]
@@ -111,78 +111,78 @@ public partial class Freya
             (Triggers.moveInput, States.move,"DodgeEnd"),
             (Triggers.attackInput, States.N1_attack,"AttackInput"),
             (Triggers.dashInput, States.drivedash,"DodgeEnd"),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
         var drivedashTrigger = new[]
         {
             (Triggers.dashCancel, States.idle,""),
             (Triggers.attackInput, States.dashN1_Attack,"AttackInput"),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
         var n1_attackTrigger = new[]
         {
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.attackInput, States.N2_attack,"AttackInput"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
         var n2_attackTrigger = new[]
         {
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.attackInput, States.N3_attack,"AttackInput"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
         var n3_attackTrigger = new[]
         {
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
         var dashn1_attackTrigger = new[]
         {
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.attackInput, States.dashN2_Attack,"AttackInput"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
         var dashn2_attackTrigger = new[]
         {
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.attackInput, States.dashN3_Attack,"AttackInput"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
         var dashn3_attackTrigger = new[]
         {
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
         var jumpstartTrigger = new[]
         {
             (Triggers.jumpAir, States.jumpfallAim,""),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
         var jumpfallAimTrigger = new[]
         {
             (Triggers.jumpInputNext, States.fall,"JumpInput"),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
         var fallTrigger = new[]
         {
             (Triggers.jumpConplete, States.fallAttack,""),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
         var fallAttackTrigger = new[]
         {
             (Triggers.jumpCancel, States.idle,"JumpEnd"),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
         var ShootTrigger = new[]
         {
             (Triggers.ShootEnd, States.idle,""),
-            (Triggers.died, States.dead,"")
+            (Triggers.died, States.dead,"Dide")
         };
 
         // ステートマシンにStatesの移動先の追加

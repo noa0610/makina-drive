@@ -45,7 +45,7 @@ public class RecoveryStatus
         // 回復条件の確認
         if (_statusInfo == null || _statusInfo.CurrentAmount >= _statusInfo.DefaultAmount)
         {
-            Debug.Log("RecoveryStatus: No recovery needed or status info is null.");
+            // Debug.Log("RecoveryStatus: No recovery needed or status info is null.");
             return; // Staminaが最大値に達している、または情報がない場合は処理しない
         }
 

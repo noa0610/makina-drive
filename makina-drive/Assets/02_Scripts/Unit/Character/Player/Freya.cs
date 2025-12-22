@@ -139,7 +139,11 @@ public partial class Freya : UnitBase
             scale.x = Mathf.Abs(scale.x) * (Direction.x > 0 ? 1 : -1);
             transform.localScale = scale;
         }
+    }
 
+    public override void OnDeath()
+    {
+        base.OnDeath();
     }
 
 

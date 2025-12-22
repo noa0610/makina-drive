@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e0c689f82f5adb4584ec7437b4f3cbb, type: 3}
-  m_Name: TestBulletData_DashN3
+  m_Name: Boss_NormalBulletData_Attack
   m_EditorClassIdentifier: Assembly-CSharp::BulletData
-  bulletName: TestBullet_DashN3
-  prefab: {fileID: 7172799108212829760, guid: 19f22c22149ad154fbaf68fb29c8ac95, type: 3}
+  bulletName: Enemy_NormalBullet_Attack
+  prefab: {fileID: 1432112067623354893, guid: 397b039724c4b894dadaa0045f4c52ab, type: 3}
   originalstatus:
     hp: 999
     time: 1
-    damage: 10
+    damage: 5
     speed: 0

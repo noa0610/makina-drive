@@ -78,8 +78,8 @@ public class ShootCombo : ShootOnMoveBase
             rigidbody2D.AddForce(parent.MoveDirection.normalized * _accel, ForceMode2D.Impulse);
             // 加速後の速度、方向を保存
             _initialVelocity = rigidbody2D.linearVelocity;
-            _initialDirection = parent.MoveDirection.normalized;
         }
+        _initialDirection = parent.Direction.normalized;
 
     }
 
@@ -95,7 +95,7 @@ public class ShootCombo : ShootOnMoveBase
             _isAttackEnd = true;
         }
 
-        if(instantiatedBullet != null)
+        if (instantiatedBullet != null)
         {
             // 弾を移動方向に_createPosの距離を空けて追従させる
             Vector3 targetPos = parent.transform.position + new Vector3(_initialDirection.x, _initialDirection.y) * _createPos;

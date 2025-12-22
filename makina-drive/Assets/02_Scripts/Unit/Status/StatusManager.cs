@@ -27,7 +27,8 @@ public class StatusManager
         AddStatus(Status.DamageRatio, data.damageTakeScale);
         AddStatus(Status.CollectionRange, data.collectionRange);
         AddStatus(Status.Stamina, data.stamina, false);
-        AddStatus(Status.KnockbackPower, data.knockbackPower);
+        AddStatus(Status.knockbackMultiplier, data.knockbackMultiplier);
+        AddStatus(Status.knockbackResistance, data.knockbackResistance);
         return this;
     }
 
