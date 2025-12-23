@@ -17,11 +17,11 @@ public partial class Enemy_Tank : UnitBase
     [SerializeField] private float _accel = 30f;
     [SerializeField] private float _decel = 20f;
 
-    [Header("攻撃")]
-    [SerializeField] private float _attackRange = 3f;
+    [Header("タックル")]
+    [SerializeField] private float _attackRange = 8f;
     [SerializeField] private float _attackCreatePos = 1.5f;
     [SerializeField] private float _stateChangeTime = 2f;
-    [SerializeField] private float _attackTime = 1f;
+    [SerializeField] private float _attackIntervalTime = 1f;
     [SerializeField] private BulletData _attackBulletData;
 
     [Header("スタン")]
@@ -32,6 +32,7 @@ public partial class Enemy_Tank : UnitBase
 
     private UnitBase _targetUnit;
     private Transform _targetTransform;
+    private float _timer;
 
     protected override void Start()
     {
@@ -68,12 +69,12 @@ public partial class Enemy_Tank : UnitBase
     {
         base.OnTakeDamage(from, damage, pushdir, knockbackForce);
 
-        if(knockbackForce > 0)
+        if (knockbackForce > 0)
         {
             blowback.SetVelocity(knockbackForce, pushdir);
             _stateMachine.ChangeState(Triggers.toBlowback);
         }
-        
+
         if (damage > 0)
         {
             _stateMachine.ChangeState(Triggers.toStan);
@@ -87,6 +88,15 @@ public partial class Enemy_Tank : UnitBase
         Destroy(this.gameObject);
     }
 
+    protected override void AfterUpdate()
+    {
+        base.AfterUpdate();
+        if (IsMatchingState(States.chase))
+        {
+            _timer += Time.deltaTime;
+        }
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -98,18 +108,25 @@ public partial class Enemy_Tank : UnitBase
 
         if (_targetTransform != null)
         {
-            var dir = (_targetTransform.position - Transform.position).normalized;
-            Direction = dir;
-            MoveDirection = dir;
-            AttackDirection = dir;
-            TurnAround();
-
             if (IsMatchingState(States.chase))
             {
+                // プレイヤー方向振り向き
+                var dir = (_targetTransform.position - Transform.position).normalized;
+                Direction = dir;
+                MoveDirection = dir;
+                AttackDirection = dir;
+                TurnAround();
+
+                chase.SetAccel(_accel);
+
+                // 攻撃遷移距離の判定
                 var distance = Vector2.Distance(_targetTransform.position, Transform.position);
                 if (distance <= _attackRange)
                 {
-                    _stateMachine.ChangeState(Triggers.toAttack);
+                    if (_timer >= _attackIntervalTime)
+                    {
+                        _stateMachine.ChangeState(Triggers.toAttack);
+                    }
                 }
             }
         }
@@ -138,5 +155,5 @@ public partial class Enemy_Tank : UnitBase
     {
         return _stateMachine.CurrentState.key == _stateNames[state];
     }
-    
+
 }

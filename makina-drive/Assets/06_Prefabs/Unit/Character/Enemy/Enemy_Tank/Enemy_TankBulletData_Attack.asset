@@ -16,7 +16,7 @@ MonoBehaviour:
   prefab: {fileID: 5389455487604730593, guid: 68c371c167aeeaf42b0f4ac0e8d04c7b, type: 3}
   originalstatus:
     hp: 999
-    time: 0
+    time: 1
     damage: 10
     speed: 0
     knockback: 10

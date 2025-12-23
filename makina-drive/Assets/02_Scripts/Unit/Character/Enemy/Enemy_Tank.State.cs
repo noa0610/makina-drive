@@ -11,7 +11,7 @@ public partial class Enemy_Tank
         none,
         idle,
         chase,
-        attack,
+        tackle,
         stan,
         blowback,
         dead
@@ -39,7 +39,7 @@ public partial class Enemy_Tank
         var chaseTrigger = new[]
         {
             (Triggers.toIdle, States.idle, ""),
-            (Triggers.toAttack, States.attack, ""),
+            (Triggers.toAttack, States.tackle, ""),
             (Triggers.toStan, States.stan, ""),
             (Triggers.toBlowback, States.blowback, ""),
             (Triggers.died, States.dead, "")
@@ -67,7 +67,7 @@ public partial class Enemy_Tank
         _stateMachine
             .AddTransition(States.idle, idleTrigger)
             .AddTransition(States.chase, chaseTrigger)
-            .AddTransition(States.attack, attackTrigger)
+            .AddTransition(States.tackle, attackTrigger)
             .AddTransition(States.stan, stanTrigger)
             .AddTransition(States.blowback, blowbackTrigger);
             
@@ -83,12 +83,17 @@ public partial class Enemy_Tank
         _stateMachine.AddState(States.chase, chase);
         
         // TODO 突進攻撃（DashAttack）に変更する
-        /* 攻撃 */
-        var attack = new ShootCombo(_attackBulletData, AttackLayer, Triggers.toChase.ToString());
-        attack.SetTime(1f, 1f, _stateChangeTime, _attackTime);
-        attack.SetGameObject(_muzzle);
-        attack.SetCreatMisalignment(_attackCreatePos);
-        _stateMachine.AddState(States.attack, attack);
+        /* タックル */
+        var tackle = new DashAttack(_attackBulletData, AttackLayer, true, Triggers.toChase.ToString());
+        tackle.SetStateDashTime(_stateChangeTime);
+        tackle.SetGameObject(_muzzle);
+        tackle.SetRB2(Rigidbody2D);
+        tackle.SetCreatMisalignment(_attackCreatePos);
+        tackle.OnCompleted += () =>
+        {
+            _timer = 0;
+        };
+        _stateMachine.AddState(States.tackle, tackle);
 
         /* スタン */
         stun = new Stun(Rigidbody2D, Triggers.toIdle.ToString(), _stanTime, false);
