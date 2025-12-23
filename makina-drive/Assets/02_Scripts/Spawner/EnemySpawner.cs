@@ -25,9 +25,7 @@ public class EnemySpawner : MonoBehaviour
     // 現在のウェーブ内での敵生成進捗
     private List<float> _spawnTimers = new List<float>();
     private List<int> _currentSpawnCounts = new List<int>();
-    private List<bool> _isFinished = new List<bool>();
-    private int _lastProcessedWaveIndex = -1;
-
+    
     private void Start()
     {
         if (_timer == null)

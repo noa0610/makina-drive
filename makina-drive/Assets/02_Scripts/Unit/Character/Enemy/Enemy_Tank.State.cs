@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public partial class Enemy_Normal
+public partial class Enemy_Tank
 {
+    
     private MoveFree chase;
     private Stun stun;
     private Blowback blowback;

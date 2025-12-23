@@ -6,15 +6,16 @@ public class Blowback : Idle_LazyChange
 {
     [SerializeField] private Vector2 _velocity;
     [SerializeField] private float _maxDistance;
-    [SerializeField] private float _minAttackSpeed = 2.0f; // 攻撃が有効な最小速度
+    [SerializeField] private float _minAttackSpeed = 2.0f;     // 攻撃が有効な最小速度
+    [SerializeField] private float _attackRadius = 0.5f;       // 攻撃範囲
+    [SerializeField] private float _blowbackHitKnockbackforce; // 吹き飛ばしにヒットした相手へのノックバックの威力
     
     private Vector2 _startPos;
     private Rigidbody2D _rb;
 
-    public Blowback(Rigidbody2D rigidbody2D, float power, Vector2 direction, string lazyChange, float lazyChangeTime, bool isBlock = false) 
+    public Blowback(Rigidbody2D rigidbody2D, string lazyChange, float lazyChangeTime, bool isBlock = false) 
         : base (lazyChange, lazyChangeTime, isBlock = false)
     {
-        _velocity = direction * power;
         _rb = rigidbody2D;
         _lazyChange = lazyChange;
         _time = lazyChangeTime;
@@ -40,7 +41,11 @@ public class Blowback : Idle_LazyChange
     {
         _startPos = parent.transform.position;
 
+        Debug.Log($"velocity : {_velocity}");
+        Debug.Log($"rigidbody : {_rb}");
+
         _rb.linearVelocity = _velocity;
+        Debug.Log($"rigidbody linerVelocity {_rb.linearVelocity}");
     }
 
     public override void Stay(UnitBase parent, float deltaTime)
@@ -71,10 +76,11 @@ public class Blowback : Idle_LazyChange
         _rb.linearVelocity = Vector2.zero;
     }
 
+    // 同じタグのユニットに攻撃
     private void ChackCollisionWithOthers(UnitBase parent)
     {
-        // 自分の周囲の敵を検知
-        Collider2D[] hits = Physics2D.OverlapCircleAll(parent.transform.position, 0.5f, parent.AttackLayer);
+        // 自分の周囲のユニットを検知
+        Collider2D[] hits = Physics2D.OverlapCircleAll(parent.transform.position, _attackRadius);
 
         foreach (var hit in hits)
         {
@@ -82,6 +88,13 @@ public class Blowback : Idle_LazyChange
 
             if (hit.TryGetComponent<UnitBase>(out var target))
             {
+                
+                Debug.Log($"Blowback {parent.name}. tag {parent.statusManager.ReadUnitTag()}. to BlowbackTarget {target.name}. tag {target.statusManager.ReadUnitTag()}.");
+
+                // タグが自分と違う場合はスルー
+                if(target.statusManager.ReadUnitTag() != parent.statusManager.ReadUnitTag()) continue;
+
+
                 // 自分の攻撃力で相手にダメージを与える
                 float damage = parent.UnitStatusData.atk;
                 UnitManager.instance.AddDamage(target, parent, damage);

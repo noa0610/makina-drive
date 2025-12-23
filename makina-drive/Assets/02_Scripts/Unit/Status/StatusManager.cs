@@ -8,6 +8,7 @@ using UnityEngine.Android;
 public class StatusManager
 {
     private Dictionary<Status, StatusInfo> _statusAmounts = new();
+    private UnitTags unitTags;
     public StatusManager Initialize(UnitStatusData data)
     {
         _statusAmounts.Clear();
@@ -29,6 +30,7 @@ public class StatusManager
         AddStatus(Status.Stamina, data.stamina, false);
         AddStatus(Status.knockbackMultiplier, data.knockbackMultiplier);
         AddStatus(Status.knockbackResistance, data.knockbackResistance);
+        unitTags = data.tags;
         return this;
     }
 
@@ -108,5 +110,10 @@ public class StatusManager
         s.CurrentAmount -= value;
         // Debug.Log($"TakeDamage: {value}, HP: {s.CurrentAmount}/{_statusAmounts[Status.MaxHP].CurrentAmount}");
         return s.CurrentAmount <= 0;
+    }
+
+    public UnitTags ReadUnitTag()
+    {
+        return unitTags;
     }
 }

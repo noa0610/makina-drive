@@ -52,7 +52,8 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public Vector2 MoveDirection { get => _moveDir; set => _moveDir = value; }
     public Vector2 AttackDirection { get => _shootDir; set => _shootDir = value; }
 
-    public Vector2 AttackerDirection { get; private set; } = Vector2.right; // 攻撃を受けた方向
+    public Vector2 knockbackDirection { get; private set; } = Vector2.right; // 攻撃を受けて押し出される方向
+    public float KnockbackForce;
 
     public enum StartDirection
     {
@@ -183,8 +184,8 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
     #region === Status & Damage ===
     protected virtual bool BeforeTakeDamage(IUnit from, ref float damage) => true;
-    protected virtual void OnTakeDamage(IUnit from, float damage) { }
-    public void TakeDamage(IUnit from, float damage)
+    protected virtual void OnTakeDamage(IUnit from, float damage, Vector2 pushdir, float knockbackForce = 0) { }
+    public void TakeDamage(IUnit from, float damage, Vector2 pushdir, float knockbackForce = 0)
     {
         if (!_isPlaying || !IsArrivals) return;
         if (!BeforeTakeDamage(from, ref damage)) return;
@@ -192,13 +193,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         if (_statusManager.TakeDamage(damage))
             OnDeath();
 
-        OnTakeDamage(from, damage);
-    }
-
-    public void SetAttackerDirection(UnitBase from, Vector2 hitPoint)
-    {
-        var dir = (hitPoint - (Vector2)from.Transform.position).normalized;
-        AttackerDirection = dir;
+        OnTakeDamage(from, damage, pushdir, knockbackForce);
     }
 
 

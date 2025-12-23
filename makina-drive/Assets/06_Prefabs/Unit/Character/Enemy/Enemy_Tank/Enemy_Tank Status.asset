@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 265d6fb3813b2fb4e8f7d9f8f2aef49f, type: 3}
-  m_Name: TestUnit Status
+  m_Name: Enemy_Tank Status
   m_EditorClassIdentifier: Assembly-CSharp::UnitStatusData
-  id: 3
-  unitName: TestUnit
-  description: "\u30C6\u30B9\u30C8\u30D7\u30EC\u30A4\u7528\u30D7\u30EC\u30A4\u30E4\u30FC\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
-  maxHp: 100
-  hp: 100
+  id: 6
+  unitName: Tank
+  description: 
+  maxHp: 50
+  hp: 50
   atk: 5
-  def: 5
-  speed: 5
-  dashSpeed: 8
-  collectionRange: 5
-  stamina: 100
-  knockbackMultiplier: 1.5
-  knockbackResistance: 1000
+  def: 2
+  speed: 2
+  dashSpeed: 0
+  collectionRange: 0
+  stamina: 0
+  knockbackMultiplier: 2
+  knockbackResistance: 10
   damageTakeScale: 1
-  tags: 1
+  tags: 2

@@ -172,7 +172,7 @@ public class ShootCombo : ShootOnMoveBase
         // 弾を生成
         instantiatedBullet = GameObject.Instantiate(b, spawnPos, Quaternion.identity);
         instantiatedBullet.CanSelfMove = false;
-        InitBullet(instantiatedBullet, parent.AttackDirection);
+        InitBullet(instantiatedBullet, parent.AttackDirection, parent);
         await base.Shoot(parent);
     }
 

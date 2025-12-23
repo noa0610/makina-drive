@@ -1,11 +1,7 @@
 using UnityEngine;
-using System;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
-using NUnit.Framework;
-using UniRx;
 
-public partial class Enemy_Normal : UnitBase
+public partial class Enemy_Tank : UnitBase
 {
     [Header("固有設定")]
     private static readonly Dictionary<States, string> _stateNames = EnumWrapper.GetValueNameMap<States>();
@@ -139,4 +135,5 @@ public partial class Enemy_Normal : UnitBase
     {
         return _stateMachine.CurrentState.key == _stateNames[state];
     }
+    
 }

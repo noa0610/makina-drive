@@ -159,7 +159,7 @@ public class DashAttack : ShootOnMoveBase
         instantiatedBullet = GameObject.Instantiate(b, spawnPos, Quaternion.identity);
         instantiatedBullet.CanSelfMove = false;
         // float angle = Mathf.Atan2(parent.AttackDirection.y, parent.AttackDirection.x) * Mathf.Rad2Deg;
-        InitBullet(instantiatedBullet, parent.AttackDirection);
+        InitBullet(instantiatedBullet, parent.AttackDirection, parent);
         await base.Shoot(parent);
     }
 

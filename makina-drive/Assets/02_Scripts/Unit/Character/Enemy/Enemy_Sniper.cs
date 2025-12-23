@@ -61,13 +61,12 @@ public partial class Enemy_Sniper : UnitBase
         _targetTransform = target.Transform;
     }
 
-    protected override void OnTakeDamage(IUnit from, float damage)
+    protected override void OnTakeDamage(IUnit from, float damage, Vector2 pushdir, float knockbackForce)
     {
-        base.OnTakeDamage(from, damage);
+        base.OnTakeDamage(from, damage, pushdir, knockbackForce);
 
         if (damage > 0)
         {
-            stun.SetKnockbackDirection(-AttackerDirection);
             _stateMachine.ChangeState(Triggers.toStan);
         }
     }

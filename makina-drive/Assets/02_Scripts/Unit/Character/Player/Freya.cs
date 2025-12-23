@@ -78,6 +78,8 @@ public partial class Freya : UnitBase
     [SerializeField] private float DashN3_inputEndTime = 1f;
     [SerializeField] private float DashN3_attackStartTime = 0.4f;
 
+    // TODO チャージ攻撃は斬撃を飛ばす
+
 
     [Header("ジャンプ開始")]
     [SerializeField] private float _jumpStartTime = 1f;
