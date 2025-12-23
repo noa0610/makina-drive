@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// 遠距離攻撃を行う敵ユニット
+/// </summary>
 public partial class Enemy_Sniper : UnitBase
 {
     [Header("固有設定")]
@@ -23,6 +26,9 @@ public partial class Enemy_Sniper : UnitBase
 
     [Header("スタン")]
     [SerializeField] private float _stanTime = 0.5f;
+    
+    [Header("吹き飛ばし")]
+    [SerializeField] private float _blowbackMaxDistance = 30f;
 
     private UnitBase _targetUnit;
     private Transform _targetTransform;
@@ -65,6 +71,14 @@ public partial class Enemy_Sniper : UnitBase
     {
         base.OnTakeDamage(from, damage, pushdir, knockbackForce);
 
+        // 吹き飛ばし状態移行
+        if(knockbackForce > 0)
+        {
+            blowback.SetVelocity(knockbackForce, pushdir);
+            _stateMachine.ChangeState(Triggers.toBlowback);
+        }
+
+        // スタン状態移行
         if (damage > 0)
         {
             _stateMachine.ChangeState(Triggers.toStan);

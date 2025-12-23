@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 時間を加算するタイマー
+/// </summary>
 public class TimerCount : MonoBehaviour
 {
     private float _currentTime = 0;

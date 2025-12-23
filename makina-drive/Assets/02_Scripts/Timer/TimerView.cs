@@ -6,6 +6,9 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// タイマー時間をテキストに表示するUI用クラス
+/// </summary>
 public class TimerView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;

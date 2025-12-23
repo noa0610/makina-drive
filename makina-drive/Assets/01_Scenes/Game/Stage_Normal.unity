@@ -1149,7 +1149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: _normalWaves.Array.data[0].spawnInfos.Array.data[0].spawnCount
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: _normalWaves.Array.data[0].spawnInfos.Array.data[1].spawnCount

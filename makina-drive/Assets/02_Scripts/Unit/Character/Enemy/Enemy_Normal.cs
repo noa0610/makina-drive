@@ -5,6 +5,9 @@ using UnityEditor.Experimental.GraphView;
 using NUnit.Framework;
 using UniRx;
 
+/// <summary>
+/// 近づいて攻撃を行う敵ユニット
+/// </summary>
 public partial class Enemy_Normal : UnitBase
 {
     [Header("固有設定")]

@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// Resourcesフォルダ内のBGM、SEフォルダにある音源素材を名前指定で再生するシングルトン
+/// </summary>
 public class SoundManager : SingletonBehavior<SoundManager>
 {
     [System.Serializable]

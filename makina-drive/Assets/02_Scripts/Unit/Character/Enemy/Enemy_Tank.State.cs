@@ -82,6 +82,7 @@ public partial class Enemy_Tank
         chase.SetDecel(_decel);
         _stateMachine.AddState(States.chase, chase);
         
+        // TODO 突進攻撃（DashAttack）に変更する
         /* 攻撃 */
         var attack = new ShootCombo(_attackBulletData, AttackLayer, Triggers.toChase.ToString());
         attack.SetTime(1f, 1f, _stateChangeTime, _attackTime);

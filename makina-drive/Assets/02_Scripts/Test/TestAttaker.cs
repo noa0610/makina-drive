@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 指定された対象ユニットに攻撃を加えるテスト用クラス
+/// </summary>
 public class TestAttaker : UnitBase
 {
     [SerializeField] private BulletStatus _Status;

@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 入力方向にGizmoをゆっくりと曲げるテスト用クラス
+/// </summary>
 public class RotateVectorTest : MonoBehaviour
 {
     [Header("現在の向き（徐々に変わる）")]

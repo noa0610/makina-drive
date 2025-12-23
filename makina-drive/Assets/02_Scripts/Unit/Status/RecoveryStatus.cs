@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 登録したステータスを自動で回復（加算）する
+/// </summary>
 public class RecoveryStatus
 {
     [SerializeField] private StatusManager _statusManager;

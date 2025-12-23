@@ -1,6 +1,9 @@
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// 指定したユニットのステートをテキスト表示するテスト用クラス
+/// </summary>
 public class TestStateView : MonoBehaviour
 {
     [SerializeField] private UnitBase _unit;

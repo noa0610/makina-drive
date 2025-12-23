@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 
   maxHp: 10
   hp: 10
-  atk: 10
+  atk: 2
   def: 0
   speed: 2
   dashSpeed: 1

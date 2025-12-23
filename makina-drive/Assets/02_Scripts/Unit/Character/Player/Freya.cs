@@ -7,6 +7,9 @@ using System;
 using System.Linq;
 using Unity.VisualScripting;
 
+/// <summary>
+/// プレイヤーユニット
+/// </summary>
 [RequireComponent(typeof(UnityEngine.InputSystem.PlayerInput))]
 public partial class Freya : UnitBase
 {

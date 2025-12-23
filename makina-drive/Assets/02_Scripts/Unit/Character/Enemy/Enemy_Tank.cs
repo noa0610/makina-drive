@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// 近づいて突進攻撃を行う敵ユニット
+/// </summary>
 public partial class Enemy_Tank : UnitBase
 {
     [Header("固有設定")]
