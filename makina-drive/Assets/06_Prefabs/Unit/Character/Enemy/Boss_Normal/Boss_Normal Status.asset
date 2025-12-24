@@ -17,12 +17,13 @@ MonoBehaviour:
   description: 
   maxHp: 100
   hp: 100
-  atk: 1
+  atk: 6
   def: 0
   speed: 1.5
   dashSpeed: 1
   collectionRange: 0
   stamina: 1
-  knockbackPower: 1
+  knockbackMultiplier: 0
+  knockbackResistance: 12
   damageTakeScale: 1
   tags: 2

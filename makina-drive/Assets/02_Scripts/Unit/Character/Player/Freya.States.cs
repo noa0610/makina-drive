@@ -55,7 +55,7 @@ public partial class Freya
         dead
 
         // テスト用
-        ,Shoot
+        , Shoot
     }
 
     private enum Triggers
@@ -77,8 +77,8 @@ public partial class Freya
         attackConplete,
         stan,
         died
-        ,TestShoot
-        ,ShootEnd
+        , TestShoot
+        , ShootEnd
     }
 
     // ステート登録
@@ -201,7 +201,7 @@ public partial class Freya
             (Triggers.ShootEnd, States.idle,""),
             (Triggers.died, States.dead,"Dide")
         };
-        
+
 
         // ステートマシンにStatesの移動先の追加
         _stateMachine
@@ -242,6 +242,10 @@ public partial class Freya
         drivedash.SetGameObject(_muzzle);
         drivedash.SetRB2(rb);
         drivedash.SetCreatMisalignment(0);
+        drivedash.OnBeGinning += () =>
+        {
+            PlaySE(_DashSE.SEName, _DashSE.Volume);
+        };
         drivedash.OnCompleted += () =>
         {
             IsRecovery = true;
@@ -259,7 +263,7 @@ public partial class Freya
         N_attack1.SetAccel(_attackAccel);
         N_attack1.onShootComplete.AddListener(() =>
         {
-            
+            PlaySE(_N1_AttackSE.SEName, _N1_AttackSE.Volume);
         });
         _stateMachine.AddState(States.N1_attack, N_attack1);
 
@@ -270,6 +274,10 @@ public partial class Freya
         N_attack2.SetCreatMisalignment(_createPos);
         N_attack2.SetRB2(rb);
         N_attack2.SetAccel(_attackAccel);
+        N_attack2.onShootComplete.AddListener(() =>
+        {
+            PlaySE(_N2_AttackSE.SEName, _N2_AttackSE.Volume);
+        });
         _stateMachine.AddState(States.N2_attack, N_attack2);
 
         /* 通常攻撃3 */
@@ -279,6 +287,10 @@ public partial class Freya
         N_attack3.SetCreatMisalignment(_createPos);
         N_attack3.SetRB2(rb);
         N_attack3.SetAccel(_attackAccel);
+        N_attack3.onShootComplete.AddListener(() =>
+        {
+            PlaySE(_N3_AttackSE.SEName, _N3_AttackSE.Volume);
+        });
         _stateMachine.AddState(States.N3_attack, N_attack3);
         #endregion
 
@@ -291,6 +303,10 @@ public partial class Freya
         DashN1_attack.SetCreatMisalignment(_createPos);
         DashN1_attack.SetRB2(rb);
         DashN1_attack.SetAccel(_attackAccel * 1.5f);
+        DashN1_attack.onShootComplete.AddListener(() =>
+        {
+            PlaySE(_N1_AttackSE.SEName, _N1_AttackSE.Volume);
+        });
         _stateMachine.AddState(States.dashN1_Attack, DashN1_attack);
 
         /* ダッシュ通常攻撃2 */
@@ -300,6 +316,10 @@ public partial class Freya
         DashN2_attack.SetCreatMisalignment(_createPos);
         DashN2_attack.SetRB2(rb);
         DashN2_attack.SetAccel(_attackAccel * 1.5f);
+        DashN2_attack.onShootComplete.AddListener(() =>
+        {
+            PlaySE(_N2_AttackSE.SEName, _N2_AttackSE.Volume);
+        });
         _stateMachine.AddState(States.dashN2_Attack, DashN2_attack);
 
         /* ダッシュ通常攻撃3 */
@@ -309,6 +329,10 @@ public partial class Freya
         DashN3_attack.SetCreatMisalignment(_createPos);
         DashN3_attack.SetRB2(rb);
         DashN3_attack.SetAccel(_attackAccel * 1.5f);
+        DashN3_attack.onShootComplete.AddListener(() =>
+        {
+            PlaySE(_N3_AttackSE.SEName, _N3_AttackSE.Volume);
+        });
         _stateMachine.AddState(States.dashN3_Attack, DashN3_attack);
         #endregion
 
@@ -342,6 +366,10 @@ public partial class Freya
         /* 落下攻撃 */
         var fallAttack = new ShootForward_LazyChange(FallAttack_bulletData, AttackLayer, Triggers.jumpCancel.ToString(), _fallAttackTime);
         fallAttack.SetGameObject(_muzzle);
+        fallAttack.onShootComplete.AddListener(() =>
+        {
+            PlaySE(_JumpAttackSE.SEName, _JumpAttackSE.Volume);
+        });
         _stateMachine.AddState(States.fallAttack, fallAttack);
         #endregion
 
@@ -354,5 +382,9 @@ public partial class Freya
             _stateMachine.ChangeState(Triggers.ShootEnd);
         });
         _stateMachine.AddState(States.Shoot, shoot);
+
+        /* 死亡 */
+        var dead = new Idle_MoveStop(Rigidbody2D);
+        _stateMachine.AddState(States.dead, dead);
     }
 }

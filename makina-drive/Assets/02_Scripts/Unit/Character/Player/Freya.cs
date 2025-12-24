@@ -99,6 +99,19 @@ public partial class Freya : UnitBase
     [SerializeField] private BulletData FallAttack_bulletData;
     [SerializeField] private float _fallAttackTime = 1.0f;
 
+    [Header("死亡")]
+    [SerializeField] private float _deadGameOverDelay = 1f;
+
+    [Header("SE")]
+    [SerializeField] private VisualInfo _N1_AttackSE;
+    [SerializeField] private VisualInfo _N2_AttackSE;
+    [SerializeField] private VisualInfo _N3_AttackSE;
+    [SerializeField] private VisualInfo _DodgeSE;
+    [SerializeField] private VisualInfo _DashSE;
+    [SerializeField] private VisualInfo _JumpSE;
+    [SerializeField] private VisualInfo _JumpAttackSE;
+    [SerializeField] private VisualInfo _DaedSE;
+
 
     private Vector2 _dashDirection = Vector2.right;
     private bool _inputDash = false;
@@ -149,6 +162,14 @@ public partial class Freya : UnitBase
     public override void OnDeath()
     {
         base.OnDeath();
+        PlaySE(_DaedSE.SEName, _DaedSE.Volume);
+        stateMachine.ChangeState(Triggers.died);
+        OnGameOver();
+    }
+
+    public void OnGameOver()
+    {
+        GameStateManager.instance.ChangeState(GameState.GameOver);
     }
 
 

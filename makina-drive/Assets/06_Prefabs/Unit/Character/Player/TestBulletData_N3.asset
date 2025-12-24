@@ -19,4 +19,4 @@ MonoBehaviour:
     time: 1
     damage: 9
     speed: 0
-    knockback: 20
+    knockback: 10

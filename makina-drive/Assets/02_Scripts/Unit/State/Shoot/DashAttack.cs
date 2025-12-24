@@ -21,6 +21,7 @@ public class DashAttack : ShootOnMoveBase
     private Vector2 _dashDirection;
     private bool _isBlock = true;
 
+    public event Action OnBeGinning;
     public event Action OnCompleted;
 
     public bool IsStopInExit { get => _isStopInExit; set => _isStopInExit = value; }
@@ -58,6 +59,7 @@ public class DashAttack : ShootOnMoveBase
         _dashDirection = parent.Direction.normalized;
         _time = 0;
         _isBlock = true;
+        OnBeGinning?.Invoke();
     }
 
     public override void Stay(UnitBase parent, float deltaTime)

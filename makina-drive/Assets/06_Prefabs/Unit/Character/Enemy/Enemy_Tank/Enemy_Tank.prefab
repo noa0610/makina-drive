@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 627918368310075145}
+  - component: {fileID: 8865396154909110907}
   - component: {fileID: 2252061035777294000}
   - component: {fileID: 4326660881405201274}
-  - component: {fileID: 8865396154909110907}
   - component: {fileID: 1841397040214149898}
   - component: {fileID: 2517406935360152841}
   m_Layer: 7
@@ -37,6 +37,42 @@ Transform:
   - {fileID: 3465395986328259364}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8865396154909110907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538300563066049937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8800cfb8d034d734f941498aac38e835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Tank
+  _status: {fileID: 11400000, guid: 774192fc789944744b98b7f5691abd53, type: 2}
+  _attackLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _animator: {fileID: 5173397690175863807}
+  _muzzle: {fileID: 538300563066049937}
+  _Dir: {x: 0, y: 0}
+  _moveDir: {x: 0, y: 0}
+  _shootDir: {x: 1, y: 0}
+  KnockbackForce: 0
+  _StartDirection: 0
+  _enableVisuableInvincible: 0
+  _currentState: 
+  _targetUnitForDebug: {fileID: 0}
+  _findPlayerOnStart: 1
+  _accel: 30
+  _decel: 20
+  _attackRange: 8
+  _attackCreatePos: 1.5
+  _stateChangeTime: 2
+  _attackIntervalTime: 1
+  _attackBulletData: {fileID: 11400000, guid: 028656b6bf43a0841aa9417a6019b2ee, type: 2}
+  _stanTime: 0.5
+  _blowbackMaxDistance: 30
 --- !u!50 &2252061035777294000
 Rigidbody2D:
   serializedVersion: 5
@@ -86,42 +122,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8865396154909110907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538300563066049937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8800cfb8d034d734f941498aac38e835, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Tank
-  _status: {fileID: 11400000, guid: 774192fc789944744b98b7f5691abd53, type: 2}
-  _attackLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _animator: {fileID: 5173397690175863807}
-  _muzzle: {fileID: 538300563066049937}
-  _Dir: {x: 0, y: 0}
-  _moveDir: {x: 0, y: 0}
-  _shootDir: {x: 1, y: 0}
-  KnockbackForce: 0
-  _StartDirection: 0
-  _enableVisuableInvincible: 0
-  _currentState: 
-  _targetUnitForDebug: {fileID: 0}
-  _findPlayerOnStart: 1
-  _accel: 30
-  _decel: 20
-  _attackRange: 8
-  _attackCreatePos: 1.5
-  _stateChangeTime: 2
-  _attackIntervalTime: 1
-  _attackBulletData: {fileID: 11400000, guid: 028656b6bf43a0841aa9417a6019b2ee, type: 2}
-  _stanTime: 0.5
-  _blowbackMaxDistance: 30
 --- !u!58 &1841397040214149898
 CircleCollider2D:
   m_ObjectHideFlags: 0

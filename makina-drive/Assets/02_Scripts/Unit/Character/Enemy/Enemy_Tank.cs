@@ -25,6 +25,7 @@ public partial class Enemy_Tank : UnitBase
     [SerializeField] private BulletData _attackBulletData;
 
     [Header("スタン")]
+    [SerializeField] private bool _ignoreStan = false; // スタン状態を無視
     [SerializeField] private float _stanTime = 0.5f;
 
     [Header("吹き飛ばし")]
@@ -75,7 +76,7 @@ public partial class Enemy_Tank : UnitBase
             _stateMachine.ChangeState(Triggers.toBlowback);
         }
 
-        if (damage > 0)
+        if (damage > 0 && !_ignoreStan)
         {
             _stateMachine.ChangeState(Triggers.toStan);
         }

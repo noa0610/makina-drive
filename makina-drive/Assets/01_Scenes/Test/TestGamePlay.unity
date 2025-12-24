@@ -1410,7 +1410,7 @@ GameObject:
   - component: {fileID: 693912373}
   - component: {fileID: 693912372}
   m_Layer: 0
-  m_Name: Time
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1698,6 +1698,7 @@ MonoBehaviour:
   _Dir: {x: 0, y: 0}
   _moveDir: {x: 0, y: 0}
   _shootDir: {x: 1, y: 0}
+  KnockbackForce: 0
   _StartDirection: 0
   _enableVisuableInvincible: 0
   _currentState: 
@@ -1711,6 +1712,7 @@ MonoBehaviour:
   _attackTime: 0.7
   _attackBulletData: {fileID: 11400000, guid: 93cfe68dd5ffd114db16f080d2442560, type: 2}
   _stanTime: 0.5
+  _blowbackMaxDistance: 30
 --- !u!95 &743686838
 Animator:
   serializedVersion: 7
@@ -3070,6 +3072,7 @@ MonoBehaviour:
   _Dir: {x: 0, y: 0}
   _moveDir: {x: 0, y: 0}
   _shootDir: {x: 1, y: 0}
+  KnockbackForce: 0
   _StartDirection: 0
   _enableVisuableInvincible: 0
   _currentState: 
@@ -3078,6 +3081,7 @@ MonoBehaviour:
     time: 0
     damage: 5
     speed: 0
+    knockback: 0
 --- !u!4 &1479135125
 Transform:
   m_ObjectHideFlags: 0
@@ -3303,6 +3307,7 @@ MonoBehaviour:
   _Dir: {x: 0, y: 0}
   _moveDir: {x: 0, y: 0}
   _shootDir: {x: 1, y: 0}
+  KnockbackForce: 0
   _StartDirection: 0
   _enableVisuableInvincible: 0
   _currentState: 
@@ -3316,6 +3321,7 @@ MonoBehaviour:
   _attackTime: 0.7
   _attackBulletData: {fileID: 11400000, guid: 93cfe68dd5ffd114db16f080d2442560, type: 2}
   _stanTime: 0.5
+  _blowbackMaxDistance: 30
 --- !u!95 &1547633454
 Animator:
   serializedVersion: 7
@@ -3468,6 +3474,7 @@ MonoBehaviour:
   _Dir: {x: 0, y: 0}
   _moveDir: {x: 0, y: 0}
   _shootDir: {x: 1, y: 0}
+  KnockbackForce: 0
   _StartDirection: 0
   _enableVisuableInvincible: 0
   _currentState: 
@@ -3481,6 +3488,7 @@ MonoBehaviour:
   _attackTime: 0.7
   _attackBulletData: {fileID: 11400000, guid: 93cfe68dd5ffd114db16f080d2442560, type: 2}
   _stanTime: 0.5
+  _blowbackMaxDistance: 30
 --- !u!95 &1549706064
 Animator:
   serializedVersion: 7
@@ -3929,6 +3937,7 @@ MonoBehaviour:
   _Dir: {x: 0, y: 0}
   _moveDir: {x: 0, y: 0}
   _shootDir: {x: 1, y: 0}
+  KnockbackForce: 0
   _StartDirection: 0
   _enableVisuableInvincible: 0
   _currentState: 
@@ -3942,6 +3951,7 @@ MonoBehaviour:
   _attackTime: 0.7
   _attackBulletData: {fileID: 11400000, guid: 93cfe68dd5ffd114db16f080d2442560, type: 2}
   _stanTime: 0.5
+  _blowbackMaxDistance: 30
 --- !u!95 &1776825197
 Animator:
   serializedVersion: 7
@@ -4210,6 +4220,7 @@ MonoBehaviour:
   _Dir: {x: 0, y: 0}
   _moveDir: {x: 0, y: 0}
   _shootDir: {x: 1, y: 0}
+  KnockbackForce: 0
   _StartDirection: 0
   _enableVisuableInvincible: 0
   _currentState: 
@@ -4223,6 +4234,7 @@ MonoBehaviour:
   _attackTime: 0.7
   _attackBulletData: {fileID: 11400000, guid: 93cfe68dd5ffd114db16f080d2442560, type: 2}
   _stanTime: 0.5
+  _blowbackMaxDistance: 30
 --- !u!95 &1875297958
 Animator:
   serializedVersion: 7
@@ -4666,6 +4678,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3ad4ee17cee76469372691d749e9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
+--- !u!1 &2098155801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2098155802}
+  m_Layer: 0
+  m_Name: ------------------- UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2098155802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098155801}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2121929075
 GameObject:
   m_ObjectHideFlags: 0
@@ -5122,12 +5165,13 @@ SceneRoots:
   - {fileID: 1431012178}
   - {fileID: 9222416698169952448}
   - {fileID: 1479135125}
-  - {fileID: 1516677707}
   - {fileID: 2121929076}
-  - {fileID: 692932017}
-  - {fileID: 1240233881}
-  - {fileID: 477006918}
+  - {fileID: 1516677707}
   - {fileID: 1212015819}
   - {fileID: 1851413714}
   - {fileID: 2647191803693113831}
   - {fileID: 693912373}
+  - {fileID: 2098155802}
+  - {fileID: 692932017}
+  - {fileID: 1240233881}
+  - {fileID: 477006918}

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e0c689f82f5adb4584ec7437b4f3cbb, type: 3}
-  m_Name: Enemy_TankBulletData_Attack
+  m_Name: Boss_SniperBulletData_Shoot
   m_EditorClassIdentifier: Assembly-CSharp::BulletData
-  bulletName: 
-  prefab: {fileID: 5389455487604730593, guid: 68c371c167aeeaf42b0f4ac0e8d04c7b, type: 3}
+  bulletName: Enemy_SniperBullet_Shoot
+  prefab: {fileID: 4852771228298297618, guid: 9765c7d69aa0424498c03bcebb12e541, type: 3}
   originalstatus:
-    hp: 999
-    time: 1
-    damage: 10
-    speed: 0
-    knockback: 10
+    hp: 1
+    time: 8
+    damage: 9
+    speed: 4
+    knockback: 0

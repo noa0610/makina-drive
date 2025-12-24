@@ -21,9 +21,9 @@ public class GameStateManager : SingletonBehavior<GameStateManager>
     public static event Action<GameState> OnStateChanged;
     private GameState _gameState = GameState.Play;
     
-    public void ChangeState(GameState gameState)
+    public void ChangeState(GameState nextGameState)
     {
-        _gameState = gameState;
+        _gameState = nextGameState;
         OnStateChanged?.Invoke(_gameState);
     }
 
