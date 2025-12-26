@@ -12,18 +12,19 @@ public class DisplayTextUI : MonoBehaviour
     [SerializeField,Header("Player Status Scriptable Object")]
     private PlayerStatus _playerStatus;
 
+    [SerializeField,Header("Level Up Window")]
+    private LevelUpWindowUI _LevelUpWindowUI;
+
     [SerializeField,Header("HP")] 
     private TextMeshProUGUI _HPText;
     [SerializeField]
-    private Image _HPBarHealth;
-    [SerializeField]
-    private Image _HPBarLow;
+    private Image _HPBar;
 
 
     [SerializeField,Header("Level")]
-    private TextMeshProUGUI _LevelText;
-    [SerializeField]
-    private Image _LevelBarHigh;
+    // private TextMeshProUGUI _LevelText;
+    // [SerializeField]
+    private Image _LevelBar;
 
     [SerializeField,Header("Silver Coin")]
     private TextMeshProUGUI _SilverCoinText;
@@ -41,7 +42,7 @@ void Start()
         //初期設定  多分、スクリプタブルオブジェクトから取ってくる
 
         DisplayHP(_playerStatus.currentHP, _playerStatus.maxHP);
-        DisplayLevel(_playerStatus.level);
+        DisplayEXP(_playerStatus.currentEXP, _playerStatus.maxEXP);
         DisplaySilverCoin(_playerStatus.silverCoin);
         DisplayGoldCoin(_playerStatus.goldCoin);
     }
@@ -50,14 +51,14 @@ void Start()
     void OnEnable()
     {
         UIEventService.HP += DisplayHP;
-        UIEventService.Level += DisplayLevel;
+        UIEventService.EXP += DisplayEXP;
         UIEventService.SilverCoin += DisplaySilverCoin;
         UIEventService.GoldCoin += DisplayGoldCoin;
     }
     void OnDisable()
     {
         UIEventService.HP -= DisplayHP;
-        UIEventService.Level -= DisplayLevel;
+        UIEventService.EXP -= DisplayEXP;
         UIEventService.SilverCoin -= DisplaySilverCoin;
         UIEventService.GoldCoin -= DisplayGoldCoin;
     }
@@ -72,10 +73,11 @@ public void DisplayHP(int newHP, int maxHP)
         CauntUP("HP", newHP, maxHP);
     }
 
-    void DisplayLevel(int level)
+    void DisplayEXP(int exp, int maxEXP)
     {
-        _LevelText.SetText("Lv." + level.ToString("d2"));
-        CauntUP("Level", level, 100);
+        // _LevelText.SetText("Lv." + level.ToString("d2"));
+        CauntUP("EXP", exp, maxEXP);
+        Debug.Log(exp + " / " + maxEXP);
     }
 
     void DisplaySilverCoin(int silverCoin)
@@ -94,13 +96,19 @@ public void DisplayHP(int newHP, int maxHP)
         switch (Status)
         {
             case "HP":
-            var currentFillAmount = (float)Num / MaxNum;
-                _HPBarHealth.DOFillAmount(currentFillAmount, 0).SetEase(Ease.OutCubic);
-                _HPBarLow.DOFillAmount(currentFillAmount, 0.5f).SetEase(Ease.OutCubic).SetDelay(0.5f);
+            var currentHPFillAmount = (float)Num / MaxNum;
+                _HPBar.DOFillAmount(currentHPFillAmount, 1).SetEase(Ease.OutCubic);
                 break;
-            case "Level":
+            case "EXP":
+            var currentLevelFillAmount = (float)Num / MaxNum;
+            if (Num >= MaxNum)
+                {
+                    currentLevelFillAmount = 0f;
+                    _LevelBar.DOFillAmount(currentLevelFillAmount, 0.2f).SetEase(Ease.OutCubic);
+                    _LevelUpWindowUI.OpenLevelUpWindow();
+                }
 
-                //_LevelBarHigh.DOFillAmount(currentFillAmount, 0).SetEase(Ease.OutCubic);
+                _LevelBar.DOFillAmount(currentLevelFillAmount, 0.2f).SetEase(Ease.OutCubic);
                 break;
         }
         

@@ -8,7 +8,7 @@ namespace makinadrive.MT.UI
 /*============================================================================*/
 
         public static Action<int, int> HP;
-        public static Action<int> Level;
+        public static Action<int, int> EXP;
         public static Action<int> SilverCoin;
         public static Action<int> GoldCoin;
 
@@ -19,9 +19,9 @@ namespace makinadrive.MT.UI
             HP?.Invoke(NewHP, MaxHP);
         }
 
-        public static void UpdateLevel(int NewLevel)
+        public static void UpdateEXP(int NewEXP, int MaxEXP)
         {
-            Level?.Invoke(NewLevel);
+            EXP?.Invoke(NewEXP, MaxEXP);
         }
 
         public static void UpdateSilverCoin(int NewSilverCoin)

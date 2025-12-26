@@ -13,6 +13,8 @@ public class LevelUpWindowUI : MonoBehaviour
     private float _displaySpeed;
     [SerializeField]
     private float _hiddenSpeed;
+
+    private bool Completeclose = true;
     
     void Start()
     {
@@ -27,7 +29,12 @@ public class LevelUpWindowUI : MonoBehaviour
 
     void CloseLevelUpWindow()
     {
-        _levelUpWindow.transform.DOScale(Vector3.zero, _hiddenSpeed).SetEase(Ease.InBack);
+        if (Completeclose)
+        {         
+            Completeclose = false;
+            _levelUpWindow.transform.DOScale(Vector3.zero, _hiddenSpeed).SetEase(Ease.InBack).OnComplete(() => Completeclose = true);
+
+        }
     }
     public void OpenLevelUpWindow()
     {

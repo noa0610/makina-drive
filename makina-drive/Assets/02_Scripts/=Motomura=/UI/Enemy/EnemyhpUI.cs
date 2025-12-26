@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,29 +11,32 @@ public class EnemyhpUI : MonoBehaviour
     private StatusInfo hpInfo;
     private StatusInfo MaxHPInfo;
 
-    void Start()
-    {
-        _statusManager = _Enemy.GetComponent<UnitBase>().statusManager;
-        hpInfo = _statusManager.GetStatus(Status.HP);
-        MaxHPInfo = _statusManager.GetStatus(Status.MaxHP);
+void Start()
+{
+    var unit = _Enemy.GetComponent<UnitBase>();
+    _statusManager = unit.statusManager;
+    hpInfo = _statusManager.GetStatus(Status.HP);
+    MaxHPInfo = _statusManager.GetStatus(Status.MaxHP);
 
-
-    }
+    // HPが変わったときだけ UI を更新するように予約する
+    hpInfo.OnAmountChanged += (before, after) => UpdateVisual();
+    
+    UpdateVisual(); // 初回表示
+}
 
 void Update()
 {
+    if (_Enemy == null) return;
 
-    switch (_Enemy.gameObject.transform.localScale.x)//Enemyの向きに合わせてHPバーの向きを変える
+    float side = Mathf.Sign(_Enemy.transform.localScale.x);
+    transform.localScale = new Vector3(side, 1, 1);
+}
+
+private void UpdateVisual()
+{
+    if (MaxHPInfo.CurrentAmount > 0)
     {
-        case -1:
-            transform.localScale = new Vector3(-1, 1, 1);
-            break;
-        case 1:
-            transform.localScale = new Vector3(1, 1, 1);
-            break;
+        _hpBar.fillAmount = hpInfo.CurrentAmount / MaxHPInfo.CurrentAmount;
     }
-
-    // HPが変化した時に自動で実行される処理を登録する   
-    _hpBar.fillAmount = (float)hpInfo.CurrentAmount / (float)MaxHPInfo.CurrentAmount;
 }
 }

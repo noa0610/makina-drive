@@ -5,7 +5,8 @@ public class PlayerStatus : ScriptableObject
 {
     public int maxHP = 100;
     public int currentHP = 100;
-    public int level = 1;
+    public int currentEXP = 0;
+    public int maxEXP = 100;
     public int silverCoin = 0;
     public int goldCoin = 0;
 }
