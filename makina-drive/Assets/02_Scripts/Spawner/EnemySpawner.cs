@@ -20,18 +20,71 @@ public class EnemySpawner : MonoBehaviour
     [Header("エンドレスウェーブ設定")]
     [SerializeField] private List<WaveData> _endlessWaves = new List<WaveData>();
 
-    private float _elapsedTime = 0;     // 経過時間
+    private float _elapsedTime = 0;         // 経過時間
+    private int _totalClearTargetCount = 0;  // 必要撃破数
+    private int _currentClearTargetKill = 0; // 現在の撃破数
+    private bool _isCleared = false;
 
     // 現在のウェーブ内での敵生成進捗
     private List<float> _spawnTimers = new List<float>();
     private List<int> _currentSpawnCounts = new List<int>();
-    
+
     private void Start()
     {
         if (_timer == null)
         {
             Debug.Log("タイマーを指定してください。");
         }
+
+        CalculateTotalClearTargets();
+
+        // ユニット死亡イベント購読
+        UnitBase.OnAnyUnitDeath += HandleUnitDeath;
+    }
+
+    private void OnDestroy()
+    {
+        UnitBase.OnAnyUnitDeath -= HandleUnitDeath;
+    }
+
+    // 設定されたクリアターゲットの数を保有
+    private void CalculateTotalClearTargets()
+    {
+        _totalClearTargetCount = 0;
+        foreach (var wave in _normalWaves)
+        {
+            foreach (var info in wave.spawnInfos)
+            {
+                if (info.isClearTarget)
+                {
+                    _totalClearTargetCount += info.spawnCount * info.sameTimeSpawnCount;
+                }
+            }
+        }
+        Debug.Log($"クリアに必要な撃破数：{_totalClearTargetCount}");
+    }
+
+    // クリアターゲットの判別、撃破数をカウント
+    private void HandleUnitDeath(UnitBase unit)
+    {
+        if (unit.IsClearTarget)
+        {
+            _currentClearTargetKill++;
+            Debug.Log($"クリア対象撃破 現在：{_currentClearTargetKill} / {_totalClearTargetCount}");
+
+            if (_currentClearTargetKill >= _totalClearTargetCount)
+            {
+                GameClear();
+            }
+        }
+    }
+
+    private void GameClear()
+    {
+        _isCleared = true;
+        Debug.Log($"ゲームクリア");
+
+        GameStateManager.instance.ChangeState(GameState.Clear);
     }
 
     private void Update()
@@ -55,7 +108,6 @@ public class EnemySpawner : MonoBehaviour
         }
 
         ProcessCurrentWave();
-
     }
 
     // 次のウェーブ初期化
@@ -140,7 +192,10 @@ public class EnemySpawner : MonoBehaviour
             // 敵の強化ロジック（適当な例）
             // unit.ApplyStatusMultiplier(powerMultiplier);
 
-            if (info.destroyTime > 0) Destroy(unit.gameObject, info.destroyTime);
+            if (info.destroyTime > 0) unit.SetLazyDeath(info.destroyTime);
+
+            // クリアフラグ付与
+            unit.IsClearTarget = info.isClearTarget;
 
             groupList.Add(unit);
         }

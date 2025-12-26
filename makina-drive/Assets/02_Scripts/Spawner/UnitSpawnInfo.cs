@@ -18,4 +18,7 @@ public class UnitSpawnInfo
     public float spawnInterval = 1;    // 生成間隔
     public float statusRate;           // ステータス強化倍率
     public float destroyTime;          // 生成後に消去する時間指定（0で消去しない）
+
+    [Header("クリア条件設定")]
+    public bool isClearTarget; // この設定をした敵をすべて倒すとクリア
 }

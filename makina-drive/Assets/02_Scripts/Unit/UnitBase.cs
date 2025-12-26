@@ -40,6 +40,10 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public bool IsInvincible { get; set; }
     public bool IsArrivals { get; set; } = true;
     public bool IsRecovery { get; set; } = true;
+    public bool IsClearTarget { get; set; } = false;
+    public static event Action<UnitBase> OnAnyUnitDeath;
+    private bool IsLazyDead = false;
+    private float lazyDeadTime = 0;
     #endregion
 
     #region === Reactive & Direction ===
@@ -168,6 +172,12 @@ public abstract class UnitBase : MonoBehaviour, IUnit
             _recoveryStatus?.Tick(dt);
         }
 
+        // 死亡タイマー
+        if(IsLazyDead && dt >= lazyDeadTime)
+        {
+            OnDeath();
+        }
+
         AfterUpdate();
     }
 
@@ -199,6 +209,9 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
     public virtual void OnDeath()
     {
+        // 死亡通知を飛ばす
+        OnAnyUnitDeath?.Invoke(this);
+
         if (_status.unitName != null)
         {
             Debug.Log($"{_status.unitName}が死亡した");
@@ -207,6 +220,13 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         {
             Debug.Log($"{_status.name}が死亡した");
         }
+    }
+    
+    // 死亡タイマーをセット
+    public void SetLazyDeath(float deadTime)
+    {
+        IsLazyDead = true;
+        lazyDeadTime = deadTime;
     }
 
     public void SetInvincible(bool isInvincible)

@@ -11,7 +11,7 @@ using Unity.VisualScripting;
 /// プレイヤーユニット
 /// </summary>
 [RequireComponent(typeof(UnityEngine.InputSystem.PlayerInput))]
-public partial class Freya : UnitBase
+public partial class Freya : UnitBase, IPausable
 {
     [Header("固有設定")]
     private static readonly Dictionary<States, string> _stateNames = EnumWrapper.GetValueNameMap<States>();
@@ -185,6 +185,27 @@ public partial class Freya : UnitBase
 
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + (Vector3)Direction);
+    }
+
+    // 状態変更イベントを購読
+    private void OnEnable()
+    {
+        GameStateManager.OnStateChanged += HandleStateChanged;
+    }
+
+    // 購読解除
+    private void OnDisable()
+    {
+        GameStateManager.OnStateChanged -= HandleStateChanged;
+    }
+
+    private void HandleStateChanged(GameState newState)
+    {
+        if(newState == GameState.Clear)
+        {
+            Rigidbody2D.linearVelocity = Vector2.zero;
+            Pause();
+        }
     }
 
 

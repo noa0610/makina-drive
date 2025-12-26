@@ -61,6 +61,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 0
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164177
@@ -71,6 +72,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 0
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371200
@@ -81,6 +83,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 0
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371201
@@ -91,6 +94,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 0
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371276
@@ -101,6 +105,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 0
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371277
@@ -111,6 +116,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 0
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
       comp:
         rid: 5159238991000371275
@@ -121,6 +127,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 0
       destroyTime: 0
+      isClearTarget: 0
   - waveName: 2Wave
     spawnInfos:
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
@@ -133,6 +140,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371282
@@ -143,6 +151,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164181
@@ -153,6 +162,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371283
@@ -163,6 +173,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371284
@@ -173,6 +184,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371278
@@ -183,6 +195,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371278
@@ -193,6 +206,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371287
@@ -203,6 +217,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
       comp:
         rid: 5159238991000371278
@@ -213,6 +228,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
   - waveName: 3Wave
     spawnInfos:
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
@@ -225,6 +241,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371290
@@ -235,6 +252,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371288
@@ -245,6 +263,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371289
@@ -255,6 +274,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371291
@@ -265,6 +285,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164184
@@ -275,6 +296,7 @@ MonoBehaviour:
       spawnInterval: 0.5
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164184
@@ -285,6 +307,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
   - waveName: 4Wave
     spawnInfos:
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
@@ -297,6 +320,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371294
@@ -307,6 +331,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371298
@@ -317,6 +342,7 @@ MonoBehaviour:
       spawnInterval: 1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371299
@@ -327,6 +353,7 @@ MonoBehaviour:
       spawnInterval: 1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371301
@@ -337,6 +364,7 @@ MonoBehaviour:
       spawnInterval: 1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371303
@@ -347,6 +375,7 @@ MonoBehaviour:
       spawnInterval: 1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371297
@@ -357,6 +386,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 0
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371305
@@ -367,6 +397,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
       comp:
         rid: 5159238991000371305
@@ -377,6 +408,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
   - waveName: 5Wave
     spawnInfos:
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
@@ -389,6 +421,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371307
@@ -399,6 +432,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371308
@@ -409,6 +443,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371309
@@ -419,6 +454,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371310
@@ -429,6 +465,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371311
@@ -439,6 +476,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371312
@@ -449,6 +487,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371314
@@ -459,6 +498,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164190
@@ -469,6 +509,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164190
@@ -479,6 +520,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371315
@@ -489,6 +531,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371316
@@ -499,6 +542,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164190
@@ -509,6 +553,7 @@ MonoBehaviour:
       spawnInterval: 0.2
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
       comp:
         rid: 5159238991000371318
@@ -519,6 +564,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
       comp:
         rid: 5159238991000371317
@@ -529,6 +575,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
   - waveName: 6Wave
     spawnInfos:
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
@@ -541,6 +588,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164192
@@ -551,6 +599,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164193
@@ -561,6 +610,7 @@ MonoBehaviour:
       spawnInterval: 0.5
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164193
@@ -571,6 +621,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164193
@@ -581,6 +632,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371319
@@ -591,6 +643,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371320
@@ -601,6 +654,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371321
@@ -611,6 +665,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
       comp:
         rid: 5159238991000371322
@@ -621,6 +676,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
       comp:
         rid: 5159238991000371323
@@ -631,6 +687,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
   - waveName: 7Wave
     spawnInfos:
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
@@ -643,6 +700,7 @@ MonoBehaviour:
       spawnInterval: 0.5
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371324
@@ -653,6 +711,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371325
@@ -663,6 +722,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371326
@@ -673,6 +733,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371327
@@ -683,6 +744,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371329
@@ -693,6 +755,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371330
@@ -703,6 +766,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164196
@@ -713,6 +777,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371332
@@ -723,6 +788,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164196
@@ -733,6 +799,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164196
@@ -743,6 +810,7 @@ MonoBehaviour:
       spawnInterval: 0.5
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 340796d89192ba64aa78de3372a29ce5, type: 3}
       comp:
         rid: 5159238910236164196
@@ -753,6 +821,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
   - waveName: 8Wave
     spawnInfos:
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
@@ -765,6 +834,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371333
@@ -775,6 +845,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371334
@@ -785,6 +856,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371335
@@ -795,6 +867,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371336
@@ -805,6 +878,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164199
@@ -815,6 +889,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164199
@@ -825,6 +900,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164199
@@ -835,6 +911,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
       comp:
         rid: 5159238910236164199
@@ -845,6 +922,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
       comp:
         rid: 5159238910236164199
@@ -855,6 +933,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
   - waveName: 9Wave
     spawnInfos:
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
@@ -867,6 +946,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164201
@@ -877,6 +957,7 @@ MonoBehaviour:
       spawnInterval: 0.5
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371337
@@ -887,6 +968,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371338
@@ -897,6 +979,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371339
@@ -907,6 +990,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371340
@@ -917,6 +1001,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371341
@@ -927,6 +1012,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371342
@@ -937,6 +1023,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371343
@@ -947,6 +1034,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371344
@@ -957,6 +1045,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164202
@@ -967,6 +1056,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164202
@@ -977,6 +1067,7 @@ MonoBehaviour:
       spawnInterval: 0.2
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164202
@@ -987,6 +1078,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164202
@@ -997,6 +1089,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
   - waveName: 10Wave
     spawnInfos:
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
@@ -1009,6 +1102,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164204
@@ -1019,6 +1113,7 @@ MonoBehaviour:
       spawnInterval: 0.5
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164205
@@ -1029,6 +1124,7 @@ MonoBehaviour:
       spawnInterval: 0.5
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164205
@@ -1039,6 +1135,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164205
@@ -1049,6 +1146,7 @@ MonoBehaviour:
       spawnInterval: 0.5
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164205
@@ -1059,6 +1157,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164205
@@ -1069,6 +1168,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164205
@@ -1079,6 +1179,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164205
@@ -1089,6 +1190,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164205
@@ -1099,6 +1201,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164205
@@ -1109,6 +1212,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164205
@@ -1119,7 +1223,8 @@ MonoBehaviour:
       spawnInterval: 0.2
       statusRate: 10
       destroyTime: 0
-    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      isClearTarget: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 340796d89192ba64aa78de3372a29ce5, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 1
@@ -1129,7 +1234,8 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
-    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      isClearTarget: 1
+    - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 1
@@ -1139,6 +1245,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 1
   _endlessWaves:
   - waveName: 1EndlessWave
     spawnInfos:
@@ -1152,6 +1259,7 @@ MonoBehaviour:
       spawnInterval: 1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238923754143813
@@ -1162,6 +1270,7 @@ MonoBehaviour:
       spawnInterval: 0.5
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238923754143813
@@ -1172,6 +1281,7 @@ MonoBehaviour:
       spawnInterval: 0.5
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238923754143813
@@ -1182,6 +1292,7 @@ MonoBehaviour:
       spawnInterval: 0.5
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
   - waveName: 2EndlessWave
     spawnInfos:
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
@@ -1194,6 +1305,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371346
@@ -1204,6 +1316,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371347
@@ -1214,6 +1327,7 @@ MonoBehaviour:
       spawnInterval: 0.1
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371347
@@ -1224,6 +1338,7 @@ MonoBehaviour:
       spawnInterval: 0.4
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371347
@@ -1234,6 +1349,7 @@ MonoBehaviour:
       spawnInterval: 0.2
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371347
@@ -1244,6 +1360,7 @@ MonoBehaviour:
       spawnInterval: 0.4
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
     - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
       comp:
         rid: 5159238991000371347
@@ -1254,6 +1371,7 @@ MonoBehaviour:
       spawnInterval: 0.3
       statusRate: 10
       destroyTime: 0
+      isClearTarget: 0
   references:
     version: 2
     RefIds:
