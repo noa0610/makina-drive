@@ -45,167 +45,1517 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   _targetObject: {fileID: 0}
+  _waveDuration: 60
+  _currentWaveNumber: 1
   _timer: {fileID: 0}
-  spawnInfos:
-  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
-    comp:
-      rid: 5159238869754839110
-    spawnCount: 10
-    sameTimeSpawnCount: 1
-    spawnTime: 1
-    spawnEndTime: 0
-    spawnInterval: 3
-    statusRate: 1
-    destroyTime: 0
-  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
-    comp:
-      rid: 5159238910236164164
-    spawnCount: 10
-    sameTimeSpawnCount: 1
-    spawnTime: 30
-    spawnEndTime: 0
-    spawnInterval: 2
-    statusRate: 1
-    destroyTime: 0
-  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
-    comp:
-      rid: 5159238910236164165
-    spawnCount: 10
-    sameTimeSpawnCount: 1
-    spawnTime: 30
-    spawnEndTime: 0
-    spawnInterval: 2
-    statusRate: 1
-    destroyTime: 0
-  - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
-    comp:
-      rid: 5159238910236164166
-    spawnCount: 1
-    sameTimeSpawnCount: 1
-    spawnTime: 60
-    spawnEndTime: 0
-    spawnInterval: 0
-    statusRate: 1
-    destroyTime: 0
-  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
-    comp:
-      rid: 5159238910236164167
-    spawnCount: 10
-    sameTimeSpawnCount: 1
-    spawnTime: 60
-    spawnEndTime: 0
-    spawnInterval: 3
-    statusRate: 1
-    destroyTime: 0
-  - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
-    comp:
-      rid: 5159238910236164167
-    spawnCount: 5
-    sameTimeSpawnCount: 1
-    spawnTime: 80
-    spawnEndTime: 0
-    spawnInterval: 2
-    statusRate: 1
-    destroyTime: 0
-  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
-    comp:
-      rid: 5159238910236164168
-    spawnCount: 5
-    sameTimeSpawnCount: 1
-    spawnTime: 90
-    spawnEndTime: 0
-    spawnInterval: 2
-    statusRate: 1
-    destroyTime: 0
-  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
-    comp:
-      rid: 5159238910236164169
-    spawnCount: 5
-    sameTimeSpawnCount: 1
-    spawnTime: 90
-    spawnEndTime: 0
-    spawnInterval: 2
-    statusRate: 1
-    destroyTime: 0
-  - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
-    comp:
-      rid: 5159238910236164170
-    spawnCount: 5
-    sameTimeSpawnCount: 1
-    spawnTime: 95
-    spawnEndTime: 0
-    spawnInterval: 2
-    statusRate: 1
-    destroyTime: 0
-  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
-    comp:
-      rid: 5159238910236164171
-    spawnCount: 5
-    sameTimeSpawnCount: 1
-    spawnTime: 105
-    spawnEndTime: 0
-    spawnInterval: 2
-    statusRate: 1
-    destroyTime: 0
-  - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
-    comp:
-      rid: 5159238910236164172
-    spawnCount: 5
-    sameTimeSpawnCount: 1
-    spawnTime: 105
-    spawnEndTime: 0
-    spawnInterval: 2
-    statusRate: 1
-    destroyTime: 0
-  - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
-    comp:
-      rid: 5159238910236164173
-    spawnCount: 1
-    sameTimeSpawnCount: 1
-    spawnTime: 120
-    spawnEndTime: 0
-    spawnInterval: 2
-    statusRate: 1
-    destroyTime: 0
+  _normalWaves:
+  - waveName: 1Wave
+    spawnInfos:
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164174
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 1
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 0
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164177
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 0
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371200
+      spawnCount: 7
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 0
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371201
+      spawnCount: 7
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 0
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371276
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 0
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371277
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 0
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
+      comp:
+        rid: 5159238991000371275
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 0
+      destroyTime: 0
+  - waveName: 2Wave
+    spawnInfos:
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371279
+      spawnCount: 15
+      sameTimeSpawnCount: 1
+      spawnTime: 0
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371282
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164181
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371283
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371284
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371278
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371278
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371287
+      spawnCount: 20
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
+      comp:
+        rid: 5159238991000371278
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+  - waveName: 3Wave
+    spawnInfos:
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164182
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371290
+      spawnCount: 7
+      sameTimeSpawnCount: 1
+      spawnTime: 20
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371288
+      spawnCount: 7
+      sameTimeSpawnCount: 1
+      spawnTime: 20
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371289
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 40
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371291
+      spawnCount: 7
+      sameTimeSpawnCount: 1
+      spawnTime: 20
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164184
+      spawnCount: 20
+      sameTimeSpawnCount: 1
+      spawnTime: 50
+      spawnEndTime: 0
+      spawnInterval: 0.5
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164184
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+  - waveName: 4Wave
+    spawnInfos:
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371292
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371294
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371298
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371299
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371301
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371303
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371297
+      spawnCount: 15
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 0
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371305
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
+      comp:
+        rid: 5159238991000371305
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+  - waveName: 5Wave
+    spawnInfos:
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371306
+      spawnCount: 3
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371307
+      spawnCount: 3
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371308
+      spawnCount: 3
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371309
+      spawnCount: 3
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371310
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371311
+      spawnCount: 3
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371312
+      spawnCount: 3
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371314
+      spawnCount: 3
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238910236164190
+      spawnCount: 7
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164190
+      spawnCount: 20
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238991000371315
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238991000371316
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164190
+      spawnCount: 15
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.2
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
+      comp:
+        rid: 5159238991000371318
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
+      comp:
+        rid: 5159238991000371317
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+  - waveName: 6Wave
+    spawnInfos:
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238910236164191
+      spawnCount: 3
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164192
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164193
+      spawnCount: 30
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.5
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164193
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238910236164193
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371319
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371320
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238991000371321
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
+      comp:
+        rid: 5159238991000371322
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
+      comp:
+        rid: 5159238991000371323
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+  - waveName: 7Wave
+    spawnInfos:
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164194
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.5
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371324
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238991000371325
+      spawnCount: 3
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371326
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371327
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238991000371329
+      spawnCount: 3
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371330
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238910236164196
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371332
+      spawnCount: 7
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164196
+      spawnCount: 25
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164196
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.5
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 340796d89192ba64aa78de3372a29ce5, type: 3}
+      comp:
+        rid: 5159238910236164196
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+  - waveName: 8Wave
+    spawnInfos:
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164197
+      spawnCount: 20
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371333
+      spawnCount: 7
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371334
+      spawnCount: 7
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238991000371335
+      spawnCount: 7
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238991000371336
+      spawnCount: 7
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238910236164199
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164199
+      spawnCount: 20
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164199
+      spawnCount: 60
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
+      comp:
+        rid: 5159238910236164199
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
+      comp:
+        rid: 5159238910236164199
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+  - waveName: 9Wave
+    spawnInfos:
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164200
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238910236164201
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.5
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371337
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371338
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 17
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371339
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 19
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371340
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 21
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371341
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 23
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371342
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 25
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371343
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 27
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371344
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 29
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164202
+      spawnCount: 17
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238910236164202
+      spawnCount: 8
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.2
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238910236164202
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164202
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+  - waveName: 10Wave
+    spawnInfos:
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164203
+      spawnCount: 15
+      sameTimeSpawnCount: 1
+      spawnTime: 5
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164204
+      spawnCount: 20
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.5
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164205
+      spawnCount: 15
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.5
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164205
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238910236164205
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 40
+      spawnEndTime: 0
+      spawnInterval: 0.5
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164205
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164205
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238910236164205
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 50
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164205
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 27
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238910236164205
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 29
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164205
+      spawnCount: 17
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238910236164205
+      spawnCount: 8
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.2
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238910236164205
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238910236164205
+      spawnCount: 1
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+  _endlessWaves:
+  - waveName: 1EndlessWave
+    spawnInfos:
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238923754143812
+      spawnCount: 20
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238923754143813
+      spawnCount: 20
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.5
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238923754143813
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.5
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238923754143813
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.5
+      statusRate: 10
+      destroyTime: 0
+  - waveName: 2EndlessWave
+    spawnInfos:
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371345
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371346
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 15
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
+      comp:
+        rid: 5159238991000371347
+      spawnCount: 25
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.1
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238991000371347
+      spawnCount: 7
+      sameTimeSpawnCount: 1
+      spawnTime: 30
+      spawnEndTime: 0
+      spawnInterval: 0.4
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
+      comp:
+        rid: 5159238991000371347
+      spawnCount: 10
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.2
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
+      comp:
+        rid: 5159238991000371347
+      spawnCount: 5
+      sameTimeSpawnCount: 1
+      spawnTime: 45
+      spawnEndTime: 0
+      spawnInterval: 0.4
+      statusRate: 10
+      destroyTime: 0
+    - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
+      comp:
+        rid: 5159238991000371347
+      spawnCount: 3
+      sameTimeSpawnCount: 1
+      spawnTime: 59
+      spawnEndTime: 0
+      spawnInterval: 0.3
+      statusRate: 10
+      destroyTime: 0
   references:
     version: 2
     RefIds:
-    - rid: 5159238869754839110
+    - rid: 5159238910236164174
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 5159238910236164164
+    - rid: 5159238910236164177
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164181
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 5
+    - rid: 5159238910236164182
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164184
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164190
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164191
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164192
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164193
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164194
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164196
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164197
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164199
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164200
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164201
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164202
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164203
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164204
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238910236164205
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238923754143812
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238923754143813
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238991000371200
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 5159238910236164165
+    - rid: 5159238991000371201
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 1
-    - rid: 5159238910236164166
+    - rid: 5159238991000371275
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 5159238910236164167
-      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
-      data: 
-    - rid: 5159238910236164168
+    - rid: 5159238991000371276
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 2
-    - rid: 5159238910236164169
+    - rid: 5159238991000371277
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
-        spawnDirection: 0
-    - rid: 5159238910236164170
+        spawnDirection: 3
+    - rid: 5159238991000371278
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 5159238910236164171
+    - rid: 5159238991000371279
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238991000371282
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 4
+    - rid: 5159238991000371283
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 6
+    - rid: 5159238991000371284
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 7
+    - rid: 5159238991000371287
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238991000371288
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 5159238910236164172
+    - rid: 5159238991000371289
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 1
+    - rid: 5159238991000371290
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 1
+    - rid: 5159238991000371291
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 5159238910236164173
+    - rid: 5159238991000371292
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 2
+    - rid: 5159238991000371294
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 3
+    - rid: 5159238991000371297
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238991000371298
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 4
+    - rid: 5159238991000371299
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 7
+    - rid: 5159238991000371301
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 5
+    - rid: 5159238991000371303
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 6
+    - rid: 5159238991000371305
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238991000371306
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 0
+    - rid: 5159238991000371307
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 1
+    - rid: 5159238991000371308
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 2
+    - rid: 5159238991000371309
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 3
+    - rid: 5159238991000371310
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 4
+    - rid: 5159238991000371311
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 5
+    - rid: 5159238991000371312
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 6
+    - rid: 5159238991000371314
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 7
+    - rid: 5159238991000371315
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 2
+    - rid: 5159238991000371316
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 3
+    - rid: 5159238991000371317
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 0
+    - rid: 5159238991000371318
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 1
+    - rid: 5159238991000371319
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 4
+    - rid: 5159238991000371320
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 5
+    - rid: 5159238991000371321
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 3
+    - rid: 5159238991000371322
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 2
+    - rid: 5159238991000371323
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 3
+    - rid: 5159238991000371324
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 4
+    - rid: 5159238991000371325
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 0
+    - rid: 5159238991000371326
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 6
+    - rid: 5159238991000371327
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 5
+    - rid: 5159238991000371329
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 1
+    - rid: 5159238991000371330
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 7
+    - rid: 5159238991000371332
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238991000371333
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 6
+    - rid: 5159238991000371334
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 5
+    - rid: 5159238991000371335
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 4
+    - rid: 5159238991000371336
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 7
+    - rid: 5159238991000371337
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 2
+    - rid: 5159238991000371338
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 4
+    - rid: 5159238991000371339
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 0
+    - rid: 5159238991000371340
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 6
+    - rid: 5159238991000371341
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 3
+    - rid: 5159238991000371342
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 7
+    - rid: 5159238991000371343
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 1
+    - rid: 5159238991000371344
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 5
+    - rid: 5159238991000371345
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238991000371346
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 5159238991000371347
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 

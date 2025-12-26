@@ -162,14 +162,18 @@ public partial class Freya : UnitBase
     public override void OnDeath()
     {
         base.OnDeath();
-        PlaySE(_DaedSE.SEName, _DaedSE.Volume);
+
         stateMachine.ChangeState(Triggers.died);
         OnGameOver();
     }
 
     public void OnGameOver()
     {
-        GameStateManager.instance.ChangeState(GameState.GameOver);
+        if (!IsMatchingState(States.dead))
+        {
+            PlaySE(_DaedSE.SEName, _DaedSE.Volume);
+            GameStateManager.instance.ChangeState(GameState.GameOver);
+        }
     }
 
 

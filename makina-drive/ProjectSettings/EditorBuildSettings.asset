@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/01_Scenes/Game/Load.unity
     guid: 2b0e650689017f94bad3a8cf2a27b93e
   - enabled: 1
+    path: Assets/01_Scenes/Game/Stage_Normal.unity
+    guid: e1a6a450b299b63449289d8489ad25e8
+  - enabled: 1
+    path: Assets/01_Scenes/Game/Stage_Endless.unity
+    guid: b1ae928410b899149b1f310c3ca4c956
+  - enabled: 1
     path: Assets/01_Scenes/Test/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
