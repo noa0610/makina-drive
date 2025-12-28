@@ -35,6 +35,9 @@ public partial class Enemy_Normal : UnitBase
     [Header("吹き飛ばし")]
     [SerializeField] private float _blowbackMaxDistance = 30f;
 
+    [Header("経験値アイテム")]
+    [SerializeField] private ExpItem _expItem;
+
     private UnitBase _targetUnit;
     private Transform _targetTransform;
 
@@ -88,6 +91,18 @@ public partial class Enemy_Normal : UnitBase
     public override void OnDeath()
     {
         base.OnDeath();
+
+        // 経験値アイテムドロップ
+        if (_targetUnit != null)
+        {
+            float finalExp = UnitStatusData.baseExp;
+
+            var expObj = Instantiate(_expItem, transform.position, Quaternion.identity);
+            expObj.GetComponent<ExpItem>();
+            expObj.Setup(_targetUnit);
+            expObj.SetExp(finalExp);
+        }
+
         UnitManager.instance.RemoveUnit(this);
         Destroy(this.gameObject);
     }

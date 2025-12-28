@@ -16,6 +16,7 @@ public partial class Freya : UnitBase, IPausable
     [Header("固有設定")]
     private static readonly Dictionary<States, string> _stateNames = EnumWrapper.GetValueNameMap<States>();
     private Rigidbody2D rb;
+    public PlayerLevel _level;
 
     [Header("移動")]
     [SerializeField] private float _accel = 30f;
@@ -116,6 +117,16 @@ public partial class Freya : UnitBase, IPausable
     private Vector2 _dashDirection = Vector2.right;
     private bool _inputDash = false;
 
+    protected override void AfterAwake()
+    {
+        base.AfterAwake();
+        if (_level == null)
+        {
+            _level = new PlayerLevel(this);
+        }
+        Debug.Log("Set Level");
+    }
+
     protected override void Start()
     {
 
@@ -159,6 +170,13 @@ public partial class Freya : UnitBase, IPausable
         }
     }
 
+    // 外部（経験値アイテム）からアクセスするための窓口
+    public override void GainExp(float amount)
+    {
+        _level.AddExp(amount);
+    }
+
+
     public override void OnDeath()
     {
         base.OnDeath();
@@ -201,7 +219,7 @@ public partial class Freya : UnitBase, IPausable
 
     private void HandleStateChanged(GameState newState)
     {
-        if(newState == GameState.Clear)
+        if (newState == GameState.Clear)
         {
             Rigidbody2D.linearVelocity = Vector2.zero;
             Pause();

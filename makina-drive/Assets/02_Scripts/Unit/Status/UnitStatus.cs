@@ -18,7 +18,7 @@ public struct UnitStatus
     public Vector2 direction; // 向き（2Dベクトル）
     public UnitTags tags;
 
-    public UnitStatus(int id, string name, string description, float maxHp, float hp, float atk, float def, float speed, int Lv, float collectionRange, float stamina, float knockbackMultiplier, float knockbackResistance, Vector2 direction, UnitTags tags)
+    public UnitStatus(int id, string name, string description, float maxHp, float hp, float atk, float def, float speed, int Lv, float baseExp, float collectionRange, float stamina, float knockbackMultiplier, float knockbackResistance, Vector2 direction, UnitTags tags)
     {
         this.id = id;
         this.name = name;

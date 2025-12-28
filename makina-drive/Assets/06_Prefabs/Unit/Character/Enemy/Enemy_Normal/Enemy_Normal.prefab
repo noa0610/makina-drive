@@ -71,8 +71,10 @@ MonoBehaviour:
   _stateChangeTime: 1.5
   _attackTime: 0.7
   _attackBulletData: {fileID: 11400000, guid: 93cfe68dd5ffd114db16f080d2442560, type: 2}
+  _ignoreStan: 0
   _stanTime: 0.5
   _blowbackMaxDistance: 30
+  _expItem: {fileID: 4917892835222408703, guid: a428fbd1c0b2360488024408b87f946c, type: 3}
 --- !u!50 &4264112061759656898
 Rigidbody2D:
   serializedVersion: 5

@@ -17,5 +17,6 @@ public class UnitStatusData : ScriptableObject
     public float knockbackMultiplier; // ノックバック力
     public float knockbackResistance; // ノックバック抵抗
     public float damageTakeScale = 1f; // 受けるダメージの割合（2なら2倍の被ダメージ）
+    public float baseExp;         // 経験値
     public UnitTags tags;
 }

@@ -30,6 +30,7 @@ public class StatusManager
         AddStatus(Status.Stamina, data.stamina, false);
         AddStatus(Status.knockbackMultiplier, data.knockbackMultiplier);
         AddStatus(Status.knockbackResistance, data.knockbackResistance);
+        AddStatus(Status.Lv, 1);
         unitTags = data.tags;
         return this;
     }

@@ -44,6 +44,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public static event Action<UnitBase> OnAnyUnitDeath;
     private bool IsLazyDead = false;
     private float lazyDeadTime = 0;
+    public float DropExp { get; set; } // 敵が保持する経験値量
     #endregion
 
     #region === Reactive & Direction ===
@@ -173,7 +174,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         }
 
         // 死亡タイマー
-        if(IsLazyDead && dt >= lazyDeadTime)
+        if (IsLazyDead && dt >= lazyDeadTime)
         {
             OnDeath();
         }
@@ -221,7 +222,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
             Debug.Log($"{_status.name}が死亡した");
         }
     }
-    
+
     // 死亡タイマーをセット
     public void SetLazyDeath(float deadTime)
     {
@@ -233,6 +234,9 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     {
         IsInvincible = isInvincible;
     }
+
+    public virtual void GainExp(float amount) { }
+
     #endregion
 
     #region === Pause & Play ===
