@@ -16,7 +16,13 @@ public partial class Freya : UnitBase, IPausable
     [Header("固有設定")]
     private static readonly Dictionary<States, string> _stateNames = EnumWrapper.GetValueNameMap<States>();
     private Rigidbody2D rb;
+
+
+    [Header("レベルアップ")]
+    [SerializeField] private float _farstNextLevelExp = 10;
+    [SerializeField] private float _nextLevelExpRate = 1.2f;
     public PlayerLevel _level;
+    public EnhanceInventory _inventory;
 
     [Header("移動")]
     [SerializeField] private float _accel = 30f;
@@ -120,10 +126,9 @@ public partial class Freya : UnitBase, IPausable
     protected override void AfterAwake()
     {
         base.AfterAwake();
-        if (_level == null)
-        {
-            _level = new PlayerLevel(this);
-        }
+        _level = new PlayerLevel(this, _farstNextLevelExp, _nextLevelExpRate);
+        _inventory = new EnhanceInventory();
+
         Debug.Log("Set Level");
     }
 
