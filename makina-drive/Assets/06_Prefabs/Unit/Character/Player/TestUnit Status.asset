@@ -17,13 +17,14 @@ MonoBehaviour:
   description: "\u30C6\u30B9\u30C8\u30D7\u30EC\u30A4\u7528\u30D7\u30EC\u30A4\u30E4\u30FC\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
   maxHp: 100
   hp: 100
-  atk: 5
-  def: 5
-  speed: 5
+  atk: 1
+  def: 1
+  speed: 10
   dashSpeed: 8
   collectionRange: 5
   stamina: 100
   knockbackMultiplier: 1.5
   knockbackResistance: 1000
   damageTakeScale: 1
+  baseExp: 0
   tags: 1

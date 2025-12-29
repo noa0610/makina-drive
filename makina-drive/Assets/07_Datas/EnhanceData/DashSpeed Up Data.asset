@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45f934b82eddea5469aca4b5237382b3, type: 3}
-  m_Name: Def Up Data
+  m_Name: DashSpeed Up Data
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
-  enhanceName: Def
-  discription: defence up
+  enhanceName: DashSpeed
+  discription: DashSpeed up
   type: 0
-  targetStatus: 3
+  targetStatus: 5
   ratioPerLevel: 1
   healRatio: 0
   maxLevel: 15

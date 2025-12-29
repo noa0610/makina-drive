@@ -89,6 +89,7 @@ MonoBehaviour:
   _Dir: {x: 0, y: 0}
   _moveDir: {x: 0, y: 0}
   _shootDir: {x: 1, y: 0}
+  KnockbackForce: 0
   _StartDirection: 0
   _enableVisuableInvincible: 0
   _currentState: 
@@ -100,7 +101,10 @@ MonoBehaviour:
   _ShootCreatePos: 0.5
   _ShootStateChangeTime: 5
   _ShootBulletData: {fileID: 11400000, guid: 3e3db0022e1f22a4f8aec1cd95d6ffd6, type: 2}
+  _ignoreStan: 0
   _stanTime: 0.5
+  _blowbackMaxDistance: 30
+  _expItem: {fileID: 4917892835222408703, guid: a428fbd1c0b2360488024408b87f946c, type: 3}
 --- !u!50 &2366887908436795336
 Rigidbody2D:
   serializedVersion: 5

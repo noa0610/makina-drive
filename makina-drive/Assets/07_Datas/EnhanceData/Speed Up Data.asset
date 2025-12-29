@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f934b82eddea5469aca4b5237382b3, type: 3}
   m_Name: Speed Up Data
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
-  enhanceName: speed
+  enhanceName: Speed
   discription: Speed up
   type: 0
   targetStatus: 4
-  ratioPerLevel: 10
+  ratioPerLevel: 1
   healRatio: 0
-  maxLevel: 100
+  maxLevel: 15

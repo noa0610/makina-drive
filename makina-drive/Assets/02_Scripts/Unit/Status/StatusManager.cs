@@ -15,17 +15,23 @@ public class StatusManager
 
         // 基礎ステータスを一括登録
         var hp = AddStatus(Status.HP, data.hp, false, true);
-        var mHp = AddStatus(Status.MaxHP, data.maxHp, false, true);
-        mHp.OnAmountChanged += (_, after) =>
+        var mHp = AddStatus(Status.MaxHP, data.maxHp, true, true);
+        mHp.OnAmountChanged += (before, after) =>
         {
             hp.SetMax(mHp.CurrentAmount);
+
+            if(after > before)
+            {
+                float diff = after - before;
+                hp.CurrentAmount += diff;
+                Debug.Log($"MaxHP Increased: {before} -> {after}. Added {diff} to Current HP.");
+            }
         };
         AddStatus(Status.DamageRatio, data.damageTakeScale);
         AddStatus(Status.Speed, data.speed);
         AddStatus(Status.DashSpeed, data.dashSpeed);
         AddStatus(Status.ATK, data.atk);
         AddStatus(Status.DEF, data.def);
-        AddStatus(Status.DamageRatio, data.damageTakeScale);
         AddStatus(Status.CollectionRange, data.collectionRange);
         AddStatus(Status.Stamina, data.stamina, false);
         AddStatus(Status.knockbackMultiplier, data.knockbackMultiplier);

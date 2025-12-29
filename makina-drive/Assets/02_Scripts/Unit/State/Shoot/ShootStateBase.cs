@@ -80,6 +80,7 @@ public class ShootStateBase : StateComp
         // ステータスをセット（速度、方向、ダメージなど）
         bullet.SetBulletStatus(_data, _targetLayer);
         bullet.SetDirection(dict);
+        bullet.SetParent(parent);
         bullet.Invoke();
         bullet.SetKnockbackForce(parent.statusManager.ReadValue(Status.knockbackMultiplier));
     }

@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 取得した強化を保持
+/// </summary>
 public class EnhanceInventory 
 {
     private Dictionary<EnhanceData, int> _levels = new();

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f934b82eddea5469aca4b5237382b3, type: 3}
   m_Name: Atk Up Data
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
-  enhanceName: atk
+  enhanceName: Atk
   discription: attack up
   type: 0
   targetStatus: 2
-  ratioPerLevel: 10
+  ratioPerLevel: 0.1
   healRatio: 0
-  maxLevel: 100
+  maxLevel: 15

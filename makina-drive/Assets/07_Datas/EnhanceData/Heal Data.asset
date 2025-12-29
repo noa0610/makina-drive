@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
   enhanceName: heal
   discription: Heal 20%
-  type: 1
+  type: 2
   targetStatus: 0
   ratioPerLevel: 0
   healRatio: 0.2

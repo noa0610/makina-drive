@@ -31,22 +31,38 @@ public class UnitManager : SingletonBehavior<UnitManager>
     /// <param name="target">ダメージを受ける側</param>
     /// <param name="from">ダメージを与える側</param>
     /// <param name="damage"></param>
-    public void AddDamage(UnitBase target, IUnit from, float damage,  Vector2 pushdir, float knockbackForce = 0)
+    public void AddDamage(UnitBase target, UnitBase from, float damage,  Vector2 pushdir, float knockbackForce = 0)
     {
+        float finalDamage = FinalDamageCalculation(damage, 
+                                                   from.statusManager.ReadValue(Status.ATK), 
+                                                   target.statusManager.ReadValue(Status.DEF), 
+                                                   target.statusManager.ReadValue(Status.DamageRatio));
         if(_damegeLog) 
         {
-            Debug.Log($"{target.name} : Take Damage {damage}.  HP: {target.statusManager.ReadValue(Status.HP) - damage} /{target.statusManager.ReadValue(Status.MaxHP)}");
+            Debug.Log($"{target.name} : Take Damage {finalDamage}.  HP: {target.statusManager.ReadValue(Status.HP) - damage} /{target.statusManager.ReadValue(Status.MaxHP)}");
         }
-        target.TakeDamage(from, damage, pushdir, knockbackForce);
+        target.TakeDamage(from, finalDamage, pushdir, knockbackForce);
     }
 
-    public void AddDamage(UnitBase target, IUnit from, float damage)
+    public void AddDamage(UnitBase target, UnitBase from, float damage)
     {
+        float finalDamage = FinalDamageCalculation(damage, 
+                                                   from.statusManager.ReadValue(Status.ATK), 
+                                                   target.statusManager.ReadValue(Status.DEF), 
+                                                   target.statusManager.ReadValue(Status.DamageRatio));
         if(_damegeLog) 
         {
-            Debug.Log($"{target.name} : Take Damage {damage}.  HP: {target.statusManager.ReadValue(Status.HP) - damage} /{target.statusManager.ReadValue(Status.MaxHP)}");
+            Debug.Log($"{target.name} : Take Damage {finalDamage}.  HP: {target.statusManager.ReadValue(Status.HP) - damage} /{target.statusManager.ReadValue(Status.MaxHP)}");
         }
-        target.TakeDamage(from, damage, Vector2.zero, 0);
+        target.TakeDamage(from, finalDamage, Vector2.zero, 0);
+    }
+
+    // ダメージ計算式
+    public float FinalDamageCalculation(float damage, float atkRate, float def, float damageRate)
+    {
+        float rn = Random.Range(0.9f, 1.1f); // 乱数
+        float finalDamage = (damage * atkRate - def) * damageRate; // (弾ダメージ × 攻撃倍率 - 防御力) * 被ダメージ倍率
+        return finalDamage * rn;
     }
 
     public void Pause(bool pause, bool isTimeStop = true)

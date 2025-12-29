@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 強化項目のデータクラス
+/// </summary>
 [CreateAssetMenu(menuName = "MakinaDrive/EnhanceStatus")]
 public class EnhanceData : ScriptableObject
 {

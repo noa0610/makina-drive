@@ -74,6 +74,7 @@ MonoBehaviour:
   _ignoreStan: 1
   _stanTime: 0.5
   _blowbackMaxDistance: 30
+  _expItem: {fileID: 4917892835222408703, guid: a428fbd1c0b2360488024408b87f946c, type: 3}
 --- !u!50 &2252061035777294000
 Rigidbody2D:
   serializedVersion: 5
