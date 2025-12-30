@@ -237,6 +237,18 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
     public virtual void GainExp(float amount) { }
 
+    // 敵ウェーブ生成専用
+    public void ApplyWaveStatus(float multiplier)
+    {
+        if (statusManager == null) return;
+
+        // ウェーブ生成時に強化するステータスのリスト
+        Status[] targets = { Status.MaxHP, Status.ATK, Status.DEF, Status.Speed };
+
+        statusManager.ApplyStatusMultiplier(targets, multiplier);
+        statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));
+    }
+
     #endregion
 
     #region === Pause & Play ===

@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Cysharp.Threading.Tasks;
+using System.Linq;
 
 /// <summary>
 /// ダッシュ攻撃ステート
@@ -16,6 +18,7 @@ public class DashAttack : ShootOnMoveBase
     [Header("回転速度（度/秒）")]
     [SerializeField] private float rotateSpeed = 360f;
     private string _lazechange;  // ステート終了時の遷移先
+    private string _blockThroughTag; // isBlockを無視するステートタグ
     private float _dashSpeed;
     private float _time;
     private Vector2 _dashDirection;
@@ -50,6 +53,10 @@ public class DashAttack : ShootOnMoveBase
     {
         _graceDashTime = startDashTime;
     }
+    public void SetBlockThoroughTag(string blockThroughTag)
+    {
+        _blockThroughTag = blockThroughTag;
+    }
 
     // === Public ===
     public override void Enter(IState previousState, UnitBase parent)
@@ -68,16 +75,10 @@ public class DashAttack : ShootOnMoveBase
         if (rigidbody2D == null) return;
 
         _time += deltaTime;
-
-        // Debug.Log("time: " + _time);
-
-
-        Debug.Log("_isBlock: " + _isBlock);
-        if (_time >= _graceDashTime)
+        if(_time >= _graceDashTime)
         {
             _isBlock = false;
-            if (_lazechange != null)
-                parent.stateMachine.LazyChange(_lazechange);
+            // ProcessLazyChange(parent, _lazechange, deltaTime);
         }
 
         var maxSpeed = parent.statusManager.ReadValue(Status.DashSpeed);
@@ -119,6 +120,14 @@ public class DashAttack : ShootOnMoveBase
     // 状態変更をブロックする
     public override bool AllowChange(IState nextState, UnitBase parent)
     {
+        // 遷移先の情報を取得
+        var nextStateInfo = parent.stateMachine.GetStateInfo(nextState);
+
+        if(nextStateInfo.HasTag(_blockThroughTag))
+        {
+            return base.AllowChange(nextState, parent);
+        }
+
         if (_isBlock)
         {
             Debug.Log("DashAttack: Change is blocked.");

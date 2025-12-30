@@ -119,6 +119,7 @@ public partial class Freya : UnitBase, IPausable
     [SerializeField] private VisualInfo _JumpAttackSE;
     [SerializeField] private VisualInfo _DaedSE;
 
+    private string _dashAttackTag = "DA";
 
     private Vector2 _dashDirection = Vector2.right;
     private bool _inputDash = false;

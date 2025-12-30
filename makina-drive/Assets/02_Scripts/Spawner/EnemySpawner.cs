@@ -191,9 +191,14 @@ public class EnemySpawner : MonoBehaviour
             // ウェーブ数に応じて経験値増加
             unit.DropExp = info.unitBase.UnitStatusData.baseExp * (1 + _currentWaveNumber * info.statusRate);
 
-            // TODO UnitBase内に倍率を受け取りステータスを強化する処理を用意する、現在未実装
-            // 敵の強化ロジック（適当な例）
-            // unit.ApplyStatusMultiplier(powerMultiplier);
+            // ウェーブ数に応じた強化倍率の計算
+            // 例、statusRate = 0.1 → ウェーブ2で0.1（1.1倍の強化）、ウェーブ10で0.9 (1.9倍の強化)
+            float currentWaveMultiplier = (_currentWaveNumber - 1) * info.statusRate;
+
+            if(currentWaveMultiplier > 0)
+            {
+                unit.ApplyWaveStatus(currentWaveMultiplier);
+            }
 
             if (info.destroyTime > 0) unit.SetLazyDeath(info.destroyTime);
 

@@ -123,4 +123,17 @@ public class StatusManager
     {
         return unitTags;
     }
+
+    // 特定のステータスを一括強化適用
+    public void ApplyStatusMultiplier(Status[] statuses, float multiplier)
+    {
+        foreach(var type in statuses)
+        {
+            if(TryGetStatus(type, out var info))
+            {
+                // TemporaryChangedは1.0がデフォルトなので、そこに加算する
+                info.TemporaryChanged = 1f + multiplier;
+            }
+        }
+    }
 }

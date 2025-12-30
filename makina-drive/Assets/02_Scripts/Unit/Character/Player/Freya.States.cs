@@ -238,10 +238,11 @@ public partial class Freya
         _stateMachine.AddState(States.dodge, dodge);
 
         /* ドライブダッシュ */
-        drivedash = new DashAttack(Dash_bulletData, AttackLayer, true);
+        drivedash = new DashAttack(Dash_bulletData, AttackLayer, true, Triggers.dashCancel.ToString());
         drivedash.SetGameObject(_muzzle);
         drivedash.SetRB2(rb);
         drivedash.SetCreatMisalignment(0);
+        drivedash.SetBlockThoroughTag(_dashAttackTag);
         drivedash.OnBeGinning += () =>
         {
             PlaySE(_DashSE.SEName, _DashSE.Volume);
@@ -307,7 +308,7 @@ public partial class Freya
         {
             PlaySE(_N1_AttackSE.SEName, _N1_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.dashN1_Attack, DashN1_attack);
+        _stateMachine.AddState(States.dashN1_Attack, DashN1_attack, _dashAttackTag);
 
         /* ダッシュ通常攻撃2 */
         DashN2_attack = new ShootCombo(DashN2_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
