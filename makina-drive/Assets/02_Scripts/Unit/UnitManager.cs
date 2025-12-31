@@ -1,10 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
 
 public class UnitManager : SingletonBehavior<UnitManager>
 {
     [Header("Debug")]
     [SerializeField] private bool _damegeLog;
+    [SerializeField] private bool _isdamageTextView = false;
+    [SerializeField] private Canvas _parentCanvas;  // Canvasの設定はオーバーレイ
+    [SerializeField] private TextMeshProUGUI _textPrefab;
+    [SerializeField] private float _textViewTime = 0.5f;
+    [SerializeField] private float _textMoveHeight = 0.2f;
+    [SerializeField] private UnitTags _displayTags = UnitTags.Enemy; // 表示対象
 
     private List<UnitBase> _unitList = new List<UnitBase>();
     public void AddUnit(UnitBase unit)
@@ -31,26 +39,31 @@ public class UnitManager : SingletonBehavior<UnitManager>
     /// <param name="target">ダメージを受ける側</param>
     /// <param name="from">ダメージを与える側</param>
     /// <param name="damage"></param>
-    public void AddDamage(UnitBase target, UnitBase from, float damage,  Vector2 pushdir, float knockbackForce = 0)
+    public void AddDamage(UnitBase target, UnitBase from, float damage, Vector2 pushdir, float knockbackForce = 0)
     {
-        float finalDamage = FinalDamageCalculation(damage, 
-                                                   from.statusManager.ReadValue(Status.ATK), 
-                                                   target.statusManager.ReadValue(Status.DEF), 
+        float finalDamage = FinalDamageCalculation(damage,
+                                                   from.statusManager.ReadValue(Status.ATK),
+                                                   target.statusManager.ReadValue(Status.DEF),
                                                    target.statusManager.ReadValue(Status.DamageRatio));
-        if(_damegeLog) 
+        if (_damegeLog)
         {
             Debug.Log($"{target.name} : Take Damage {finalDamage}.  HP: {target.statusManager.ReadValue(Status.HP) - damage} /{target.statusManager.ReadValue(Status.MaxHP)}");
         }
         target.TakeDamage(from, finalDamage, pushdir, knockbackForce);
+
+        if (_isdamageTextView)
+        {
+            DamageTextView(finalDamage, target);
+        }
     }
 
     public void AddDamage(UnitBase target, UnitBase from, float damage)
     {
-        float finalDamage = FinalDamageCalculation(damage, 
-                                                   from.statusManager.ReadValue(Status.ATK), 
-                                                   target.statusManager.ReadValue(Status.DEF), 
+        float finalDamage = FinalDamageCalculation(damage,
+                                                   from.statusManager.ReadValue(Status.ATK),
+                                                   target.statusManager.ReadValue(Status.DEF),
                                                    target.statusManager.ReadValue(Status.DamageRatio));
-        if(_damegeLog) 
+        if (_damegeLog)
         {
             Debug.Log($"{target.name} : Take Damage {finalDamage}.  HP: {target.statusManager.ReadValue(Status.HP) - damage} /{target.statusManager.ReadValue(Status.MaxHP)}");
         }
@@ -61,8 +74,35 @@ public class UnitManager : SingletonBehavior<UnitManager>
     public float FinalDamageCalculation(float damage, float atkRate, float def, float damageRate)
     {
         float rn = Random.Range(0.9f, 1.1f); // 乱数
-        float finalDamage = (damage * atkRate - def) * damageRate; // (弾ダメージ × 攻撃倍率 - 防御力) * 被ダメージ倍率
-        return finalDamage * rn;
+        float calculationDamage = (damage * atkRate - def) * damageRate; // (弾ダメージ × 攻撃倍率 - 防御力) * 被ダメージ倍率
+        float finalDamage = Mathf.Ceil(calculationDamage * rn); // 乱数端数切り上げ
+        return finalDamage;
+    }
+
+    // ダメージ量をテキスト表示
+    public void DamageTextView(float damage, UnitBase target)
+    {
+        if (_parentCanvas == null && _textPrefab == null) return;
+
+        // 表示対象のタグを識別
+        if ((target.UnitStatusData.tags & _displayTags) == 0) return;
+
+        TextMeshProUGUI instanceText = Instantiate(_textPrefab, _parentCanvas.transform);
+
+
+        instanceText.text = $"{damage}";
+
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
+        instanceText.transform.position = screenPos;
+
+        // テキストのアニメーション演出
+        // 上に移動
+        instanceText.transform.DOMoveY(screenPos.y + 50f, _textViewTime).SetEase(Ease.OutQuad);
+        // フェードアウト
+        instanceText.DOFade(0, _textViewTime)
+        .SetEase(Ease.InQuint)
+        // 破棄
+        .OnComplete(() => Destroy(instanceText.gameObject));
     }
 
     public void Pause(bool pause, bool isTimeStop = true)

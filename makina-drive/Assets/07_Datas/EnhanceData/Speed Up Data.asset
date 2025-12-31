@@ -16,6 +16,6 @@ MonoBehaviour:
   discription: Speed up
   type: 0
   targetStatus: 4
-  ratioPerLevel: 1
+  ratioPerLevel: 0.5
   healRatio: 0
   maxLevel: 15

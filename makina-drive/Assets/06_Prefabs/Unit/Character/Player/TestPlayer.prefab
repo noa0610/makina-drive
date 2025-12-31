@@ -58,9 +58,17 @@ MonoBehaviour:
   _Dir: {x: 0, y: 0}
   _moveDir: {x: 0, y: 0}
   _shootDir: {x: 1, y: 0}
+  KnockbackForce: 0
   _StartDirection: 1
   _enableVisuableInvincible: 0
   _currentState: 
+  _farstNextLevelExp: 10
+  _nextLevelExpRate: 1.2
+  _level:
+    _farstNextLevelExp: 0
+    _nextLevelExpRate: 0
+    _maxLevel: 0
+    ExpToNextLevel: 0
   _accel: 30
   _decel: 20
   _dodgeAccel: 10
@@ -106,9 +114,35 @@ MonoBehaviour:
   _jumpStaminaLostAmount: 80
   _fallAimAccel: 40
   _fallAimDecel: 30
+  _fallAutoChangeTIme: 5
   _fallTime: 0.12
   FallAttack_bulletData: {fileID: 11400000, guid: d002c1e852608954ca620647b8319738, type: 2}
   _fallAttackTime: 1
+  _deadGameOverDelay: 1
+  _N1_AttackSE:
+    SEName: "\u901A\u5E38\u653B\u6483\uFF081\u6BB5\u968E\uFF09"
+    Volume: 0.5
+  _N2_AttackSE:
+    SEName: "\u901A\u5E38\u653B\u6483\uFF082\u6BB5\u968E\uFF09"
+    Volume: 0.5
+  _N3_AttackSE:
+    SEName: "\u901A\u5E38\u653B\u6483\uFF083\u6BB5\u968E\uFF09"
+    Volume: 0.5
+  _DodgeSE:
+    SEName: "\u56DE\u907F"
+    Volume: 0.5
+  _DashSE:
+    SEName: "\u30C9\u30E9\u30A4\u30D6\u30C0\u30C3\u30B7\u30E5"
+    Volume: 0.5
+  _JumpSE:
+    SEName: "\u30B8\u30E3\u30F3\u30D7"
+    Volume: 0.5
+  _JumpAttackSE:
+    SEName: "\u843D\u4E0B\u653B\u6483"
+    Volume: 0.5
+  _DaedSE:
+    SEName: "\u6B7B\u4EA1"
+    Volume: 0.5
 --- !u!50 &1537163214950532227
 Rigidbody2D:
   serializedVersion: 5

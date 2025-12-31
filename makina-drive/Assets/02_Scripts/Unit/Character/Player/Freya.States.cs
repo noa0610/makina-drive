@@ -352,6 +352,7 @@ public partial class Freya
         var jumpfallAim = new MoveFree(true);
         jumpfallAim.SetAccel(_fallAimAccel);
         jumpfallAim.SetDecel(_fallAimDecel);
+        jumpfallAim.SetLazyChange(Triggers.jumpInputNext.ToString(), _fallAutoChangeTIme);
         _stateMachine.AddState(States.jumpfallAim, jumpfallAim);
 
         /* 落下 */

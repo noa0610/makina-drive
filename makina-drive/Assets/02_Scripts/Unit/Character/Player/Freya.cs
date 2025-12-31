@@ -98,6 +98,7 @@ public partial class Freya : UnitBase, IPausable
     [Header("落下狙い")]
     [SerializeField] private float _fallAimAccel = 40f;
     [SerializeField] private float _fallAimDecel = 30f;
+    [SerializeField] private float _fallAutoChangeTIme = 5f;
 
     [Header("落下")]
     [SerializeField] private float _fallTime = 0.12f;
