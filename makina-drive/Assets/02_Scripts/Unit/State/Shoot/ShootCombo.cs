@@ -221,4 +221,10 @@ public class ShootCombo : ShootOnMoveBase
     {
         _isAttackEnd = false;
     }
+
+    protected override void InitBullet(Bullet bullet, Vector3 dict, UnitBase parent)
+    {
+        base.InitBullet(bullet, dict, parent);
+        bullet.isParentDeadBulleDestroy = true;
+    }
 }

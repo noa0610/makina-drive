@@ -30,6 +30,7 @@ public class Bullet : MonoBehaviour
     public UnitBase Parent => _parent;
     public LayerMask TargetLayer { get => _targetLayer; set => _targetLayer = value; }
     public bool CanSelfMove = true;
+    public bool isParentDeadBulleDestroy = false; // 発射したユニットが消えたら弾を削除
     public float Damage => _status.damage;
     public float Knockback;
     #endregion
@@ -76,6 +77,12 @@ public class Bullet : MonoBehaviour
         }
         _elapsedTime += Time.deltaTime;
         UpdateLifetime();
+
+        // 発射したユニットが消えたときに弾を消去
+        if(_parent == null && isParentDeadBulleDestroy)
+        {
+            Destroy(gameObject);
+        }
     }
 
     protected virtual void Move(float deltaTime)

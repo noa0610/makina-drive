@@ -42,7 +42,6 @@ public class Idle_LazyChange : Idle
     {
         base.Stay(parent, deltaTime);
         _time += deltaTime;
-        Debug.Log("_time: " + _time);
 
         if (_time >= _lazyChangeTime)
         {

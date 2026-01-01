@@ -178,4 +178,10 @@ public class DashAttack : ShootOnMoveBase
     {
         return _dashDirection;
     }
+
+    protected override void InitBullet(Bullet bullet, Vector3 dict, UnitBase parent)
+    {
+        base.InitBullet(bullet, dict, parent);
+        bullet.isParentDeadBulleDestroy = true;
+    }
 }

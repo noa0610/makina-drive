@@ -21,7 +21,6 @@ public class StateComp : IState
     public virtual void Stay(UnitBase parent, float deltaTime)       // このステート中毎フレーム行う処理
     {
         _stateTime += deltaTime; // 毎フレームカウント
-        Debug.Log($"{_stateTime}");
 
         if (_remainingWaitFrame > 0)
         {
