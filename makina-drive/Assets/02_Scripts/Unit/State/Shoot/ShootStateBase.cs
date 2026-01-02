@@ -75,11 +75,13 @@ public class ShootStateBase : StateComp
         onShootComplete?.Invoke();
     }
 
-    protected virtual void InitBullet(Bullet bullet, Vector3 dict)
+    protected virtual void InitBullet(Bullet bullet, Vector3 dict, UnitBase parent)
     {
         // ステータスをセット（速度、方向、ダメージなど）
         bullet.SetBulletStatus(_data, _targetLayer);
         bullet.SetDirection(dict);
+        bullet.SetParent(parent);
         bullet.Invoke();
+        bullet.SetKnockbackForce(parent.statusManager.ReadValue(Status.knockbackMultiplier));
     }
 }

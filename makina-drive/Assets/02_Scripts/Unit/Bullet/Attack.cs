@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 
 /// <summary>
-/// 子オブジェクト化を想定した攻撃弾丸クラス
+/// ユニットの子オブジェクト化を想定した攻撃弾丸クラス
 /// </summary>
 public class Attack : Bullet
 {
@@ -67,27 +67,6 @@ public class Attack : Bullet
             return;
 
         if (Hit()) Destroy(gameObject);
-    }
-
-    protected override void Hitted_Target(Collider2D collision)
-    {
-        var go = collision.gameObject;
-        if (!go.TryGetComponent<UnitBase>(out var target))
-        {
-            target = go.GetComponentInParent<UnitBase>();
-        }
-
-        if (target != null)
-        {
-            //Debug.Log($"Hit Target: {target.UnitStatusData.unitName}");
-            if (target.IsInvincible)
-                return;
-
-            UnitManager.instance.AddDamage(target, _parent, _status.damage);
-            // Debug.Log($"parent:{_parent.name}");
-        }
-
-        if (Hit()) NotifyDestoy();
     }
     #endregion
 

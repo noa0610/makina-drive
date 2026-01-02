@@ -8,26 +8,36 @@ using UnityEngine.Android;
 public class StatusManager
 {
     private Dictionary<Status, StatusInfo> _statusAmounts = new();
+    private UnitTags unitTags;
     public StatusManager Initialize(UnitStatusData data)
     {
         _statusAmounts.Clear();
 
         // 基礎ステータスを一括登録
         var hp = AddStatus(Status.HP, data.hp, false, true);
-        var mHp = AddStatus(Status.MaxHP, data.maxHp, false, true);
-        mHp.OnAmountChanged += (_, after) =>
+        var mHp = AddStatus(Status.MaxHP, data.maxHp, true, true);
+        mHp.OnAmountChanged += (before, after) =>
         {
             hp.SetMax(mHp.CurrentAmount);
+
+            if(after > before)
+            {
+                float diff = after - before;
+                hp.CurrentAmount += diff;
+                Debug.Log($"MaxHP Increased: {before} -> {after}. Added {diff} to Current HP.");
+            }
         };
         AddStatus(Status.DamageRatio, data.damageTakeScale);
         AddStatus(Status.Speed, data.speed);
         AddStatus(Status.DashSpeed, data.dashSpeed);
         AddStatus(Status.ATK, data.atk);
         AddStatus(Status.DEF, data.def);
-        AddStatus(Status.DamageRatio, data.damageTakeScale);
         AddStatus(Status.CollectionRange, data.collectionRange);
         AddStatus(Status.Stamina, data.stamina, false);
-        AddStatus(Status.KnockbackPower, data.knockbackPower);
+        AddStatus(Status.knockbackMultiplier, data.knockbackMultiplier);
+        AddStatus(Status.knockbackResistance, data.knockbackResistance);
+        AddStatus(Status.Lv, 1);
+        unitTags = data.tags;
         return this;
     }
 
@@ -107,5 +117,23 @@ public class StatusManager
         s.CurrentAmount -= value;
         // Debug.Log($"TakeDamage: {value}, HP: {s.CurrentAmount}/{_statusAmounts[Status.MaxHP].CurrentAmount}");
         return s.CurrentAmount <= 0;
+    }
+
+    public UnitTags ReadUnitTag()
+    {
+        return unitTags;
+    }
+
+    // 特定のステータスを一括強化適用
+    public void ApplyStatusMultiplier(Status[] statuses, float multiplier)
+    {
+        foreach(var type in statuses)
+        {
+            if(TryGetStatus(type, out var info))
+            {
+                // TemporaryChangedは1.0がデフォルトなので、そこに加算する
+                info.TemporaryChanged = 1f + multiplier;
+            }
+        }
     }
 }

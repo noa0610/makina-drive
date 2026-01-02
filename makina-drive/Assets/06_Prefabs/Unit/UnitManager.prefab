@@ -45,3 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitManager
   _damegeLog: 1
+  _isdamageTextView: 0
+  _parentCanvas: {fileID: 0}
+  _textPrefab: {fileID: 4579464473126509267, guid: 1b4feba3090d6cd4bb52d51c0054c186, type: 3}
+  _textViewTime: 0.5
+  _textMoveHeight: 0.2
+  _displayTags: 2

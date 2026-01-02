@@ -72,6 +72,7 @@ public partial class Freya
                 // すでに回避中
                 return;
             }
+            PlaySE(_DodgeSE.SEName, _DodgeSE.Volume);
             _stateMachine.ChangeState(Triggers.dodgeInput);
             statusManager.AddValue(Status.Stamina, -_dodgeStaminaLostAmount);
         }
@@ -110,6 +111,7 @@ public partial class Freya
                 return;
             }
             IsRecovery = false;
+            PlaySE(_JumpSE.SEName, _JumpSE.Volume);
             statusManager.AddValue(Status.Stamina, -_jumpStaminaLostAmount);
             _stateMachine.ChangeState(Triggers.jumpInput);
         }

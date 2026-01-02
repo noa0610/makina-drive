@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    // --- Inspector Variables ---　インスペクターから設定する変数
-
+    // TODO ジャンプ攻撃時カメラを引いたり寄せたりできる処理の制作
     [Header("Player GameObject")]
     [SerializeField] private float SmoothSpeed = 0.125f; // カメラの追従速度を滑らかにするための係数
     [SerializeField] private Vector3 OFFSET; // カメラとプレイヤーの相対的な位置を設定するオフセット
@@ -17,7 +16,6 @@ public class CameraMove : MonoBehaviour
     [SerializeField] private float MaxY; // ステージの上端
 
 
-    // --- Private Variables ---　このスクリプトでのみ変更を加える
     private GameObject PLAYER; // プレイヤーのGameObjectを取得
     private Vector3 desiredPosition; // プレイヤーの位置
 

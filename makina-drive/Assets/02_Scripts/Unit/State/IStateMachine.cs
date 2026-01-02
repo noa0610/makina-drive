@@ -59,6 +59,7 @@ public interface IStateMachine
 
     bool SetStateDirect(string target);
     void SetStateDirectLazy(string target);
+    public StateInfo GetStateInfo(IState state);
 
     void Awake(string startStateKey = "idle", bool log = false);
 }

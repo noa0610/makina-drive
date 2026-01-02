@@ -160,6 +160,15 @@ public class StateMachine : IStateMachine
             _directRequests.Enqueue(target);
     }
 
+    public StateInfo GetStateInfo(IState state)
+    {
+        foreach(var info in _stateMap.Values)
+        {
+            if(info.Instance == state) return info;
+        }
+        return default;
+    }
+
     public void Awake(string startStateKey = "idle", bool log = false)
     {
         if (_stateMap.ContainsKey(startStateKey))

@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// ステータスの値をスライダーで表示
+/// </summary>
 public class StatusSlider : MonoBehaviour
 {
     [SerializeField] private Slider _slider;

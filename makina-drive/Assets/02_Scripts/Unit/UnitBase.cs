@@ -40,6 +40,11 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public bool IsInvincible { get; set; }
     public bool IsArrivals { get; set; } = true;
     public bool IsRecovery { get; set; } = true;
+    public bool IsClearTarget { get; set; } = false;
+    public static event Action<UnitBase> OnAnyUnitDeath;
+    private bool IsLazyDead = false;
+    private float lazyDeadTime = 0;
+    public float DropExp { get; set; } // 敵が保持する経験値量
     #endregion
 
     #region === Reactive & Direction ===
@@ -52,7 +57,8 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public Vector2 MoveDirection { get => _moveDir; set => _moveDir = value; }
     public Vector2 AttackDirection { get => _shootDir; set => _shootDir = value; }
 
-    public Vector2 AttackerDirection { get; private set; } = Vector2.right; // 攻撃を受けた方向
+    public Vector2 knockbackDirection { get; private set; } = Vector2.right; // 攻撃を受けて押し出される方向
+    public float KnockbackForce;
 
     public enum StartDirection
     {
@@ -167,6 +173,12 @@ public abstract class UnitBase : MonoBehaviour, IUnit
             _recoveryStatus?.Tick(dt);
         }
 
+        // 死亡タイマー
+        if (IsLazyDead && dt >= lazyDeadTime)
+        {
+            OnDeath();
+        }
+
         AfterUpdate();
     }
 
@@ -183,8 +195,8 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
     #region === Status & Damage ===
     protected virtual bool BeforeTakeDamage(IUnit from, ref float damage) => true;
-    protected virtual void OnTakeDamage(IUnit from, float damage) { }
-    public void TakeDamage(IUnit from, float damage)
+    protected virtual void OnTakeDamage(IUnit from, float damage, Vector2 pushdir, float knockbackForce = 0) { }
+    public void TakeDamage(IUnit from, float damage, Vector2 pushdir, float knockbackForce = 0)
     {
         if (!_isPlaying || !IsArrivals) return;
         if (!BeforeTakeDamage(from, ref damage)) return;
@@ -192,18 +204,15 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         if (_statusManager.TakeDamage(damage))
             OnDeath();
 
-        OnTakeDamage(from, damage);
-    }
-
-    public void SetAttackerDirection(UnitBase from, Vector2 hitPoint)
-    {
-        var dir = (hitPoint - (Vector2)from.Transform.position).normalized;
-        AttackerDirection = dir;
+        OnTakeDamage(from, damage, pushdir, knockbackForce);
     }
 
 
     public virtual void OnDeath()
     {
+        // 死亡通知を飛ばす
+        OnAnyUnitDeath?.Invoke(this);
+
         if (_status.unitName != null)
         {
             Debug.Log($"{_status.unitName}が死亡した");
@@ -214,10 +223,32 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         }
     }
 
+    // 死亡タイマーをセット
+    public void SetLazyDeath(float deadTime)
+    {
+        IsLazyDead = true;
+        lazyDeadTime = deadTime;
+    }
+
     public void SetInvincible(bool isInvincible)
     {
         IsInvincible = isInvincible;
     }
+
+    public virtual void GainExp(float amount) { }
+
+    // 敵ウェーブ生成専用
+    public void ApplyWaveStatus(float multiplier)
+    {
+        if (statusManager == null) return;
+
+        // ウェーブ生成時に強化するステータスのリスト
+        Status[] targets = { Status.MaxHP, Status.ATK, Status.DEF, Status.Speed };
+
+        statusManager.ApplyStatusMultiplier(targets, multiplier);
+        statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));
+    }
+
     #endregion
 
     #region === Pause & Play ===

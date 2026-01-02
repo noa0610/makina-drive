@@ -1,6 +1,9 @@
 using UnityEngine;
 using System;
 
+/// <summary>
+/// 一定時間後に指定したステートへ遷移する前方射撃ステート
+/// </summary>
 public class ShootForward_LazyChange : ShootForward
 {
     [SerializeField] private float _lazyChangeTime = 0.5f;

@@ -7,12 +7,22 @@ using System;
 using System.Linq;
 using Unity.VisualScripting;
 
+/// <summary>
+/// プレイヤーユニット
+/// </summary>
 [RequireComponent(typeof(UnityEngine.InputSystem.PlayerInput))]
-public partial class Freya : UnitBase
+public partial class Freya : UnitBase, IPausable
 {
     [Header("固有設定")]
     private static readonly Dictionary<States, string> _stateNames = EnumWrapper.GetValueNameMap<States>();
     private Rigidbody2D rb;
+
+
+    [Header("レベルアップ")]
+    [SerializeField] private float _farstNextLevelExp = 10;
+    [SerializeField] private float _nextLevelExpRate = 1.2f;
+    public PlayerLevel _level;
+    public EnhanceInventory _inventory;
 
     [Header("移動")]
     [SerializeField] private float _accel = 30f;
@@ -78,6 +88,8 @@ public partial class Freya : UnitBase
     [SerializeField] private float DashN3_inputEndTime = 1f;
     [SerializeField] private float DashN3_attackStartTime = 0.4f;
 
+    // TODO チャージ攻撃は斬撃を飛ばす
+
 
     [Header("ジャンプ開始")]
     [SerializeField] private float _jumpStartTime = 1f;
@@ -86,6 +98,7 @@ public partial class Freya : UnitBase
     [Header("落下狙い")]
     [SerializeField] private float _fallAimAccel = 40f;
     [SerializeField] private float _fallAimDecel = 30f;
+    [SerializeField] private float _fallAutoChangeTIme = 5f;
 
     [Header("落下")]
     [SerializeField] private float _fallTime = 0.12f;
@@ -94,9 +107,32 @@ public partial class Freya : UnitBase
     [SerializeField] private BulletData FallAttack_bulletData;
     [SerializeField] private float _fallAttackTime = 1.0f;
 
+    [Header("死亡")]
+    [SerializeField] private float _deadGameOverDelay = 1f;
+
+    [Header("SE")]
+    [SerializeField] private VisualInfo _N1_AttackSE;
+    [SerializeField] private VisualInfo _N2_AttackSE;
+    [SerializeField] private VisualInfo _N3_AttackSE;
+    [SerializeField] private VisualInfo _DodgeSE;
+    [SerializeField] private VisualInfo _DashSE;
+    [SerializeField] private VisualInfo _JumpSE;
+    [SerializeField] private VisualInfo _JumpAttackSE;
+    [SerializeField] private VisualInfo _DaedSE;
+
+    private string _dashAttackTag = "DA";
 
     private Vector2 _dashDirection = Vector2.right;
     private bool _inputDash = false;
+
+    protected override void AfterAwake()
+    {
+        base.AfterAwake();
+        _level = new PlayerLevel(this, _farstNextLevelExp, _nextLevelExpRate);
+        _inventory = new EnhanceInventory();
+
+        Debug.Log("Set Level");
+    }
 
     protected override void Start()
     {
@@ -139,7 +175,30 @@ public partial class Freya : UnitBase
             scale.x = Mathf.Abs(scale.x) * (Direction.x > 0 ? 1 : -1);
             transform.localScale = scale;
         }
+    }
 
+    // 外部（経験値アイテム）からアクセスするための窓口
+    public override void GainExp(float amount)
+    {
+        _level.AddExp(amount);
+    }
+
+
+    public override void OnDeath()
+    {
+        base.OnDeath();
+
+        stateMachine.ChangeState(Triggers.died);
+        OnGameOver();
+    }
+
+    public void OnGameOver()
+    {
+        if (!IsMatchingState(States.dead))
+        {
+            PlaySE(_DaedSE.SEName, _DaedSE.Volume);
+            GameStateManager.instance.ChangeState(GameState.GameOver);
+        }
     }
 
 
@@ -151,6 +210,27 @@ public partial class Freya : UnitBase
 
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + (Vector3)Direction);
+    }
+
+    // 状態変更イベントを購読
+    private void OnEnable()
+    {
+        GameStateManager.OnStateChanged += HandleStateChanged;
+    }
+
+    // 購読解除
+    private void OnDisable()
+    {
+        GameStateManager.OnStateChanged -= HandleStateChanged;
+    }
+
+    private void HandleStateChanged(GameState newState)
+    {
+        if (newState == GameState.Clear)
+        {
+            Rigidbody2D.linearVelocity = Vector2.zero;
+            Pause();
+        }
     }
 
 

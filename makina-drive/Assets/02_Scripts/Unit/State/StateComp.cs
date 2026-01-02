@@ -4,6 +4,7 @@ using System;
 public class StateComp : IState
 {
     [SerializeField] private string _parentName;
+    protected float _stateTime = 0f;
     protected int _waitFrame = 0;
     protected int _remainingWaitFrame = 0; // 残りの待機フレーム数
     // public event Action WaitTickHasCompleted;
@@ -15,10 +16,12 @@ public class StateComp : IState
     public virtual void Enter(IState previousState, UnitBase parent) // このステートに遷移したときの処理
     {
         _remainingWaitFrame = _waitFrame;
+        _stateTime = 0f;
     }
     public virtual void Stay(UnitBase parent, float deltaTime)       // このステート中毎フレーム行う処理
     {
-        // 待機フレームがある場合、カウントダウン
+        _stateTime += deltaTime; // 毎フレームカウント
+
         if (_remainingWaitFrame > 0)
         {
             _remainingWaitFrame--;
@@ -45,6 +48,16 @@ public class StateComp : IState
         return true;
     }
 
+    // 遅延遷移
+    protected void ProcessLazyChange(UnitBase parent, string targetState, float delayTime)
+    {
+        if (string.IsNullOrEmpty(targetState)) return;
+
+        if (_stateTime >= delayTime)
+        {
+            parent.stateMachine.LazyChange(targetState);
+        }
+    }
 
     public void SetWaitTick(int frame)
     {

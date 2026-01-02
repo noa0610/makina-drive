@@ -5,11 +5,13 @@ using UnityEditor.Experimental.GraphView;
 using NUnit.Framework;
 using UniRx;
 
+/// <summary>
+/// 近づいて攻撃を行う敵ユニット
+/// </summary>
 public partial class Enemy_Normal : UnitBase
 {
     [Header("固有設定")]
     private static readonly Dictionary<States, string> _stateNames = EnumWrapper.GetValueNameMap<States>();
-    private Rigidbody2D rb;
 
     [Header("デバッグ")]
     [SerializeField] private UnitBase _targetUnitForDebug;
@@ -27,7 +29,14 @@ public partial class Enemy_Normal : UnitBase
     [SerializeField] private BulletData _attackBulletData;
 
     [Header("スタン")]
+    [SerializeField] private bool _ignoreStan = false; // スタン状態を無視
     [SerializeField] private float _stanTime = 0.5f;
+
+    [Header("吹き飛ばし")]
+    [SerializeField] private float _blowbackMaxDistance = 30f;
+
+    [Header("経験値アイテム")]
+    [SerializeField] private ExpItem _expItem;
 
     private UnitBase _targetUnit;
     private Transform _targetTransform;
@@ -35,7 +44,6 @@ public partial class Enemy_Normal : UnitBase
     protected override void Start()
     {
         base.Start();
-        rb = GetComponent<Rigidbody2D>();
 
         if (_findPlayerOnStart)
         {
@@ -64,13 +72,18 @@ public partial class Enemy_Normal : UnitBase
         _targetTransform = target.Transform;
     }
 
-    protected override void OnTakeDamage(IUnit from, float damage)
+    protected override void OnTakeDamage(IUnit from, float damage, Vector2 pushdir, float knockbackForce)
     {
-        base.OnTakeDamage(from, damage);
+        base.OnTakeDamage(from, damage, pushdir, knockbackForce);
 
-        if (damage > 0)
+        if(knockbackForce > 0)
         {
-            stun.SetKnockbackDirection(-AttackerDirection);
+            blowback.SetVelocity(knockbackForce, pushdir);
+            _stateMachine.ChangeState(Triggers.toBlowback);
+        }
+        
+        if (damage > 0 && !_ignoreStan)
+        {
             _stateMachine.ChangeState(Triggers.toStan);
         }
     }
@@ -78,6 +91,18 @@ public partial class Enemy_Normal : UnitBase
     public override void OnDeath()
     {
         base.OnDeath();
+
+        // 経験値アイテムドロップ
+        if (_targetUnit != null)
+        {
+            float finalExp = UnitStatusData.baseExp;
+
+            var expObj = Instantiate(_expItem, transform.position, Quaternion.identity);
+            expObj.GetComponent<ExpItem>();
+            expObj.Setup(_targetUnit);
+            expObj.SetExp(finalExp);
+        }
+
         UnitManager.instance.RemoveUnit(this);
         Destroy(this.gameObject);
     }

@@ -7,4 +7,5 @@ public struct BulletStatus
     public float time;        // 存在時間（寿命）
     public float damage;      // ダメージ量
     public float speed;       // 弾速
+    public float knockback;   // ノックバック力
 }

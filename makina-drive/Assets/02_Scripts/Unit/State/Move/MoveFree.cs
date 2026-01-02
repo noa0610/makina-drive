@@ -13,6 +13,10 @@ public class MoveFree : MoveStateBase
     [SerializeField, Min(0f)] protected float _decel = 30f;         // 入力なしのときの減速（速度ベクトルの変更量 [m/s^2]）
     [SerializeField, Range(0f, 0.1f)] protected float _deadZone = 0.001f; // 入力無視しきい値
 
+    [SerializeField] protected float _delayTime;
+
+    protected string _lazechange;
+
     public bool IsStopInExit { get => _isStopInExit; set => _isStopInExit = value; }
 
     public MoveFree(bool isStopInExit = false) : base()
@@ -42,6 +46,8 @@ public class MoveFree : MoveStateBase
         var changePerSec = hasInput ? _accel : _decel;  // 入力時は加速、無入力時は減速
         var maxDelta = changePerSec * Mathf.Max(deltaTime, 0f);
         rigidbody2D.linearVelocity = Vector2.MoveTowards(rigidbody2D.linearVelocity, targetVel, maxDelta);
+
+        if (_lazechange != null) ProcessLazyChange(parent, _lazechange, _delayTime);
     }
 
     public MoveFree SetAccel(float accel)
@@ -60,5 +66,11 @@ public class MoveFree : MoveStateBase
     {
         _deadZone = Mathf.Clamp(dz, 0f, 0.1f);
         return this;
+    }
+
+    public void SetLazyChange(string lazyChange, float delayTime)
+    {
+        _lazechange = lazyChange;
+        _delayTime = delayTime;
     }
 }

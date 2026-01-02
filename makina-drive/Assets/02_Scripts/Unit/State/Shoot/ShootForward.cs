@@ -23,8 +23,9 @@ public class ShootForward : ShootStateBase
         // 弾を生成
         Bullet instantiatedBullet = GameObject.Instantiate(b, spawnPos, Quaternion.identity);
         float angle = Mathf.Atan2(parent.AttackDirection.y, parent.AttackDirection.x) * Mathf.Rad2Deg;
+        // 弾の向きを発射方向に向ける
         instantiatedBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        InitBullet(instantiatedBullet, parent.AttackDirection);
+        InitBullet(instantiatedBullet, parent.AttackDirection, parent);
         await base.Shoot(parent);
     }
 }

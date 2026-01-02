@@ -4,6 +4,7 @@ public partial class Enemy_Normal
 {
     private MoveFree chase;
     private Stun stun;
+    private Blowback blowback;
     private enum States
     {
         none,
@@ -11,6 +12,7 @@ public partial class Enemy_Normal
         chase,
         attack,
         stan,
+        blowback,
         dead
     }
     private enum Triggers
@@ -20,6 +22,7 @@ public partial class Enemy_Normal
         toChase,
         toAttack,
         toStan,
+        toBlowback,
         died
     }
     protected override void RegisterStats()
@@ -29,6 +32,7 @@ public partial class Enemy_Normal
         {
             (Triggers.toChase, States.chase, ""),
             (Triggers.toStan, States.stan, ""),
+            (Triggers.toBlowback, States.blowback, ""),
             (Triggers.died, States.dead, "")
         };
         var chaseTrigger = new[]
@@ -36,17 +40,25 @@ public partial class Enemy_Normal
             (Triggers.toIdle, States.idle, ""),
             (Triggers.toAttack, States.attack, ""),
             (Triggers.toStan, States.stan, ""),
+            (Triggers.toBlowback, States.blowback, ""),
             (Triggers.died, States.dead, "")
         };
         var attackTrigger = new[]
         {
             (Triggers.toChase, States.chase, ""),
             (Triggers.toStan, States.stan, ""),
+            (Triggers.toBlowback, States.blowback, ""),
+            (Triggers.died, States.dead, "")
+        };
+        var blowbackTrigger = new[]
+        {
+            (Triggers.toChase, States.chase, ""),
             (Triggers.died, States.dead, "")
         };
         var stanTrigger = new[]
         {
             (Triggers.toIdle, States.idle, ""),
+            (Triggers.toBlowback, States.blowback, ""),
             (Triggers.died, States.dead, "")
         };
 
@@ -55,14 +67,16 @@ public partial class Enemy_Normal
             .AddTransition(States.idle, idleTrigger)
             .AddTransition(States.chase, chaseTrigger)
             .AddTransition(States.attack, attackTrigger)
-            .AddTransition(States.stan, stanTrigger);
+            .AddTransition(States.stan, stanTrigger)
+            .AddTransition(States.blowback, blowbackTrigger);
+            
         
         /* 待機 */
         _stateMachine.AddState(States.idle, new Idle());
 
         /* 追跡 */
         chase = new MoveFree(true);
-        chase.SetRB2(rb);
+        chase.SetRB2(Rigidbody2D);
         chase.SetAccel(_accel);
         chase.SetDecel(_decel);
         _stateMachine.AddState(States.chase, chase);
@@ -75,8 +89,13 @@ public partial class Enemy_Normal
         _stateMachine.AddState(States.attack, attack);
 
         /* スタン */
-        stun = new Stun(rb, Triggers.toIdle.ToString(), _stanTime, false);
+        stun = new Stun(Rigidbody2D, Triggers.toIdle.ToString(), _stanTime, false);
         _stateMachine.AddState(States.stan, stun);
+
+        /* 吹き飛ばし */
+        blowback = new Blowback(Rigidbody2D, Triggers.toChase.ToString(), 1f, true);
+        blowback.SetMaxDistance(_blowbackMaxDistance);
+        _stateMachine.AddState(States.blowback, blowback);
 
         /* 死亡 */
         var dead = new Idle();
