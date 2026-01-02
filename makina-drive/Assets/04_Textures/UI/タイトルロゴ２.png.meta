@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 9cc200e4ed9208142bc4944231ae5d4b
+guid: 99115eefe8d956f44a230e603b3adf44
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6944447031546875295
-    second: TitleLogo_0
-  - first:
-      213: 9020353521477053924
-    second: TitleLogo_1
-  - first:
-      213: -2772702117377773750
-    second: TitleLogo_2
-  - first:
-      213: -6254712163274462475
-    second: TitleLogo_3
-  - first:
-      213: -1900413517072113156
-    second: TitleLogo_4
+      213: -1157932118268604341
+    second: "\u30BF\u30A4\u30C8\u30EB\u30ED\u30B4\uFF12_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TitleLogo_0
+      name: "\u30BF\u30A4\u30C8\u30EB\u30ED\u30B4\uFF12_0"
       rect:
         serializedVersion: 2
-        x: 132
-        y: 183
-        width: 1042
-        height: 421
+        x: 185
+        y: 0
+        width: 829
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,96 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f9d0edc28c1af5060800000000000000
-      internalID: 6944447031546875295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TitleLogo_1
-      rect:
-        serializedVersion: 2
-        x: 580
-        y: 481
-        width: 151
-        height: 169
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4ed65146cbbbe2d70800000000000000
-      internalID: 9020353521477053924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TitleLogo_2
-      rect:
-        serializedVersion: 2
-        x: 509
-        y: 179
-        width: 112
-        height: 77
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a4f69b95d126589d0800000000000000
-      internalID: -2772702117377773750
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TitleLogo_3
-      rect:
-        serializedVersion: 2
-        x: 591
-        y: 105
-        width: 86
-        height: 123
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5fae5b72d6cc239a0800000000000000
-      internalID: -6254712163274462475
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TitleLogo_4
-      rect:
-        serializedVersion: 2
-        x: 659
-        y: 177
-        width: 114
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cf1e09c99ff50a5e0800000000000000
-      internalID: -1900413517072113156
+      spriteID: b4095989fd23eefe0800000000000000
+      internalID: -1157932118268604341
       vertices: []
       indices: 
       edges: []
@@ -235,11 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TitleLogo_0: 6944447031546875295
-      TitleLogo_1: 9020353521477053924
-      TitleLogo_2: -2772702117377773750
-      TitleLogo_3: -6254712163274462475
-      TitleLogo_4: -1900413517072113156
+      "\u30BF\u30A4\u30C8\u30EB\u30ED\u30B4\uFF12_0": -1157932118268604341
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
