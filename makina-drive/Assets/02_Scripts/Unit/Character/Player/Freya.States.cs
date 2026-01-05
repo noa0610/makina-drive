@@ -87,9 +87,9 @@ public partial class Freya
         // トランスミッショングループを作成
         var idleTrigger = new[]
         {
-            (Triggers.moveInput, States.move, ""),
+            (Triggers.moveInput, States.move, "MoveInput"),
             (Triggers.attackInput, States.N1_attack, "AttackInput"),
-            (Triggers.dashInput, States.drivedash, ""),
+            (Triggers.dashInput, States.drivedash, "DashInput"),
             (Triggers.dodgeInput, States.dodge, "DodgeInput"),
             (Triggers.jumpInput, States.jumpstart, "JumpInput"),
             (Triggers.died, States.dead, "Dide")
@@ -97,9 +97,9 @@ public partial class Freya
         };
         var moveTrigger = new[]
         {
-            (Triggers.moveCancel, States.idle,""),
+            (Triggers.moveCancel, States.idle,"MoveEnd"),
             (Triggers.attackInput, States.N1_attack,"AttackInput"),
-            (Triggers.dashInput, States.drivedash, ""),
+            (Triggers.dashInput, States.drivedash, "DashInput"),
             (Triggers.dodgeInput, States.dodge, "DodgeInput"),
             (Triggers.jumpInput, States.jumpstart,"JumpInput"),
             (Triggers.died, States.dead,"Dide")
@@ -108,14 +108,14 @@ public partial class Freya
         var dodgeTrigger = new[]
         {
             (Triggers.dodgeCancel, States.idle,"DodgeEnd"),
-            (Triggers.moveInput, States.move,"DodgeEnd"),
+            (Triggers.moveInput, States.move,"MoveInput"),
             (Triggers.attackInput, States.N1_attack,"AttackInput"),
-            (Triggers.dashInput, States.drivedash,"DodgeEnd"),
+            (Triggers.dashInput, States.drivedash,"DashInput"),
             (Triggers.died, States.dead,"Dide")
         };
         var drivedashTrigger = new[]
         {
-            (Triggers.dashCancel, States.idle,""),
+            (Triggers.dashCancel, States.idle,"DashEnd"),
             (Triggers.attackInput, States.dashN1_Attack,"AttackInput"),
             (Triggers.died, States.dead,"Dide")
         };
@@ -123,7 +123,7 @@ public partial class Freya
         #region   ===== N_Attack Triggers =====
         var n1_attackTrigger = new[]
         {
-            (Triggers.moveInput, States.move, ""),
+            (Triggers.moveInput, States.move, "MoveInput"),
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.attackInput, States.N2_attack,"AttackInput"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
@@ -131,7 +131,7 @@ public partial class Freya
         };
         var n2_attackTrigger = new[]
         {
-            (Triggers.moveInput, States.move, ""),
+            (Triggers.moveInput, States.move, "MoveInput"),
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.attackInput, States.N3_attack,"AttackInput"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
@@ -139,7 +139,7 @@ public partial class Freya
         };
         var n3_attackTrigger = new[]
         {
-            (Triggers.moveInput, States.move, ""),
+            (Triggers.moveInput, States.move, "MoveInput"),
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
             (Triggers.died, States.dead,"Dide")
@@ -149,7 +149,7 @@ public partial class Freya
         #region   ===== DashN_Attack Triggers =====
         var dashn1_attackTrigger = new[]
         {
-            (Triggers.moveInput, States.move, ""),
+            (Triggers.moveInput, States.move, "MoveInput"),
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.attackInput, States.dashN2_Attack,"AttackInput"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
@@ -157,7 +157,7 @@ public partial class Freya
         };
         var dashn2_attackTrigger = new[]
         {
-            (Triggers.moveInput, States.move, ""),
+            (Triggers.moveInput, States.move, "MoveInput"),
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.attackInput, States.dashN3_Attack,"AttackInput"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
@@ -165,7 +165,7 @@ public partial class Freya
         };
         var dashn3_attackTrigger = new[]
         {
-            (Triggers.moveInput, States.move, ""),
+            (Triggers.moveInput, States.move, "MoveInput"),
             (Triggers.attackConplete, States.idle,"AttackEnd"),
             (Triggers.dodgeInput, States.dodge,"DodgeInput"),
             (Triggers.died, States.dead,"Dide")
@@ -175,7 +175,7 @@ public partial class Freya
         #region   ===== Jump Triggers =====
         var jumpstartTrigger = new[]
         {
-            (Triggers.jumpAir, States.jumpfallAim,""),
+            (Triggers.jumpAir, States.jumpfallAim,"JumpInput"),
             (Triggers.died, States.dead,"Dide")
         };
         var jumpfallAimTrigger = new[]

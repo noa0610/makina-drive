@@ -177,7 +177,7 @@ public partial class Freya : UnitBase, IPausable
         }
     }
 
-    // 外部（経験値アイテム）からアクセスするための窓口
+    // 外部（経験値アイテム）から経験値取得する窓口
     public override void GainExp(float amount)
     {
         _level.AddExp(amount);
