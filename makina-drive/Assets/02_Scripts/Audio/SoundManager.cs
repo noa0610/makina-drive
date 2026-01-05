@@ -125,7 +125,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
     /// </summary>
     /// <param bgmName="bgmName">BGM名</param>
     /// <param volume="volume">音量</param>
-    public void PlayBGM(string bgmName, float volume = 1f)
+    public void PlayBGM(string bgmName, float volume = 1f, bool loopPlayback = false)
     {
         if (_bgmData.ContainsKey(bgmName))
         {
@@ -138,6 +138,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
                     audioSource.clip = _bgmData[bgmName].audioClip;
                     audioSource.volume = volume;
                     audioSource.Play();
+                    audioSource.loop = loopPlayback;
                     _bgmData[bgmName].playedTime = Time.realtimeSinceStartup;
                 }
             }

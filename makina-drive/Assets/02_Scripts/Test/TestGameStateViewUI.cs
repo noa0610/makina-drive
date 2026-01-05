@@ -25,6 +25,7 @@ public class TestGameStateViewUI : MonoBehaviour
 
     [SerializeField] private bool _activeChange;   // アクティブ状態も切り替えるか
     [SerializeField] private bool _changeOnlyOnce = false; // 表示切り替えは一度限り
+    [SerializeField] private bool _fadeEndTimeStop = false; // フェード効果後ゲーム時間を停止する
 
     private int _changeCount = 0;
 
@@ -71,7 +72,7 @@ public class TestGameStateViewUI : MonoBehaviour
     // Graphic要素を表示
     private async void ChangeGraphics()
     {
-        if (_Delay >= 0) await UniTask.Delay(TimeSpan.FromSeconds(_Delay));
+        if (_Delay >= 0) await UniTask.Delay(TimeSpan.FromSeconds(_Delay), ignoreTimeScale: true);
 
         if (_activeChange)
         {
@@ -93,6 +94,13 @@ public class TestGameStateViewUI : MonoBehaviour
             {
                 SetGraphicsActive(_fadeUI, true);
             }
+        }
+
+        if (_fedeEffectTime >= 0) await UniTask.Delay(TimeSpan.FromSeconds(_fedeEffectTime), ignoreTimeScale: true);
+        if (_fadeEndTimeStop)
+        {
+            // ゲーム時間を停止
+            Time.timeScale = 0;
         }
     }
 

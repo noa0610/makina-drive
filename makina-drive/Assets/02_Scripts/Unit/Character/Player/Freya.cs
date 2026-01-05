@@ -16,6 +16,7 @@ public partial class Freya : UnitBase, IPausable
     [Header("固有設定")]
     private static readonly Dictionary<States, string> _stateNames = EnumWrapper.GetValueNameMap<States>();
     private Rigidbody2D rb;
+    private CircleCollider2D _coll2D;
 
 
     [Header("レベルアップ")]
@@ -109,6 +110,7 @@ public partial class Freya : UnitBase, IPausable
 
     [Header("死亡")]
     [SerializeField] private float _deadGameOverDelay = 1f;
+    private bool _isDead = false;
 
     [Header("SE")]
     [SerializeField] private VisualInfo _N1_AttackSE;
@@ -142,6 +144,7 @@ public partial class Freya : UnitBase, IPausable
     protected override void BeforeAwake()
     {
         rb = GetComponent<Rigidbody2D>();
+        _coll2D = GetComponent<CircleCollider2D>();
         rb.freezeRotation = true;
     }
 
@@ -194,10 +197,12 @@ public partial class Freya : UnitBase, IPausable
 
     public void OnGameOver()
     {
-        if (!IsMatchingState(States.dead))
+        if (_isDead == false)
         {
             PlaySE(_DaedSE.SEName, _DaedSE.Volume);
+            _coll2D.isTrigger = true;
             GameStateManager.instance.ChangeState(GameState.GameOver);
+            _isDead = true;
         }
     }
 

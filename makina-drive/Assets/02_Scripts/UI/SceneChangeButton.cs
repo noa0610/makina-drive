@@ -48,8 +48,14 @@ public class SceneChangeButton : MonoBehaviour
             SoundManager.instance.PlaySE(_SelectSE.SEName, _SelectSE.Volume);
         }
 
-        await UniTask.Delay(TimeSpan.FromSeconds(_delaySeconds));
+        await UniTask.Delay(TimeSpan.FromSeconds(_delaySeconds), ignoreTimeScale: true);
 
+        if(Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
         SceneManager.LoadScene(_targetSceneName);
+
+        Debug.Log("シーン遷移");
     }
 }
