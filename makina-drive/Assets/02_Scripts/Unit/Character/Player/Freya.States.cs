@@ -93,7 +93,6 @@ public partial class Freya
             (Triggers.dodgeInput, States.dodge, "DodgeInput"),
             (Triggers.jumpInput, States.jumpstart, "JumpInput"),
             (Triggers.died, States.dead, "Dide")
-            ,(Triggers.TestShoot, States.Shoot,"")
         };
         var moveTrigger = new[]
         {
@@ -103,7 +102,6 @@ public partial class Freya
             (Triggers.dodgeInput, States.dodge, "DodgeInput"),
             (Triggers.jumpInput, States.jumpstart,"JumpInput"),
             (Triggers.died, States.dead,"Dide")
-            ,(Triggers.TestShoot, States.Shoot,"")
         };
         var dodgeTrigger = new[]
         {
@@ -195,14 +193,6 @@ public partial class Freya
         };
         #endregion
 
-        // テスト用
-        var ShootTrigger = new[]
-        {
-            (Triggers.ShootEnd, States.idle,""),
-            (Triggers.died, States.dead,"Dide")
-        };
-
-
         // ステートマシンにStatesの移動先の追加
         _stateMachine
             .AddTransition(States.idle, idleTrigger)
@@ -218,8 +208,7 @@ public partial class Freya
             .AddTransition(States.jumpstart, jumpstartTrigger)
             .AddTransition(States.jumpfallAim, jumpfallAimTrigger)
             .AddTransition(States.fall, fallTrigger)
-            .AddTransition(States.fallAttack, fallAttackTrigger)
-            .AddTransition(States.Shoot, ShootTrigger);
+            .AddTransition(States.fallAttack, fallAttackTrigger);
 
         /* 待機 */
         var idle = new Idle();
@@ -374,16 +363,6 @@ public partial class Freya
         });
         _stateMachine.AddState(States.fallAttack, fallAttack);
         #endregion
-
-        /* テスト用 */
-        var shoot = new ShootForward(N1_bulletData, AttackLayer);
-        shoot.SetGameObject(_muzzle);
-        shoot.SetCreatMisalignment(_createPos);
-        shoot.onShootComplete.AddListener(() =>
-        {
-            _stateMachine.ChangeState(Triggers.ShootEnd);
-        });
-        _stateMachine.AddState(States.Shoot, shoot);
 
         /* 死亡 */
         var dead = new Idle_MoveStop(Rigidbody2D);

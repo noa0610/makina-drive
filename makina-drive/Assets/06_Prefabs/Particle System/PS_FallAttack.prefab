@@ -4821,7 +4821,7 @@ ParticleSystemRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -4866,7 +4866,7 @@ GameObject:
   - component: {fileID: 2260030431281591064}
   - component: {fileID: 3528673624726754788}
   m_Layer: 0
-  m_Name: Ps_FallAttack
+  m_Name: PS_FallAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14506,7 +14506,7 @@ ParticleSystemRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 205
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -19360,7 +19360,7 @@ ParticleSystemRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 203
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -24214,7 +24214,7 @@ ParticleSystemRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 202
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0

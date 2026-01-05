@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1951268768190115079}
   - component: {fileID: 4195258513890433148}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: TestEnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   _normalWaves:
   - waveName: 1Wave
     spawnInfos:
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164174
       spawnCount: 10
@@ -62,7 +62,7 @@ MonoBehaviour:
       statusRate: 0
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164177
       spawnCount: 10
@@ -73,7 +73,7 @@ MonoBehaviour:
       statusRate: 0
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371200
       spawnCount: 7
@@ -84,7 +84,7 @@ MonoBehaviour:
       statusRate: 0
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371201
       spawnCount: 7
@@ -95,7 +95,7 @@ MonoBehaviour:
       statusRate: 0
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371276
       spawnCount: 10
@@ -106,7 +106,7 @@ MonoBehaviour:
       statusRate: 0
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371277
       spawnCount: 10
@@ -117,7 +117,7 @@ MonoBehaviour:
       statusRate: 0
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 9087530350985796, guid: fb22ab883f2aea9458cbffef28fe6d5a, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
       comp:
         rid: 5159238991000371275
       spawnCount: 1
@@ -130,7 +130,7 @@ MonoBehaviour:
       isClearTarget: 0
   - waveName: 2Wave
     spawnInfos:
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371279
       spawnCount: 15
@@ -138,10 +138,10 @@ MonoBehaviour:
       spawnTime: 0
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371282
       spawnCount: 5
@@ -149,10 +149,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164181
       spawnCount: 5
@@ -160,10 +160,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371283
       spawnCount: 5
@@ -171,10 +171,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371284
       spawnCount: 5
@@ -182,10 +182,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371278
       spawnCount: 5
@@ -193,10 +193,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371278
       spawnCount: 5
@@ -204,10 +204,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371287
       spawnCount: 20
@@ -215,10 +215,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 9087530350985796, guid: fb22ab883f2aea9458cbffef28fe6d5a, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
       comp:
         rid: 5159238991000371278
       spawnCount: 1
@@ -226,12 +226,12 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
   - waveName: 3Wave
     spawnInfos:
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164182
       spawnCount: 10
@@ -239,10 +239,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371290
       spawnCount: 7
@@ -250,10 +250,10 @@ MonoBehaviour:
       spawnTime: 20
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371288
       spawnCount: 7
@@ -261,10 +261,10 @@ MonoBehaviour:
       spawnTime: 20
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371289
       spawnCount: 10
@@ -272,10 +272,10 @@ MonoBehaviour:
       spawnTime: 40
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371291
       spawnCount: 7
@@ -283,10 +283,10 @@ MonoBehaviour:
       spawnTime: 20
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164184
       spawnCount: 20
@@ -294,10 +294,10 @@ MonoBehaviour:
       spawnTime: 50
       spawnEndTime: 0
       spawnInterval: 0.5
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 8498992996510341214, guid: f64d37c61833653418ca02824fe8a7bc, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164184
       spawnCount: 1
@@ -305,12 +305,12 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
   - waveName: 4Wave
     spawnInfos:
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371292
       spawnCount: 10
@@ -318,10 +318,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371294
       spawnCount: 10
@@ -329,10 +329,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371298
       spawnCount: 10
@@ -340,10 +340,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371299
       spawnCount: 10
@@ -351,10 +351,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371301
       spawnCount: 10
@@ -362,10 +362,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371303
       spawnCount: 10
@@ -373,10 +373,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371297
       spawnCount: 15
@@ -384,10 +384,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 0
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371305
       spawnCount: 10
@@ -395,10 +395,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 8498992996510341214, guid: f64d37c61833653418ca02824fe8a7bc, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
       comp:
         rid: 5159238991000371305
       spawnCount: 1
@@ -406,12 +406,12 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
   - waveName: 5Wave
     spawnInfos:
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371306
       spawnCount: 3
@@ -419,10 +419,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371307
       spawnCount: 3
@@ -430,10 +430,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371308
       spawnCount: 3
@@ -441,10 +441,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371309
       spawnCount: 3
@@ -452,10 +452,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371310
       spawnCount: 5
@@ -463,10 +463,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371311
       spawnCount: 3
@@ -474,10 +474,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371312
       spawnCount: 3
@@ -485,10 +485,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371314
       spawnCount: 3
@@ -496,10 +496,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164190
       spawnCount: 7
@@ -507,10 +507,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164190
       spawnCount: 20
@@ -518,10 +518,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371315
       spawnCount: 5
@@ -529,10 +529,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371316
       spawnCount: 5
@@ -540,10 +540,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164190
       spawnCount: 15
@@ -551,10 +551,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.2
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 9087530350985796, guid: fb22ab883f2aea9458cbffef28fe6d5a, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
       comp:
         rid: 5159238991000371318
       spawnCount: 1
@@ -562,10 +562,10 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 9087530350985796, guid: fb22ab883f2aea9458cbffef28fe6d5a, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
       comp:
         rid: 5159238991000371317
       spawnCount: 1
@@ -573,12 +573,12 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
   - waveName: 6Wave
     spawnInfos:
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164191
       spawnCount: 3
@@ -586,10 +586,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164192
       spawnCount: 5
@@ -597,10 +597,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164193
       spawnCount: 30
@@ -608,10 +608,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.5
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164193
       spawnCount: 10
@@ -619,10 +619,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164193
       spawnCount: 5
@@ -630,10 +630,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371319
       spawnCount: 5
@@ -641,10 +641,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371320
       spawnCount: 5
@@ -652,10 +652,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371321
       spawnCount: 5
@@ -663,10 +663,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 8498992996510341214, guid: f64d37c61833653418ca02824fe8a7bc, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
       comp:
         rid: 5159238991000371322
       spawnCount: 1
@@ -674,10 +674,10 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 8498992996510341214, guid: f64d37c61833653418ca02824fe8a7bc, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
       comp:
         rid: 5159238991000371323
       spawnCount: 1
@@ -685,12 +685,12 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
   - waveName: 7Wave
     spawnInfos:
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164194
       spawnCount: 10
@@ -698,10 +698,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.5
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371324
       spawnCount: 5
@@ -709,10 +709,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371325
       spawnCount: 3
@@ -720,10 +720,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371326
       spawnCount: 5
@@ -731,10 +731,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371327
       spawnCount: 5
@@ -742,10 +742,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371329
       spawnCount: 3
@@ -753,10 +753,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371330
       spawnCount: 5
@@ -764,10 +764,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164196
       spawnCount: 10
@@ -775,10 +775,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371332
       spawnCount: 7
@@ -786,10 +786,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164196
       spawnCount: 25
@@ -797,10 +797,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164196
       spawnCount: 10
@@ -808,10 +808,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.5
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 3715094653748942550, guid: 9bb12c63fa793754cbfaa1f1e4437a3d, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 340796d89192ba64aa78de3372a29ce5, type: 3}
       comp:
         rid: 5159238910236164196
       spawnCount: 1
@@ -819,12 +819,12 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
   - waveName: 8Wave
     spawnInfos:
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164197
       spawnCount: 20
@@ -832,10 +832,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371333
       spawnCount: 7
@@ -843,10 +843,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371334
       spawnCount: 7
@@ -854,10 +854,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371335
       spawnCount: 7
@@ -865,10 +865,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371336
       spawnCount: 7
@@ -876,10 +876,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164199
       spawnCount: 10
@@ -887,10 +887,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164199
       spawnCount: 20
@@ -901,7 +901,7 @@ MonoBehaviour:
       statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164199
       spawnCount: 60
@@ -909,10 +909,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 9087530350985796, guid: fb22ab883f2aea9458cbffef28fe6d5a, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
       comp:
         rid: 5159238910236164199
       spawnCount: 1
@@ -920,10 +920,10 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 8498992996510341214, guid: f64d37c61833653418ca02824fe8a7bc, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
       comp:
         rid: 5159238910236164199
       spawnCount: 1
@@ -936,7 +936,7 @@ MonoBehaviour:
       isClearTarget: 0
   - waveName: 9Wave
     spawnInfos:
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164200
       spawnCount: 10
@@ -944,10 +944,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164201
       spawnCount: 5
@@ -955,10 +955,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.5
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371337
       spawnCount: 5
@@ -966,10 +966,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371338
       spawnCount: 5
@@ -977,10 +977,10 @@ MonoBehaviour:
       spawnTime: 17
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371339
       spawnCount: 5
@@ -988,10 +988,10 @@ MonoBehaviour:
       spawnTime: 19
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371340
       spawnCount: 5
@@ -999,10 +999,10 @@ MonoBehaviour:
       spawnTime: 21
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371341
       spawnCount: 5
@@ -1010,10 +1010,10 @@ MonoBehaviour:
       spawnTime: 23
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371342
       spawnCount: 5
@@ -1021,10 +1021,10 @@ MonoBehaviour:
       spawnTime: 25
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371343
       spawnCount: 5
@@ -1032,10 +1032,10 @@ MonoBehaviour:
       spawnTime: 27
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371344
       spawnCount: 5
@@ -1043,10 +1043,10 @@ MonoBehaviour:
       spawnTime: 29
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164202
       spawnCount: 17
@@ -1054,10 +1054,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164202
       spawnCount: 8
@@ -1065,10 +1065,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.2
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 3715094653748942550, guid: 9bb12c63fa793754cbfaa1f1e4437a3d, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164202
       spawnCount: 1
@@ -1076,10 +1076,10 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 8498992996510341214, guid: f64d37c61833653418ca02824fe8a7bc, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164202
       spawnCount: 1
@@ -1087,12 +1087,12 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
   - waveName: 10Wave
     spawnInfos:
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164203
       spawnCount: 15
@@ -1100,10 +1100,10 @@ MonoBehaviour:
       spawnTime: 5
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164204
       spawnCount: 20
@@ -1111,10 +1111,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.5
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 15
@@ -1122,10 +1122,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.5
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 10
@@ -1133,10 +1133,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 10
@@ -1144,10 +1144,10 @@ MonoBehaviour:
       spawnTime: 40
       spawnEndTime: 0
       spawnInterval: 0.5
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 5
@@ -1155,10 +1155,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 10
@@ -1166,10 +1166,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 5
@@ -1177,10 +1177,10 @@ MonoBehaviour:
       spawnTime: 50
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 5
@@ -1188,10 +1188,10 @@ MonoBehaviour:
       spawnTime: 27
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 5
@@ -1199,10 +1199,10 @@ MonoBehaviour:
       spawnTime: 29
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 17
@@ -1210,10 +1210,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 8
@@ -1221,10 +1221,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.2
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 3715094653748942550, guid: 9bb12c63fa793754cbfaa1f1e4437a3d, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 340796d89192ba64aa78de3372a29ce5, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 1
@@ -1232,10 +1232,10 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 1
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2ee650e75be89a140b4239a72c71b6b7, type: 3}
       comp:
         rid: 5159238910236164205
       spawnCount: 1
@@ -1243,24 +1243,13 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.05
-      destroyTime: 0
-      isClearTarget: 1
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
-      comp:
-        rid: 5159238910236164205
-      spawnCount: 1
-      sameTimeSpawnCount: 1
-      spawnTime: 59
-      spawnEndTime: 0
-      spawnInterval: 0.1
-      statusRate: 0.05
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 1
   _endlessWaves:
   - waveName: 1EndlessWave
     spawnInfos:
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238923754143812
       spawnCount: 20
@@ -1268,10 +1257,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 1
-      statusRate: 0.025
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238923754143813
       spawnCount: 20
@@ -1279,10 +1268,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.5
-      statusRate: 0.025
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238923754143813
       spawnCount: 10
@@ -1290,10 +1279,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.5
-      statusRate: 0.025
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238923754143813
       spawnCount: 10
@@ -1301,12 +1290,12 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.5
-      statusRate: 0.025
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
   - waveName: 2EndlessWave
     spawnInfos:
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371345
       spawnCount: 10
@@ -1314,10 +1303,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.025
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371346
       spawnCount: 10
@@ -1325,10 +1314,10 @@ MonoBehaviour:
       spawnTime: 15
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.025
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: c2fb6de037db2804a81238e60de1db44, type: 3}
       comp:
         rid: 5159238991000371347
       spawnCount: 25
@@ -1336,10 +1325,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 0.025
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371347
       spawnCount: 7
@@ -1347,10 +1336,10 @@ MonoBehaviour:
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.4
-      statusRate: 0.025
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    - unitBase: {fileID: 558106077207338407, guid: 2fe56415edc2c2e4797d062b509aee44, type: 3}
       comp:
         rid: 5159238991000371347
       spawnCount: 10
@@ -1358,10 +1347,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.2
-      statusRate: 0.025
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    - unitBase: {fileID: 8865396154909110907, guid: 72c4dabf220086f419c6cfb8753c692d, type: 3}
       comp:
         rid: 5159238991000371347
       spawnCount: 5
@@ -1369,10 +1358,10 @@ MonoBehaviour:
       spawnTime: 45
       spawnEndTime: 0
       spawnInterval: 0.4
-      statusRate: 0.025
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
-    - unitBase: {fileID: 9087530350985796, guid: fb22ab883f2aea9458cbffef28fe6d5a, type: 3}
+    - unitBase: {fileID: 2547108201261996099, guid: ea80664e51c981f4aa720797fcd6fc41, type: 3}
       comp:
         rid: 5159238991000371347
       spawnCount: 3
@@ -1380,7 +1369,7 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.3
-      statusRate: 0.025
+      statusRate: 10
       destroyTime: 0
       isClearTarget: 0
   references:

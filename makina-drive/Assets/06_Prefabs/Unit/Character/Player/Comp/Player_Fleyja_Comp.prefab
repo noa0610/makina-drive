@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c017e8e35e068c243875f5728b3af40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  _status: {fileID: 11400000, guid: a83727dc29a55e64c940bed093b10801, type: 2}
+  _status: {fileID: 11400000, guid: f5642e78aca71b94cb89b6a0f1526171, type: 2}
   _attackLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -167,36 +167,36 @@ MonoBehaviour:
   _invincibleTime: 0.5
   _dodgeRecoveryTime: 0.7
   _dodgeStaminaLostAmount: 20
-  Dash_bulletData: {fileID: 11400000, guid: 1be7dc159402de34d8ccc28987bb0935, type: 2}
+  Dash_bulletData: {fileID: 11400000, guid: ca4bdff3f9122744da33c72bd60f4843, type: 2}
   _dashStaminaFrameLostAmount: 0.5
   _createPos: 1
   _attackAccel: 20
-  N1_bulletData: {fileID: 11400000, guid: 429c6e0451d919e44bb5b0a7587b8968, type: 2}
+  N1_bulletData: {fileID: 11400000, guid: 024495779c314cc499b6f217cee454ec, type: 2}
   N1_inputReceptionTime: 0.5
   N1_stateChangeTime: 0.8
   N1_inputEndTime: 1.2
   N1_attackStartTime: 0.1
-  N2_bulletData: {fileID: 11400000, guid: 4f5e14d8c6ae14a4dbb859989749c1cd, type: 2}
+  N2_bulletData: {fileID: 11400000, guid: 77e38fa53001cb24fb09a846df28b665, type: 2}
   N2_inputReceptionTime: 0.5
   N2_stateChangeTime: 0.7
   N2_inputEndTime: 1.3
   N2_attackStartTime: 0.1
-  N3_bulletData: {fileID: 11400000, guid: 3d09bf5ee5f58374d8da40329937438a, type: 2}
+  N3_bulletData: {fileID: 11400000, guid: 2f2672dbe7bc4ca489c6a852a7d6dfe1, type: 2}
   N3_inputReceptionTime: 0.45
   N3_stateChangeTime: 0.8
   N3_inputEndTime: 1.5
   N3_attackStartTime: 0.15
-  DashN1_bulletData: {fileID: 11400000, guid: efa3792b0a887554fbb87de36497b775, type: 2}
+  DashN1_bulletData: {fileID: 11400000, guid: 0335e98f34b91ab45b39cfcf94567bf7, type: 2}
   DashN1_inputReceptionTime: 0.5
   DashN1_stateChangeTime: 0.7
   DashN1_inputEndTime: 1.1
   DashN1_attackStartTime: 0.15
-  DashN2_bulletData: {fileID: 11400000, guid: e11fa649415cffe44b111baa310926f5, type: 2}
+  DashN2_bulletData: {fileID: 11400000, guid: 98122ad4d173d4b49a32d88aa59eece1, type: 2}
   DashN2_inputReceptionTime: 0.5
   DashN2_stateChangeTime: 0.75
   DashN2_inputEndTime: 1.3
   DashN2_attackStartTime: 0.15
-  DashN3_bulletData: {fileID: 11400000, guid: a0268f19dc6bf8f4b9e9df5856634d77, type: 2}
+  DashN3_bulletData: {fileID: 11400000, guid: 49ad834c138a9264d8918befda66e95c, type: 2}
   DashN3_inputReceptionTime: 0.5
   DashN3_stateChangeTime: 0.8
   DashN3_inputEndTime: 1.5
@@ -511,7 +511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4346302437975134122, guid: 0dfbf1ff0689ec8498e9e6afa5a8c151, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.75
+      value: -1.34
       objectReference: {fileID: 0}
     - target: {fileID: 4346302437975134122, guid: 0dfbf1ff0689ec8498e9e6afa5a8c151, type: 3}
       propertyPath: m_LocalPosition.z
