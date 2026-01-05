@@ -175,7 +175,7 @@ public partial class Freya
         #region   ===== Jump Triggers =====
         var jumpstartTrigger = new[]
         {
-            (Triggers.jumpAir, States.jumpfallAim,"JumpInput"),
+            (Triggers.jumpAir, States.jumpfallAim,""),
             (Triggers.died, States.dead,"Dide")
         };
         var jumpfallAimTrigger = new[]

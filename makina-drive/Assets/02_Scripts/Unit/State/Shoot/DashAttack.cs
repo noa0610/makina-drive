@@ -23,6 +23,7 @@ public class DashAttack : ShootOnMoveBase
     private float _time;
     private Vector2 _dashDirection;
     private bool _isBlock = true;
+    private bool _processChange = false;
 
     public event Action OnBeGinning;
     public event Action OnCompleted;
@@ -57,6 +58,10 @@ public class DashAttack : ShootOnMoveBase
     {
         _blockThroughTag = blockThroughTag;
     }
+    public void SetProcessChange(bool processChange)
+    {
+        _processChange = processChange;
+    }
 
     // === Public ===
     public override void Enter(IState previousState, UnitBase parent)
@@ -75,10 +80,11 @@ public class DashAttack : ShootOnMoveBase
         if (rigidbody2D == null) return;
 
         _time += deltaTime;
-        if(_time >= _graceDashTime)
+        if (_time >= _graceDashTime)
         {
             _isBlock = false;
-            // ProcessLazyChange(parent, _lazechange, deltaTime);
+            if (_processChange)
+                ProcessLazyChange(parent, _lazechange, _graceDashTime);
         }
 
         var maxSpeed = parent.statusManager.ReadValue(Status.DashSpeed);
@@ -123,7 +129,7 @@ public class DashAttack : ShootOnMoveBase
         // 遷移先の情報を取得
         var nextStateInfo = parent.stateMachine.GetStateInfo(nextState);
 
-        if(nextStateInfo.HasTag(_blockThroughTag))
+        if (nextStateInfo.HasTag(_blockThroughTag))
         {
             return base.AllowChange(nextState, parent);
         }

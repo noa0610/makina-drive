@@ -143,12 +143,12 @@ AnimatorStateMachine:
   - {fileID: -7449581205830286015}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 5296170407689160676}
-    second:
-    - {fileID: -5890761899139796626}
   - first: {fileID: -8535933377396223671}
     second:
     - {fileID: 692781266297016873}
+  - first: {fileID: 5296170407689160676}
+    second:
+    - {fileID: -5890761899139796626}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
@@ -778,7 +778,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: AttackEnde
+  - m_Name: AttackEnd
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1095,7 +1095,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: AttackEnde
+    m_ConditionEvent: AttackEnd
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}
@@ -1404,7 +1404,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: AttackEnde
+    m_ConditionEvent: AttackEnd
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}
@@ -1456,7 +1456,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: AttackEnde
+    m_ConditionEvent: AttackEnd
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}

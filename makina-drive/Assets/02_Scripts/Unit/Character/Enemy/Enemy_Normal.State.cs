@@ -30,35 +30,35 @@ public partial class Enemy_Normal
         // トランスミッショングループを作成
         var idleTrigger = new[]
         {
-            (Triggers.toChase, States.chase, ""),
-            (Triggers.toStan, States.stan, ""),
-            (Triggers.toBlowback, States.blowback, ""),
+            (Triggers.toChase, States.chase, "toMove"),
+            (Triggers.toStan, States.stan, "toIdle"),
+            (Triggers.toBlowback, States.blowback, "toHit"),
             (Triggers.died, States.dead, "")
         };
         var chaseTrigger = new[]
         {
-            (Triggers.toIdle, States.idle, ""),
-            (Triggers.toAttack, States.attack, ""),
-            (Triggers.toStan, States.stan, ""),
-            (Triggers.toBlowback, States.blowback, ""),
+            (Triggers.toIdle, States.idle, "toIdle"),
+            (Triggers.toAttack, States.attack, "toAttack"),
+            (Triggers.toStan, States.stan, "toIdle"),
+            (Triggers.toBlowback, States.blowback, "toHit"),
             (Triggers.died, States.dead, "")
         };
         var attackTrigger = new[]
         {
-            (Triggers.toChase, States.chase, ""),
-            (Triggers.toStan, States.stan, ""),
-            (Triggers.toBlowback, States.blowback, ""),
+            (Triggers.toChase, States.chase, "toMove"),
+            (Triggers.toStan, States.stan, "toIdle"),
+            (Triggers.toBlowback, States.blowback, "toHit"),
             (Triggers.died, States.dead, "")
         };
         var blowbackTrigger = new[]
         {
-            (Triggers.toChase, States.chase, ""),
+            (Triggers.toChase, States.chase, "toMove"),
             (Triggers.died, States.dead, "")
         };
         var stanTrigger = new[]
         {
-            (Triggers.toIdle, States.idle, ""),
-            (Triggers.toBlowback, States.blowback, ""),
+            (Triggers.toIdle, States.idle, "toIdle"),
+            (Triggers.toBlowback, States.blowback, "toHit"),
             (Triggers.died, States.dead, "")
         };
 
@@ -86,6 +86,10 @@ public partial class Enemy_Normal
         attack.SetTime(1f, 1f, _stateChangeTime, _attackTime);
         attack.SetGameObject(_muzzle);
         attack.SetCreatMisalignment(_attackCreatePos);
+        attack.onShootComplete.AddListener(() =>
+        {
+            PlaySE(_AttackSE.SEName, _AttackSE.Volume);
+        });
         _stateMachine.AddState(States.attack, attack);
 
         /* スタン */

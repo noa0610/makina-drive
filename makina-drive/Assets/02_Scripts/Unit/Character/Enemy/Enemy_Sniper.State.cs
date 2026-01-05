@@ -33,44 +33,44 @@ public partial class Enemy_Sniper
         // トランスミッショングループを作成
         var idleTrigger = new[]
         {
-            (Triggers.toChase, States.chase, ""),
-            (Triggers.toStan, States.stan, ""),
-            (Triggers.toBlowback, States.blowback, ""),
+            (Triggers.toChase, States.chase, "toMove"),
+            (Triggers.toStan, States.stan, "toIdle"),
+            (Triggers.toBlowback, States.blowback, "toHit"),
             (Triggers.died, States.dead, "")
         };
         var chaseTrigger = new[]
         {
-            (Triggers.toIdle, States.idle, ""),
-            (Triggers.toStop, States.chaseStop, ""),
-            (Triggers.toShoot, States.shoot, ""),
-            (Triggers.toStan, States.stan, ""),
-            (Triggers.toBlowback, States.blowback, ""),
+            (Triggers.toIdle, States.idle, "toIdle"),
+            (Triggers.toStop, States.chaseStop, "toIdle"),
+            (Triggers.toShoot, States.shoot, "toAttack"),
+            (Triggers.toStan, States.stan, "toIdle"),
+            (Triggers.toBlowback, States.blowback, "toHit"),
             (Triggers.died, States.dead, "")
         };
         var chaseStopTrigger = new[]
         {
-            (Triggers.toChase, States.chase, ""),
-            (Triggers.toShoot, States.shoot, ""),
-            (Triggers.toStan, States.stan, ""),
-            (Triggers.toBlowback, States.blowback, ""),
+            (Triggers.toChase, States.chase, "toMove"),
+            (Triggers.toShoot, States.shoot, "toAttack"),
+            (Triggers.toStan, States.stan, "toIdle"),
+            (Triggers.toBlowback, States.blowback, "toHit"),
             (Triggers.died, States.dead, "")
         };
         var attackTrigger = new[]
         {
-            (Triggers.toChase, States.chase, ""),
-            (Triggers.toStan, States.stan, ""),
-            (Triggers.toBlowback, States.blowback, ""),
+            (Triggers.toChase, States.chase, "toMove"),
+            (Triggers.toStan, States.stan, "toIdle"),
+            (Triggers.toBlowback, States.blowback, "toHit"),
             (Triggers.died, States.dead, "")
         };
         var blowbackTrigger = new[]
         {
-            (Triggers.toChase, States.chase, ""),
+            (Triggers.toChase, States.chase, "toMove"),
             (Triggers.died, States.dead, "")
         };
         var stanTrigger = new[]
         {
-            (Triggers.toIdle, States.idle, ""),
-            (Triggers.toBlowback, States.blowback, ""),
+            (Triggers.toIdle, States.idle, "toIdle"),
+            (Triggers.toBlowback, States.blowback, "toHit"),
             (Triggers.died, States.dead, "")
         };
 
@@ -104,6 +104,7 @@ public partial class Enemy_Sniper
         shoot.onShootComplete.AddListener(() =>
         {
             _shootTimer = 0;
+            PlaySE(_AttackSE.SEName, _AttackSE.Volume);
             _stateMachine.ChangeState(Triggers.toChase);
         });
         _stateMachine.AddState(States.shoot, shoot);

@@ -80,15 +80,16 @@ public partial class Enemy_Tank
         chase.SetRB2(Rigidbody2D);
         chase.SetAccel(_accel);
         chase.SetDecel(_decel);
-        _stateMachine.AddState(States.chase, chase);
+        _stateMachine.AddState(States.chase, chase, "move");
         
-        // TODO 突進攻撃（DashAttack）に変更する
         /* タックル */
         var tackle = new DashAttack(_attackBulletData, AttackLayer, true, Triggers.toChase.ToString());
         tackle.SetStateDashTime(_stateChangeTime);
         tackle.SetGameObject(_muzzle);
         tackle.SetRB2(Rigidbody2D);
         tackle.SetCreatMisalignment(_attackCreatePos);
+        tackle.SetProcessChange(true);
+        tackle.SetBlockThoroughTag("move");
         tackle.OnCompleted += () =>
         {
             _timer = 0;

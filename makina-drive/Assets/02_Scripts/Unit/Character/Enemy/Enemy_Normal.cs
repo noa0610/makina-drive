@@ -38,6 +38,13 @@ public partial class Enemy_Normal : UnitBase
     [Header("経験値アイテム")]
     [SerializeField] private ExpItem _expItem;
 
+    
+    [Header("SE")]
+    [SerializeField] private VisualInfo _AttackSE;
+    [SerializeField] private VisualInfo _DamageSE;
+    [SerializeField] private VisualInfo _BlowbackSE;
+    [SerializeField] private VisualInfo _DeadSE;
+
     private UnitBase _targetUnit;
     private Transform _targetTransform;
 
@@ -79,11 +86,13 @@ public partial class Enemy_Normal : UnitBase
         if(knockbackForce > 0)
         {
             blowback.SetVelocity(knockbackForce, pushdir);
+            PlaySE(_BlowbackSE.SEName, _BlowbackSE.Volume);
             _stateMachine.ChangeState(Triggers.toBlowback);
         }
         
         if (damage > 0 && !_ignoreStan)
         {
+            PlaySE(_DamageSE.SEName, _DamageSE.Volume);
             _stateMachine.ChangeState(Triggers.toStan);
         }
     }
@@ -103,6 +112,7 @@ public partial class Enemy_Normal : UnitBase
             expObj.SetExp(finalExp);
         }
 
+        PlaySE(_DeadSE.SEName, _DeadSE.Volume);
         UnitManager.instance.RemoveUnit(this);
         Destroy(this.gameObject);
     }

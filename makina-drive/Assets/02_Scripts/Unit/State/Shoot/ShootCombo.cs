@@ -227,4 +227,6 @@ public class ShootCombo : ShootOnMoveBase
         base.InitBullet(bullet, dict, parent);
         bullet.isParentDeadBulleDestroy = true;
     }
+
+    // TODO 移動遷移がすぐにできる問題 => AllowChangeが無いこと？
 }

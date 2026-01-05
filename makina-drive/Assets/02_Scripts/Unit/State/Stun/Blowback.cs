@@ -98,8 +98,6 @@ public class Blowback : Idle_LazyChange
                 // 自分の攻撃力で相手にダメージを与える
                 float damage = parent.UnitStatusData.atk;
                 UnitManager.instance.AddDamage(target, parent, damage);
-
-                // TODO ヒットした相手へのノックバック
             }
         }
     }
