@@ -15,12 +15,12 @@ MonoBehaviour:
   id: 6
   unitName: Tank
   description: 
-  maxHp: 50
-  hp: 50
-  atk: 1
-  def: 3
-  speed: 0.75
-  dashSpeed: 5
+  maxHp: 30
+  hp: 30
+  atk: 0.7
+  def: 2
+  speed: 0.5
+  dashSpeed: 2
   collectionRange: 0
   stamina: 0
   knockbackMultiplier: 2

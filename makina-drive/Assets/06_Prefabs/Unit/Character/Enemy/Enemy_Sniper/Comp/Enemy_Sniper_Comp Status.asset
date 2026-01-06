@@ -15,12 +15,12 @@ MonoBehaviour:
   id: 5
   unitName: Sniper
   description: 
-  maxHp: 20
-  hp: 20
-  atk: 1
+  maxHp: 10
+  hp: 10
+  atk: 0.5
   def: 0
-  speed: 0.5
-  dashSpeed: 1
+  speed: 0.3
+  dashSpeed: 0.7
   collectionRange: 0
   stamina: 1
   knockbackMultiplier: 0
