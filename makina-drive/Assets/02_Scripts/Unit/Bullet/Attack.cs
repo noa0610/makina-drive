@@ -17,6 +17,12 @@ public class Attack : Bullet
     {
         _elapsedTime += Time.deltaTime;
         UpdateLifetime();
+        
+        // 発射したユニットが消えたときに弾を消去
+        if(_parent == null && isParentDeadBulleDestroy)
+        {
+            Destroy(gameObject);
+        }
     }
 
 

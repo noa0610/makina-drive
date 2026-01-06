@@ -269,12 +269,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3324804783569585256, guid: 01ea72bada9303a4aa88d6f4f240b0ab, type: 3}
+      propertyPath: _stopBGM
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324804783569585256, guid: 01ea72bada9303a4aa88d6f4f240b0ab, type: 3}
       propertyPath: _visualInfo.SEName
       value: "\u30B2\u30FC\u30E0\u753B\u9762"
       objectReference: {fileID: 0}
     - target: {fileID: 3455128150691520721, guid: 01ea72bada9303a4aa88d6f4f240b0ab, type: 3}
       propertyPath: m_Name
       value: BGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455128150691520721, guid: 01ea72bada9303a4aa88d6f4f240b0ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

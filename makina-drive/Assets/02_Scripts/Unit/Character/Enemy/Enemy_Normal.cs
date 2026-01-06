@@ -121,8 +121,9 @@ public partial class Enemy_Normal : UnitBase
             // 回復アイテムドロップ抽選
             if (_healItem != null && UnityEngine.Random.value <= _dropProbability)
             {
-                var healObj = Instantiate(_expItem, transform.position, Quaternion.identity);
-                healObj.GetComponent<ExpItem>();
+                var healObj = Instantiate(_healItem, transform.position, Quaternion.identity);
+                healObj.GetComponent<HealItem>();
+                healObj.Setup(_targetUnit);
             }
         }
 

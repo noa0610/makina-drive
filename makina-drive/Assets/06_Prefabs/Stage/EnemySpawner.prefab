@@ -792,7 +792,7 @@ MonoBehaviour:
     - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
       comp:
         rid: 5159238910236164196
-      spawnCount: 25
+      spawnCount: 15
       sameTimeSpawnCount: 1
       spawnTime: 45
       spawnEndTime: 0
@@ -827,7 +827,7 @@ MonoBehaviour:
     - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
       comp:
         rid: 5159238910236164197
-      spawnCount: 20
+      spawnCount: 10
       sameTimeSpawnCount: 1
       spawnTime: 5
       spawnEndTime: 0
@@ -893,12 +893,12 @@ MonoBehaviour:
     - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
       comp:
         rid: 5159238910236164199
-      spawnCount: 20
+      spawnCount: 15
       sameTimeSpawnCount: 1
       spawnTime: 30
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 10
+      statusRate: 0.05
       destroyTime: 0
       isClearTarget: 0
     - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
@@ -931,7 +931,7 @@ MonoBehaviour:
       spawnTime: 59
       spawnEndTime: 0
       spawnInterval: 0.1
-      statusRate: 10
+      statusRate: 0.05
       destroyTime: 0
       isClearTarget: 0
   - waveName: 9Wave
@@ -1049,7 +1049,7 @@ MonoBehaviour:
     - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
       comp:
         rid: 5159238910236164202
-      spawnCount: 17
+      spawnCount: 10
       sameTimeSpawnCount: 1
       spawnTime: 45
       spawnEndTime: 0
@@ -1205,7 +1205,7 @@ MonoBehaviour:
     - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
       comp:
         rid: 5159238910236164205
-      spawnCount: 17
+      spawnCount: 10
       sameTimeSpawnCount: 1
       spawnTime: 45
       spawnEndTime: 0
