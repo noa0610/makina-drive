@@ -13,6 +13,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: a19c16f906cb6e64b9e97a6f01f09e4c, type: 2}
     - target: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+      propertyPath: _dropProbability
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
       propertyPath: _attackBulletData
       value: 
       objectReference: {fileID: 11400000, guid: 0e47a02fa0c07164e835c8ba64e1a8bb, type: 2}

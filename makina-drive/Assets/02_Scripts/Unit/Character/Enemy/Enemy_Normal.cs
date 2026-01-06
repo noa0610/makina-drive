@@ -38,7 +38,11 @@ public partial class Enemy_Normal : UnitBase
     [Header("経験値アイテム")]
     [SerializeField] private ExpItem _expItem;
 
-    
+    [Header("回復アイテム")]
+    [SerializeField] private HealItem _healItem;
+    [SerializeField] private float _dropProbability = 0.075f;
+
+
     [Header("SE")]
     [SerializeField] private VisualInfo _AttackSE;
     [SerializeField] private VisualInfo _DamageSE;
@@ -83,13 +87,13 @@ public partial class Enemy_Normal : UnitBase
     {
         base.OnTakeDamage(from, damage, pushdir, knockbackForce);
 
-        if(knockbackForce > 0)
+        if (knockbackForce > 0)
         {
             blowback.SetVelocity(knockbackForce, pushdir);
             PlaySE(_BlowbackSE.SEName, _BlowbackSE.Volume);
             _stateMachine.ChangeState(Triggers.toBlowback);
         }
-        
+
         if (damage > 0 && !_ignoreStan)
         {
             PlaySE(_DamageSE.SEName, _DamageSE.Volume);
@@ -101,15 +105,25 @@ public partial class Enemy_Normal : UnitBase
     {
         base.OnDeath();
 
-        // 経験値アイテムドロップ
         if (_targetUnit != null)
         {
-            float finalExp = UnitStatusData.baseExp;
+            // 経験値アイテムドロップ
+            if (_expItem != null)
+            {
+                float finalExp = UnitStatusData.baseExp;
 
-            var expObj = Instantiate(_expItem, transform.position, Quaternion.identity);
-            expObj.GetComponent<ExpItem>();
-            expObj.Setup(_targetUnit);
-            expObj.SetExp(finalExp);
+                var expObj = Instantiate(_expItem, transform.position, Quaternion.identity);
+                expObj.GetComponent<ExpItem>();
+                expObj.Setup(_targetUnit);
+                expObj.SetExp(finalExp);
+            }
+
+            // 回復アイテムドロップ抽選
+            if (_healItem != null && UnityEngine.Random.value <= _dropProbability)
+            {
+                var healObj = Instantiate(_expItem, transform.position, Quaternion.identity);
+                healObj.GetComponent<ExpItem>();
+            }
         }
 
         PlaySE(_DeadSE.SEName, _DeadSE.Volume);

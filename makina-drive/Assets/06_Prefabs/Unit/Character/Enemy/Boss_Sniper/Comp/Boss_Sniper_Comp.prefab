@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: _ShootBulletData
       value: 
       objectReference: {fileID: 11400000, guid: 2bb437e2269b1cc45afeeb5980239663, type: 2}
+    - target: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+      propertyPath: _dropProbability
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1028214811999295131, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7

@@ -197,6 +197,8 @@ MonoBehaviour:
   _stanTime: 0.5
   _blowbackMaxDistance: 30
   _expItem: {fileID: 4917892835222408703, guid: a428fbd1c0b2360488024408b87f946c, type: 3}
+  _healItem: {fileID: 608883955796000916, guid: 5396f12c3e91dd14e995d3420170b6a6, type: 3}
+  _dropProbability: 0.075
   _AttackSE:
     SEName: "\u30AC\u30F3\u30B7\u30E7\u30C3\u30C8"
     Volume: 0.3
