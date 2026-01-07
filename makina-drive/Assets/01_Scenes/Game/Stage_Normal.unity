@@ -270,6 +270,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3324804783569585256, guid: 01ea72bada9303a4aa88d6f4f240b0ab, type: 3}
       propertyPath: _stopBGM
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324804783569585256, guid: 01ea72bada9303a4aa88d6f4f240b0ab, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3324804783569585256, guid: 01ea72bada9303a4aa88d6f4f240b0ab, type: 3}
@@ -282,7 +286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3455128150691520721, guid: 01ea72bada9303a4aa88d6f4f240b0ab, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
