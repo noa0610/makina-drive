@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
+# if UNITY_EDITOR
+using UnityEditor;
+# endif
+
 /// <summary>
 /// ターゲット指定されたオブジェクト周囲に敵を生成
 /// </summary>
@@ -20,6 +24,11 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("エンドレスウェーブ設定")]
     [SerializeField] private List<WaveData> _endlessWaves = new List<WaveData>();
+
+# if UNITY_EDITOR
+    [Header("Debug")]
+    [SerializeField] private bool _notStatusUP = false;
+# endif
 
     private float _elapsedTime = 0;         // 経過時間
     private int _totalClearTargetCount = 0;  // 必要撃破数
@@ -194,6 +203,11 @@ public class EnemySpawner : MonoBehaviour
             // ウェーブ数に応じて経験値増加
             unit.DropExp = info.unitBase.UnitStatusData.baseExp * (1 + _currentWaveNumber * info.statusRate);
 
+
+# if UNITY_EDITOR
+            if (_notStatusUP)
+            {
+#endif
             // ウェーブ数に応じた強化倍率の計算
             // 例、statusRate = 0.1 → ウェーブ2で0.1（1.1倍の強化）、ウェーブ10で0.9 (1.9倍の強化)
             float currentWaveMultiplier = (_currentWaveNumber - 1) * info.statusRate;
@@ -203,6 +217,9 @@ public class EnemySpawner : MonoBehaviour
                 unit.ApplyWaveStatus(currentWaveMultiplier, _statusUp);
             }
 
+# if UNITY_EDITOR
+            }
+#endif
             if (info.destroyTime > 0) unit.SetLazyDeath(info.destroyTime);
 
             // クリアフラグ付与
