@@ -42,7 +42,28 @@ public partial class Freya
     {
         if (isPressed)
         {
-            _stateMachine.ChangeState(Triggers.attackInput);
+            _isPressingFire = true;
+            // _stateMachine.ChangeState(Triggers.attackInput);
+        }
+        else
+        {
+            // ボタンが離された
+            if (_isPressingFire)
+            {
+                if (_isChargeCompleted)
+                {
+                    // チャージ完了していたらチャージ攻撃
+                    _stateMachine.ChangeState(Triggers.chargeAttackInput); // ※Triggersに定義が必要
+                }
+                else
+                {
+                    // チャージ未完了なら通常攻撃
+                    _stateMachine.ChangeState(Triggers.attackInput);
+                }
+            }
+            // ボタンが離れてリセット
+            _isPressingFire = false;
+            ResetCharge();
         }
     }
 
@@ -52,7 +73,7 @@ public partial class Freya
     {
         if (isPressed)
         {
-            _stateMachine.ChangeState(Triggers.TestShoot);
+            
         }
     }
 

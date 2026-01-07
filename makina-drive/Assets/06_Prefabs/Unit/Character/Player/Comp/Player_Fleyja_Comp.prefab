@@ -163,7 +163,7 @@ MonoBehaviour:
     ExpToNextLevel: 0
   _accel: 30
   _decel: 20
-  _dodgeAccel: 10
+  _dodgeAccel: 15
   _dodgeDecel: 40
   _invincibleTime: 0.5
   _dodgeRecoveryTime: 0.7
@@ -202,6 +202,19 @@ MonoBehaviour:
   DashN3_stateChangeTime: 0.8
   DashN3_inputEndTime: 1.5
   DashN3_attackStartTime: 0.3
+  _chargeThresholdTIme: 1.5
+  _Charge_bulletData: {fileID: 11400000, guid: ab220b6361b8655438214d17abe6c3bc, type: 2}
+  _Charge_Extra_bulletData: {fileID: 11400000, guid: c84abfd78aaf4bf469cdfccc76ccfcb8, type: 2}
+  _Charge_inputReceptionTime: 0.8
+  _Charge_stateChangeTime: 0.9
+  _Charge_inputEndTime: 1.4
+  _Charge_attackStartTime: 0.25
+  _ChargeDash_bulletData: {fileID: 11400000, guid: b4f1f538b052a874cb0e2b499932f972, type: 2}
+  _ChargeDash_Extra_bulletData: {fileID: 11400000, guid: 43fc00d9c3879b64f90d2a30eca21993, type: 2}
+  _ChargeDash_inputReceptionTime: 0.8
+  _ChargeDash_stateChangeTime: 0.9
+  _ChargeDash_inputEndTime: 1.4
+  _ChargeDash_attackStartTime: 0.25
   _jumpStartTime: 1
   _jumpStaminaLostAmount: 80
   _fallAimAccel: 40
@@ -231,6 +244,15 @@ MonoBehaviour:
     Volume: 0.5
   _JumpAttackSE:
     SEName: "\u843D\u4E0B\u653B\u6483"
+    Volume: 0.5
+  _Charge_AttackSE:
+    SEName: "\u30C9\u30E9\u30A4\u30D6\u30C0\u30C3\u30B7\u30E5\u653B\u6483\uFF08\u901A\u5E38\uFF09"
+    Volume: 0.5
+  _Charge_DashAttackSE:
+    SEName: "\u30C9\u30E9\u30A4\u30D6\u30C0\u30C3\u30B7\u30E5\u653B\u6483\uFF08\u5F37\uFF09"
+    Volume: 0.5
+  _ChargeCompletedSE:
+    SEName: "\u30C1\u30E3\u30FC\u30B8\uFF08\u5F37\u653B\u6483\uFF09"
     Volume: 0.5
   _levelUpSE:
     SEName: "\u30EC\u30D9\u30EB\u30A2\u30C3\u30D7"

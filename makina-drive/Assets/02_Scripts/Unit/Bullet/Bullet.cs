@@ -74,6 +74,7 @@ public class Bullet : MonoBehaviour
     {
         if (CanSelfMove)
         {
+            Debug.Log($"bulletMove : {gameObject.name}");
             Move(Time.deltaTime);
         }
         _elapsedTime += Time.deltaTime;

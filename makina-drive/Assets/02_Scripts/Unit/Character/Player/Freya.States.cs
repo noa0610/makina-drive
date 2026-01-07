@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,8 @@ public partial class Freya
     private ShootCombo DashN1_attack;
     private ShootCombo DashN2_attack;
     private ShootCombo DashN3_attack;
+    private ShootCombo_Extra Charge_Attack;
+    private ShootCombo_Extra Charge_DashAttack;
     private DashAttack drivedash;
     private enum States
     {
@@ -41,6 +44,9 @@ public partial class Freya
 
         // ダッシュ強攻撃
         S_dashAttack,
+
+        // チャージ攻撃
+        charge_Attack, charge_DashAttack,
 
         // ジャンプ
         jumpstart,
@@ -75,10 +81,9 @@ public partial class Freya
         jumpCancel,
         attackInput,
         attackConplete,
+        chargeAttackInput,
         stan,
         died
-        , TestShoot
-        , ShootEnd
     }
 
     // ステート登録
@@ -89,6 +94,7 @@ public partial class Freya
         {
             (Triggers.moveInput, States.move, "MoveInput"),
             (Triggers.attackInput, States.N1_attack, "AttackInput"),
+            (Triggers.chargeAttackInput, States.charge_Attack, "ChargeInput"),
             (Triggers.dashInput, States.drivedash, "DashInput"),
             (Triggers.dodgeInput, States.dodge, "DodgeInput"),
             (Triggers.jumpInput, States.jumpstart, "JumpInput"),
@@ -98,6 +104,7 @@ public partial class Freya
         {
             (Triggers.moveCancel, States.idle,"MoveEnd"),
             (Triggers.attackInput, States.N1_attack,"AttackInput"),
+            (Triggers.chargeAttackInput, States.charge_Attack, "ChargeInput"),
             (Triggers.dashInput, States.drivedash, "DashInput"),
             (Triggers.dodgeInput, States.dodge, "DodgeInput"),
             (Triggers.jumpInput, States.jumpstart,"JumpInput"),
@@ -108,6 +115,7 @@ public partial class Freya
             (Triggers.dodgeCancel, States.idle,"DodgeEnd"),
             (Triggers.moveInput, States.move,"MoveInput"),
             (Triggers.attackInput, States.N1_attack,"AttackInput"),
+            (Triggers.chargeAttackInput, States.charge_Attack, "ChargeInput"),
             (Triggers.dashInput, States.drivedash,"DashInput"),
             (Triggers.died, States.dead,"Dide")
         };
@@ -115,6 +123,7 @@ public partial class Freya
         {
             (Triggers.dashCancel, States.idle,"DashEnd"),
             (Triggers.attackInput, States.dashN1_Attack,"AttackInput"),
+            (Triggers.chargeAttackInput, States.charge_DashAttack, "ChargeInput"),
             (Triggers.died, States.dead,"Dide")
         };
 
@@ -170,6 +179,23 @@ public partial class Freya
         };
         #endregion
 
+        #region   ===== ChargeAttack Triggers =====
+        var chargeAttackTrigger = new[]
+        {
+            (Triggers.moveInput, States.move, "MoveInput"),
+            (Triggers.attackConplete, States.idle,"AttackEnd"),
+            (Triggers.dodgeInput, States.dodge,"DodgeInput"),
+            (Triggers.died, States.dead,"Dide")
+        };
+        var chargeDashAttackTrigger = new[]
+        {
+            (Triggers.moveInput, States.move, "MoveInput"),
+            (Triggers.attackConplete, States.idle,"AttackEnd"),
+            (Triggers.dodgeInput, States.dodge,"DodgeInput"),
+            (Triggers.died, States.dead,"Dide")
+        };
+        #endregion
+
         #region   ===== Jump Triggers =====
         var jumpstartTrigger = new[]
         {
@@ -204,6 +230,8 @@ public partial class Freya
             .AddTransition(States.N3_attack, n3_attackTrigger)
             .AddTransition(States.dashN1_Attack, dashn1_attackTrigger)
             .AddTransition(States.dashN2_Attack, dashn2_attackTrigger)
+            .AddTransition(States.charge_Attack, chargeAttackTrigger)
+            .AddTransition(States.charge_DashAttack, chargeDashAttackTrigger)
             .AddTransition(States.dashN3_Attack, dashn3_attackTrigger)
             .AddTransition(States.jumpstart, jumpstartTrigger)
             .AddTransition(States.jumpfallAim, jumpfallAimTrigger)
@@ -326,6 +354,34 @@ public partial class Freya
         _stateMachine.AddState(States.dashN3_Attack, DashN3_attack);
         #endregion
 
+        #region   ===== Charge_Attack State =====
+        /* チャージ攻撃 */
+        Charge_Attack = new ShootCombo_Extra(_Charge_bulletData, _Charge_Extra_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
+        Charge_Attack.SetTime(_Charge_inputReceptionTime, _Charge_inputEndTime, _Charge_stateChangeTime, _Charge_attackStartTime);
+        Charge_Attack.SetGameObject(_muzzle);
+        Charge_Attack.SetCreatMisalignment(_createPos);
+        Charge_Attack.SetRB2(Rigidbody2D);
+        Charge_Attack.SetAccel(_attackAccel);
+        Charge_Attack.onShootComplete.AddListener(() =>
+        {
+            PlaySE(_Charge_AttackSE.SEName, _Charge_AttackSE.Volume);
+        });
+        _stateMachine.AddState(States.charge_Attack, Charge_Attack);
+
+        /* チャージダッシュ攻撃 */
+        Charge_DashAttack = new ShootCombo_Extra(_ChargeDash_bulletData, _ChargeDash_Extra_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
+        Charge_DashAttack.SetTime(_ChargeDash_inputReceptionTime, _ChargeDash_inputEndTime, _ChargeDash_stateChangeTime, _ChargeDash_attackStartTime);
+        Charge_DashAttack.SetGameObject(_muzzle);
+        Charge_DashAttack.SetCreatMisalignment(_createPos);
+        Charge_DashAttack.SetRB2(Rigidbody2D);
+        Charge_DashAttack.SetAccel(_attackAccel);
+        Charge_DashAttack.onShootComplete.AddListener(() =>
+        {
+            PlaySE(_Charge_DashAttackSE.SEName, _Charge_DashAttackSE.Volume);
+        });
+        _stateMachine.AddState(States.charge_DashAttack, Charge_DashAttack);
+        #endregion
+
         #region   ===== Jump State =====
 
         /* ジャンプ開始 */
@@ -333,8 +389,8 @@ public partial class Freya
         jumpstart.OnCompleted += () =>
         {
             // 発動中すり抜け
-            if(_coll2D != null)
-            _coll2D.isTrigger = true;
+            if (_coll2D != null)
+                _coll2D.isTrigger = true;
             // 無敵付与
             SetInvincible(true);
         };
@@ -352,8 +408,8 @@ public partial class Freya
         fall.OnCompleted += () =>
         {
             // すり抜け解除
-            if(_coll2D != null)
-            _coll2D.isTrigger = false;
+            if (_coll2D != null)
+                _coll2D.isTrigger = false;
             IsRecovery = true;
             // 無敵解除
             SetInvincible(false);

@@ -10,40 +10,40 @@ using Unity.VisualScripting;
 [Serializable]
 public class ShootCombo : ShootOnMoveBase
 {
-    private enum ChangeState
+    protected enum ChangeState
     {
         Start,
         Buffering,
         Change
     }
-    private ChangeState _changeState;
+    protected ChangeState _changeState;
 
 
     /* メモ：アニメーションに合わせて時間設定する */
-    [SerializeField] private float _inputReceptionTime;  // 入力受付開始時間
-    [SerializeField] private float _stateChangeTime;     // ステート終了時間
-    [SerializeField] private float _inputEndTime;        // 入力受付終了時間
-    [SerializeField] private float _attackStartTime;     // 攻撃を生成する時間
+    [SerializeField] protected float _inputReceptionTime;  // 入力受付開始時間
+    [SerializeField] protected float _stateChangeTime;     // ステート終了時間
+    [SerializeField] protected float _inputEndTime;        // 入力受付終了時間
+    [SerializeField] protected float _attackStartTime;     // 攻撃を生成する時間
 
-    [SerializeField] private float _accel;               // 移動加速度
+    [SerializeField] protected float _accel;               // 移動加速度
 
 
-    private string _lazechange;  // ステート終了時の遷移先
-    private string _comboChange; // コンボ遷移先
+    protected string _lazechange;  // ステート終了時の遷移先
+    protected string _comboChange; // コンボ遷移先
 
-    private string _blockThroughTag; // isBlockを無視するステートタグ
+    protected string _blockThroughTag; // isBlockを無視するステートタグ
 
-    private bool _isAttackEnd;      // 攻撃終了
-    private bool _canInput;         // 入力許可
-    private bool _ComboStateChange; // コンボ先へ
-    private bool _isBlock;          // 遷移不可
+    protected bool _isAttackEnd;      // 攻撃終了
+    protected bool _canInput;         // 入力許可
+    protected bool _ComboStateChange; // コンボ先へ
+    protected bool _isBlock;          // 遷移不可
 
-    private Vector2 _initialVelocity;  // ステート開始時初速度
-    private Vector2 _initialDirection; // ステート開始時移動方向
+    protected Vector2 _initialVelocity;  // ステート開始時初速度
+    protected Vector2 _initialDirection; // ステート開始時移動方向
 
     public event Action OnCompleted;
 
-    private float _time;
+    protected float _time;
 
     // === Constractor ===
     public ShootCombo(BulletData data, LayerMask targetLayer, string lazeChange, string comboChange,
@@ -262,6 +262,4 @@ public class ShootCombo : ShootOnMoveBase
         base.InitBullet(bullet, dict, parent);
         bullet.isParentDeadBulleDestroy = true;
     }
-
-    // TODO 移動遷移がすぐにできる問題 => AllowChangeが無いこと？
 }

@@ -891,6 +891,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: _Charge_bulletData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f2672dbe7bc4ca489c6a852a7d6dfe1, type: 2}
+    - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: _ChargeDash_bulletData
+      value: 
+      objectReference: {fileID: 11400000, guid: 49ad834c138a9264d8918befda66e95c, type: 2}
     - target: {fileID: 6291943281225340653, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
       propertyPath: m_Name
       value: Player_Fleyja_Comp

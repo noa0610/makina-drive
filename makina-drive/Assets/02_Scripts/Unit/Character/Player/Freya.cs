@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using Unity.VisualScripting;
 using Cysharp.Threading.Tasks;
+using UnityEngine.PlayerLoop;
 
 /// <summary>
 /// プレイヤーユニット
@@ -89,7 +90,31 @@ public partial class Freya : UnitBase, IPausable
     [SerializeField] private float DashN3_inputEndTime = 1f;
     [SerializeField] private float DashN3_attackStartTime = 0.4f;
 
+    [Header("チャージ")]
+    [SerializeField] private float _chargeThresholdTIme = 1.5f; // チャージ完了時間
+    private float _chargeTimer = 0f;
+    private bool _isPressingFire = false;
+    private bool _isChargeCompleted = false;
+
     // TODO チャージ攻撃は斬撃を飛ばす
+    [Header("チャージ攻撃")]
+    [SerializeField] private BulletData _Charge_bulletData;
+
+    [SerializeField] private BulletData _Charge_Extra_bulletData;
+    [SerializeField] private float _Charge_inputReceptionTime = 0.8f;
+    [SerializeField] private float _Charge_stateChangeTime = 0.9f;
+    [SerializeField] private float _Charge_inputEndTime = 1.4f;
+    [SerializeField] private float _Charge_attackStartTime = 0.25f;
+
+
+    [Header("チャージダッシュ攻撃")]
+    [SerializeField] private BulletData _ChargeDash_bulletData;
+
+    [SerializeField] private BulletData _ChargeDash_Extra_bulletData;
+    [SerializeField] private float _ChargeDash_inputReceptionTime = 0.8f;
+    [SerializeField] private float _ChargeDash_stateChangeTime = 0.9f;
+    [SerializeField] private float _ChargeDash_inputEndTime = 1.4f;
+    [SerializeField] private float _ChargeDash_attackStartTime = 0.25f;
 
 
     [Header("ジャンプ開始")]
@@ -112,6 +137,11 @@ public partial class Freya : UnitBase, IPausable
     [SerializeField] private float _deadGameOverDelay = 1f;
     private bool _isDead = false;
 
+    [Header("エフェクト")]
+    [SerializeField] private ParticleSystem _ChargeParticle;
+    [SerializeField] private float _ChargeParticleDeleteTime;
+    private GameObject _childParticle;
+
     [Header("SE")]
     [SerializeField] private VisualInfo _N1_AttackSE;
     [SerializeField] private VisualInfo _N2_AttackSE;
@@ -120,6 +150,9 @@ public partial class Freya : UnitBase, IPausable
     [SerializeField] private VisualInfo _DashSE;
     [SerializeField] private VisualInfo _JumpSE;
     [SerializeField] private VisualInfo _JumpAttackSE;
+    [SerializeField] private VisualInfo _Charge_AttackSE;
+    [SerializeField] private VisualInfo _Charge_DashAttackSE;
+    [SerializeField] private VisualInfo _ChargeCompletedSE;
     [SerializeField] private VisualInfo _levelUpSE;
     [SerializeField] private VisualInfo _DaedSE;
 
@@ -143,6 +176,28 @@ public partial class Freya : UnitBase, IPausable
 
     }
 
+    protected override void AfterUpdate()
+    {
+        base.AfterUpdate();
+
+        if (!_isPlaying) return;
+
+        // ボタン押しっぱなしによるチャージ計測
+        if (_isPressingFire)
+        {
+            _chargeTimer += Time.deltaTime;
+            if (_chargeTimer >= _chargeThresholdTIme && !_isChargeCompleted)
+            {
+                PlaySE(_ChargeCompletedSE.SEName, _ChargeCompletedSE.Volume);
+                if (_ChargeParticle)
+                {
+                    _childParticle = GameObject.Instantiate(_ChargeParticle.gameObject, gameObject.transform.position, Quaternion.identity, transform);
+                    Destroy(_childParticle, _ChargeParticleDeleteTime);
+                }
+                _isChargeCompleted = true;
+            }
+        }
+    }
 
     protected override void BeforeFixedUpdate()
     {
@@ -241,6 +296,15 @@ public partial class Freya : UnitBase, IPausable
     private void HandleLevelUp(int level)
     {
         PlaySE(_levelUpSE.SEName, _levelUpSE.Volume);
+    }
+
+    // チャージ状況をリセットする
+    public void ResetCharge()
+    {
+        _chargeTimer = 0f;
+        _isChargeCompleted = false;
+        if (_childParticle != null)
+            Destroy(_childParticle);
     }
 
 
