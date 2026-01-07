@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using System;
 using System.Linq;
 using Unity.VisualScripting;
+using Cysharp.Threading.Tasks;
 
 /// <summary>
 /// プレイヤーユニット
@@ -15,8 +16,7 @@ public partial class Freya : UnitBase, IPausable
 {
     [Header("固有設定")]
     private static readonly Dictionary<States, string> _stateNames = EnumWrapper.GetValueNameMap<States>();
-    private Rigidbody2D rb;
-    private CircleCollider2D _coll2D;
+    [SerializeField] private CircleCollider2D _coll2D;
 
 
     [Header("レベルアップ")]
@@ -120,6 +120,7 @@ public partial class Freya : UnitBase, IPausable
     [SerializeField] private VisualInfo _DashSE;
     [SerializeField] private VisualInfo _JumpSE;
     [SerializeField] private VisualInfo _JumpAttackSE;
+    [SerializeField] private VisualInfo _levelUpSE;
     [SerializeField] private VisualInfo _DaedSE;
 
     private string _dashAttackTag = "DA";
@@ -132,6 +133,7 @@ public partial class Freya : UnitBase, IPausable
         base.AfterAwake();
         _level = new PlayerLevel(this, _farstNextLevelExp, _nextLevelExpRate);
         _inventory = new EnhanceInventory();
+        Rigidbody2D.freezeRotation = true;
 
         Debug.Log("Set Level");
     }
@@ -139,13 +141,6 @@ public partial class Freya : UnitBase, IPausable
     protected override void Start()
     {
 
-    }
-
-    protected override void BeforeAwake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        _coll2D = GetComponent<CircleCollider2D>();
-        rb.freezeRotation = true;
     }
 
 
@@ -195,12 +190,15 @@ public partial class Freya : UnitBase, IPausable
         OnGameOver();
     }
 
-    public void OnGameOver()
+    public async void OnGameOver()
     {
         if (_isDead == false)
         {
             PlaySE(_DaedSE.SEName, _DaedSE.Volume);
             _coll2D.isTrigger = true;
+
+            await UniTask.Delay(TimeSpan.FromSeconds(_deadGameOverDelay));
+
             GameStateManager.instance.ChangeState(GameState.GameOver);
             _isDead = true;
         }
@@ -217,16 +215,18 @@ public partial class Freya : UnitBase, IPausable
         Gizmos.DrawLine(transform.position, transform.position + (Vector3)Direction);
     }
 
-    // 状態変更イベントを購読
+    // イベントを購読
     private void OnEnable()
     {
         GameStateManager.OnStateChanged += HandleStateChanged;
+        _level.OnLevelUp += HandleLevelUp;
     }
 
     // 購読解除
     private void OnDisable()
     {
         GameStateManager.OnStateChanged -= HandleStateChanged;
+        _level.OnLevelUp -= HandleLevelUp;
     }
 
     private void HandleStateChanged(GameState newState)
@@ -236,6 +236,11 @@ public partial class Freya : UnitBase, IPausable
             Rigidbody2D.linearVelocity = Vector2.zero;
             Pause();
         }
+    }
+
+    private void HandleLevelUp(int level)
+    {
+        PlaySE(_levelUpSE.SEName, _levelUpSE.Volume);
     }
 
 

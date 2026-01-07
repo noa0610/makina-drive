@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UniRx;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator)), Serializable]
@@ -238,13 +239,19 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public virtual void GainExp(float amount) { }
 
     // 敵ウェーブ生成専用
-    public void ApplyWaveStatus(float multiplier)
+    public void ApplyWaveStatus(float multiplier, List<Status> targets = null)
     {
         if (statusManager == null) return;
 
-        // ウェーブ生成時に強化するステータスのリスト
-        Status[] targets = { Status.MaxHP, Status.ATK, Status.DEF, Status.Speed };
-
+        // ウェーブ生成時に強化するステータスのリスト（なければ自動設定）
+        if(targets == null)
+        {
+            targets.Add(Status.MaxHP);
+            targets.Add(Status.ATK);
+            targets.Add(Status.Speed);
+            targets.Add(Status.DashSpeed);
+        }
+        
         statusManager.ApplyStatusMultiplier(targets, multiplier);
         statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));
     }

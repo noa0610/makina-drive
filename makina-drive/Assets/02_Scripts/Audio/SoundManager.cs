@@ -154,8 +154,18 @@ public class SoundManager : SingletonBehavior<SoundManager>
         {
             if (bgmSource.clip && bgmSource.clip.name == bgmName)
             {
-                bgmSource.Stop();
+                if (bgmSource.isPlaying)
+                    bgmSource.Stop();
             }
+        }
+    }
+
+    public void AllStopBGM()
+    {
+        foreach (var bgmSource in _bgmSources)
+        {
+            if (bgmSource.isPlaying)
+                bgmSource.Stop();
         }
     }
 }

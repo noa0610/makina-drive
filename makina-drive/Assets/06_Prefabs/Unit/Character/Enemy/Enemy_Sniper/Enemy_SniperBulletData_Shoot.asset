@@ -19,3 +19,5 @@ MonoBehaviour:
     time: 10
     damage: 3
     speed: 3
+    knockback: 0
+    maxHitsPerUnit: 1

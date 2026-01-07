@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
     #region === Fields ===
     protected LayerMask _targetLayer;
     protected BulletStatus _status;
+    protected ObjectHitCounter _hitCounter = new ();
     protected float _currentHP;
     protected float _elapsedTime;   // 経過時間
     protected float KnockbackForce; // ノックバック威力
@@ -166,6 +167,16 @@ public class Bullet : MonoBehaviour
             //Debug.Log($"Hit Target: {target.UnitStatusData.unitName}");
             if (target.IsInvincible)
                 return;
+
+            // ヒット数の取得（0以下は1として判定）
+            int limit = _status.maxHitsPerUnit > 0 ? _status.maxHitsPerUnit : 1;
+            float delay = _status.hitDelayTime;
+
+            if (!_hitCounter.TryRegisterHit(target.gameObject, limit, delay))
+            {
+                // 規定回数ヒットしたかディレイ中
+                return;
+            }
 
             // ノックバック威力の計算
             KnockbackForce = KnockbackForce - target.statusManager.ReadValue(Status.knockbackResistance);

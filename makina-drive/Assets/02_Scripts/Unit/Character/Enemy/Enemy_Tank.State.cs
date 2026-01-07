@@ -90,8 +90,17 @@ public partial class Enemy_Tank
         tackle.SetCreatMisalignment(_attackCreatePos);
         tackle.SetProcessChange(true);
         tackle.SetBlockThoroughTag("move");
+        tackle.OnBeGinning += () =>
+        {
+            // 発動中すり抜け
+            if(_coll2D != null)
+            _coll2D.isTrigger = true;
+        };
         tackle.OnCompleted += () =>
         {
+            // すり抜け解除
+            if(_coll2D != null)
+            _coll2D.isTrigger = false;
             _timer = 0;
         };
         _stateMachine.AddState(States.tackle, tackle);

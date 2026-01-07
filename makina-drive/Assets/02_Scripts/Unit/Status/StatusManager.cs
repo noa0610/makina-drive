@@ -125,7 +125,7 @@ public class StatusManager
     }
 
     // 特定のステータスを一括強化適用
-    public void ApplyStatusMultiplier(Status[] statuses, float multiplier)
+    public void ApplyStatusMultiplier(List<Status> statuses, float multiplier)
     {
         foreach(var type in statuses)
         {

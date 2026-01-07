@@ -21,7 +21,7 @@ MonoBehaviour:
   def: 1
   speed: 3
   dashSpeed: 8
-  collectionRange: 5
+  collectionRange: 2
   stamina: 100
   knockbackMultiplier: 1.5
   knockbackResistance: 1000

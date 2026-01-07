@@ -33,9 +33,4 @@ public class BGMPlayer : MonoBehaviour
             _isPlayBGM = true;
         }
     }
-
-    private void OnEnable()
-    {
-        SoundManager.instance.StopBGM(_visualInfo.SEName);
-    }
 }

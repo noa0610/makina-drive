@@ -31,9 +31,12 @@ public class ShootCombo : ShootOnMoveBase
     private string _lazechange;  // ステート終了時の遷移先
     private string _comboChange; // コンボ遷移先
 
+    private string _blockThroughTag; // isBlockを無視するステートタグ
+
     private bool _isAttackEnd;      // 攻撃終了
     private bool _canInput;         // 入力許可
     private bool _ComboStateChange; // コンボ先へ
+    private bool _isBlock;          // 遷移不可
 
     private Vector2 _initialVelocity;  // ステート開始時初速度
     private Vector2 _initialDirection; // ステート開始時移動方向
@@ -59,6 +62,63 @@ public class ShootCombo : ShootOnMoveBase
         _comboChange = comboChange;
     }
     public ShootCombo() : base() { }
+    
+    // === Public ===
+    /// <summary>
+    /// 入力タイマーのセット
+    /// </summary>
+    /// <param name="inputReceptionTIme">入力受付時間</param>
+    /// <param name="inputEndTime">入力終了時間（後隙）</param>
+    /// <param name="stateChangeTime">入力受け取り時、実際にステート遷移する時間</param>
+    /// <param name="attackStartTime">攻撃発生時間</param>
+    public void SetTime(float inputReceptionTIme, float inputEndTime, float stateChangeTime, float attackStartTime)
+    {
+        _inputReceptionTime = inputReceptionTIme;
+        _inputEndTime = inputEndTime;
+        _stateChangeTime = stateChangeTime;
+        _attackStartTime = attackStartTime;
+    }
+    public void SetInputReceptionTime(float time)
+    {
+        _inputReceptionTime = time;
+    }
+    public void SetStateChangeTime(float time)
+    {
+        _stateChangeTime = time;
+    }
+    public void SetInputEndTime(float time)
+    {
+        _inputEndTime = time;
+    }
+    public void SetAttackStartTime(float time)
+    {
+        _attackStartTime = time;
+    }
+
+    public void SetAccel(float accel)
+    {
+        _accel = accel;
+    }
+
+    public void SetCombo(bool ComboStateChange)
+    {
+        if (_canInput)
+        {
+            Debug.Log("入力受付前です。");
+            return;
+        }
+        _ComboStateChange = ComboStateChange;
+    }
+    
+    public void SetBlockThoroughTag(string blockThroughTag)
+    {
+        _blockThroughTag = blockThroughTag;
+    }
+
+    public void ResetAttack()
+    {
+        _isAttackEnd = false;
+    }
 
 
 
@@ -69,6 +129,8 @@ public class ShootCombo : ShootOnMoveBase
         _canInput = false;
         _ComboStateChange = false;
         _time = 0;
+        _isBlock = true;
+        
 
         if (rigidbody2D != null && _accel > 0)
         {
@@ -121,6 +183,7 @@ public class ShootCombo : ShootOnMoveBase
                 Debug.Log("InputReceptionTime");
                 // 入力を許可
                 _canInput = true;
+                _isBlock = false;
                 _changeState = ChangeState.Buffering;
             }
         }
@@ -160,6 +223,24 @@ public class ShootCombo : ShootOnMoveBase
         OnCompleted?.Invoke();
     }
 
+    public override bool AllowChange(IState nextState, UnitBase parent)
+    {
+        // 遷移先の情報を取得
+        var nextStateInfo = parent.stateMachine.GetStateInfo(nextState);
+
+        if (nextStateInfo.HasTag(_blockThroughTag))
+        {
+            return base.AllowChange(nextState, parent);
+        }
+
+        if (_isBlock)
+        {
+            Debug.Log("DashAttack: Change is blocked.");
+            return false;
+        }
+        return base.AllowChange(nextState, parent);
+    }
+
     protected override async UniTask Shoot(UnitBase parent)
     {
         var b = _data.prefab;
@@ -174,53 +255,7 @@ public class ShootCombo : ShootOnMoveBase
         instantiatedBullet.CanSelfMove = false;
         InitBullet(instantiatedBullet, parent.AttackDirection, parent);
         await base.Shoot(parent);
-    }
-
-    // === Public ===
-    public void SetTime(float inputReceptionTIme, float inputEndTime, float stateChangeTime, float attackStartTime)
-    {
-        _inputReceptionTime = inputReceptionTIme;
-        _inputEndTime = inputEndTime;
-        _stateChangeTime = stateChangeTime;
-        _attackStartTime = attackStartTime;
-    }
-    public void SetInputReceptionTime(float time)
-    {
-        _inputReceptionTime = time;
-    }
-    public void SetStateChangeTime(float time)
-    {
-        _stateChangeTime = time;
-    }
-    public void SetInputEndTime(float time)
-    {
-        _inputEndTime = time;
-    }
-    public void SetAttackStartTime(float time)
-    {
-        _attackStartTime = time;
-    }
-
-    public void SetAccel(float accel)
-    {
-        _accel = accel;
-    }
-
-    public void SetCombo(bool ComboStateChange)
-    {
-        if (_canInput)
-        {
-            Debug.Log("入力受付前です。");
-            return;
-        }
-        _ComboStateChange = ComboStateChange;
-    }
-
-    // 攻撃済みであれば再度攻撃を行う
-    public void ResetAttack()
-    {
-        _isAttackEnd = false;
-    }
+    }    
 
     protected override void InitBullet(Bullet bullet, Vector3 dict, UnitBase parent)
     {

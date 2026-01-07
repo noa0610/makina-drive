@@ -229,7 +229,7 @@ public partial class Freya
         /* ドライブダッシュ */
         drivedash = new DashAttack(Dash_bulletData, AttackLayer, true, Triggers.dashCancel.ToString());
         drivedash.SetGameObject(_muzzle);
-        drivedash.SetRB2(rb);
+        drivedash.SetRB2(Rigidbody2D);
         drivedash.SetCreatMisalignment(0);
         drivedash.SetBlockThoroughTag(_dashAttackTag);
         drivedash.OnBeGinning += () =>
@@ -249,7 +249,7 @@ public partial class Freya
         N_attack1.SetTime(N1_inputReceptionTime, N1_stateChangeTime, N1_inputEndTime, N1_attackStartTime);
         N_attack1.SetGameObject(_muzzle);
         N_attack1.SetCreatMisalignment(_createPos);
-        N_attack1.SetRB2(rb);
+        N_attack1.SetRB2(Rigidbody2D);
         N_attack1.SetAccel(_attackAccel);
         N_attack1.onShootComplete.AddListener(() =>
         {
@@ -262,7 +262,7 @@ public partial class Freya
         N_attack2.SetTime(N2_inputReceptionTime, N2_stateChangeTime, N2_inputEndTime, N2_attackStartTime);
         N_attack2.SetGameObject(_muzzle);
         N_attack2.SetCreatMisalignment(_createPos);
-        N_attack2.SetRB2(rb);
+        N_attack2.SetRB2(Rigidbody2D);
         N_attack2.SetAccel(_attackAccel);
         N_attack2.onShootComplete.AddListener(() =>
         {
@@ -275,7 +275,7 @@ public partial class Freya
         N_attack3.SetTime(N3_inputReceptionTime, N3_stateChangeTime, N3_inputEndTime, N3_attackStartTime);
         N_attack3.SetGameObject(_muzzle);
         N_attack3.SetCreatMisalignment(_createPos);
-        N_attack3.SetRB2(rb);
+        N_attack3.SetRB2(Rigidbody2D);
         N_attack3.SetAccel(_attackAccel);
         N_attack3.onShootComplete.AddListener(() =>
         {
@@ -291,7 +291,7 @@ public partial class Freya
         DashN1_attack.SetTime(DashN1_inputReceptionTime, DashN1_stateChangeTime, DashN1_inputEndTime, DashN1_attackStartTime);
         DashN1_attack.SetGameObject(_muzzle);
         DashN1_attack.SetCreatMisalignment(_createPos);
-        DashN1_attack.SetRB2(rb);
+        DashN1_attack.SetRB2(Rigidbody2D);
         DashN1_attack.SetAccel(_attackAccel * 1.5f);
         DashN1_attack.onShootComplete.AddListener(() =>
         {
@@ -304,7 +304,7 @@ public partial class Freya
         DashN2_attack.SetTime(DashN2_inputReceptionTime, DashN2_stateChangeTime, DashN2_inputEndTime, DashN2_attackStartTime);
         DashN2_attack.SetGameObject(_muzzle);
         DashN2_attack.SetCreatMisalignment(_createPos);
-        DashN2_attack.SetRB2(rb);
+        DashN2_attack.SetRB2(Rigidbody2D);
         DashN2_attack.SetAccel(_attackAccel * 1.5f);
         DashN2_attack.onShootComplete.AddListener(() =>
         {
@@ -317,7 +317,7 @@ public partial class Freya
         DashN3_attack.SetTime(DashN3_inputReceptionTime, DashN3_stateChangeTime, DashN3_inputEndTime, DashN3_attackStartTime);
         DashN3_attack.SetGameObject(_muzzle);
         DashN3_attack.SetCreatMisalignment(_createPos);
-        DashN3_attack.SetRB2(rb);
+        DashN3_attack.SetRB2(Rigidbody2D);
         DashN3_attack.SetAccel(_attackAccel * 1.5f);
         DashN3_attack.onShootComplete.AddListener(() =>
         {
@@ -332,6 +332,9 @@ public partial class Freya
         var jumpstart = new Idle_LazyChange(Triggers.jumpAir.ToString(), _jumpStartTime);
         jumpstart.OnCompleted += () =>
         {
+            // 発動中すり抜け
+            if(_coll2D != null)
+            _coll2D.isTrigger = true;
             // 無敵付与
             SetInvincible(true);
         };
@@ -348,6 +351,9 @@ public partial class Freya
         var fall = new Idle_LazyChange(Triggers.jumpConplete.ToString(), _fallTime);
         fall.OnCompleted += () =>
         {
+            // すり抜け解除
+            if(_coll2D != null)
+            _coll2D.isTrigger = false;
             IsRecovery = true;
             // 無敵解除
             SetInvincible(false);

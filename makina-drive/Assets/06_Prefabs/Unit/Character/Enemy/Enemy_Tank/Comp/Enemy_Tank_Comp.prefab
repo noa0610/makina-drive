@@ -153,6 +153,7 @@ MonoBehaviour:
   _StartDirection: 0
   _enableVisuableInvincible: 0
   _currentState: 
+  _coll2D: {fileID: 8326528613432991453}
   _targetUnitForDebug: {fileID: 0}
   _findPlayerOnStart: 1
   _accel: 30

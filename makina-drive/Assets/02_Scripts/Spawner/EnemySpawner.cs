@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _waveDuration = 60f;  // 1ウェーブの時間
     [SerializeField] private int _currentWaveNumber = 1; // ウェーブ数
     [SerializeField] private TimerCount _timer;
+    [SerializeField] private List<Status> _statusUp = new List<Status>();
 
     [Header("敵生成情報リスト")]
     [SerializeField] private List<WaveData> _normalWaves = new List<WaveData>();
@@ -81,10 +82,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void GameClear()
     {
+        if (!_isCleared)
+        {
+            Debug.Log($"ゲームクリア");
+            GameStateManager.instance.ChangeState(GameState.Clear);
+        }
         _isCleared = true;
-        Debug.Log($"ゲームクリア");
-
-        GameStateManager.instance.ChangeState(GameState.Clear);
     }
 
     private void Update()
@@ -195,9 +198,9 @@ public class EnemySpawner : MonoBehaviour
             // 例、statusRate = 0.1 → ウェーブ2で0.1（1.1倍の強化）、ウェーブ10で0.9 (1.9倍の強化)
             float currentWaveMultiplier = (_currentWaveNumber - 1) * info.statusRate;
 
-            if(currentWaveMultiplier > 0)
+            if (currentWaveMultiplier > 0)
             {
-                unit.ApplyWaveStatus(currentWaveMultiplier);
+                unit.ApplyWaveStatus(currentWaveMultiplier, _statusUp);
             }
 
             if (info.destroyTime > 0) unit.SetLazyDeath(info.destroyTime);

@@ -136,6 +136,7 @@ public partial class Enemy_Sniper : UnitBase
     protected override void AfterUpdate()
     {
         base.AfterUpdate();
+        // 攻撃クールタイム用
         _shootTimer += Time.deltaTime;
     }
 

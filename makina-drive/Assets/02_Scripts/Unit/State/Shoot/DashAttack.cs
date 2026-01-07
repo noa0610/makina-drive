@@ -18,7 +18,9 @@ public class DashAttack : ShootOnMoveBase
     [Header("回転速度（度/秒）")]
     [SerializeField] private float rotateSpeed = 360f;
     private string _lazechange;  // ステート終了時の遷移先
+
     private string _blockThroughTag; // isBlockを無視するステートタグ
+    
     private float _dashSpeed;
     private float _time;
     private Vector2 _dashDirection;

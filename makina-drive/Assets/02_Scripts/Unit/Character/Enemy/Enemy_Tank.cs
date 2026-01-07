@@ -8,6 +8,7 @@ public partial class Enemy_Tank : UnitBase
 {
     [Header("固有設定")]
     private static readonly Dictionary<States, string> _stateNames = EnumWrapper.GetValueNameMap<States>();
+    [SerializeField] private CircleCollider2D _coll2D;
 
     [Header("デバッグ")]
     [SerializeField] private UnitBase _targetUnitForDebug;
@@ -133,6 +134,7 @@ public partial class Enemy_Tank : UnitBase
         base.AfterUpdate();
         if (IsMatchingState(States.chase))
         {
+            // 攻撃クールタイム用
             _timer += Time.deltaTime;
         }
     }

@@ -153,6 +153,7 @@ MonoBehaviour:
   _StartDirection: 1
   _enableVisuableInvincible: 0
   _currentState: 
+  _coll2D: {fileID: 0}
   _farstNextLevelExp: 30
   _nextLevelExpRate: 1.2
   _level:
@@ -230,6 +231,9 @@ MonoBehaviour:
     Volume: 0.5
   _JumpAttackSE:
     SEName: "\u843D\u4E0B\u653B\u6483"
+    Volume: 0.5
+  _levelUpSE:
+    SEName: "\u30EC\u30D9\u30EB\u30A2\u30C3\u30D7"
     Volume: 0.5
   _DaedSE:
     SEName: "\u6B7B\u4EA1"

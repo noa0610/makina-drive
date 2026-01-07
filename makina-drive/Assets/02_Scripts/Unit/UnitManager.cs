@@ -11,7 +11,6 @@ public class UnitManager : SingletonBehavior<UnitManager>
     [SerializeField] private Canvas _parentCanvas;  // Canvasの設定はオーバーレイ
     [SerializeField] private TextMeshProUGUI _textPrefab;
     [SerializeField] private float _textViewTime = 0.5f;
-    [SerializeField] private float _textMoveHeight = 0.2f;
     [SerializeField] private UnitTags _displayTags = UnitTags.Enemy; // 表示対象
 
     private List<UnitBase> _unitList = new List<UnitBase>();
