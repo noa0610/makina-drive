@@ -20,6 +20,7 @@ public class GameStateManager : SingletonBehavior<GameStateManager>
 {
     public static event Action<GameState> OnStateChanged;
     private GameState _gameState = GameState.Play;
+    public string _currentGameState => _gameState.ToString();
     
     public void ChangeState(GameState nextGameState)
     {

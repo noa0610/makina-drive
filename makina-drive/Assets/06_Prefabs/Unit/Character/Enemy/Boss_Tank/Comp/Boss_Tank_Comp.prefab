@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2289356991477234185, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3199769843225676995, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
       propertyPath: m_Name
       value: Boss_Tank_Comp

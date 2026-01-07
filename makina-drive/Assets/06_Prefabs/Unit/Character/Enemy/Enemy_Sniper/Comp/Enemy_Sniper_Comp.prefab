@@ -109,7 +109,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.7607843}
   m_FlipX: 0
@@ -340,6 +340,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3904881702362700684}
     m_Modifications:
+    - target: {fileID: 581098411457612359, guid: 7ff1b2f8c1938f64f9578fbb486e18e8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3325830577302695038, guid: 7ff1b2f8c1938f64f9578fbb486e18e8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4
@@ -399,6 +403,10 @@ PrefabInstance:
     - target: {fileID: 4535019946690294813, guid: 7ff1b2f8c1938f64f9578fbb486e18e8, type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311169571592259110, guid: 7ff1b2f8c1938f64f9578fbb486e18e8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

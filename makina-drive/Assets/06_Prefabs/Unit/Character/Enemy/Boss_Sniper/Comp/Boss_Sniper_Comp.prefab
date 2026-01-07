@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: _dropProbability
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 753259553863552762, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1028214811999295131, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
@@ -60,6 +64,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.43
       objectReference: {fileID: 0}
+    - target: {fileID: 2914729771042123938, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3904881702362700684, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -99,6 +107,10 @@ PrefabInstance:
     - target: {fileID: 3904881702362700684, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5995555634199395523, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8767375673868555706, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
       propertyPath: m_Name

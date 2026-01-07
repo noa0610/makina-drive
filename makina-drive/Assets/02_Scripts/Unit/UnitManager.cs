@@ -5,13 +5,14 @@ using TMPro;
 
 public class UnitManager : SingletonBehavior<UnitManager>
 {
-    [Header("Debug")]
-    [SerializeField] private bool _damegeLog;
     [SerializeField] private bool _isdamageTextView = false;
     [SerializeField] private Canvas _parentCanvas;  // Canvasの設定はオーバーレイ
     [SerializeField] private TextMeshProUGUI _textPrefab;
     [SerializeField] private float _textViewTime = 0.5f;
     [SerializeField] private UnitTags _displayTags = UnitTags.Enemy; // 表示対象
+    
+    [Header("Debug")]
+    [SerializeField] private bool _damegeLog;
 
     private List<UnitBase> _unitList = new List<UnitBase>();
     public void AddUnit(UnitBase unit)

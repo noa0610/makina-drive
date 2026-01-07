@@ -25,7 +25,14 @@ public class TestGameStateViewUI : MonoBehaviour
 
     [SerializeField] private bool _activeChange;   // アクティブ状態も切り替えるか
     [SerializeField] private bool _changeOnlyOnce = false; // 表示切り替えは一度限り
-    [SerializeField] private bool _fadeEndTimeStop = false; // フェード効果後ゲーム時間を停止する
+
+    private enum GameTimeChange
+    {
+        none,   // 何もしない
+        Stop,   // ゲーム時間停止
+        Start   // ゲーム時間進行
+    }
+    [SerializeField] private GameTimeChange _isEndGameStoper = GameTimeChange.none; // 効果後ゲーム時間を停止するか
 
     private int _changeCount = 0;
 
@@ -46,14 +53,14 @@ public class TestGameStateViewUI : MonoBehaviour
     {
         if (_activeChange)
         {
-            if (_fadeType == FadeType.In || _fadeType == FadeType.FadeIn)
-            {
-                SetGraphicsActive(_fadeUI, false);
-            }
-            else
-            {
-                SetGraphicsActive(_fadeUI, true);
-            }
+            // if (_fadeType == FadeType.In || _fadeType == FadeType.FadeIn)
+            // {
+            //     SetGraphicsActive(_fadeUI, false);
+            // }
+            // else
+            // {
+            //     SetGraphicsActive(_fadeUI, true);
+            // }
         }
     }
 
@@ -92,15 +99,21 @@ public class TestGameStateViewUI : MonoBehaviour
         {
             if (_fadeType == FadeType.Out || _fadeType == FadeType.FadeOut)
             {
-                SetGraphicsActive(_fadeUI, true);
+                SetGraphicsActive(_fadeUI, false);
             }
         }
 
         if (_fedeEffectTime >= 0) await UniTask.Delay(TimeSpan.FromSeconds(_fedeEffectTime), ignoreTimeScale: true);
-        if (_fadeEndTimeStop)
+
+        if (_isEndGameStoper == GameTimeChange.Stop)
         {
             // ゲーム時間を停止
             Time.timeScale = 0;
+        }
+        else if (_isEndGameStoper == GameTimeChange.Start)
+        {
+            // ゲーム時間を再開
+            Time.timeScale = 1;
         }
     }
 
