@@ -224,6 +224,8 @@ MonoBehaviour:
   FallAttack_bulletData: {fileID: 11400000, guid: d002c1e852608954ca620647b8319738, type: 2}
   _fallAttackTime: 1
   _deadGameOverDelay: 1
+  _ChargeParticle: {fileID: 2236257326295335633, guid: 58a2f56938ac8fa4f85a76eb178c1d61, type: 3}
+  _ChargeParticleDeleteTime: 0.7
   _N1_AttackSE:
     SEName: "\u901A\u5E38\u653B\u6483\uFF081\u6BB5\u968E\uFF09"
     Volume: 0.5

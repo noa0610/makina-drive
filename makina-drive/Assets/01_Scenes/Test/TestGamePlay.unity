@@ -7643,14 +7643,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.99338007
       objectReference: {fileID: 0}
-    - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
-      propertyPath: _ChargeParticle
-      value: 
-      objectReference: {fileID: 2236257326295335633, guid: 58a2f56938ac8fa4f85a76eb178c1d61, type: 3}
-    - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
-      propertyPath: _ChargeParticleDeleteTime
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 3462131727558161749, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9975963
