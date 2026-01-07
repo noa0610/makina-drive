@@ -33,6 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2802103493519242260}
+  - {fileID: 4394531732246210514}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4917892835222408703
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExpItem
   moveSpeed: 5
   accel: 0.5
+  _expAmount: 0
 --- !u!58 &582651803176154891
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -173,4 +175,66 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6055547266757013996, guid: 9dee0b75b5992294fa7f0ba8fae1eb43, type: 3}
   m_PrefabInstance: {fileID: 8280626991078295032}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8322411808005591425
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6503113806314197821}
+    m_Modifications:
+    - target: {fileID: 5729605814898341459, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729605814898341459, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729605814898341459, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729605814898341459, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729605814898341459, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729605814898341459, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729605814898341459, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729605814898341459, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729605814898341459, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729605814898341459, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949616330756951925, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+      propertyPath: m_Name
+      value: PS_Sparkling_Diamond
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+--- !u!4 &4394531732246210514 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5729605814898341459, guid: 6d9992fa39ccb464990467824795f19a, type: 3}
+  m_PrefabInstance: {fileID: 8322411808005591425}
   m_PrefabAsset: {fileID: 0}
