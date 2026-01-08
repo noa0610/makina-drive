@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("敵生成情報リスト")]
     [SerializeField] private List<WaveData> _normalWaves = new List<WaveData>();
 
-    [Header("エンドレスウェーブ設定")]
+    [Header("エンドレス敵生成情報リスト")]
     [SerializeField] private List<WaveData> _endlessWaves = new List<WaveData>();
 
 # if UNITY_EDITOR

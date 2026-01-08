@@ -24,6 +24,8 @@ public interface IStateMachine
     /// </summary>
     Dictionary<(string layer, string trigger), (string toState, string animeTrigger)> AnyTransitionGroup { get; }
 
+    event Action<StateInfo> OnStateChanged;
+
     // ======================
     // ステート操作
     // ======================

@@ -25,6 +25,8 @@ public class StateMachine : IStateMachine
     public Dictionary<(string layer, string trigger), (string toState, string animeTrigger)> AnyTransitionGroup => _anyTransitionGroup;
     public bool UseDefaultLayerIfMissingTransition { get; set; } = true;
 
+    public event Action<StateInfo> OnStateChanged; // ステート切り替えイベント
+
     public StateMachine(UnitBase parent) : this(parent, new NullAnimationDriver()) { }
     public StateMachine(UnitBase parent, IAnimationDriver animationDriver)
     {
@@ -46,6 +48,8 @@ public class StateMachine : IStateMachine
 
             from.Exit(to.Instance, _parent);
             _currentState = to;
+
+            OnStateChanged?.Invoke(_currentState);
 
             _anim.OnTransition(fromKey, _currentState.key, trs.animetrigger);
 
