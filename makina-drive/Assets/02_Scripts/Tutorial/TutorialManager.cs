@@ -14,9 +14,15 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Freya _player;
     [SerializeField] private TutorialUI _ui;
     [SerializeField] private TutorialArrow _arrow;
+    [SerializeField] private TutorialTriggerArea _aria;
+
+    [Header("SE")]
+    [SerializeField] private VisualInfo _countUpSE;
+    [SerializeField] private VisualInfo _stepClearSE;
 
     private IntReactiveProperty _currenActiontCount = new IntReactiveProperty(0);
     private int _currentStepIndex = 0;
+    private List<TutorialTriggerArea> _spawnedTriggers = new List<TutorialTriggerArea>();
 
     private CancellationTokenSource _cts;
 
@@ -24,6 +30,7 @@ public class TutorialManager : MonoBehaviour
     {
         _cts = new CancellationTokenSource();
 
+        // カウントが変わるたびに自動でUIテキストを更新予約
         _currenActiontCount.Subscribe(count =>
         {
             if (_steps.Count > _currentStepIndex)
@@ -32,41 +39,77 @@ public class TutorialManager : MonoBehaviour
 
         _player.stateMachine.OnStateChanged += HandlePlayerStateChanged;
 
+        // 最初のチュートリアルステップ表示
         SetupStepAsync(0).Forget();
     }
 
+    // エリア侵入処理
+    public void OnAreaReached(Vector3 position)
+    {
+        // 矢印のターゲットから除外
+        _arrow.RemoveTarget(position);
+        AddCount();
+    }
 
+    // チュートリアルステップセットアップ
     private async UniTask SetupStepAsync(int index)
     {
         var step = _steps[index];
         _currenActiontCount.Value = 0;
 
+        ClearActiveTriggers();
+
         // 無敵化設定
         _player.SetInvincible(step.isInvincible);
+
+        bool wasPaused = false;
 
         // ウィンドウ表示
         if (step.showExplanationWindow && step.stopGameDuringWindow)
         {
             GameStateManager.instance.ChangeState(GameState.Pause);
-            Time.timeScale = 0;
+            // Time.timeScale = 0;
+            wasPaused = true;
         }
 
         // UI表示
         await _ui.ShowStepVisualsAsync(step, _cts.Token);
+        Debug.Log("WindowClose");
 
         // ゲーム再開
-        if (Time.timeScale == 0)
+        if (wasPaused)
         {
+            Debug.Log("TimeReStart");
             GameStateManager.instance.ChangeState(GameState.Play);
             Time.timeScale = 1;
         }
 
+
         // 矢印表示
         if (step.conditionType == TutorialConditionType.MoveToArea)
-            _arrow.SetTarget(step.targetPoint);
-
+        {
+            _arrow.gameObject.SetActive(true);
+            foreach (var pos in step.targetPoint)
+            {
+                var trigger = Instantiate(_aria, pos, Quaternion.identity);
+                trigger.SetManager(this);
+                _spawnedTriggers.Add(trigger);
+            }
+            _arrow.SetTargets(step.targetPoint);
+        }
         else
-            _arrow.SetTarget(Vector3.zero);
+        {
+            _arrow.gameObject.SetActive(false);
+        }
+    }
+
+    private void ClearActiveTriggers()
+    {
+        foreach (var t in _spawnedTriggers)
+        {
+            if (t != null) Destroy(t.gameObject);
+        }
+        _spawnedTriggers.Clear();
     }
 
 
@@ -84,16 +127,27 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    // カウントアップ
     public void AddCount()
     {
         _currenActiontCount.Value++;
 
+        if (_countUpSE.SEName != null) SoundManager.instance.PlaySE(_countUpSE.SEName, _countUpSE.Volume);
+
         if (_currenActiontCount.Value >= _steps[_currentStepIndex].taskCount)
         {
-            NextStepAsync().Forget();
+            if (_stepClearSE.SEName != null) SoundManager.instance.PlaySE(_stepClearSE.SEName, _stepClearSE.Volume);
+            CompleteStepAsync().Forget();
         }
     }
 
+    private async UniTaskVoid CompleteStepAsync()
+    {
+        await _ui.ShowSuccessFeedbackAsync(_cts.Token);
+        NextStepAsync().Forget();
+    }
+
+    // 次のステップへ
     private async UniTaskVoid NextStepAsync()
     {
         await _ui.HideTaskHUDAsync();
@@ -105,6 +159,7 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
+            // 最後のステップなら終了処理
             FinishTutorial();
         }
     }

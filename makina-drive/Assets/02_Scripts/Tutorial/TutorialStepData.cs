@@ -15,7 +15,7 @@ public class TutorialStepData : ScriptableObject
     [Header("進行条件 (Task)")]
     public TutorialConditionType conditionType;
     public int taskCount;           // 必要回数
-    public Vector3 targetPoint;     // 移動先
+    public Vector3[] targetPoint;     // 移動先
     public string[] targetStateTag; // ユニットステートタグ
 
     [Header("フラグ設定")]

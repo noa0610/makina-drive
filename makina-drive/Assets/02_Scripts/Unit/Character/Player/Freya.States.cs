@@ -246,13 +246,13 @@ public partial class Freya
         var move = new MoveFree(true);
         move.SetAccel(_accel);
         move.SetDecel(_decel);
-        _stateMachine.AddState(States.move, move);
+        _stateMachine.AddState(States.move, move, new string[] { "MV" });
 
         /* 回避 */
         var dodge = new MoveInvincible(_invincibleTime, _dodgeRecoveryTime, false, Triggers.dodgeCancel.ToString());
         dodge.SetAccel(_dodgeAccel);
         dodge.SetDecel(_dodgeDecel);
-        _stateMachine.AddState(States.dodge, dodge);
+        _stateMachine.AddState(States.dodge, dodge, new string[] { "DG" });
 
         /* ドライブダッシュ */
         drivedash = new DashAttack(Dash_bulletData, AttackLayer, true, Triggers.dashCancel.ToString());
@@ -268,7 +268,7 @@ public partial class Freya
         {
             IsRecovery = true;
         };
-        _stateMachine.AddState(States.drivedash, drivedash);
+        _stateMachine.AddState(States.drivedash, drivedash, new string[] { "DD" });
 
         #region   ===== N_Attack State =====
 
@@ -283,7 +283,7 @@ public partial class Freya
         {
             PlaySE(_N1_AttackSE.SEName, _N1_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.N1_attack, N_attack1);
+        _stateMachine.AddState(States.N1_attack, N_attack1, new string[] { "NA", "NA1" });
 
         /* 通常攻撃2 */
         N_attack2 = new ShootCombo(N2_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
@@ -296,7 +296,7 @@ public partial class Freya
         {
             PlaySE(_N2_AttackSE.SEName, _N2_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.N2_attack, N_attack2);
+        _stateMachine.AddState(States.N2_attack, N_attack2, new string[] { "NA", "NA2" });
 
         /* 通常攻撃3 */
         N_attack3 = new ShootCombo(N3_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
@@ -309,7 +309,7 @@ public partial class Freya
         {
             PlaySE(_N3_AttackSE.SEName, _N3_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.N3_attack, N_attack3);
+        _stateMachine.AddState(States.N3_attack, N_attack3, new string[] { "NA", "NA3" });
         #endregion
 
         #region   ===== DashN_Attack State =====
@@ -325,7 +325,7 @@ public partial class Freya
         {
             PlaySE(_N1_AttackSE.SEName, _N1_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.dashN1_Attack, DashN1_attack, _dashAttackTag);
+        _stateMachine.AddState(States.dashN1_Attack, DashN1_attack, new string[] { _dashAttackTag, "DA1" });
 
         /* ダッシュ通常攻撃2 */
         DashN2_attack = new ShootCombo(DashN2_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
@@ -338,7 +338,7 @@ public partial class Freya
         {
             PlaySE(_N2_AttackSE.SEName, _N2_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.dashN2_Attack, DashN2_attack);
+        _stateMachine.AddState(States.dashN2_Attack, DashN2_attack, new string[] { _dashAttackTag, "DA2" });
 
         /* ダッシュ通常攻撃3 */
         DashN3_attack = new ShootCombo(DashN3_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
@@ -351,7 +351,7 @@ public partial class Freya
         {
             PlaySE(_N3_AttackSE.SEName, _N3_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.dashN3_Attack, DashN3_attack);
+        _stateMachine.AddState(States.dashN3_Attack, DashN3_attack, new string[] { _dashAttackTag, "DA3" });
         #endregion
 
         #region   ===== Charge_Attack State =====
@@ -366,7 +366,7 @@ public partial class Freya
         {
             PlaySE(_Charge_AttackSE.SEName, _Charge_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.charge_Attack, Charge_Attack);
+        _stateMachine.AddState(States.charge_Attack, Charge_Attack, new string[] { "CA" });
 
         /* チャージダッシュ攻撃 */
         Charge_DashAttack = new ShootCombo_Extra(_ChargeDash_bulletData, _ChargeDash_Extra_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
@@ -379,7 +379,7 @@ public partial class Freya
         {
             PlaySE(_Charge_DashAttackSE.SEName, _Charge_DashAttackSE.Volume);
         });
-        _stateMachine.AddState(States.charge_DashAttack, Charge_DashAttack);
+        _stateMachine.AddState(States.charge_DashAttack, Charge_DashAttack, new string[] { "CA", "CDA" });
         #endregion
 
         #region   ===== Jump State =====
@@ -423,7 +423,7 @@ public partial class Freya
         {
             PlaySE(_JumpAttackSE.SEName, _JumpAttackSE.Volume);
         });
-        _stateMachine.AddState(States.fallAttack, fallAttack);
+        _stateMachine.AddState(States.fallAttack, fallAttack, new string[] { "SPA" });
         #endregion
 
         /* 死亡 */

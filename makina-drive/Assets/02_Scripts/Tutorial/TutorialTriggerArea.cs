@@ -5,14 +5,18 @@ using UnityEngine;
 /// </summary>
 public class TutorialTriggerArea : MonoBehaviour
 {
-    [SerializeField] private TutorialManager manager;
+    private TutorialManager _manager;
+    public void SetManager(TutorialManager manager)
+    {
+        _manager = manager;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            manager.AddCount();
-            gameObject.SetActive(false); // 1回きり
+            _manager.OnAreaReached(transform.position);
+            Destroy(gameObject);
         }
     }
 }

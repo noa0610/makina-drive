@@ -235,7 +235,6 @@ public class ShootCombo : ShootOnMoveBase
 
         if (_isBlock)
         {
-            Debug.Log("DashAttack: Change is blocked.");
             return false;
         }
         return base.AllowChange(nextState, parent);
