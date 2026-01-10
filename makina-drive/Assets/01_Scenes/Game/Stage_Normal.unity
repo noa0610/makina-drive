@@ -891,6 +891,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2277193789392217002, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9957097
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277193789392217002, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.092532426
+      objectReference: {fileID: 0}
     - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
       propertyPath: _Charge_bulletData
       value: 
@@ -899,9 +907,113 @@ PrefabInstance:
       propertyPath: _ChargeDash_bulletData
       value: 
       objectReference: {fileID: 11400000, guid: 49ad834c138a9264d8918befda66e95c, type: 2}
+    - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: _ChargeDash_attackStartTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462131727558161749, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99759626
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462131727558161749, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.06929426
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581824780662930196, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0067115254
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719592796622795192, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9988374
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719592796622795192, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.048206627
+      objectReference: {fileID: 0}
+    - target: {fileID: 4183947760777524648, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.011217293
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578083863156143729, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.14622898
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578083863156143729, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.98925084
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971608840749729053, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9931808
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971608840749729053, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.11658412
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907187073336757577, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9974294
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907187073336757577, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.07165623
+      objectReference: {fileID: 0}
     - target: {fileID: 6291943281225340653, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
       propertyPath: m_Name
       value: Player_Fleyja_Comp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144751475628031402, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9949983
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144751475628031402, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.099892356
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625604991788636627, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98427945
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625604991788636627, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.17661864
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776977738389735783, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.18471834
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776977738389735783, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.98279154
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778965067144750970, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.073143065
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344689542471276543, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.1855807
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344689542471276543, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.982629
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375329213816560606, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9743423
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375329213816560606, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.22507139
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155663247245112032, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99818134
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155663247245112032, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.060284235
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
