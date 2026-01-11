@@ -15,6 +15,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private TutorialUI _ui;
     [SerializeField] private TutorialArrow _arrow;
     [SerializeField] private TutorialTriggerArea _aria;
+    [SerializeField] private TutorialEnemySpawner _enemySpawner;
 
     [Header("SE")]
     [SerializeField] private VisualInfo _countUpSE;
@@ -23,6 +24,7 @@ public class TutorialManager : MonoBehaviour
     private IntReactiveProperty _currenActiontCount = new IntReactiveProperty(0);
     private int _currentStepIndex = 0;
     private List<TutorialTriggerArea> _spawnedTriggers = new List<TutorialTriggerArea>();
+    private bool _taskClear = false; // タスククリア判定の重複防止
 
     private CancellationTokenSource _cts;
 
@@ -39,6 +41,9 @@ public class TutorialManager : MonoBehaviour
 
         _player.stateMachine.OnStateChanged += HandlePlayerStateChanged;
 
+        UnitManager.OnUnitDamaged -= HandleUnitDamaged;
+        UnitManager.OnUnitDamaged += HandleUnitDamaged;
+
         // 最初のチュートリアルステップ表示
         SetupStepAsync(0).Forget();
     }
@@ -54,10 +59,21 @@ public class TutorialManager : MonoBehaviour
     // チュートリアルステップセットアップ
     private async UniTask SetupStepAsync(int index)
     {
+        _taskClear = false;
         var step = _steps[index];
         _currenActiontCount.Value = 0;
 
         ClearActiveTriggers();
+
+        // 敵生成初期化
+        _enemySpawner.DestroyAllEnemy();
+        _enemySpawner.StopSpawning();
+
+        if (step.spawneEnemy != null && step.spawneEnemy.unitBase != null)
+        {
+            // 敵を生成
+            _enemySpawner.StartSpawn(step.spawneEnemy, _player.gameObject);
+        }
 
         // 無敵化設定
         _player.SetInvincible(step.isInvincible);
@@ -67,7 +83,7 @@ public class TutorialManager : MonoBehaviour
         // ウィンドウ表示
         if (step.showExplanationWindow && step.stopGameDuringWindow)
         {
-            GameStateManager.instance.ChangeState(GameState.Pause);
+            GameStateManager.instance.ChangeState(GameState.TutorialPause);
             // Time.timeScale = 0;
             wasPaused = true;
         }
@@ -80,7 +96,7 @@ public class TutorialManager : MonoBehaviour
         if (wasPaused)
         {
             Debug.Log("TimeReStart");
-            GameStateManager.instance.ChangeState(GameState.Play);
+            GameStateManager.instance.ChangeState(GameState.TutorialPlay);
             Time.timeScale = 1;
         }
 
@@ -127,6 +143,51 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    // ダメージイベントを受け取りカウント
+    private void HandleUnitDamaged(UnitBase target, UnitBase attacker, BulletStatus? status)
+    {
+        if (_steps.Count <= _currentStepIndex) return;
+        var step = _steps[_currentStepIndex];
+
+        // 攻撃側はプレイヤーのみ
+        if (attacker != _player) return;
+
+        bool isMatched = false;
+
+        switch (step.conditionType)
+        {
+            // 攻撃タグが一致するか
+            case TutorialConditionType.HitAttackTag:
+                if (status.HasValue)
+                    foreach (string tag in status.Value.attackTag)
+                    {
+                        // 一致するものが一つでもあるか
+                        if (tag == step.targetAttackTag)
+                        {
+                            isMatched = true;
+                            break;
+                        }
+                    }
+                break;
+            // ユニット名が一致するか
+            case TutorialConditionType.DamageSpecificUnit:
+                if (target.UnitStatusData.unitName == step.targetUnitName)
+                    isMatched = true;
+                break;
+            // ユニットタグが含まれるか
+            case TutorialConditionType.DamageUnitWithTag:
+                if (target.UnitStatusData.tags == step.targetUnitTag)
+                    isMatched = true;
+                break;
+
+        }
+
+        if (isMatched)
+        {
+            AddCount();
+        }
+    }
+
     // カウントアップ
     public void AddCount()
     {
@@ -134,10 +195,11 @@ public class TutorialManager : MonoBehaviour
 
         if (_countUpSE.SEName != null) SoundManager.instance.PlaySE(_countUpSE.SEName, _countUpSE.Volume);
 
-        if (_currenActiontCount.Value >= _steps[_currentStepIndex].taskCount)
+        if (_currenActiontCount.Value >= _steps[_currentStepIndex].taskCount && _taskClear == false)
         {
             if (_stepClearSE.SEName != null) SoundManager.instance.PlaySE(_stepClearSE.SEName, _stepClearSE.Volume);
             CompleteStepAsync().Forget();
+            _taskClear = true;
         }
     }
 
@@ -151,6 +213,8 @@ public class TutorialManager : MonoBehaviour
     private async UniTaskVoid NextStepAsync()
     {
         await _ui.HideTaskHUDAsync();
+
+        _enemySpawner.DestroyAllEnemy();
 
         _currentStepIndex++;
         if (_currentStepIndex < _steps.Count)
@@ -169,6 +233,8 @@ public class TutorialManager : MonoBehaviour
     {
         Debug.Log("チュートリアル完了！");
         _player.SetInvincible(false);
+        _enemySpawner.DestroyAllEnemy();
+        _enemySpawner.StopSpawning();
     }
 
 
@@ -179,5 +245,6 @@ public class TutorialManager : MonoBehaviour
         // メモリリーク防止のため購読解除
         if (_player != null && _player.stateMachine != null)
             _player.stateMachine.OnStateChanged -= HandlePlayerStateChanged;
+        UnitManager.OnUnitDamaged -= HandleUnitDamaged;
     }
 }

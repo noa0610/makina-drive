@@ -9,7 +9,9 @@ public enum GameState
     Menu,
     Clear,
     GameOver,
-    Pause
+    Pause,
+    TutorialPlay,
+    TutorialPause
 }
 
 /// <summary>
@@ -19,7 +21,7 @@ public enum GameState
 public class GameStateManager : SingletonBehavior<GameStateManager>
 {
     public static event Action<GameState> OnStateChanged;
-    private GameState _gameState = GameState.Play;
+    [SerializeField] private GameState _gameState = GameState.Play;
     public string _currentGameState => _gameState.ToString();
     
     public void ChangeState(GameState nextGameState)

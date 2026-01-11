@@ -185,7 +185,7 @@ public class Bullet : MonoBehaviour
             // 吹き飛ばす方向
             Vector2 pushdir = (target.transform.position - transform.position).normalized;
 
-            UnitManager.instance.AddDamage(target, _parent, _status.damage, pushdir, KnockbackForce);
+            UnitManager.instance.AddDamage(target, _parent, _status.damage, pushdir, KnockbackForce, _status);
             // Debug.Log($"parent:{_parent.name}");
 
 

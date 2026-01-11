@@ -53,7 +53,7 @@ public class StatusSlider : MonoBehaviour
     private void OnCurrentAmountChanged(float before, float after)
     {
         _slider.value = after;
-        Debug.Log($"StatusSlider: {_status} updated from {before} to {after}. Slider Value: {_slider.value}");
+        // Debug.Log($"StatusSlider: {_status} updated from {before} to {after}. Slider Value: {_slider.value}");
     }
 
     // 最大値の変更イベントハンドラ
@@ -61,7 +61,7 @@ public class StatusSlider : MonoBehaviour
     {
         _slider.maxValue = after;
         _slider.value = _currentAmountInfo.CurrentAmount;
-        Debug.Log($"StatusSlider: MaxHP updated from {before} to {after}. New MaxValue: {_slider.maxValue}");
+        // Debug.Log($"StatusSlider: MaxHP updated from {before} to {after}. New MaxValue: {_slider.maxValue}");
     }
 
     // スライダーの値を更新

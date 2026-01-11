@@ -42,7 +42,8 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public bool IsArrivals { get; set; } = true;
     public bool IsRecovery { get; set; } = true;
     public bool IsClearTarget { get; set; } = false;
-    public static event Action<UnitBase> OnAnyUnitDeath;
+    public static event Action<UnitBase> OnAnyUnitDeath; // ユニット死亡イベント
+    public event Action<UnitBase> OnUnitDeath;           // 個別の死亡イベント
     private bool IsLazyDead = false;
     private float lazyDeadTime = 0;
     public float DropExp { get; set; } // 敵が保持する経験値量
@@ -212,6 +213,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public virtual void OnDeath()
     {
         // 死亡通知を飛ばす
+        OnUnitDeath?.Invoke(this);
         OnAnyUnitDeath?.Invoke(this);
 
         if (_status.unitName != null)

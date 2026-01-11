@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealItem
   moveSpeed: 2
-  accel: 0.5
+  accel: 0.25
   _type: 0
   _healAmount: 20
   _healRate: 0

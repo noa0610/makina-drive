@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
+using System;
 
 public class UnitManager : SingletonBehavior<UnitManager>
 {
@@ -10,7 +11,8 @@ public class UnitManager : SingletonBehavior<UnitManager>
     [SerializeField] private TextMeshProUGUI _textPrefab;
     [SerializeField] private float _textViewTime = 0.5f;
     [SerializeField] private UnitTags _displayTags = UnitTags.Enemy; // 表示対象
-    
+    public static event Action<UnitBase, UnitBase, BulletStatus?> OnUnitDamaged; // ダメージ発生イベント（被弾側、攻撃側、弾情報）
+
     [Header("Debug")]
     [SerializeField] private bool _damegeLog;
 
@@ -39,7 +41,7 @@ public class UnitManager : SingletonBehavior<UnitManager>
     /// <param name="target">ダメージを受ける側</param>
     /// <param name="from">ダメージを与える側</param>
     /// <param name="damage"></param>
-    public void AddDamage(UnitBase target, UnitBase from, float damage, Vector2 pushdir, float knockbackForce = 0)
+    public void AddDamage(UnitBase target, UnitBase from, float damage, Vector2 pushdir, float knockbackForce = 0, BulletStatus? bulletStatus = null) // BulletStatus? → 弾情報がないダメージ配慮
     {
         float finalDamage = FinalDamageCalculation(damage,
                                                    from.statusManager.ReadValue(Status.ATK),
@@ -50,6 +52,9 @@ public class UnitManager : SingletonBehavior<UnitManager>
             Debug.Log($"{target.name} : Take Damage {finalDamage}.  HP: {target.statusManager.ReadValue(Status.HP) - damage} /{target.statusManager.ReadValue(Status.MaxHP)}");
         }
         target.TakeDamage(from, finalDamage, pushdir, knockbackForce);
+
+        // イベント発火
+        OnUnitDamaged?.Invoke(target, from, bulletStatus);
 
         if (_isdamageTextView)
         {
@@ -73,7 +78,7 @@ public class UnitManager : SingletonBehavior<UnitManager>
     // ダメージ計算式
     public float FinalDamageCalculation(float damage, float atkRate, float def, float damageRate)
     {
-        float rn = Random.Range(0.9f, 1.1f); // 乱数
+        float rn = UnityEngine.Random.Range(0.9f, 1.1f); // 乱数
         float calculationDamage = (damage * atkRate - def) * damageRate; // (弾ダメージ × 攻撃倍率 - 防御力) * 被ダメージ倍率
         float finalDamage = Mathf.Ceil(calculationDamage * rn); // 乱数端数切り上げ
         return finalDamage;

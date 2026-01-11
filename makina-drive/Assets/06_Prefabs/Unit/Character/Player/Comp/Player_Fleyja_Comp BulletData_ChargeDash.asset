@@ -22,3 +22,6 @@ MonoBehaviour:
     knockback: 11
     maxHitsPerUnit: 1
     hitDelayTime: 0
+    attackTag:
+    - CA
+    - DA

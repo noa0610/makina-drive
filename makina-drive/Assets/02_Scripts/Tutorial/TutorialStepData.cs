@@ -14,12 +14,18 @@ public class TutorialStepData : ScriptableObject
 
     [Header("進行条件 (Task)")]
     public TutorialConditionType conditionType;
-    public int taskCount;           // 必要回数
-    public Vector3[] targetPoint;     // 移動先
-    public string[] targetStateTag; // ユニットステートタグ
+    public int taskCount;            // 必要回数
+    public Vector3[] targetPoint;    // 移動先
+    public string[] targetStateTag;  // ユニットのステートタグ
+    public string targetAttackTag;   // 攻撃のタグ
+    public string targetUnitName;    // ユニットの名前
+    public UnitTags targetUnitTag;   // ユニットのタグ
+
+    [Header("敵スポーン")]
+    public UnitSpawnInfo spawneEnemy;
 
     [Header("フラグ設定")]
     public bool showExplanationWindow; // 説明ウィンドウを表示するか
-    public bool stopGameDuringWindow;       // チュートリアル表示でゲーム時間を停止するか
+    public bool stopGameDuringWindow;  // チュートリアル表示でゲーム時間を停止するか
     public bool isInvincible = false;  // このステップ中、プレイヤーを無敵にするか
 }

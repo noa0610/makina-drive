@@ -21,3 +21,6 @@ MonoBehaviour:
     speed: 0
     knockback: 5
     maxHitsPerUnit: 1
+    hitDelayTime: 0
+    attackTag:
+    - NA
