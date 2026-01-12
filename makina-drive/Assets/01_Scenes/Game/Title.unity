@@ -4472,7 +4472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChangeButton
   _transitionButton: {fileID: 1775374680}
-  _targetSceneName: 
+  _targetSceneName: Stage_Tutorial
   _delaySeconds: 1
   _SelectSE:
     SEName: "\u6C7A\u5B9A"

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e228f4ea5860b45b53895e07368180, type: 3}
   m_Name: TutorialStepData_HitAttackTag_DA
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepData
-  windowText: "\u30C9\u30E9\u30A4\u30D6\u30C0\u30C3\u30B7\u30E5\u4E2D\u306B\u653B\u6483\u3059\u308B\u3068\n\u30C0\u30C3\u30B7\u30E5\u653B\u6483\u306B\u306A\u308B\u3002\n\u653B\u6483\u306E\u7BC4\u56F2\u3068\u5A01\u529B\u304C\u5F37\u5316\u3055\u308C\u308B\u3002"
+  windowText: "\u30C9\u30E9\u30A4\u30D6\u30C0\u30C3\u30B7\u30E5\u4E2D\u306B\u653B\u6483\u3059\u308B\u3068\n\u300C\u30C0\u30C3\u30B7\u30E5\u653B\u6483\u300D\u306B\u306A\u308B\u3002\n\u653B\u6483\u306E\u7BC4\u56F2\u3068\u5A01\u529B\u304C\u5F37\u5316\u3055\u308C\u308B\u3002"
   centerText: "\u30C0\u30C3\u30B7\u30E5\u653B\u6483\u3067\u6575\u3092\u653B\u6483\u3057\u3088\u3046\u3002"
-  subText: "L\u3092\u62BC\u3057\u306A\u304C\u3089J\u3002"
-  conditionType: 3
+  subText: "L\u3092\u62BC\u3057\u306A\u304C\u3089J\u3067\u30C0\u30C3\u30B7\u30E5\u653B\u6483\u3002"
+  conditionType: 4
   taskCount: 1
   targetPoint: []
   targetStateTag: []
@@ -26,7 +26,7 @@ MonoBehaviour:
     unitBase: {fileID: 3718649643212116859, guid: 669bda440a2b7be49b511052417adc46, type: 3}
     comp:
       rid: 7857002602136862788
-    spawnCount: 1
+    spawnCount: 3
     sameTimeSpawnCount: 1
     spawnTime: 0
     spawnEndTime: 0
@@ -37,6 +37,7 @@ MonoBehaviour:
   showExplanationWindow: 1
   stopGameDuringWindow: 1
   isInvincible: 1
+  showFailureWindow: 1
   references:
     version: 2
     RefIds:

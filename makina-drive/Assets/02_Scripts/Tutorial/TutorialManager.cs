@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UniRx;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using NUnit.Framework;
 
 /// <summary>
 /// チュートリアル管理用クラス
@@ -24,13 +25,16 @@ public class TutorialManager : MonoBehaviour
     private IntReactiveProperty _currenActiontCount = new IntReactiveProperty(0);
     private int _currentStepIndex = 0;
     private List<TutorialTriggerArea> _spawnedTriggers = new List<TutorialTriggerArea>();
-    private bool _taskClear = false; // タスククリア判定の重複防止
+    private bool _isSetUp = false;   // セットアップの重複防止用
+    private bool _taskClear = false; // タスククリア判定の重複防止用
 
     private CancellationTokenSource _cts;
 
-    void Start()
+    private void Start()
     {
         _cts = new CancellationTokenSource();
+
+        _arrow.gameObject.SetActive(false);
 
         // カウントが変わるたびに自動でUIテキストを更新予約
         _currenActiontCount.Subscribe(count =>
@@ -39,10 +43,34 @@ public class TutorialManager : MonoBehaviour
                 _ui.UpdateCountText(count, _steps[_currentStepIndex].taskCount);
         }).AddTo(this);
 
+        // プレイヤーのステート変化処理を登録
         _player.stateMachine.OnStateChanged += HandlePlayerStateChanged;
 
+        // 敵被弾処理を登録
         UnitManager.OnUnitDamaged -= HandleUnitDamaged;
         UnitManager.OnUnitDamaged += HandleUnitDamaged;
+
+        // 敵撃破処理を登録
+        _enemySpawner.OnEnemyDefeated += HandleEnemyDefeated;
+
+        // 敵全滅処理を登録
+        _enemySpawner.OnAllEnemyDead += () =>
+        {
+            if (_steps.Count <= _currentStepIndex) return;
+
+            var step = _steps[_currentStepIndex];
+
+            // 現在のステップが敵生成を行う設定でない場合は全滅イベントを無視
+            if (step.spawneEnemy == null || step.spawneEnemy.unitBase == null)
+            {
+                return;
+            }
+
+            if (!_taskClear)
+            {
+                RetryStepAsync().Forget();
+            }
+        };
 
         // 最初のチュートリアルステップ表示
         SetupStepAsync(0).Forget();
@@ -59,63 +87,76 @@ public class TutorialManager : MonoBehaviour
     // チュートリアルステップセットアップ
     private async UniTask SetupStepAsync(int index)
     {
-        _taskClear = false;
-        var step = _steps[index];
-        _currenActiontCount.Value = 0;
-
-        ClearActiveTriggers();
-
-        // 敵生成初期化
-        _enemySpawner.DestroyAllEnemy();
-        _enemySpawner.StopSpawning();
-
-        if (step.spawneEnemy != null && step.spawneEnemy.unitBase != null)
+        if (_isSetUp)
         {
-            // 敵を生成
-            _enemySpawner.StartSpawn(step.spawneEnemy, _player.gameObject);
+            Debug.Log("セットアップ途中に他のセットアップの処理が行われました。");
+            return;
         }
-
-        // 無敵化設定
-        _player.SetInvincible(step.isInvincible);
-
-        bool wasPaused = false;
-
-        // ウィンドウ表示
-        if (step.showExplanationWindow && step.stopGameDuringWindow)
+        _isSetUp = true;
+        try
         {
-            GameStateManager.instance.ChangeState(GameState.TutorialPause);
-            // Time.timeScale = 0;
-            wasPaused = true;
-        }
+            _taskClear = false;
+            var step = _steps[index];
+            _currenActiontCount.Value = 0;
 
-        // UI表示
-        await _ui.ShowStepVisualsAsync(step, _cts.Token);
-        Debug.Log("WindowClose");
+            ClearActiveTriggers();
 
-        // ゲーム再開
-        if (wasPaused)
-        {
-            Debug.Log("TimeReStart");
-            GameStateManager.instance.ChangeState(GameState.TutorialPlay);
-            Time.timeScale = 1;
-        }
+            // 敵生成初期化
+            _enemySpawner.DestroyAllEnemy();
+            _enemySpawner.StopSpawning();
 
-
-        // 矢印表示
-        if (step.conditionType == TutorialConditionType.MoveToArea)
-        {
-            _arrow.gameObject.SetActive(true);
-            foreach (var pos in step.targetPoint)
+            if (step.spawneEnemy != null && step.spawneEnemy.unitBase != null)
             {
-                var trigger = Instantiate(_aria, pos, Quaternion.identity);
-                trigger.SetManager(this);
-                _spawnedTriggers.Add(trigger);
+                // 敵を生成
+                _enemySpawner.StartSpawn(step.spawneEnemy, _player.gameObject);
             }
-            _arrow.SetTargets(step.targetPoint);
+
+            // 無敵化設定
+            _player.SetInvincible(step.isInvincible);
+
+            bool wasPaused = false;
+
+            // ウィンドウ表示
+            if (step.showExplanationWindow && step.stopGameDuringWindow)
+            {
+                GameStateManager.instance.ChangeState(GameState.TutorialPause);
+                // Time.timeScale = 0;
+                wasPaused = true;
+            }
+
+            // UI表示
+            await _ui.ShowStepVisualsAsync(step, _cts.Token);
+            Debug.Log("WindowClose");
+
+            // ゲーム再開
+            if (wasPaused)
+            {
+                Debug.Log("TimeReStart");
+                GameStateManager.instance.ChangeState(GameState.TutorialPlay);
+                Time.timeScale = 1;
+            }
+
+
+            // 矢印表示
+            if (step.conditionType == TutorialConditionType.MoveToArea)
+            {
+                _arrow.gameObject.SetActive(true);
+                foreach (var pos in step.targetPoint)
+                {
+                    var trigger = Instantiate(_aria, pos, Quaternion.identity);
+                    trigger.SetManager(this);
+                    _spawnedTriggers.Add(trigger);
+                }
+                _arrow.SetTargets(step.targetPoint);
+            }
+            else
+            {
+                _arrow.gameObject.SetActive(false);
+            }
         }
-        else
+        finally
         {
-            _arrow.gameObject.SetActive(false);
+            _isSetUp = false;
         }
     }
 
@@ -133,11 +174,11 @@ public class TutorialManager : MonoBehaviour
     // ステートのタグを識別してカウント
     private void HandlePlayerStateChanged(StateInfo state)
     {
-        var currentStep = _steps[_currentStepIndex];
-        if (currentStep.conditionType != TutorialConditionType.PerformAction) return;
+        var step = _steps[_currentStepIndex];
+        if (step.conditionType != TutorialConditionType.PerformAction) return;
 
         // ステートにStepData内のタグが含まれているかチェック
-        if (state.HasTag(currentStep.targetStateTag))
+        if (state.HasTag(step.targetStateTag))
         {
             AddCount();
         }
@@ -179,8 +220,37 @@ public class TutorialManager : MonoBehaviour
                 if (target.UnitStatusData.tags == step.targetUnitTag)
                     isMatched = true;
                 break;
-
         }
+
+        if (isMatched)
+        {
+            AddCount();
+        }
+    }
+
+    // 敵撃破イベントを受け取りカウント
+    private void HandleEnemyDefeated(UnitBase unit)
+    {
+        if (_steps.Count <= _currentStepIndex || _taskClear) return;
+        var step = _steps[_currentStepIndex];
+
+        if (step.conditionType != TutorialConditionType.DefeatEnemy) return;
+
+        bool isMatched = true;
+
+        // // TODO 名前指定がある場合
+        // if (!string.IsNullOrEmpty(step.targetUnitName) && unit.UnitStatusData.unitName != step.targetUnitName)
+        // {
+        //     // 一致しない
+        //     isMatched = false;
+        // }
+
+        // // TODO タグ指定がある場合
+        // if (step.targetUnitTag != 0 && unit.UnitStatusData.tags != step.targetUnitTag)
+        // {
+        //     // 一致しない
+        //     isMatched = false;
+        // }
 
         if (isMatched)
         {
@@ -191,6 +261,8 @@ public class TutorialManager : MonoBehaviour
     // カウントアップ
     public void AddCount()
     {
+        if (_taskClear) return;
+
         _currenActiontCount.Value++;
 
         if (_countUpSE.SEName != null) SoundManager.instance.PlaySE(_countUpSE.SEName, _countUpSE.Volume);
@@ -203,10 +275,28 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    // クリア処理
     private async UniTaskVoid CompleteStepAsync()
     {
+        _arrow.gameObject.SetActive(false);
+        // クリアUIを表示
         await _ui.ShowSuccessFeedbackAsync(_cts.Token);
         NextStepAsync().Forget();
+    }
+
+    // リトライ処理
+    private async UniTaskVoid RetryStepAsync()
+    {
+        var step = _steps[_currentStepIndex];
+
+        if (step.showFailureWindow)
+        {
+            // 失敗UIを表示
+            await _ui.ShowFailureFeedbackAsync(_cts.Token);
+        }
+
+        // 現在のステップを最初からやり直す
+        await SetupStepAsync(_currentStepIndex);
     }
 
     // 次のステップへ
@@ -232,9 +322,15 @@ public class TutorialManager : MonoBehaviour
     private void FinishTutorial()
     {
         Debug.Log("チュートリアル完了！");
-        _player.SetInvincible(false);
+        if (_player != null)
+        {
+            _player.stateMachine.OnStateChanged -= HandlePlayerStateChanged;
+            _player.SetInvincible(false);
+        }
         _enemySpawner.DestroyAllEnemy();
         _enemySpawner.StopSpawning();
+
+        GameStateManager.instance.ChangeState(GameState.Clear);
     }
 
 

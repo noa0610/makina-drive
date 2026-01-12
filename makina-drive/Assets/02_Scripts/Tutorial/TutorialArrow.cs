@@ -8,6 +8,7 @@ using UnityEngine;
 public class TutorialArrow : MonoBehaviour
 {
     [SerializeField] private Transform _player;
+    [SerializeField] private float _height;
     public List<Vector3> _activeTargetPos= new List<Vector3>();
 
     public void SetTargets(IEnumerable<Vector3> targets)
@@ -40,5 +41,8 @@ public class TutorialArrow : MonoBehaviour
         Vector3 dir = closest - _player.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        // 位置をプレイヤーの上に移動
+        transform.position = _player.position + Vector3.up * _height;
     }
 }

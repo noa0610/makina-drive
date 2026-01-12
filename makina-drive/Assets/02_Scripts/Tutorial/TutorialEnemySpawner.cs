@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -10,6 +11,10 @@ public class TutorialEnemySpawner : MonoBehaviour
 {
     private List<UnitBase> _spawnedUnits = new List<UnitBase>();
     private CancellationTokenSource _spawnCts;
+    private bool _isSpawning = false; // 生成中
+    public event Action<UnitBase> OnEnemyDefeated; // 個別の敵撃破イベント
+    public event Action OnAllEnemyDead; // 敵全滅イベント
+
 
     // 生成開始
     public void StartSpawn(UnitSpawnInfo info, GameObject target)
@@ -18,6 +23,8 @@ public class TutorialEnemySpawner : MonoBehaviour
         _spawnCts = new CancellationTokenSource();
 
         if (info.unitBase == null) return;
+
+        _isSpawning = true; // 生成開始
         SpawneLoop(info, target, _spawnCts.Token).Forget();
     }
 
@@ -34,6 +41,7 @@ public class TutorialEnemySpawner : MonoBehaviour
                 await UniTask.Delay((int)(info.spawnInterval * 1000), cancellationToken: ct);
             }
         }
+        _isSpawning = false; // 生成終了
     }
 
     private void SpawnGroup(UnitSpawnInfo info, GameObject target)
@@ -52,8 +60,17 @@ public class TutorialEnemySpawner : MonoBehaviour
             groupList.Add(unit);
             _spawnedUnits.Add(unit);
 
-            // 死亡時にリストから除外する処理
-            unit.OnUnitDeath += (u) => _spawnedUnits.Remove(u);
+            // 生成した敵の死亡時にリストから除外する処理
+            unit.OnUnitDeath += (u) =>
+            {
+                _spawnedUnits.Remove(u);
+                OnEnemyDefeated?.Invoke(u);
+                // 生成が終了済みで,リストが空なら全滅
+                if (!_isSpawning && _spawnedUnits.Count == 0)
+                {
+                   OnAllEnemyDead?.Invoke();
+                }
+            };
         }
 
         info.comp.target = target;

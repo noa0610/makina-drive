@@ -15,6 +15,7 @@ public class TutorialTriggerArea : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Area in");
             _manager.OnAreaReached(transform.position);
             Destroy(gameObject);
         }

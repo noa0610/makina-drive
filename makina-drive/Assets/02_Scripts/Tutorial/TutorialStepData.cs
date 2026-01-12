@@ -21,11 +21,12 @@ public class TutorialStepData : ScriptableObject
     public string targetUnitName;    // ユニットの名前
     public UnitTags targetUnitTag;   // ユニットのタグ
 
-    [Header("敵スポーン")]
+    [Header("敵スポーン情報")]
     public UnitSpawnInfo spawneEnemy;
 
     [Header("フラグ設定")]
-    public bool showExplanationWindow; // 説明ウィンドウを表示するか
-    public bool stopGameDuringWindow;  // チュートリアル表示でゲーム時間を停止するか
-    public bool isInvincible = false;  // このステップ中、プレイヤーを無敵にするか
+    public bool showExplanationWindow;     // 説明ウィンドウを表示するか
+    public bool stopGameDuringWindow;      // チュートリアル表示でゲーム時間を停止するか
+    public bool isInvincible = false;      // このステップ中、プレイヤーを無敵にするか
+    public bool showFailureWindow = false; // 失敗時の演出を表示するか
 }

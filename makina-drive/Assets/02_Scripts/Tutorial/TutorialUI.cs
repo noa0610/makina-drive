@@ -11,6 +11,7 @@ public class TutorialUI : MonoBehaviour
     [SerializeField] private CanvasGroup _windowGroup;  // 説明ウィンドウ用
     [SerializeField] private CanvasGroup _taskHUDGroup; // 進行テキスト用
     [SerializeField] private CanvasGroup _successGroup; // タスククリアテキスト用
+    [SerializeField] private CanvasGroup _failureGroup; // タスク失敗テキスト用
 
     [Header("Texts")]
     [SerializeField] private TextMeshProUGUI _windowText;
@@ -18,6 +19,7 @@ public class TutorialUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _subText;
     [SerializeField] private TextMeshProUGUI _countText;  // 「残り○回」の表示用
     [SerializeField] private TextMeshProUGUI _successText;
+    [SerializeField] private TextMeshProUGUI _failureText;
 
     [Header("Settings")]
     [SerializeField] private float _fadeDuration = 0.3f;
@@ -29,6 +31,7 @@ public class TutorialUI : MonoBehaviour
         _windowGroup.alpha = 0;
         _taskHUDGroup.alpha = 0;
         _successGroup.alpha = 0;
+        _failureGroup.alpha = 0;
     }
 
     public async UniTask ShowStepVisualsAsync(TutorialStepData step, CancellationToken ct)
@@ -63,7 +66,7 @@ public class TutorialUI : MonoBehaviour
     public void UpdateCountText(int current, int total)
     {
         int remaining = total - current;
-        _countText.text = $"(あと {remaining} 回)";
+        _countText.text = $"(あと {Mathf.Max(0, remaining)} 回)";
     }
 
     private async UniTask FadeAsync(CanvasGroup group, float targetAlpha, float duration)
@@ -88,5 +91,13 @@ public class TutorialUI : MonoBehaviour
         await FadeAsync(_successGroup, 1, 0.1f);
         await UniTask.Delay(TimeSpan.FromSeconds(0.5f), cancellationToken: ct);
         await FadeAsync(_successGroup, 0, 0.2f);
+    }
+
+    public async UniTask ShowFailureFeedbackAsync(CancellationToken ct)
+    {
+        _failureText.text = "Miss…";
+        await FadeAsync(_failureGroup, 1, 0.1f);
+        await UniTask.Delay(TimeSpan.FromSeconds(0.5f), cancellationToken: ct);
+        await FadeAsync(_failureGroup, 0, 0.2f);
     }
 }
