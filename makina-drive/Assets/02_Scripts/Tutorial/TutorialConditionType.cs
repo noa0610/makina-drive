@@ -9,4 +9,5 @@ public enum TutorialConditionType
     DamageUnitWithTag,  // 特定のタグのユニットにダメージを与える
     
     DamageSpecificUnit, // 特定の名前のユニットにダメージを与える
+    EnhanceApply        // 強化項目を選択する
 }

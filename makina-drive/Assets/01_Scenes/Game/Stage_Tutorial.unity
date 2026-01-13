@@ -2166,7 +2166,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 505c7d7a936c9c84f8ca089c9ceb0505, type: 2}
   - {fileID: 11400000, guid: 204c09603b9286443898285e65469eb2, type: 2}
   - {fileID: 11400000, guid: 7ed3a8a0c3770c24aa9133189ed4d87e, type: 2}
+  - {fileID: 11400000, guid: eedbd6da9e213594bbe92afe3e256385, type: 2}
   _player: {fileID: 1753348807}
+  _enhanceUI: {fileID: 4518820141618623756}
   _ui: {fileID: 377958708}
   _arrow: {fileID: 369415238}
   _aria: {fileID: 6003043725257233698, guid: 7ebada85547bd3f47b5df9b3adf2e7ff, type: 3}
@@ -3416,6 +3418,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2409214701653080310, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
   m_PrefabInstance: {fileID: 4518820141618623754}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4518820141618623756 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5591479712872927076, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
+  m_PrefabInstance: {fileID: 4518820141618623754}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05984b3cfb4a1a45be46d14d264fd76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnhanceUIController
 --- !u!1001 &8935187275037828964
 PrefabInstance:
   m_ObjectHideFlags: 0

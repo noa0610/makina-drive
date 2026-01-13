@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e228f4ea5860b45b53895e07368180, type: 3}
+  m_Name: TutorialStepData_EnhanceApply
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialStepData
+  windowText: "\u6575\u304C\u843D\u3068\u3059\u7D4C\u9A13\u5024\u3092\u62FE\u3063\u3066\n\u30B2\u30FC\u30B8\u304C\u8CAF\u307E\u308B\u3068\u30EC\u30D9\u30EB\u30A2\u30C3\u30D7\u3067\u304D\u308B\u3002\n\u30EC\u30D9\u30EB\u30A2\u30C3\u30D7\u3059\u308B\u30683\u3064\u306E\u9805\u76EE\u304C\u8868\u793A\u3055\u308C\u3001\n\u5F37\u5316\u3057\u305F\u3044\u30B9\u30C6\u30FC\u30BF\u30B9\u30921\u3064\u9078\u3079\u308B\u3002"
+  centerText: "\u7D4C\u9A13\u5024\u3092\u7372\u5F97\u3057\u3001\u30EC\u30D9\u30EB\u30A2\u30C3\u30D7\u3057\u3088\u3046\u3002"
+  subText: "\u30EC\u30D9\u30EB\u30A2\u30C3\u30D7\u3057\u3001\u5F37\u5316\u9805\u76EE\u3092\u9078\u629E\u3002"
+  conditionType: 7
+  taskCount: 1
+  targetPoint: []
+  targetStateTag: []
+  targetAttackTag: 
+  targetUnitName: 
+  targetUnitTag: 0
+  spawneEnemy:
+    unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    comp:
+      rid: 7857002649216614466
+    spawnCount: 10
+    sameTimeSpawnCount: 1
+    spawnTime: 0
+    spawnEndTime: 0
+    spawnInterval: 0.5
+    statusRate: 0
+    destroyTime: 0
+    isClearTarget: 0
+  showExplanationWindow: 1
+  stopGameDuringWindow: 1
+  isInvincible: 1
+  showFailureWindow: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 7857002649216614466
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 

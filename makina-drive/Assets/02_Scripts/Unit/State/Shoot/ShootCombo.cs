@@ -38,12 +38,16 @@ public class ShootCombo : ShootOnMoveBase
     protected bool _ComboStateChange; // コンボ先へ
     protected bool _isBlock;          // 遷移不可
 
+    protected bool _isStopInExit = false;
+
     protected Vector2 _initialVelocity;  // ステート開始時初速度
     protected Vector2 _initialDirection; // ステート開始時移動方向
 
     public event Action OnCompleted;
 
     protected float _time;
+
+    public bool IsStopInExit { get => _isStopInExit; set => _isStopInExit = value; }
 
     // === Constractor ===
     public ShootCombo(BulletData data, LayerMask targetLayer, string lazeChange, string comboChange,
@@ -220,6 +224,8 @@ public class ShootCombo : ShootOnMoveBase
     {
         base.Exit(nextState, parent);
         if (instantiatedBullet != null) UnityEngine.Object.Destroy(instantiatedBullet.gameObject);
+        if (_isStopInExit && rigidbody2D != null)
+            rigidbody2D.linearVelocity = Vector2.zero;
         OnCompleted?.Invoke();
     }
 

@@ -362,6 +362,7 @@ public partial class Freya
         Charge_Attack.SetCreatMisalignment(_createPos);
         Charge_Attack.SetRB2(Rigidbody2D);
         Charge_Attack.SetAccel(_attackAccel);
+        Charge_Attack.IsStopInExit = true;
         Charge_Attack.onShootComplete.AddListener(() =>
         {
             PlaySE(_Charge_AttackSE.SEName, _Charge_AttackSE.Volume);
@@ -374,7 +375,8 @@ public partial class Freya
         Charge_DashAttack.SetGameObject(_muzzle);
         Charge_DashAttack.SetCreatMisalignment(_createPos);
         Charge_DashAttack.SetRB2(Rigidbody2D);
-        Charge_DashAttack.SetAccel(_attackAccel);
+        Charge_DashAttack.SetAccel(_attackAccel * 1.5f);
+        Charge_DashAttack.IsStopInExit = true;
         Charge_DashAttack.onShootComplete.AddListener(() =>
         {
             PlaySE(_Charge_DashAttackSE.SEName, _Charge_DashAttackSE.Volume);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class EnhanceUIController : MonoBehaviour
     private EnhanceManager _manager;
     private EnhanceApplier _applier;
     private EnhanceViewModelFactory _factory;
+    public event Action OnEnhanceApply;
 
     private void Awake()
     {
@@ -68,5 +70,6 @@ public class EnhanceUIController : MonoBehaviour
         // UIを閉じて再開
         _uiPanel.SetActive(false);
         Time.timeScale = 1;
+        OnEnhanceApply?.Invoke();
     }
 }

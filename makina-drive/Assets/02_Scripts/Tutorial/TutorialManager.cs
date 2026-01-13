@@ -13,6 +13,7 @@ public class TutorialManager : MonoBehaviour
 {
     [SerializeField] private List<TutorialStepData> _steps;
     [SerializeField] private Freya _player;
+    [SerializeField] private EnhanceUIController _enhanceUI;
     [SerializeField] private TutorialUI _ui;
     [SerializeField] private TutorialArrow _arrow;
     [SerializeField] private TutorialTriggerArea _aria;
@@ -72,16 +73,11 @@ public class TutorialManager : MonoBehaviour
             }
         };
 
+        // レベルアップ強化適用処理を登録
+        _enhanceUI.OnEnhanceApply += HandleEnhanceApply;
+
         // 最初のチュートリアルステップ表示
         SetupStepAsync(0).Forget();
-    }
-
-    // エリア侵入処理
-    public void OnAreaReached(Vector3 position)
-    {
-        // 矢印のターゲットから除外
-        _arrow.RemoveTarget(position);
-        AddCount();
     }
 
     // チュートリアルステップセットアップ
@@ -168,8 +164,17 @@ public class TutorialManager : MonoBehaviour
         }
         _spawnedTriggers.Clear();
     }
+    
+    // エリア侵入処理
+    public void OnAreaReached(Vector3 position)
+    {
+        // 矢印のターゲットから除外
+        _arrow.RemoveTarget(position);
+        AddCount();
+    }
 
 
+    #region    ===== Event Handle =====
 
     // ステートのタグを識別してカウント
     private void HandlePlayerStateChanged(StateInfo state)
@@ -187,7 +192,7 @@ public class TutorialManager : MonoBehaviour
     // ダメージイベントを受け取りカウント
     private void HandleUnitDamaged(UnitBase target, UnitBase attacker, BulletStatus? status)
     {
-        if (_steps.Count <= _currentStepIndex) return;
+        if (_steps.Count <= _currentStepIndex || _taskClear) return;
         var step = _steps[_currentStepIndex];
 
         // 攻撃側はプレイヤーのみ
@@ -258,6 +263,21 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    // 強化イベントを受け取りカウント
+    private void HandleEnhanceApply()
+    {
+        if (_steps.Count <= _currentStepIndex || _taskClear) return;
+        var step = _steps[_currentStepIndex];
+
+        if (step.conditionType != TutorialConditionType.EnhanceApply) return;
+
+        AddCount();
+    }
+
+    #endregion
+
+
+    #region    ===== Tutorial Step Up =====
     // カウントアップ
     public void AddCount()
     {
@@ -318,7 +338,7 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-
+    // チュートリアル終了
     private void FinishTutorial()
     {
         Debug.Log("チュートリアル完了！");
@@ -332,6 +352,7 @@ public class TutorialManager : MonoBehaviour
 
         GameStateManager.instance.ChangeState(GameState.Clear);
     }
+    #endregion
 
 
     private void OnDestroy()
@@ -342,5 +363,6 @@ public class TutorialManager : MonoBehaviour
         if (_player != null && _player.stateMachine != null)
             _player.stateMachine.OnStateChanged -= HandlePlayerStateChanged;
         UnitManager.OnUnitDamaged -= HandleUnitDamaged;
+        _enhanceUI.OnEnhanceApply -= HandleEnhanceApply;
     }
 }

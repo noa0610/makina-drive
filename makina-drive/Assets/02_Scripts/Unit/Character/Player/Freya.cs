@@ -289,7 +289,13 @@ public partial class Freya : UnitBase, IPausable
         if (newState == GameState.Clear)
         {
             Rigidbody2D.linearVelocity = Vector2.zero;
+            
             Pause();
+            
+            if (!IsMatchingState(States.idle))
+            {
+                _stateMachine.SetStateDirectLazy(States.idle.ToString());
+            }
         }
     }
 
