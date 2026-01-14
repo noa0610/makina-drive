@@ -5,6 +5,7 @@ using UniRx;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 /// <summary>
 /// チュートリアル管理用クラス
@@ -334,12 +335,12 @@ public class TutorialManager : MonoBehaviour
         else
         {
             // 最後のステップなら終了処理
-            FinishTutorial();
+            await FinishTutorial();
         }
     }
 
     // チュートリアル終了
-    private void FinishTutorial()
+    private async Task FinishTutorial()
     {
         Debug.Log("チュートリアル完了！");
         if (_player != null)
@@ -350,6 +351,7 @@ public class TutorialManager : MonoBehaviour
         _enemySpawner.DestroyAllEnemy();
         _enemySpawner.StopSpawning();
 
+        await _ui.ShowStepAllClearVisualsAsync();
         GameStateManager.instance.ChangeState(GameState.Clear);
     }
     #endregion
