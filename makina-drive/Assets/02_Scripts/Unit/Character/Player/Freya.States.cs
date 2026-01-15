@@ -365,6 +365,7 @@ public partial class Freya
         Charge_Attack.IsStopInExit = true;
         Charge_Attack.onShootComplete.AddListener(() =>
         {
+            CameraDirector.instance.PlayShake();
             PlaySE(_Charge_AttackSE.SEName, _Charge_AttackSE.Volume);
         });
         _stateMachine.AddState(States.charge_Attack, Charge_Attack, new string[] { "CA" });
@@ -379,6 +380,7 @@ public partial class Freya
         Charge_DashAttack.IsStopInExit = true;
         Charge_DashAttack.onShootComplete.AddListener(() =>
         {
+            CameraDirector.instance.PlayShake();
             PlaySE(_Charge_DashAttackSE.SEName, _Charge_DashAttackSE.Volume);
         });
         _stateMachine.AddState(States.charge_DashAttack, Charge_DashAttack, new string[] { "CA", "CDA" });
@@ -423,6 +425,7 @@ public partial class Freya
         fallAttack.SetGameObject(_muzzle);
         fallAttack.onShootComplete.AddListener(() =>
         {
+            CameraDirector.instance.PlayZoom();
             PlaySE(_JumpAttackSE.SEName, _JumpAttackSE.Volume);
         });
         _stateMachine.AddState(States.fallAttack, fallAttack, new string[] { "SPA" });
