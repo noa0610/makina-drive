@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UniRx;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -42,6 +43,8 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public bool IsArrivals { get; set; } = true;
     public bool IsRecovery { get; set; } = true;
     public bool IsClearTarget { get; set; } = false;
+    private int _hitStopCount = 0;
+    private float _originalAnimatorSpeed = 1f;
     public static event Action<UnitBase> OnAnyUnitDeath; // ユニット死亡イベント
     public event Action<UnitBase> OnUnitDeath;           // 個別の死亡イベント
     private bool IsLazyDead = false;
@@ -209,6 +212,37 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         OnTakeDamage(from, damage, pushdir, knockbackForce);
     }
 
+    // ヒットストップ処理
+    public async UniTaskVoid HitStop(float duration)
+    {
+        if (duration <= 0 || _animator == null) return;
+
+        _hitStopCount++;
+
+        if (_hitStopCount == 1)
+        {
+            _originalAnimatorSpeed = _animator.speed > 0 ? _animator.speed : 1f;
+        }
+
+        // 動きを止める
+        _animator.speed = 0;
+        Vector3 currentVelocity = Rigidbody2D.linearVelocity;
+        Rigidbody2D.linearVelocity = Vector2.zero;
+
+        await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: this.GetCancellationTokenOnDestroy());
+
+        _hitStopCount--;
+
+        // ヒットストップ要求が終わったら速度を戻す
+        if (_hitStopCount <= 0)
+        {
+            _hitStopCount = 0;
+
+            if (_animator != null) _animator.speed = _originalAnimatorSpeed;
+        }
+
+    }
+
 
     public virtual void OnDeath()
     {
@@ -246,14 +280,14 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         if (statusManager == null) return;
 
         // ウェーブ生成時に強化するステータスのリスト（なければ自動設定）
-        if(targets == null)
+        if (targets == null)
         {
             targets.Add(Status.MaxHP);
             targets.Add(Status.ATK);
             targets.Add(Status.Speed);
             targets.Add(Status.DashSpeed);
         }
-        
+
         statusManager.ApplyStatusMultiplier(targets, multiplier);
         statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));
     }

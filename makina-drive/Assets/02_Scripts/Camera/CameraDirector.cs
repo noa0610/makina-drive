@@ -13,7 +13,7 @@ public class CameraDirector : SingletonBehavior<CameraDirector>
     {
         cameraMove.SetFreeze(true);
         await UniTask.Delay((int) (duration * 1000));
-        cameraMove.SetFreeze(true);
+        cameraMove.SetFreeze(false);
     }
 
     public void PlayZoom(float size = 5.0f, float zoomDuration = 0.05f, float resetDuration = 0.3f)

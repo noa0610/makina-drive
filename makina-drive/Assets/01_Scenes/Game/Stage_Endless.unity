@@ -535,6 +535,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96eb9a55317e2d341afecd8139ce81ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimerCount
+--- !u!1001 &847838228
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3083717240973566968, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
+      propertyPath: cameraMove
+      value: 
+      objectReference: {fileID: 1723500374}
+    - target: {fileID: 3861355037597814727, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 99.9994
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861355037597814727, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 86.11116
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861355037597814727, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861355037597814727, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861355037597814727, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861355037597814727, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861355037597814727, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861355037597814727, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861355037597814727, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861355037597814727, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048028207716457197, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
+      propertyPath: m_Name
+      value: CameraDirector
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 171f8d2a540198840a34e5337ec7e6ea, type: 3}
 --- !u!1001 &859335772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1606,6 +1667,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1723500377}
+  - {fileID: 847838228}
   - {fileID: 734320270}
   - {fileID: 899362533}
   - {fileID: 3601548744598656985}

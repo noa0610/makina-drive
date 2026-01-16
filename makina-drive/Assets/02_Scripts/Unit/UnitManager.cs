@@ -52,6 +52,10 @@ public class UnitManager : SingletonBehavior<UnitManager>
             Debug.Log($"{target.name} : Take Damage {finalDamage}.  HP: {target.statusManager.ReadValue(Status.HP) - damage} /{target.statusManager.ReadValue(Status.MaxHP)}");
         }
         target.TakeDamage(from, finalDamage, pushdir, knockbackForce);
+        
+        // ヒットストップ
+        target.HitStop(0.1f).Forget();
+        from.HitStop(0.25f).Forget();
 
         // イベント発火
         OnUnitDamaged?.Invoke(target, from, bulletStatus);
