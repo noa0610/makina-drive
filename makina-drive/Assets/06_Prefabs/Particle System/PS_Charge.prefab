@@ -4815,7 +4815,7 @@ ParticleSystemRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 201
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -9661,7 +9661,7 @@ ParticleSystemRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 203
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -14506,7 +14506,7 @@ ParticleSystemRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 204
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -19342,7 +19342,7 @@ ParticleSystemRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 205
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -19387,7 +19387,7 @@ GameObject:
   - component: {fileID: 2236257326295335633}
   - component: {fileID: 4413484529980227678}
   m_Layer: 0
-  m_Name: Ps_Charge
+  m_Name: PS_Charge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29015,7 +29015,7 @@ ParticleSystemRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 202
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
