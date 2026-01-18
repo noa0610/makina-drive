@@ -45,3 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   INTERVAL: 0.1
+  _audioMixer: {fileID: 24100000, guid: 4c45e465da47dcc448dd5f279d27fa61, type: 2}
+  _bgmGroup: {fileID: -997527750442070168, guid: 4c45e465da47dcc448dd5f279d27fa61, type: 2}
+  _seGroup: {fileID: 824890092428169245, guid: 4c45e465da47dcc448dd5f279d27fa61, type: 2}

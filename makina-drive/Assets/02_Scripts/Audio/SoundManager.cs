@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Audio;
+using System.IO;
 
 /// <summary>
 /// Resourcesフォルダ内のBGM、SEフォルダにある音源素材を名前指定で再生するシングルトン
@@ -19,8 +21,13 @@ public class SoundManager : SingletonBehavior<SoundManager>
         public float playedTime; //再生時間
     }
 
-    // 一度再生してから、次再生出来るまでの間隔(秒)
-    [SerializeField] private float INTERVAL = 0.2f;
+    
+    [SerializeField] private float INTERVAL = 0.2f; // 一度再生してから、次再生出来るまでの間隔(秒)
+    [SerializeField] private AudioMixer _audioMixer;
+    [SerializeField] private AudioMixerGroup _bgmGroup;
+    [SerializeField] private AudioMixerGroup _seGroup;
+    private SoundSettings _settings = new SoundSettings();
+    private string _savePath;
 
     // AudioSource（スピーカー）を同時に鳴らしたい音の数だけ用意
     private AudioSource[] _seSources = new AudioSource[20];
@@ -32,15 +39,20 @@ public class SoundManager : SingletonBehavior<SoundManager>
     protected override void Awake()
     {
         base.Awake();
+        _savePath = Path.Combine(Application.persistentDataPath, "sound_settings.json");
+        LoadSettings();
+
         //AudioSourceを自分自身に生成して配列に格納
         for (int i = 0; i < _seSources.Length; i++)
         {
             _seSources[i] = gameObject.AddComponent<AudioSource>();
+            _seSources[i].outputAudioMixerGroup = _seGroup;
         }
 
         for (int i = 0; i < _bgmSources.Length; i++)
         {
             _bgmSources[i] = gameObject.AddComponent<AudioSource>();
+            _bgmSources[i].outputAudioMixerGroup = _bgmGroup;
         }
 
         //音データの読み込み
@@ -58,6 +70,45 @@ public class SoundManager : SingletonBehavior<SoundManager>
         {
             var soundData = new SoundData(bgmClip);
             _bgmData.Add(bgmClip.name, soundData);
+        }
+    }
+
+    private void Start()
+    {
+        SetBGMVolume(_settings.bgmVolume);
+        SetSEVolume(_settings.seVolume);
+    }
+
+    public void SetBGMVolume(float volume)
+    {
+        _settings.bgmVolume = volume;
+        float db = Mathf.Log10(Mathf.Max(0.0001f, volume)) * 20f; // 未定義防止
+        _audioMixer.SetFloat("BGMVolume", db);
+    }
+
+    public void SetSEVolume(float volume)
+    {
+        _settings.seVolume = volume;
+        float db = Mathf.Log10(Mathf.Max(0.0001f, volume)) * 20f; // 未定義防止
+        _audioMixer.SetFloat("SEVolume", db);
+    }
+
+    public SoundSettings GetSettings() => _settings;
+
+    // json保存
+    public void SaveSettings()
+    {
+        string json = JsonUtility.ToJson(_settings);
+        File.WriteAllText(_savePath, json);
+    }
+
+    // json読み込み
+    public void LoadSettings()
+    {
+        if(File.Exists(_savePath))
+        {
+            string json = File.ReadAllText(_savePath);
+            _settings = JsonUtility.FromJson<SoundSettings>(json);
         }
     }
 
