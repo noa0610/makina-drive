@@ -247,16 +247,20 @@ public partial class Freya : UnitBase, IPausable
 
     public async void OnGameOver()
     {
-        if (_isDead == false)
-        {
-            PlaySE(_DaedSE.SEName, _DaedSE.Volume);
-            _coll2D.isTrigger = true;
+        if (_isDead) return;
 
-            await UniTask.Delay(TimeSpan.FromSeconds(_deadGameOverDelay));
+        PlaySE(_DaedSE.SEName, _DaedSE.Volume);
 
-            GameStateManager.instance.ChangeState(GameState.GameOver);
-            _isDead = true;
-        }
+        _isDead = true;
+        _coll2D.isTrigger = true;
+
+        await UniTask.Delay(TimeSpan.FromSeconds(_deadGameOverDelay));
+
+
+        GameStateManager.instance.ChangeState(GameState.GameOver);
+        
+        if(SoundManager.instance == null) return;
+        SoundManager.instance.AllStopBGM();
     }
 
 
@@ -289,9 +293,9 @@ public partial class Freya : UnitBase, IPausable
         if (newState == GameState.Clear)
         {
             Rigidbody2D.linearVelocity = Vector2.zero;
-            
+
             Pause();
-            
+
             if (!IsMatchingState(States.idle))
             {
                 _stateMachine.SetStateDirectLazy(States.idle.ToString());

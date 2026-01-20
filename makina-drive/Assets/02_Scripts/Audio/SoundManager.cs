@@ -14,14 +14,14 @@ public class SoundManager : SingletonBehavior<SoundManager>
         public SoundData(AudioClip audioClip)
         {
             this.audioClip = audioClip;
-            playedTime = Time.realtimeSinceStartup;
+            playedTime = -100;
         }
 
         public AudioClip audioClip;
         public float playedTime; //再生時間
     }
 
-    
+
     [SerializeField] private float INTERVAL = 0.2f; // 一度再生してから、次再生出来るまでの間隔(秒)
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private AudioMixerGroup _bgmGroup;
@@ -39,6 +39,16 @@ public class SoundManager : SingletonBehavior<SoundManager>
     protected override void Awake()
     {
         base.Awake();
+
+        if (instance == this)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            return; // 重複インスタンスなら以下の処理は不要
+        }
+
         _savePath = Path.Combine(Application.persistentDataPath, "sound_settings.json");
         LoadSettings();
 
@@ -105,7 +115,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
     // json読み込み
     public void LoadSettings()
     {
-        if(File.Exists(_savePath))
+        if (File.Exists(_savePath))
         {
             string json = File.ReadAllText(_savePath);
             _settings = JsonUtility.FromJson<SoundSettings>(json);
@@ -178,22 +188,29 @@ public class SoundManager : SingletonBehavior<SoundManager>
     /// <param volume="volume">音量</param>
     public void PlayBGM(string bgmName, float volume = 1f, bool loopPlayback = false)
     {
-        if (_bgmData.ContainsKey(bgmName))
+        if (!_bgmData.TryGetValue(bgmName, out var data))
         {
-            if (Time.realtimeSinceStartup - _bgmData[bgmName].playedTime > INTERVAL)
-            {
-                var audioSource = GetUnusedSourceBGM();
-
-                if (audioSource)
-                {
-                    audioSource.clip = _bgmData[bgmName].audioClip;
-                    audioSource.volume = volume;
-                    audioSource.Play();
-                    audioSource.loop = loopPlayback;
-                    _bgmData[bgmName].playedTime = Time.realtimeSinceStartup;
-                }
-            }
+            Debug.LogWarning($"BGM {bgmName} が見つかりません");
+            return;
         }
+
+        var audioSource = _bgmSources[0];
+
+        // 同じBGM指定の場合音量のみを更新
+        if (audioSource.isPlaying && audioSource.clip == data.audioClip)
+        {
+            audioSource.volume = volume;
+            return;
+        }
+
+        Debug.Log($"BGM {bgmName} 再生開始");
+        audioSource.Stop();
+        audioSource.clip = data.audioClip;
+        audioSource.volume = volume;
+        audioSource.loop = loopPlayback;
+        audioSource.Play();
+
+        data.playedTime = Time.realtimeSinceStartup;
     }
 
     /// <summary>

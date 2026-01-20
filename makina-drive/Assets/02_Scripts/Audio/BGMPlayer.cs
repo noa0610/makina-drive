@@ -6,31 +6,40 @@ using UnityEngine;
 public class BGMPlayer : MonoBehaviour
 {
     [SerializeField] private VisualInfo _visualInfo;
-    [SerializeField] private bool _loopPlayback = false;
+    [SerializeField] private bool _loopPlayback = true;
     public bool _stopBGM = false;      // trueで再生停止、falseで再生再開
     private bool _isPlayBGM = false;
+    private string _currentPlayingName = ""; // 現在コンポーネント指定しているBGM名
 
     private void Start()
     {
-        if (_stopBGM || string.IsNullOrEmpty(_visualInfo.SEName)) return;
-
-        SoundManager.instance.PlayBGM(_visualInfo.SEName, _visualInfo.Volume, _loopPlayback);
-        _isPlayBGM = true;
+        TryPlay();
     }
 
     private void Update()
     {
-        if (string.IsNullOrEmpty(_visualInfo.SEName)) return;
+        if (_stopBGM)
+        {
+            if (string.IsNullOrEmpty(_visualInfo.SEName))
+            {
+                SoundManager.instance.StopBGM(_visualInfo.SEName);
+                _currentPlayingName = "";
+            }
+            return;
+        }
 
-        if (_stopBGM && _isPlayBGM)
+        if (!string.IsNullOrEmpty(_visualInfo.SEName) && _currentPlayingName != _visualInfo.SEName)
         {
-            SoundManager.instance.StopBGM(_visualInfo.SEName);
-            _isPlayBGM = false;
+            TryPlay();
         }
-        else if (!_stopBGM && !_isPlayBGM)
-        {
-            SoundManager.instance.PlayBGM(_visualInfo.SEName, _visualInfo.Volume, _loopPlayback);
-            _isPlayBGM = true;
-        }
+    }
+
+    private void TryPlay()
+    {
+        if (_stopBGM || string.IsNullOrEmpty(_visualInfo.SEName)) return;
+        if (SoundManager.instance == null) return;
+
+        SoundManager.instance.PlayBGM(_visualInfo.SEName, _visualInfo.Volume, _loopPlayback);
+        _currentPlayingName = _visualInfo.SEName;
     }
 }

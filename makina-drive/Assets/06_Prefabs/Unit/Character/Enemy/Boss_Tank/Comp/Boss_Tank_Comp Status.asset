@@ -26,5 +26,5 @@ MonoBehaviour:
   knockbackMultiplier: 6
   knockbackResistance: 18
   damageTakeScale: 1
-  baseExp: 75
+  baseExp: 150
   tags: 2

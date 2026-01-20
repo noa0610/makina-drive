@@ -237,6 +237,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 734320271}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
+      propertyPath: _normalWaves.Array.data[9].spawnInfos.Array.data[12].isClearTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: _normalWaves.Array.data[9].spawnInfos.Array.data[13].isClearTarget
       value: 0
       objectReference: {fileID: 0}

@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 
   maxHp: 85
   hp: 85
-  atk: 0.8
+  atk: 1
   def: 0
   speed: 0.4
   dashSpeed: 1
@@ -26,5 +26,5 @@ MonoBehaviour:
   knockbackMultiplier: 0
   knockbackResistance: 10
   damageTakeScale: 1
-  baseExp: 40
+  baseExp: 80
   tags: 2

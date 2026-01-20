@@ -95,12 +95,17 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.Log($"ゲームクリア");
             GameStateManager.instance.ChangeState(GameState.Clear);
+
+            if (SoundManager.instance == null) return;
+            SoundManager.instance.AllStopBGM();
         }
         _isCleared = true;
     }
 
     private void Update()
     {
+        if (_isCleared) return;
+
         if (_timer != null)
         {
             _elapsedTime = _timer.currentTime;
@@ -208,14 +213,14 @@ public class EnemySpawner : MonoBehaviour
             if (_notStatusUP)
             {
 #endif
-            // ウェーブ数に応じた強化倍率の計算
-            // 例、statusRate = 0.1 → ウェーブ2で0.1（1.1倍の強化）、ウェーブ10で0.9 (1.9倍の強化)
-            float currentWaveMultiplier = (_currentWaveNumber - 1) * info.statusRate;
+                // ウェーブ数に応じた強化倍率の計算
+                // 例、statusRate = 0.1 → ウェーブ2で0.1（1.1倍の強化）、ウェーブ10で0.9 (1.9倍の強化)
+                float currentWaveMultiplier = (_currentWaveNumber - 1) * info.statusRate;
 
-            if (currentWaveMultiplier > 0)
-            {
-                unit.ApplyWaveStatus(currentWaveMultiplier, _statusUp);
-            }
+                if (currentWaveMultiplier > 0)
+                {
+                    unit.ApplyWaveStatus(currentWaveMultiplier, _statusUp);
+                }
 
 # if UNITY_EDITOR
             }

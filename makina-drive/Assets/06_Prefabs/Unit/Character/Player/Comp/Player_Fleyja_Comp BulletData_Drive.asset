@@ -19,8 +19,10 @@ MonoBehaviour:
     time: 9999
     damage: 5
     speed: 0
-    knockback: 10
+    knockback: 13
     maxHitsPerUnit: 10
     hitDelayTime: 0.05
+    performHitStop: 0
+    hitStopTime: 0
     attackTag:
     - DD

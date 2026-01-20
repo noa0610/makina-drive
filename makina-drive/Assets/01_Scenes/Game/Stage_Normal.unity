@@ -501,7 +501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8702013411213465883, guid: 1ae64770e0536b64d8a07026d5589357, type: 3}
       propertyPath: _damegeLog
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8702013411213465883, guid: 1ae64770e0536b64d8a07026d5589357, type: 3}
       propertyPath: _parentCanvas

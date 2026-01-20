@@ -1,8 +1,5 @@
 using UnityEngine;
-using TMPro;
 using Cysharp.Threading.Tasks;
-using System.Threading;
-using System;
 using UnityEngine.UI;
 
 public class PanelButton : MonoBehaviour
