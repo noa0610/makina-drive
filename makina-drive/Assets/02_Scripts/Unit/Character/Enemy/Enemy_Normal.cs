@@ -41,6 +41,9 @@ public partial class Enemy_Normal : UnitBase
     [SerializeField] private HealItem _healItem;
     [SerializeField] private float _dropProbability = 0.075f;
 
+    [Header("UI")]
+    [SerializeField] private EnemyHPSlider _hpSlider;
+
 
     [Header("SE")]
     [SerializeField] private VisualInfo _AttackSE;
@@ -73,6 +76,19 @@ public partial class Enemy_Normal : UnitBase
                     Debug.LogWarning("Playerが見つかりません。");
                 }
             }
+        }
+
+        if(_hpSlider != null)
+        {
+            _hpSlider.SetUP(this.statusManager);
+        }
+    }
+
+    public void ConfigureHPBar(bool show)
+    {
+        if(_hpSlider)
+        {
+            _hpSlider.SetVisible(show);
         }
     }
 
@@ -170,7 +186,6 @@ public partial class Enemy_Normal : UnitBase
             scale.x = Mathf.Abs(scale.x) * (Direction.x > 0 ? 1 : -1);
             transform.localScale = scale;
         }
-
     }
 
     /// <summary>

@@ -17,14 +17,22 @@ public class StatusSlider : MonoBehaviour
 
     private void Start()
     {
-        if (_targetUnit == null)
+        if (_targetUnit)
+        {
+            Setup(_targetUnit);
+        }
+    }
+
+    public void Setup(UnitBase target)
+    {
+        if (target == null)
         {
             Debug.LogError("StatusSlider: Target Unit is not assigned.");
             return;
         }
 
         // 現在値のStatusInfoを取得し、イベントを購読
-        if (_targetUnit.statusManager.TryGetStatus(_status, out _currentAmountInfo))
+        if (target.statusManager.TryGetStatus(_status, out _currentAmountInfo))
         {
             _currentAmountInfo.OnAmountChanged += OnCurrentAmountChanged;
         }
@@ -37,7 +45,7 @@ public class StatusSlider : MonoBehaviour
         // 最大値のStatusInfoを取得し、イベントを購読（HPの場合、MaxHPが必要）
         if (_status == Status.HP)
         {
-            if (_targetUnit.statusManager.TryGetStatus(Status.MaxHP, out _maxAmountInfo))
+            if (target.statusManager.TryGetStatus(Status.MaxHP, out _maxAmountInfo))
             {
                 _maxAmountInfo.OnAmountChanged += OnMaxAmountChanged;
             }
@@ -67,16 +75,8 @@ public class StatusSlider : MonoBehaviour
     // スライダーの値を更新
     private void UpdateSliderValues()
     {
-        if (_status == Status.HP && _maxAmountInfo != null)
-        {
-            _slider.maxValue = _maxAmountInfo.CurrentAmount;
-        }
-        else
-        {
-            _slider.maxValue = _currentAmountInfo.DefaultAmount;
-        }
-
-        // 現在値を設定
+        if (_currentAmountInfo == null) return;
+        _slider.maxValue = (_maxAmountInfo != null) ? _maxAmountInfo.CurrentAmount : _currentAmountInfo.DefaultAmount;
         _slider.value = _currentAmountInfo.CurrentAmount;
     }
 
@@ -93,7 +93,7 @@ public class StatusSlider : MonoBehaviour
             _maxAmountInfo.OnAmountChanged -= OnMaxAmountChanged;
         }
     }
-    
+
     private void OnDestroy()
     {
         UnsubscribeFromEvents();

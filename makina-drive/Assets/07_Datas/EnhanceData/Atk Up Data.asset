@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Atk Up Data
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
   enhanceName: "\u653B\u6483\u529B"
-  discription: "\u653B\u6483\u529B\u304C\uFF11\uFF10%\u30A2\u30C3\u30D7\u3059\u308B\u3002"
+  discription: "\u653B\u6483\u529B\u304C\uFF12\uFF10%\u30A2\u30C3\u30D7\u3059\u308B\u3002"
   type: 0
   targetStatus: 2
-  ratioPerLevel: 0.1
+  ratioPerLevel: 0.2
   healRatio: 0
-  maxLevel: 15
+  maxLevel: 10

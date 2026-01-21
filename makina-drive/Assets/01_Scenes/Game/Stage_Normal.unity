@@ -354,6 +354,10 @@ PrefabInstance:
       propertyPath: _targetObject
       value: 
       objectReference: {fileID: 509183779}
+    - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
+      propertyPath: _normalWaves.Array.data[1].spawnInfos.Array.data[0].statusRate
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 8592315154310279877, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
@@ -501,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8702013411213465883, guid: 1ae64770e0536b64d8a07026d5589357, type: 3}
       propertyPath: _damegeLog
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8702013411213465883, guid: 1ae64770e0536b64d8a07026d5589357, type: 3}
       propertyPath: _parentCanvas

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MaxHP Up Data
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
   enhanceName: "\u6700\u5927HP"
-  discription: "\u6700\u5927HP\u3092\uFF11\uFF10\u30A2\u30C3\u30D7\u3059\u308B\u3002"
+  discription: "\u6700\u5927HP\u3092\uFF11\uFF15\u30A2\u30C3\u30D7\u3059\u308B\u3002"
   type: 0
   targetStatus: 1
-  ratioPerLevel: 10
+  ratioPerLevel: 15
   healRatio: 0
-  maxLevel: 20
+  maxLevel: 10

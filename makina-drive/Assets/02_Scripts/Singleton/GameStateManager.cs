@@ -23,7 +23,13 @@ public class GameStateManager : SingletonBehavior<GameStateManager>
     public static event Action<GameState> OnStateChanged;
     [SerializeField] private GameState _gameState = GameState.Play;
     public string _currentGameState => _gameState.ToString();
-    
+
+    protected override void Awake()
+    {
+        base.Awake();
+        Application.targetFrameRate = 60;
+    }
+
     public void ChangeState(GameState nextGameState)
     {
         _gameState = nextGameState;

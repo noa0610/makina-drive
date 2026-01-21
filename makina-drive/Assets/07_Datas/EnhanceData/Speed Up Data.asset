@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Speed Up Data
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
   enhanceName: "\u79FB\u52D5\u901F\u5EA6"
-  discription: "\u79FB\u52D5\u901F\u5EA6\u304C\u30A2\u30C3\u30D7\u3059\u308B\u3002"
+  discription: "\u79FB\u52D5\u901F\u5EA6\u304C15%\u30A2\u30C3\u30D7\u3059\u308B\u3002"
   type: 0
   targetStatus: 4
-  ratioPerLevel: 0.5
+  ratioPerLevel: 0.42
   healRatio: 0
-  maxLevel: 15
+  maxLevel: 5

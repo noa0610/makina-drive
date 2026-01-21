@@ -19,8 +19,8 @@ MonoBehaviour:
   hp: 100
   atk: 1
   def: 1
-  speed: 3
-  dashSpeed: 8
+  speed: 3.5
+  dashSpeed: 9
   collectionRange: 2
   stamina: 100
   knockbackMultiplier: 1.5

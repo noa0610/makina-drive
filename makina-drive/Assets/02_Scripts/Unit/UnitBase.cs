@@ -170,7 +170,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         OnUpdate();
 
         var dt = Time.deltaTime;
-        _stateMachine.UpdateMachine(dt);
+        // _stateMachine.UpdateMachine(dt);
 
         if (IsRecovery)
         {
@@ -189,6 +189,9 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
     protected virtual void FixedUpdate()
     {
+        var dt = Time.fixedDeltaTime;
+        _stateMachine.UpdateMachine(dt);
+
 #if UNITY_EDITOR
         _currentState = _stateMachine.CurrentState.key;
 #endif

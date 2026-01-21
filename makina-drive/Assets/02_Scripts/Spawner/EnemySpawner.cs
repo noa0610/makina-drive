@@ -17,6 +17,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _waveDuration = 60f;  // 1ウェーブの時間
     [SerializeField] private int _currentWaveNumber = 1; // ウェーブ数
     [SerializeField] private TimerCount _timer;
+    [SerializeField] private VisualInfo _clearTargetKillSE;
+    [SerializeField] private VisualInfo _clearSE;
+    [SerializeField] private bool _showHPBar = false;
     [SerializeField] private List<Status> _statusUp = new List<Status>();
 
     [Header("敵生成情報リスト")]
@@ -80,6 +83,8 @@ public class EnemySpawner : MonoBehaviour
         if (unit.IsClearTarget)
         {
             _currentClearTargetKill++;
+            if (SoundManager.instance && _clearTargetKillSE.SEName != null) SoundManager.instance.PlaySE(_clearTargetKillSE.SEName, _clearTargetKillSE.Volume);
+
             Debug.Log($"クリア対象撃破 現在：{_currentClearTargetKill} / {_totalClearTargetCount}");
 
             if (_currentClearTargetKill >= _totalClearTargetCount)
@@ -96,8 +101,11 @@ public class EnemySpawner : MonoBehaviour
             Debug.Log($"ゲームクリア");
             GameStateManager.instance.ChangeState(GameState.Clear);
 
-            if (SoundManager.instance == null) return;
-            SoundManager.instance.AllStopBGM();
+            if (SoundManager.instance)
+            {
+                SoundManager.instance.AllStopBGM();
+                if (_clearSE.SEName != null) SoundManager.instance.PlaySE(_clearSE.SEName, _clearSE.Volume);
+            }
         }
         _isCleared = true;
     }
@@ -208,23 +216,22 @@ public class EnemySpawner : MonoBehaviour
             // ウェーブ数に応じて経験値増加
             unit.DropExp = info.unitBase.UnitStatusData.baseExp * (1 + _currentWaveNumber * info.statusRate);
 
+            // ウェーブ数に応じた強化倍率の計算
+            // 例、statusRate = 0.1 → ウェーブ2で0.1（1.1倍の強化）、ウェーブ10で0.9 (1.9倍の強化)
+            float currentWaveMultiplier = (_currentWaveNumber - 1) * info.statusRate;
 
+            // エディターでのみステータス強化のON/OFF可、ビルド後は常に強化を適用
+            bool shouldApplyStatus = true;
 # if UNITY_EDITOR
-            if (_notStatusUP)
+            if (_notStatusUP) shouldApplyStatus = false;
+
+#endif
+
+            if (shouldApplyStatus && currentWaveMultiplier > 0)
             {
-#endif
-                // ウェーブ数に応じた強化倍率の計算
-                // 例、statusRate = 0.1 → ウェーブ2で0.1（1.1倍の強化）、ウェーブ10で0.9 (1.9倍の強化)
-                float currentWaveMultiplier = (_currentWaveNumber - 1) * info.statusRate;
-
-                if (currentWaveMultiplier > 0)
-                {
-                    unit.ApplyWaveStatus(currentWaveMultiplier, _statusUp);
-                }
-
-# if UNITY_EDITOR
+                unit.ApplyWaveStatus(currentWaveMultiplier, _statusUp);
             }
-#endif
+
             if (info.destroyTime > 0) unit.SetLazyDeath(info.destroyTime);
 
             // クリアフラグ付与
