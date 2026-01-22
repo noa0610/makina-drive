@@ -7,10 +7,17 @@ using System;
 public class UnitManager : SingletonBehavior<UnitManager>
 {
     [SerializeField] private bool _isdamageTextView = false;
+    
+    [Header("Damege Text Settings")]
     [SerializeField] private Canvas _parentCanvas;  // Canvasの設定はオーバーレイ
-    [SerializeField] private TextMeshProUGUI _textPrefab;
     [SerializeField] private float _textViewTime = 0.5f;
+    [SerializeField] private TextMeshProUGUI _textPrefab;
     [SerializeField] private UnitTags _displayTags = UnitTags.Enemy; // 表示対象
+    
+    [Header("HP Bar Settings")]
+    [SerializeField] private Canvas _hpBarCanvas;
+    [SerializeField] private GameObject _hpBarPrefab;
+    [SerializeField] private Vector3 _defaultOffset = new Vector3(0, 1.5f, 0);
     public static event Action<UnitBase, UnitBase, BulletStatus?> OnUnitDamaged; // ダメージ発生イベント（被弾側、攻撃側、弾情報）
 
     [Header("Debug")]
@@ -118,6 +125,26 @@ public class UnitManager : SingletonBehavior<UnitManager>
         .SetEase(Ease.InQuint)
         // 破棄
         .OnComplete(() => Destroy(instanceText.gameObject));
+    }
+
+    // HPバーを表示(Spawnerから呼ぶ)
+    public void CreateHPBar(UnitBase unit, bool ShowHPBar)
+    {
+        if(!ShowHPBar || _hpBarPrefab == null || _hpBarCanvas == null) return;
+
+        GameObject barObj = Instantiate(_hpBarPrefab, _hpBarCanvas.transform);
+
+        // StatusSliderの設定
+        if(barObj.TryGetComponent<StatusSlider>(out var slider))
+        {
+            slider.Setup(unit);
+        }
+
+        // 追従の設定
+        if(barObj.TryGetComponent<HPBarFollower>(out var follower))
+        {
+            follower.SetTarget(unit.transform, _defaultOffset);
+        }
     }
 
     public void Pause(bool pause, bool isTimeStop = true)

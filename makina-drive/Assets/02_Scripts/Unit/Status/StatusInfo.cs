@@ -118,6 +118,11 @@ public class StatusInfo
             _onAmountChanged?.Invoke(before, _currentAmount);
         }
     }
+    public void SetMultiplier(float ratio)
+    {
+        _temporaryRatio = ratio;
+        _dirty = true;
+    }
     public void SetDefault(float defaultAmount)
     {
         _defaultAmount = defaultAmount;

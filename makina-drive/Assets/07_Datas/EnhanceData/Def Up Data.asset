@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Def Up Data
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
   enhanceName: "\u9632\u5FA1\u529B"
-  discription: "\u6575\u304B\u3089\u53D7\u3051\u308B\u30C0\u30E1\u30FC\u30B8\u3092\n\uFF12\u8EFD\u6E1B\u3059\u308B\u3002"
+  discription: "\u6575\u304B\u3089\u53D7\u3051\u308B\u30C0\u30E1\u30FC\u30B8\u3092\n\uFF11\u8EFD\u6E1B\u3059\u308B\u3002"
   type: 0
   targetStatus: 3
-  ratioPerLevel: 2
+  ratioPerLevel: 1
   healRatio: 0
   maxLevel: 10

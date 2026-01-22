@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e264eeaed4c764a82c258c99709382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitManager
-  _damegeLog: 1
   _isdamageTextView: 0
   _parentCanvas: {fileID: 0}
-  _textPrefab: {fileID: 4579464473126509267, guid: 1b4feba3090d6cd4bb52d51c0054c186, type: 3}
   _textViewTime: 0.5
-  _textMoveHeight: 0.2
+  _textPrefab: {fileID: 4579464473126509267, guid: 1b4feba3090d6cd4bb52d51c0054c186, type: 3}
   _displayTags: 2
+  _hpBarCanvas: {fileID: 0}
+  _hpBarPrefab: {fileID: 212919931924835818, guid: 09351d614cee2c242a198d47c6c3e6d2, type: 3}
+  _defaultOffset: {x: 0, y: 1.5, z: 0}
+  _damegeLog: 1

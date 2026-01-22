@@ -54,7 +54,8 @@ MonoBehaviour:
   _clearSE:
     SEName: "\u30B2\u30FC\u30E0\u30AF\u30EA\u30A2"
     Volume: 0.5
-  _statusUp: 00000000020000000400000005000000
+  _showHPBar: 0
+  _statusUp: 01000000020000000400000005000000
   _normalWaves:
   - waveName: 1Wave
     spawnInfos:

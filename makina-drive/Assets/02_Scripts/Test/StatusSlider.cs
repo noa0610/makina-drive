@@ -17,12 +17,14 @@ public class StatusSlider : MonoBehaviour
 
     private void Start()
     {
-        if (_targetUnit)
+        // インスペクターでターゲットが入っている場合はここでセットアップできる
+        if (_targetUnit != null || _currentAmountInfo == null)
         {
             Setup(_targetUnit);
         }
     }
 
+    // 外部からのセットアップ用
     public void Setup(UnitBase target)
     {
         if (target == null)
@@ -31,8 +33,13 @@ public class StatusSlider : MonoBehaviour
             return;
         }
 
+        // 既存の購読を削除
+        UnsubscribeFromEvents();
+
+        _targetUnit = target;
+
         // 現在値のStatusInfoを取得し、イベントを購読
-        if (target.statusManager.TryGetStatus(_status, out _currentAmountInfo))
+        if (_targetUnit.statusManager.TryGetStatus(_status, out _currentAmountInfo))
         {
             _currentAmountInfo.OnAmountChanged += OnCurrentAmountChanged;
         }
@@ -45,7 +52,7 @@ public class StatusSlider : MonoBehaviour
         // 最大値のStatusInfoを取得し、イベントを購読（HPの場合、MaxHPが必要）
         if (_status == Status.HP)
         {
-            if (target.statusManager.TryGetStatus(Status.MaxHP, out _maxAmountInfo))
+            if (_targetUnit.statusManager.TryGetStatus(Status.MaxHP, out _maxAmountInfo))
             {
                 _maxAmountInfo.OnAmountChanged += OnMaxAmountChanged;
             }
@@ -68,7 +75,10 @@ public class StatusSlider : MonoBehaviour
     private void OnMaxAmountChanged(float before, float after)
     {
         _slider.maxValue = after;
-        _slider.value = _currentAmountInfo.CurrentAmount;
+        if (_currentAmountInfo != null)
+        {
+            _slider.value = _currentAmountInfo.CurrentAmount;
+        }
         // Debug.Log($"StatusSlider: MaxHP updated from {before} to {after}. New MaxValue: {_slider.maxValue}");
     }
 
@@ -76,7 +86,18 @@ public class StatusSlider : MonoBehaviour
     private void UpdateSliderValues()
     {
         if (_currentAmountInfo == null) return;
-        _slider.maxValue = (_maxAmountInfo != null) ? _maxAmountInfo.CurrentAmount : _currentAmountInfo.DefaultAmount;
+
+        // 最大値の設定
+        if (_status == Status.HP && _maxAmountInfo != null)
+        {
+            _slider.maxValue = _maxAmountInfo.CurrentAmount;
+         }
+        else
+        {
+            _slider.maxValue = _currentAmountInfo.CurrentAmount;
+        }
+
+        // 現在地の設定
         _slider.value = _currentAmountInfo.CurrentAmount;
     }
 

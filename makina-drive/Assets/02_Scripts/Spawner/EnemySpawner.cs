@@ -226,12 +226,15 @@ public class EnemySpawner : MonoBehaviour
             if (_notStatusUP) shouldApplyStatus = false;
 
 #endif
-
             if (shouldApplyStatus && currentWaveMultiplier > 0)
             {
                 unit.ApplyWaveStatus(currentWaveMultiplier, _statusUp);
             }
+            
+            // HPバーを生成
+            if (UnitManager.instance != null) UnitManager.instance.CreateHPBar(unit, _showHPBar);
 
+            // 0以上の値であれば時間経過で死亡させる
             if (info.destroyTime > 0) unit.SetLazyDeath(info.destroyTime);
 
             // クリアフラグ付与

@@ -100,7 +100,6 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
         if (_animator == null)
             _animator = GetComponent<Animator>();
-        _statusManager = new StatusManager();
         _body2D = GetComponent<Rigidbody2D>();
         _body2D.gravityScale = 0;
 
@@ -283,15 +282,19 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         if (statusManager == null) return;
 
         // ウェーブ生成時に強化するステータスのリスト（なければ自動設定）
-        if (targets == null)
+        List<Status> activeTargets = targets;
+        if (activeTargets == null)
         {
-            targets.Add(Status.MaxHP);
-            targets.Add(Status.ATK);
-            targets.Add(Status.Speed);
-            targets.Add(Status.DashSpeed);
+            activeTargets = new List<Status>
+            {
+            Status.MaxHP,
+            Status.ATK,
+            Status.Speed,
+            Status.DashSpeed
+            };
         }
 
-        statusManager.ApplyStatusMultiplier(targets, multiplier);
+        statusManager.ApplyStatusMultiplier(activeTargets, multiplier);
         statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));
     }
 

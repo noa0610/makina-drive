@@ -132,7 +132,8 @@ public class StatusManager
             if(TryGetStatus(type, out var info))
             {
                 // TemporaryChangedは1.0がデフォルトなので、そこに加算する
-                info.TemporaryChanged = 1f + multiplier;
+                // multiplierが0.1なら1.1倍、1.0なら2倍として適用
+                info.SetMultiplier(1f + multiplier);
             }
         }
     }
