@@ -12,6 +12,7 @@ public class TutorialEnemySpawner : MonoBehaviour
     private List<UnitBase> _spawnedUnits = new List<UnitBase>();
     private CancellationTokenSource _spawnCts;
     private bool _isSpawning = false; // 生成中
+    [SerializeField] private bool _showHPBar = false; // HPバーの表示
     public event Action<UnitBase> OnEnemyDefeated; // 個別の敵撃破イベント
     public event Action OnAllEnemyDead; // 敵全滅イベント
 
@@ -71,6 +72,10 @@ public class TutorialEnemySpawner : MonoBehaviour
                    OnAllEnemyDead?.Invoke();
                 }
             };
+
+            // HPバーを生成
+            if (UnitManager.instance != null) UnitManager.instance.CreateHPBar(unit, _showHPBar);
+
         }
 
         info.comp.target = target;

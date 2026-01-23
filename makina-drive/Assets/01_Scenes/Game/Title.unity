@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: 185271324}
   - component: {fileID: 185271325}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: HPBarToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -932,7 +932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 90}
+  m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &185271325
@@ -1568,7 +1568,7 @@ GameObject:
   - component: {fileID: 299467178}
   - component: {fileID: 299467179}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: DamageTextToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1589,11 +1589,11 @@ RectTransform:
   - {fileID: 719885602}
   - {fileID: 138545844}
   - {fileID: 483720159}
-  m_Father: {fileID: 1151634978}
+  m_Father: {fileID: 532584700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 90}
+  m_AnchoredPosition: {x: 0, y: 60}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299467179
@@ -2126,8 +2126,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 532584700}
+  - component: {fileID: 532584701}
   m_Layer: 5
-  m_Name: EnemyHPChanger
+  m_Name: VisualOptionsController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2146,13 +2147,28 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 185271324}
+  - {fileID: 299467178}
   m_Father: {fileID: 875419957}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &532584701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532584699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd4967fc3fa8fb4f9e0894cd62bbd72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VisualOptionsController
+  _hpBarToggle: {fileID: 185271325}
+  _damageTextToggle: {fileID: 299467179}
 --- !u!1 &579085960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3630,7 +3646,6 @@ RectTransform:
   - {fileID: 2078362685}
   - {fileID: 1856791704}
   - {fileID: 532584700}
-  - {fileID: 1151634978}
   m_Father: {fileID: 1481126293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4782,42 +4797,6 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -87.49999, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1151634977
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1151634978}
-  m_Layer: 5
-  m_Name: DamageTextChanger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1151634978
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151634977}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 299467178}
-  m_Father: {fileID: 875419957}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 115}
-  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1166707095
 GameObject:
@@ -9047,6 +9026,63 @@ MonoBehaviour:
   Information: 
   _StartToGame: {fileID: 755790395}
   _StartButton: {fileID: 304869479}
+--- !u!1001 &6309946238832856684
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 989526810540784657, guid: 1772c928552c3b846b91420078db8bd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2949.6023
+      objectReference: {fileID: 0}
+    - target: {fileID: 989526810540784657, guid: 1772c928552c3b846b91420078db8bd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 423.76135
+      objectReference: {fileID: 0}
+    - target: {fileID: 989526810540784657, guid: 1772c928552c3b846b91420078db8bd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989526810540784657, guid: 1772c928552c3b846b91420078db8bd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 989526810540784657, guid: 1772c928552c3b846b91420078db8bd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989526810540784657, guid: 1772c928552c3b846b91420078db8bd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989526810540784657, guid: 1772c928552c3b846b91420078db8bd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989526810540784657, guid: 1772c928552c3b846b91420078db8bd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989526810540784657, guid: 1772c928552c3b846b91420078db8bd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989526810540784657, guid: 1772c928552c3b846b91420078db8bd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841337308418367990, guid: 1772c928552c3b846b91420078db8bd0, type: 3}
+      propertyPath: m_Name
+      value: VisualSettingsManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1772c928552c3b846b91420078db8bd0, type: 3}
 --- !u!1001 &8203916168134481718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9133,3 +9169,4 @@ SceneRoots:
   - {fileID: 256418985}
   - {fileID: 8203916168134481718}
   - {fileID: 240136398}
+  - {fileID: 6309946238832856684}

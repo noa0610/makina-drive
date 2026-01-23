@@ -7,13 +7,13 @@ using System;
 public class UnitManager : SingletonBehavior<UnitManager>
 {
     [SerializeField] private bool _isdamageTextView = false;
-    
+
     [Header("Damege Text Settings")]
     [SerializeField] private Canvas _parentCanvas;  // Canvasの設定はオーバーレイ
     [SerializeField] private float _textViewTime = 0.5f;
     [SerializeField] private TextMeshProUGUI _textPrefab;
     [SerializeField] private UnitTags _displayTags = UnitTags.Enemy; // 表示対象
-    
+
     [Header("HP Bar Settings")]
     [SerializeField] private Canvas _hpBarCanvas;
     [SerializeField] private GameObject _hpBarPrefab;
@@ -104,6 +104,8 @@ public class UnitManager : SingletonBehavior<UnitManager>
     // ダメージ量をテキスト表示
     public void DamageTextView(float damage, UnitBase target)
     {
+        if (!VisualSettingsManager.instance.Settings.showDamageText) return;
+
         if (_parentCanvas == null && _textPrefab == null) return;
 
         // 表示対象のタグを識別
@@ -130,18 +132,20 @@ public class UnitManager : SingletonBehavior<UnitManager>
     // HPバーを表示(Spawnerから呼ぶ)
     public void CreateHPBar(UnitBase unit, bool ShowHPBar)
     {
-        if(!ShowHPBar || _hpBarPrefab == null || _hpBarCanvas == null) return;
+        if (!VisualSettingsManager.instance.Settings.showHPBar) return;
+
+        if (!ShowHPBar || _hpBarPrefab == null || _hpBarCanvas == null) return;
 
         GameObject barObj = Instantiate(_hpBarPrefab, _hpBarCanvas.transform);
 
         // StatusSliderの設定
-        if(barObj.TryGetComponent<StatusSlider>(out var slider))
+        if (barObj.TryGetComponent<StatusSlider>(out var slider))
         {
             slider.Setup(unit);
         }
 
         // 追従の設定
-        if(barObj.TryGetComponent<HPBarFollower>(out var follower))
+        if (barObj.TryGetComponent<HPBarFollower>(out var follower))
         {
             follower.SetTarget(unit.transform, _defaultOffset);
         }

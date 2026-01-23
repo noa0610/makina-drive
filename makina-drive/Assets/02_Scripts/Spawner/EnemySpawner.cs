@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private TimerCount _timer;
     [SerializeField] private VisualInfo _clearTargetKillSE;
     [SerializeField] private VisualInfo _clearSE;
-    [SerializeField] private bool _showHPBar = false;
+    [SerializeField] private bool _showHPBar = false; // HPバーの表示
     [SerializeField] private List<Status> _statusUp = new List<Status>();
 
     [Header("敵生成情報リスト")]
