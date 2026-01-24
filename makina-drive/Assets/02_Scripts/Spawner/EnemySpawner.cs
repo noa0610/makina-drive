@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (info.isClearTarget)
                 {
-                    _totalClearTargetCount += info.spawnCount * info.sameTimeSpawnCount;
+                    _totalClearTargetCount += info.spawnCount * info.minSpawnCount;
                 }
             }
         }
@@ -209,7 +209,9 @@ public class EnemySpawner : MonoBehaviour
 
         float powerMultiplier = _currentWaveNumber * info.statusRate;
 
-        for (int j = 0; j < info.sameTimeSpawnCount; j++)
+        int randomSpawnCount = UnityEngine.Random.Range(info.minSpawnCount, info.maxSpawnCount + 1);
+
+        for (int j = 0; j < randomSpawnCount; j++)
         {
             UnitBase unit = Instantiate(info.unitBase);
 

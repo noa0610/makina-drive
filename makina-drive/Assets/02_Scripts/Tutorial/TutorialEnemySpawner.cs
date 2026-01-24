@@ -48,8 +48,10 @@ public class TutorialEnemySpawner : MonoBehaviour
     private void SpawnGroup(UnitSpawnInfo info, GameObject target)
     {
         List<UnitBase> groupList = new List<UnitBase>();
+        
+        int randomSpawnCount = UnityEngine.Random.Range(info.minSpawnCount, info.maxSpawnCount + 1);
 
-        for (int j = 0; j < info.sameTimeSpawnCount; j++)
+        for (int j = 0; j < randomSpawnCount; j++)
         {
             UnitBase unit = Instantiate(info.unitBase);
 
