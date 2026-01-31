@@ -5,15 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "MakinaDrive/EffectDataBase")]
 public class EffectDataBase : ScriptableObject
 {
-    [Serializable]
-    public struct EffectEntry
-    {
-        public string effectName; // 名前
-        public GameObject prefab; // エフェクトプレハブ
-        public float duration;    // 自動回収時間
-        public bool usePooling;   // プーリング
-    }
+    [Header("Visual Asset")]
+    public string effectName;
+    public GameObject effectPrefab;
 
-    public List<EffectEntry> effects;
-    public GameObject GetPrefab(string name) => effects.Find(e => e.effectName == name).prefab;
+    [Header("Playback")]
+    public float startDelay = 0f;
+    public float duration = 2.0f;
+    public EffectStopType stopType = EffectStopType.Destroy;
+
+    [Header("Positioning")]
+    public EffectAttachType attachType = EffectAttachType.FixedPosition;
+    public Vector3 offset = Vector3.zero;
+    public bool useRandomOffset = false;
+    public float randomRange = 0.2f;
+
+    [Header("Orientation")]
+    public Vector3 initialEulerAngles; // デフォルトの回転角
+    public bool ignoreFlip = false; // ユニット反転後も反転させない
 }

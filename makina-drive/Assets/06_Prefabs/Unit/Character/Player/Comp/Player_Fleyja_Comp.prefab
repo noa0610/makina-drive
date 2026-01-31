@@ -90,6 +90,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1607465080190877602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1363386472849061810}
+  m_Layer: 0
+  m_Name: Booster1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1363386472849061810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607465080190877602}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.32, y: -0.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1710303744117835567}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5345516188101110769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8071845793786918133}
+  m_Layer: 0
+  m_Name: Booster2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8071845793786918133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5345516188101110769}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.36, y: 0.37, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1710303744117835567}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6291943281225340653
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +288,10 @@ MonoBehaviour:
   _deadGameOverDelay: 1
   _ChargeParticle: {fileID: 2236257326295335633, guid: 58a2f56938ac8fa4f85a76eb178c1d61, type: 3}
   _ChargeParticleDeleteTime: 0.7
+  _BoosterEffect: {fileID: 11400000, guid: 5299e7ba26fcc0d4b85e39bbdda4d345, type: 2}
+  _jumpBoosterEffectPoint: {fileID: 1363386472849061810}
+  _jumpAttackBoosterEffect: {fileID: 11400000, guid: f9035fd9f01aa824a9bf83267537aad0, type: 2}
+  _jumpAttackEffectPoint: {fileID: 8071845793786918133}
   _N1_AttackSE:
     SEName: "\u901A\u5E38\u653B\u6483\uFF081\u6BB5\u968E\uFF09"
     Volume: 0.5
@@ -739,12 +805,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4037648043874679846, guid: 0dfbf1ff0689ec8498e9e6afa5a8c151, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1363386472849061810}
+    - targetCorrespondingSourceObject: {fileID: 4037648043874679846, guid: 0dfbf1ff0689ec8498e9e6afa5a8c151, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8071845793786918133}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dfbf1ff0689ec8498e9e6afa5a8c151, type: 3}
 --- !u!4 &1433702394553005219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4346302437975134122, guid: 0dfbf1ff0689ec8498e9e6afa5a8c151, type: 3}
+  m_PrefabInstance: {fileID: 3437552398092565257}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1710303744117835567 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4037648043874679846, guid: 0dfbf1ff0689ec8498e9e6afa5a8c151, type: 3}
   m_PrefabInstance: {fileID: 3437552398092565257}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &8681914258506336368 stripped

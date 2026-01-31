@@ -140,6 +140,10 @@ public partial class Freya : UnitBase, IPausable
     [Header("エフェクト")]
     [SerializeField] private ParticleSystem _ChargeParticle;
     [SerializeField] private float _ChargeParticleDeleteTime;
+    [SerializeField] private EffectDataBase _BoosterEffect;
+    [SerializeField] private Transform _jumpBoosterEffectPoint;
+    [SerializeField] private EffectDataBase _jumpAttackBoosterEffect;
+    [SerializeField] private Transform _jumpAttackEffectPoint;
     private GameObject _childParticle;
 
     [Header("SE")]

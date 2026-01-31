@@ -262,7 +262,7 @@ public partial class Freya
         drivedash.SetBlockThoroughTag(_dashAttackTag);
         drivedash.OnBeGinning += () =>
         {
-            if(CameraDirector.instance != null) CameraDirector.instance.PlayFreezeEffect(0.15f).Forget();;
+            if (CameraDirector.instance != null) CameraDirector.instance.PlayFreezeEffect(0.15f).Forget(); ;
             PlaySE(_DashSE.SEName, _DashSE.Volume);
         };
         drivedash.OnCompleted += () =>
@@ -366,7 +366,7 @@ public partial class Freya
         Charge_Attack.IsStopInExit = true;
         Charge_Attack.onShootComplete.AddListener(() =>
         {
-            if(CameraDirector.instance != null) CameraDirector.instance.PlayShake();
+            if (CameraDirector.instance != null) CameraDirector.instance.PlayShake();
             PlaySE(_Charge_AttackSE.SEName, _Charge_AttackSE.Volume);
         });
         _stateMachine.AddState(States.charge_Attack, Charge_Attack, new string[] { "CA" });
@@ -381,7 +381,7 @@ public partial class Freya
         Charge_DashAttack.IsStopInExit = true;
         Charge_DashAttack.onShootComplete.AddListener(() =>
         {
-            if(CameraDirector.instance != null) CameraDirector.instance.PlayShake();
+            if (CameraDirector.instance != null) CameraDirector.instance.PlayShake();
             PlaySE(_Charge_DashAttackSE.SEName, _Charge_DashAttackSE.Volume);
         });
         _stateMachine.AddState(States.charge_DashAttack, Charge_DashAttack, new string[] { "CA", "CDA" });
@@ -412,6 +412,7 @@ public partial class Freya
         var fall = new Idle_LazyChange(Triggers.jumpConplete.ToString(), _fallTime);
         fall.OnCompleted += () =>
         {
+            if (_jumpAttackBoosterEffect != null) EffectManager.instance.PlayEffect(_jumpAttackBoosterEffect, _jumpAttackEffectPoint);
             // すり抜け解除
             if (_coll2D != null)
                 _coll2D.isTrigger = false;
@@ -426,7 +427,7 @@ public partial class Freya
         fallAttack.SetGameObject(_muzzle);
         fallAttack.onShootComplete.AddListener(() =>
         {
-            if(CameraDirector.instance != null) CameraDirector.instance.PlayZoom();
+            if (CameraDirector.instance != null) CameraDirector.instance.PlayZoom();
             PlaySE(_JumpAttackSE.SEName, _JumpAttackSE.Volume);
         });
         _stateMachine.AddState(States.fallAttack, fallAttack, new string[] { "SPA" });

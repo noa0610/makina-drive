@@ -134,6 +134,8 @@ public partial class Freya
             IsRecovery = false;
             PlaySE(_JumpSE.SEName, _JumpSE.Volume);
             statusManager.AddValue(Status.Stamina, -_jumpStaminaLostAmount);
+            
+            if (_BoosterEffect != null) EffectManager.instance.PlayEffect(_BoosterEffect, _jumpBoosterEffectPoint);
             _stateMachine.ChangeState(Triggers.jumpInput);
         }
     }
