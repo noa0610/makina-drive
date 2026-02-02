@@ -1,15 +1,54 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
+using Cysharp.Threading.Tasks;
 
+/// <summary>
+/// エフェクトのインスタンスにアタッチするクラス
+/// </summary>
 public class EffectInstance : MonoBehaviour
 {
-    private EffectDataBase _data;
+    [SerializeField] private EffectDataBase _data;
+    public EffectDataBase EffectData => _data;
+
     private Transform _target;
     private float _timer;
     private float _delayTimer;
     private bool _isStarted;
+    private bool _isStopping = false;
     private List<ParticleSystem> _particles = new List<ParticleSystem>();
     private List<Renderer> _renderers = new List<Renderer>();
+
+    public Action<EffectInstance> OnEffectComplete;
+
+    private void Awake()
+    {
+        GetComponentsInChildren(true, _particles);
+        GetComponentsInChildren(true, _renderers);
+    }
+    
+    // エフェクトの再生開始
+    public void Play(Transform target = null)
+    {
+        _target = target;
+        _timer = 0;
+        _delayTimer = 0;
+        _isStopping = false;
+
+        // データから初期回転を反映
+        transform.localRotation = Quaternion.Euler(_data.initialEulerAngles);
+
+        if(_data.startDelay > 0)
+        {
+            _isStarted = false;
+            ToggleVisuals(false);
+        }
+        else
+        {
+            StartVisuals();
+        }
+    }
 
     public void Init(EffectDataBase data, Transform target = null)
     {
@@ -18,10 +57,11 @@ public class EffectInstance : MonoBehaviour
         _timer = 0;
         _delayTimer = 0;
         _isStarted = false;
+        _isStopping = false;
 
-        transform.localRotation = Quaternion.Euler(_data.initialEulerAngles);
+        
 
-        if(_data.startDelay > 0)
+        if (_data.startDelay > 0)
         {
             GetComponentsInChildren(true, _particles);
             GetComponentsInChildren(true, _renderers);
@@ -33,37 +73,40 @@ public class EffectInstance : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        if (_data == null) return;
+        if (_isStopping || _data == null) return;
 
-        if(!_isStarted)
+        // ディレイ処理
+        if (!_isStarted)
         {
-            _delayTimer += Time.deltaTime;
-
+            _delayTimer += Time.fixedDeltaTime;
             if (_delayTimer >= _data.startDelay)
             {
-                _isStarted = true;
-                ToggleVisuals(true);
+                StartVisuals();
             }
-            else
-            {
-                // ディレイ中も追従が必要な場合は位置更新のみ行う
-                if (_target != null) UpdatePosition();
-                return;
-            }
-        }
-
-        _timer += Time.deltaTime;
-        if (_timer >= _data.duration)
-        {
-            // 本来はここでプールに戻すが、今回はシンプルにDestroy
-            Destroy(gameObject);
             return;
+        }
+        
+        UpdatePosition();
+
+        // 寿命処理
+        if(!_data.loopForever)
+        {
+            _timer += Time.fixedDeltaTime;
+            if(_timer >= _data.duration)
+            {
+                Stop();
+            }
         }
 
         if (_target == null) return;
-        UpdatePosition();
+    }
+
+    private void StartVisuals()
+    {
+        _isStarted = true;
+        ToggleVisuals(true);
     }
 
     private void UpdatePosition()
@@ -75,7 +118,7 @@ public class EffectInstance : MonoBehaviour
                 break;
             case EffectAttachType.BiniToBone:
                 transform.position = _target.TransformPoint(_data.offset);
-                if(!_data.ignoreFlip) transform.rotation = _target.rotation;
+                if (!_data.ignoreFlip) transform.rotation = _target.rotation;
                 transform.localScale = _target.localScale;
                 break;
         }
@@ -95,29 +138,35 @@ public class EffectInstance : MonoBehaviour
 
     public void ToggleVisuals(bool show)
     {
-        foreach(var r in _renderers) if(r != null) r.enabled = show;
-        foreach(var p in _particles)
+        foreach (var r in _renderers) if (r != null) r.enabled = show;
+        foreach (var p in _particles)
         {
-            if(p == null) continue;
-            if(show) p.Play(true);
+            if (p == null) continue;
+            if (show) p.Play(true);
             else p.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
     }
 
-    // private void StopEffect()
-    // {
-    //     if(_data.stopType == EffectStopType.StopEmitting)
-    //     {
-    //         foreach(var p in _particles) p.Stop();
+    // 再生の停止
+    public void Stop()
+    {
+        if (_isStopping) return;
+        _isStopping = true;
 
-    //         Invoke(nameof(ReturnToPool), 2.0f);
-    //     }
-    //     else
-    //     {
-    //         ReturnToPool();
-    //     }
-    // }
+        if (_data.stopType == EffectStopType.StopEmitting)
+        {
+            foreach (var p in _particles) if(p != null) p.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            Invoke(nameof(NotifyCOmplete), 2.0f);
+        }
+        else
+        {
+            NotifyCOmplete();
+        }
+    }
 
-    private void ReturnToPool() => EffectManager.instance.ReturnToPool(gameObject, _data.effectName);
-    private void SetVisible(bool visible) => gameObject.SetActive(visible);
+    // 再生完全終了
+    public void NotifyCOmplete()
+    {
+        OnEffectComplete?.Invoke(this);
+    }
 }

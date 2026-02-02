@@ -412,7 +412,7 @@ public partial class Freya
         var fall = new Idle_LazyChange(Triggers.jumpConplete.ToString(), _fallTime);
         fall.OnCompleted += () =>
         {
-            if (_jumpAttackBoosterEffect != null) EffectManager.instance.PlayEffect(_jumpAttackBoosterEffect, _jumpAttackEffectPoint);
+            // if (_jumpAttackBoosterEffect != null) EffectManager.instance.PlayEffect(_jumpAttackBoosterEffect, _jumpAttackEffectPoint);
             // すり抜け解除
             if (_coll2D != null)
                 _coll2D.isTrigger = false;

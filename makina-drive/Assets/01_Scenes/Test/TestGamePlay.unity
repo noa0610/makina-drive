@@ -9481,6 +9481,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1851413714}
     m_Modifications:
+    - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
+      propertyPath: _effectList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
+      propertyPath: '_effectList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: da56117b6ce2429469761561df7531b9, type: 2}
+    - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
+      propertyPath: _effectPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
+      propertyPath: '_effectPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5281396037125272937, guid: 5d0182a2f406c234f8e9b2514bdbfa6e, type: 3}
     - target: {fileID: 2690040234636734578, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9672,6 +9688,10 @@ PrefabInstance:
       value: -0.092532426
       objectReference: {fileID: 0}
     - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: _ChargeEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: da56117b6ce2429469761561df7531b9, type: 2}
+    - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
       propertyPath: _dashEffectPoint
       value: 
       objectReference: {fileID: 6641186762951205096}
@@ -9800,7 +9820,8 @@ PrefabInstance:
       value: 0.060284235
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 821242497413542091, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}

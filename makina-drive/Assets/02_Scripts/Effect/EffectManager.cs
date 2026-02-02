@@ -4,62 +4,93 @@ using UnityEngine;
 
 public class EffectManager : SingletonBehavior<EffectManager>
 {
-    [SerializeField] private List<EffectDataBase> _effectList;
-    private Dictionary<string, EffectDataBase> _dataMap = new();
-    private Dictionary<string, Stack<GameObject>> _poolMap = new();
+    [SerializeField] private List<EffectInstance> _effectPrefabs;
+    private Dictionary<string, EffectInstance> _prefabMap = new();
+    private Dictionary<string, Stack<EffectInstance>> _poolMap = new();
 
     protected override void Awake()
     {
         base.Awake();
-        foreach (var d in _effectList) _dataMap[d.effectName] = d;
-    }
-
-    public void PlayEffect(EffectDataBase data, Transform target)
-    {
-        if (data == null || data.effectPrefab == null) return;
-
-        GameObject go = Instantiate(data.effectPrefab);
-        EffectInstance instance = go.AddComponent<EffectInstance>();
-        instance.Init(data, target);
-    }
-
-    public void Play(string effectName, Vector3 position, Transform target = null)
-    {
-        if (!_dataMap.TryGetValue(effectName, out var data)) return;
-
-        Vector3 spawnPos = position;
-        if (data.useRandomOffset)
+        foreach (var prefab in _effectPrefabs)
         {
-            Vector2 randomPoint = UnityEngine.Random.insideUnitCircle * data.randomRange;
+            if (prefab != null)
+            {
+                _prefabMap[prefab.EffectData.effectName] = prefab;
+            }
+        }
+    }
+
+    // エフェクトを再生
+    public EffectInstance Play(string effectName, Vector3 position, Transform target = null)
+    {
+        if (!_prefabMap.TryGetValue(effectName, out var prefab))
+        {
+            Debug.LogWarning($"Effect: {effectName} が見つかりません。");
+            return null;
+        }
+
+        // プールから取得
+        EffectInstance instance = GetFromPool(prefab);
+
+        // 生成位置設定
+        Vector3 spawnPos = position;
+        if (instance.EffectData.useRandomOffset)
+        {
+            Vector2 randomPoint = UnityEngine.Random.insideUnitCircle * instance.EffectData.randomRange;
             spawnPos += new Vector3(randomPoint.x, randomPoint.y, 0);
         }
 
-        GameObject obj = GetFromPool(data);
-        obj.transform.position = spawnPos;
+        instance.transform.position = spawnPos;
 
-        if (!obj.TryGetComponent<EffectInstance>(out var instance))
-        {
-            instance = obj.AddComponent<EffectInstance>();
-        }
-        instance.Init(data, target);
+        // イベント購読
+        instance.OnEffectComplete -= HandleEffectComplete;
+        instance.OnEffectComplete += HandleEffectComplete;
+
+        instance.Play(target);
+        
+        return instance;
     }
 
-    private GameObject GetFromPool(EffectDataBase data)
+    private EffectInstance GetFromPool(EffectInstance prefab)
     {
-        if (!_poolMap.ContainsKey(data.effectName)) _poolMap[data.effectName] = new Stack<GameObject>();
+        string key = prefab.EffectData.effectName;
 
-        if (_poolMap[data.effectName].Count > 0)
+        if(!_poolMap.ContainsKey(key))
         {
-            GameObject obj = _poolMap[data.effectName].Pop();
-            obj.SetActive(true);
-            return obj;
+            _poolMap[key] = new Stack<EffectInstance>();
         }
-        return Instantiate(data.effectPrefab);
+
+        if(_poolMap[key].Count > 0)
+        {
+            EffectInstance pooledInstance = _poolMap[key].Pop();
+            pooledInstance.gameObject.SetActive(true);
+            return pooledInstance;
+        }
+
+        // 新規作成
+        return Instantiate(prefab, transform);
     }
 
-    public void ReturnToPool(GameObject obj, string name)
+    private void HandleEffectComplete(EffectInstance instance)
     {
-        obj.SetActive(false);
-        _poolMap[name].Push(obj);
+        // 購読解除
+        instance.OnEffectComplete -= HandleEffectComplete;
+
+        // プールに戻す
+        ReturnToPool(instance);
+    }
+
+    public void ReturnToPool(EffectInstance instance)
+    {
+        string key = instance.EffectData.effectName;
+
+        instance.gameObject.SetActive(false);
+        
+        if(!_poolMap.ContainsKey(key))
+        {
+            _poolMap[key] = new Stack<EffectInstance>();
+        }
+
+        _poolMap[key].Push(instance);
     }
 }

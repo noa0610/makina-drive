@@ -73,7 +73,7 @@ public partial class Freya
     {
         if (isPressed)
         {
-            
+
         }
     }
 
@@ -124,7 +124,11 @@ public partial class Freya
     {
         if (isPressed)
         {
-            _stateMachine.ChangeState(Triggers.jumpInputNext);
+            if (IsMatchingState(States.jumpfallAim))
+            {
+                _stateMachine.ChangeState(Triggers.jumpInputNext);
+                return;
+            }
 
             if (statusManager.ReadValue(Status.Stamina) < _jumpStaminaLostAmount)
             {
@@ -134,8 +138,8 @@ public partial class Freya
             IsRecovery = false;
             PlaySE(_JumpSE.SEName, _JumpSE.Volume);
             statusManager.AddValue(Status.Stamina, -_jumpStaminaLostAmount);
-            
-            if (_BoosterEffect != null) EffectManager.instance.PlayEffect(_BoosterEffect, _jumpBoosterEffectPoint);
+
+            // if (_BoosterEffect != null) EffectManager.instance.PlayEffect(_BoosterEffect, _jumpBoosterEffectPoint);
             _stateMachine.ChangeState(Triggers.jumpInput);
         }
     }

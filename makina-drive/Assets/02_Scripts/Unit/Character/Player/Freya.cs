@@ -144,6 +144,8 @@ public partial class Freya : UnitBase, IPausable
     [SerializeField] private Transform _jumpBoosterEffectPoint;
     [SerializeField] private EffectDataBase _jumpAttackBoosterEffect;
     [SerializeField] private Transform _jumpAttackEffectPoint;
+    [SerializeField] private EffectDataBase _ChargeEffect;
+    private EffectInstance _activeChargeEffect;
     private GameObject _childParticle;
 
     [Header("SE")]
@@ -193,11 +195,9 @@ public partial class Freya : UnitBase, IPausable
             if (_chargeTimer >= _chargeThresholdTIme && !_isChargeCompleted)
             {
                 PlaySE(_ChargeCompletedSE.SEName, _ChargeCompletedSE.Volume);
-                if (_ChargeParticle)
-                {
-                    _childParticle = GameObject.Instantiate(_ChargeParticle.gameObject, gameObject.transform.position, Quaternion.identity, transform);
-                    Destroy(_childParticle, _ChargeParticleDeleteTime);
-                }
+                StartCharge();
+
+                // _activeChargeEffect = EffectManager.instance.Play(_ChargeEffect.effectName, transform.position);
                 _isChargeCompleted = true;
             }
         }
@@ -312,13 +312,23 @@ public partial class Freya : UnitBase, IPausable
         PlaySE(_levelUpSE.SEName, _levelUpSE.Volume);
     }
 
+    // チャージを開始する
+    private void StartCharge()
+    {
+        _activeChargeEffect = EffectManager.instance.Play("Charge", transform.position, transform);
+    }
+
     // チャージ状況をリセットする
     public void ResetCharge()
     {
         _chargeTimer = 0f;
         _isChargeCompleted = false;
-        if (_childParticle != null)
-            Destroy(_childParticle);
+        
+        if (_activeChargeEffect != null)
+        {
+            _activeChargeEffect.Stop();
+            _activeChargeEffect = null;
+        }
     }
 
 

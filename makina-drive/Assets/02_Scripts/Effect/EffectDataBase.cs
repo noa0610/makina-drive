@@ -7,11 +7,11 @@ public class EffectDataBase : ScriptableObject
 {
     [Header("Visual Asset")]
     public string effectName;
-    public GameObject effectPrefab;
 
     [Header("Playback")]
     public float startDelay = 0f;
     public float duration = 2.0f;
+    public bool loopForever = false;
     public EffectStopType stopType = EffectStopType.Destroy;
 
     [Header("Positioning")]
