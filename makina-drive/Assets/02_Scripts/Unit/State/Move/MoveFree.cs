@@ -14,8 +14,10 @@ public class MoveFree : MoveStateBase
     [SerializeField, Range(0f, 0.1f)] protected float _deadZone = 0.001f; // 入力無視しきい値
 
     [SerializeField] protected float _delayTime;
+    protected float _time = 0f;
 
-    protected string _lazechange;
+    public event Action OnCompleted;
+    protected string _lazychange;
 
     public bool IsStopInExit { get => _isStopInExit; set => _isStopInExit = value; }
 
@@ -29,6 +31,14 @@ public class MoveFree : MoveStateBase
         base.Enter(nextIState, parent);
         if (_isStopInExit && rigidbody2D != null)
             rigidbody2D.linearVelocity = Vector2.zero;
+
+        Action evt = null;
+        evt = () =>
+        {
+            parent.stateMachine.LazyChange(_lazychange);
+            OnCompleted -= evt;
+        };
+        OnCompleted += evt;
     }
 
     public override void Stay(UnitBase parent, float deltaTime)
@@ -47,7 +57,12 @@ public class MoveFree : MoveStateBase
         var maxDelta = changePerSec * Mathf.Max(deltaTime, 0f);
         rigidbody2D.linearVelocity = Vector2.MoveTowards(rigidbody2D.linearVelocity, targetVel, maxDelta);
 
-        if (_lazechange != null) ProcessLazyChange(parent, _lazechange, _delayTime);
+        _time += deltaTime;
+        if (_time >= _delayTime)
+        {
+            OnCompleted?.Invoke();
+            _time = 0f;
+        }
     }
 
     public MoveFree SetAccel(float accel)
@@ -70,7 +85,7 @@ public class MoveFree : MoveStateBase
 
     public void SetLazyChange(string lazyChange, float delayTime)
     {
-        _lazechange = lazyChange;
+        _lazychange = lazyChange;
         _delayTime = delayTime;
     }
 }

@@ -398,6 +398,8 @@ public partial class Freya
                 _coll2D.isTrigger = true;
             // 無敵付与
             SetInvincible(true);
+
+            if (EffectManager.instance != null) _activeFallAimEffect = EffectManager.instance.Play("AimCursor", transform.position, transform);
         };
         _stateMachine.AddState(States.jumpstart, jumpstart);
 
@@ -406,13 +408,22 @@ public partial class Freya
         jumpfallAim.SetAccel(_fallAimAccel);
         jumpfallAim.SetDecel(_fallAimDecel);
         jumpfallAim.SetLazyChange(Triggers.jumpInputNext.ToString(), _fallAutoChangeTIme);
+        jumpfallAim.OnCompleted += () =>
+        {
+            _activeFallAimEffect.Stop();
+            _activeFallAimEffect = null;
+        };
         _stateMachine.AddState(States.jumpfallAim, jumpfallAim);
 
         /* 落下 */
         var fall = new Idle_LazyChange(Triggers.jumpConplete.ToString(), _fallTime);
         fall.OnCompleted += () =>
         {
-            // if (_jumpAttackBoosterEffect != null) EffectManager.instance.PlayEffect(_jumpAttackBoosterEffect, _jumpAttackEffectPoint);
+            _activeJumpEffect.Stop();
+            _activeJumpEffect = null;
+
+            if (EffectManager.instance != null) _activeFallAttackBoosterEffect = EffectManager.instance.Play("FallAttackBooster", _FallAttackBoosterEffectPoint.transform.position, _FallAttackBoosterEffectPoint.transform, this.transform);
+
             // すり抜け解除
             if (_coll2D != null)
                 _coll2D.isTrigger = false;
@@ -430,6 +441,11 @@ public partial class Freya
             if (CameraDirector.instance != null) CameraDirector.instance.PlayZoom();
             PlaySE(_JumpAttackSE.SEName, _JumpAttackSE.Volume);
         });
+        fallAttack.OnCompleted += () =>
+        {
+            _activeFallAttackBoosterEffect.Stop();
+            _activeFallAttackBoosterEffect = null;
+        };
         _stateMachine.AddState(States.fallAttack, fallAttack, new string[] { "SPA" });
         #endregion
 

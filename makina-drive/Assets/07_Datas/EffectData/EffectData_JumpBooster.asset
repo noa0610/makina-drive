@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: EffectData_JumpBooster
   m_EditorClassIdentifier: Assembly-CSharp::EffectDataBase
   effectName: JumpBooster
-  effectPrefab: {fileID: 1211535746679702706, guid: 8afb4b45b4b7218488fc1b80707fc6b0, type: 3}
   startDelay: 0.5
   duration: 2
+  loopForever: 0
   stopType: 0
   attachType: 2
   offset: {x: 0, y: 0, z: 0}
   useRandomOffset: 0
   randomRange: 0.2
-  initialEulerAngles: {x: 0, y: 0, z: -80}
-  ignoreFlip: 1
+  initialEulerAngles: {x: 0, y: 0, z: 210}
+  ignoreFlip: 0
+  mirrorRotation: 1

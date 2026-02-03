@@ -23,4 +23,5 @@ public class EffectDataBase : ScriptableObject
     [Header("Orientation")]
     public Vector3 initialEulerAngles; // デフォルトの回転角
     public bool ignoreFlip = false; // ユニット反転後も反転させない
+    public bool mirrorRotation = false; // 向きに合わせて回転を鏡写しにする
 }

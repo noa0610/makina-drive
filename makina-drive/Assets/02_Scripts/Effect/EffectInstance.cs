@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 
 /// <summary>
 /// エフェクトのインスタンスにアタッチするクラス
@@ -12,7 +13,8 @@ public class EffectInstance : MonoBehaviour
     [SerializeField] private EffectDataBase _data;
     public EffectDataBase EffectData => _data;
 
-    private Transform _target;
+    private Transform _target;          // 位置参照対象
+    private Transform _directionTarget; // 向き参照対象（指定がない場合、targetの向きを参照）
     private float _timer;
     private float _delayTimer;
     private bool _isStarted;
@@ -27,19 +29,19 @@ public class EffectInstance : MonoBehaviour
         GetComponentsInChildren(true, _particles);
         GetComponentsInChildren(true, _renderers);
     }
-    
+
     // エフェクトの再生開始
-    public void Play(Transform target = null)
+    public void Play(Transform target = null, Transform directionTarget = null)
     {
         _target = target;
+        _directionTarget = directionTarget ?? target;
         _timer = 0;
         _delayTimer = 0;
         _isStopping = false;
 
-        // データから初期回転を反映
-        transform.localRotation = Quaternion.Euler(_data.initialEulerAngles);
-
-        if(_data.startDelay > 0)
+        UpdateTransform();
+        
+        if (_data.startDelay > 0)
         {
             _isStarted = false;
             ToggleVisuals(false);
@@ -58,8 +60,6 @@ public class EffectInstance : MonoBehaviour
         _delayTimer = 0;
         _isStarted = false;
         _isStopping = false;
-
-        
 
         if (_data.startDelay > 0)
         {
@@ -87,14 +87,14 @@ public class EffectInstance : MonoBehaviour
             }
             return;
         }
-        
-        UpdatePosition();
+
+        UpdateTransform();
 
         // 寿命処理
-        if(!_data.loopForever)
+        if (!_data.loopForever)
         {
             _timer += Time.fixedDeltaTime;
-            if(_timer >= _data.duration)
+            if (_timer >= _data.duration)
             {
                 Stop();
             }
@@ -109,31 +109,83 @@ public class EffectInstance : MonoBehaviour
         ToggleVisuals(true);
     }
 
-    private void UpdatePosition()
+    private void UpdateTransform()
     {
+        Vector3 finalOffset = _data.offset;
+        bool isFlipped = IsFlipped();
+        if(isFlipped && !_data.ignoreFlip)
+        {
+            finalOffset.x *= -1;
+        }
+
+        // --- 位置の更新 ---
         switch (_data.attachType)
         {
+            case EffectAttachType.FixedPosition:
+                break;
+
             case EffectAttachType.FollowTarget:
-                transform.position = _target.position + GetOffsetWithFlip();
+                if (_target == null) return;
+                transform.position = _target.position + finalOffset;
                 break;
-            case EffectAttachType.BiniToBone:
+
+            case EffectAttachType.BindToBone:
+                if (_target == null) return;
                 transform.position = _target.TransformPoint(_data.offset);
-                if (!_data.ignoreFlip) transform.rotation = _target.rotation;
-                transform.localScale = _target.localScale;
                 break;
+        }
+
+        // --- 回転の更新 ---
+        Quaternion baseRotation = GetModifiedRotation(isFlipped);
+
+        if (_data.attachType == EffectAttachType.BindToBone)
+        {
+            // ボーンの回転 * エフェクト自体の設定角度
+            transform.rotation = _target.rotation * baseRotation;
+        }
+        else
+        {
+            // 固定または追従時は、ワールド回転として適用
+            transform.rotation = baseRotation;
+        }
+
+        // --- スケールの更新 ---
+        // (反転をScaleで行う場合)
+        if (_data.attachType == EffectAttachType.BindToBone)
+        {
+            transform.localScale = _target.localScale;
+        }
+        else if (!_data.ignoreFlip)
+        {
+            Vector3 scale = Vector3.one;
+            if (isFlipped) scale.x = -1;
+            transform.localScale = scale;
         }
     }
 
-    // プレイヤーの向きに合わせてオフセットを計算
-    private Vector3 GetOffsetWithFlip()
+    private Quaternion GetModifiedRotation(bool isFlipped)
     {
-        Vector3 offset = _data.offset;
-        // ターゲットのScale.xが負（左向き）ならオフセットのXを反転
-        if (_target.lossyScale.x < 0)
+        Vector3 angles = _data.initialEulerAngles;
+
+        if (isFlipped && _data.mirrorRotation && !_data.ignoreFlip)
         {
-            offset.x *= -1;
+            // Z軸回転の鏡写し（2Dゲームで一般的な、進行方向に対する反転）
+            // 例：30度で右上に飛ぶエフェクトなら、反転時は150度で左上に飛ぶようにする
+            angles.z = 180f - angles.z;
+            
+            // Y 軸なども反転させる場合はここに追加する
+            // angles.y += 180f; 
         }
-        return offset;
+
+        return Quaternion.Euler(angles);
+    }
+
+    // 向き参照対象に基づいた向き判定
+    private bool IsFlipped()
+    {
+        if (_directionTarget == null) return false;
+
+        return _directionTarget.lossyScale.x < 0;
     }
 
     public void ToggleVisuals(bool show)
@@ -155,17 +207,17 @@ public class EffectInstance : MonoBehaviour
 
         if (_data.stopType == EffectStopType.StopEmitting)
         {
-            foreach (var p in _particles) if(p != null) p.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-            Invoke(nameof(NotifyCOmplete), 2.0f);
+            foreach (var p in _particles) if (p != null) p.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            Invoke(nameof(NotifyComplete), 2.0f);
         }
         else
         {
-            NotifyCOmplete();
+            NotifyComplete();
         }
     }
 
     // 再生完全終了
-    public void NotifyCOmplete()
+    public void NotifyComplete()
     {
         OnEffectComplete?.Invoke(this);
     }

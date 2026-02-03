@@ -127,6 +127,8 @@ public partial class Freya
             if (IsMatchingState(States.jumpfallAim))
             {
                 _stateMachine.ChangeState(Triggers.jumpInputNext);
+                _activeFallAimEffect.Stop();
+                _activeFallAimEffect = null;
                 return;
             }
 
@@ -139,7 +141,7 @@ public partial class Freya
             PlaySE(_JumpSE.SEName, _JumpSE.Volume);
             statusManager.AddValue(Status.Stamina, -_jumpStaminaLostAmount);
 
-            // if (_BoosterEffect != null) EffectManager.instance.PlayEffect(_BoosterEffect, _jumpBoosterEffectPoint);
+            if (EffectManager.instance != null) _activeJumpEffect = EffectManager.instance.Play("JumpBooster", _jumpBoosterEffectPoint.transform.position, _jumpBoosterEffectPoint.transform, this.transform);
             _stateMachine.ChangeState(Triggers.jumpInput);
         }
     }

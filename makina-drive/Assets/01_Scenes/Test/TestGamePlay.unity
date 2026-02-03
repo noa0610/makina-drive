@@ -4506,6 +4506,11 @@ MonoBehaviour:
   _descriptionText: {fileID: 1580614934}
   _levelText: {fileID: 918211317}
   _button: {fileID: 1061720255}
+--- !u!4 &1209620569 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8071845793786918133, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+  m_PrefabInstance: {fileID: 6641186762951205093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1212015816
 GameObject:
   m_ObjectHideFlags: 0
@@ -9491,12 +9496,24 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: da56117b6ce2429469761561df7531b9, type: 2}
     - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
       propertyPath: _effectPrefabs.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
       propertyPath: '_effectPrefabs.Array.data[0]'
       value: 
       objectReference: {fileID: 5281396037125272937, guid: 5d0182a2f406c234f8e9b2514bdbfa6e, type: 3}
+    - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
+      propertyPath: '_effectPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: -2314390020868481657, guid: ad1b8ebb569923841a4598bf9f122e9a, type: 3}
+    - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
+      propertyPath: '_effectPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: -1812819809742433352, guid: e339d467ca53736498131da511cac5ba, type: 3}
+    - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
+      propertyPath: '_effectPrefabs.Array.data[3]'
+      value: 
+      objectReference: {fileID: -6482861368532436815, guid: d2b7049f0a2c39245bfc0d5a81467444, type: 3}
     - target: {fileID: 2690040234636734578, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9671,6 +9688,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.028109375
       objectReference: {fileID: 0}
+    - target: {fileID: 1363386472849061810, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363386472849061810, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 1417037418252975110, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.1148747
@@ -9703,6 +9728,10 @@ PrefabInstance:
       propertyPath: _jumpBoosterEffect
       value: 
       objectReference: {fileID: 11400000, guid: 5299e7ba26fcc0d4b85e39bbdda4d345, type: 2}
+    - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: _FallAttackBoosterEffectPoint
+      value: 
+      objectReference: {fileID: 1209620569}
     - target: {fileID: 3462131727558161749, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.99759626
@@ -9794,6 +9823,14 @@ PrefabInstance:
     - target: {fileID: 7778965067144750970, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.073143065
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071845793786918133, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071845793786918133, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 8344689542471276543, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
       propertyPath: m_LocalRotation.w

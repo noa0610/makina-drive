@@ -21,7 +21,7 @@ public class EffectManager : SingletonBehavior<EffectManager>
     }
 
     // エフェクトを再生
-    public EffectInstance Play(string effectName, Vector3 position, Transform target = null)
+    public EffectInstance Play(string effectName, Vector3 position, Transform target = null, Transform directionTarget = null)
     {
         if (!_prefabMap.TryGetValue(effectName, out var prefab))
         {
@@ -46,7 +46,7 @@ public class EffectManager : SingletonBehavior<EffectManager>
         instance.OnEffectComplete -= HandleEffectComplete;
         instance.OnEffectComplete += HandleEffectComplete;
 
-        instance.Play(target);
+        instance.Play(target, directionTarget ?? target);
         
         return instance;
     }

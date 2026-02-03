@@ -138,13 +138,11 @@ public partial class Freya : UnitBase, IPausable
     private bool _isDead = false;
 
     [Header("エフェクト")]
-    [SerializeField] private ParticleSystem _ChargeParticle;
-    [SerializeField] private float _ChargeParticleDeleteTime;
-    [SerializeField] private EffectDataBase _BoosterEffect;
     [SerializeField] private Transform _jumpBoosterEffectPoint;
-    [SerializeField] private EffectDataBase _jumpAttackBoosterEffect;
-    [SerializeField] private Transform _jumpAttackEffectPoint;
-    [SerializeField] private EffectDataBase _ChargeEffect;
+    [SerializeField] private Transform _FallAttackBoosterEffectPoint;
+    private EffectInstance _activeJumpEffect;
+    private EffectInstance _activeFallAimEffect;
+    private EffectInstance _activeFallAttackBoosterEffect;
     private EffectInstance _activeChargeEffect;
     private GameObject _childParticle;
 
@@ -197,7 +195,6 @@ public partial class Freya : UnitBase, IPausable
                 PlaySE(_ChargeCompletedSE.SEName, _ChargeCompletedSE.Volume);
                 StartCharge();
 
-                // _activeChargeEffect = EffectManager.instance.Play(_ChargeEffect.effectName, transform.position);
                 _isChargeCompleted = true;
             }
         }
@@ -262,8 +259,8 @@ public partial class Freya : UnitBase, IPausable
 
 
         GameStateManager.instance.ChangeState(GameState.GameOver);
-        
-        if(SoundManager.instance == null) return;
+
+        if (SoundManager.instance == null) return;
         SoundManager.instance.AllStopBGM();
     }
 
@@ -315,7 +312,7 @@ public partial class Freya : UnitBase, IPausable
     // チャージを開始する
     private void StartCharge()
     {
-        _activeChargeEffect = EffectManager.instance.Play("Charge", transform.position, transform);
+        if (EffectManager.instance != null) _activeChargeEffect = EffectManager.instance.Play("Charge", transform.position, transform);
     }
 
     // チャージ状況をリセットする
@@ -323,12 +320,19 @@ public partial class Freya : UnitBase, IPausable
     {
         _chargeTimer = 0f;
         _isChargeCompleted = false;
-        
+
         if (_activeChargeEffect != null)
         {
             _activeChargeEffect.Stop();
             _activeChargeEffect = null;
         }
+    }
+
+    private void PlayEffect(EffectInstance effectInstance, string effectName, Vector3 position, Transform target = null)
+    {
+        if(EffectManager.instance == null && effectInstance != null) return;
+
+        effectInstance = EffectManager.instance.Play(effectName, position, target);
     }
 
 

@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3739341788210584919, guid: 58a2f56938ac8fa4f85a76eb178c1d61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.14073
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3739341788210584919, guid: 58a2f56938ac8fa4f85a76eb178c1d61, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08717
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3739341788210584919, guid: 58a2f56938ac8fa4f85a76eb178c1d61, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7202102562784130068, guid: 58a2f56938ac8fa4f85a76eb178c1d61, type: 3}
       propertyPath: m_Name
-      value: PS_Charge Variant
+      value: Effect_Charge
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
