@@ -23,8 +23,10 @@ public partial class Freya : UnitBase, IPausable
     [Header("レベルアップ")]
     [SerializeField] private float _farstNextLevelExp = 10;
     [SerializeField] private float _nextLevelExpRate = 1.2f;
+    [SerializeField] private bool _isImmediateEnhancement = true; // 強化項目を即座に表示するか
     public PlayerLevel _level;
     public EnhanceInventory _inventory;
+    public Action<int> OnEnhancementRequest;
 
     [Header("移動")]
     [SerializeField] private float _accel = 30f;
@@ -307,6 +309,20 @@ public partial class Freya : UnitBase, IPausable
     private void HandleLevelUp(int level)
     {
         PlaySE(_levelUpSE.SEName, _levelUpSE.Volume);
+
+        if(_isImmediateEnhancement)
+        {
+            TryOpenEnhanceUI();
+        }
+    }
+
+    // 強化項目UIを表示
+    private void TryOpenEnhanceUI()
+    {
+        if(_level.EnhancementPoints > 0)
+        {
+            OnEnhancementRequest?.Invoke(_level.EnhancementPoints);
+        }
     }
 
     // チャージを開始する

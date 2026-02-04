@@ -5024,6 +5024,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 8427920785041632035}
+    - target: {fileID: 3429887903537140331, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 8427920785041632035}
     - target: {fileID: 3784372293011787059, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5051,6 +5055,10 @@ PrefabInstance:
     - target: {fileID: 6530578308023039440, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
       propertyPath: m_Name
       value: Canvas_UX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086080463068566095, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7906714124229956738, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
       propertyPath: m_Pivot.x
@@ -8482,6 +8490,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 172502d950dd7da49bd4d4bb593f8c57, type: 2}
   - {fileID: 11400000, guid: 3321f7e04b3283d48a9cc54022e5a3be, type: 2}
   - {fileID: 11400000, guid: 155997c7b65be68449b7cfba6221ffa1, type: 2}
+  _closeUIButton: {fileID: 0}
   _slots:
   - {fileID: 1192196605}
   - {fileID: 407770447}
@@ -9728,6 +9737,10 @@ PrefabInstance:
       propertyPath: _jumpBoosterEffect
       value: 
       objectReference: {fileID: 11400000, guid: 5299e7ba26fcc0d4b85e39bbdda4d345, type: 2}
+    - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: _isImmediateEnhancement
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
       propertyPath: _FallAttackBoosterEffectPoint
       value: 

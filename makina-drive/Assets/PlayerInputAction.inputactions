@@ -77,6 +77,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SkillDisplay",
+                    "type": "Button",
+                    "id": "9187d397-7b44-4bde-8ce7-88450ec8a97f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -446,11 +455,33 @@
                 {
                     "name": "",
                     "id": "807f64cc-554c-4bf8-95f1-b51910f73a25",
-                    "path": "<Gamepad>/start",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Pose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0327fca5-d924-45cf-a5d2-bdf034185430",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "SkillDisplay",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "61da0eb7-539f-40e9-8069-c84468c6c183",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "SkillDisplay",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -473,7 +504,7 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "95c1ed36-c031-42cf-83e5-7373ba18383f",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

@@ -145,4 +145,13 @@ public partial class Freya
             _stateMachine.ChangeState(Triggers.jumpInput);
         }
     }
+
+    private void OnSkillDisplay(InputValue value) => OnSkillDisplay(value.isPressed);
+    public void OnSkillDisplay(bool isPressed)
+    {
+        if(isPressed)
+        {
+            TryOpenEnhanceUI();
+        }
+    }
 }
