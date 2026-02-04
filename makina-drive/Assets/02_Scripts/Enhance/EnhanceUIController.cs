@@ -32,6 +32,8 @@ public class EnhanceUIController : MonoBehaviour
         // Startで購読することで、Freya側の初期化完了を待つ
         _player.OnEnhancementRequest += OpenUI;
         GameStateManager.OnStateChanged += HandleStateChanged;
+        
+        ApplySettings();
     }
 
     // × OnEnableだと初期化を待てない
@@ -119,6 +121,19 @@ public class EnhanceUIController : MonoBehaviour
         if (gameState == GameState.Clear)
         {
             _isStop = true;
+        }
+    }
+
+    // 設定を反映させる
+    private void ApplySettings()
+    {
+        if (VisualSettingsManager.instance != null)
+        {
+            // 即強化の設定がある場合は非表示
+            if (VisualSettingsManager.instance.Settings.isImmediateEnhancement)
+            {
+                _closeUIButton.gameObject.SetActive(false);
+            }
         }
     }
 }

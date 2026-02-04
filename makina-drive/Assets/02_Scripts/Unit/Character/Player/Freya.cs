@@ -98,7 +98,6 @@ public partial class Freya : UnitBase, IPausable
     private bool _isPressingFire = false;
     private bool _isChargeCompleted = false;
 
-    // TODO チャージ攻撃は斬撃を飛ばす
     [Header("チャージ攻撃")]
     [SerializeField] private BulletData _Charge_bulletData;
 
@@ -146,6 +145,8 @@ public partial class Freya : UnitBase, IPausable
     private EffectInstance _activeFallAimEffect;
     private EffectInstance _activeFallAttackBoosterEffect;
     private EffectInstance _activeChargeEffect;
+    private EffectInstance _activeLevelUPEffect;
+    private EffectInstance _activeHealEffect;
     private GameObject _childParticle;
 
     [Header("SE")]
@@ -167,6 +168,8 @@ public partial class Freya : UnitBase, IPausable
     private Vector2 _dashDirection = Vector2.right;
     private bool _inputDash = false;
 
+
+    #region   ===== Initialization Process =====
     protected override void AfterAwake()
     {
         base.AfterAwake();
@@ -179,9 +182,20 @@ public partial class Freya : UnitBase, IPausable
 
     protected override void Start()
     {
-
+        ApplySettings();
     }
 
+    // 設定を反映させる
+    private void ApplySettings()
+    {
+        if(VisualSettingsManager.instance != null)
+        {
+            _isImmediateEnhancement = VisualSettingsManager.instance.Settings.isImmediateEnhancement;
+        }
+    }
+    #endregion
+
+    #region   ===== Update Process =====
     protected override void AfterUpdate()
     {
         base.AfterUpdate();
@@ -232,14 +246,16 @@ public partial class Freya : UnitBase, IPausable
             transform.localScale = scale;
         }
     }
+    #endregion
 
+    #region   ===== Status =====
     // 外部（経験値アイテム）から経験値取得する窓口
     public override void GainExp(float amount)
     {
         _level.AddExp(amount);
     }
 
-
+    // HPが0のときに処理
     public override void OnDeath()
     {
         base.OnDeath();
@@ -248,6 +264,7 @@ public partial class Freya : UnitBase, IPausable
         OnGameOver();
     }
 
+    // ゲームオーバー処理
     public async void OnGameOver()
     {
         if (_isDead) return;
@@ -265,23 +282,15 @@ public partial class Freya : UnitBase, IPausable
         if (SoundManager.instance == null) return;
         SoundManager.instance.AllStopBGM();
     }
+    #endregion
 
-
-    // --- シーンビューに方向を描画 ---
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + (Vector3)_dashDirection);
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position + (Vector3)Direction);
-    }
-
+    #region   ===== Event =====
     // イベントを購読
     private void OnEnable()
     {
         GameStateManager.OnStateChanged += HandleStateChanged;
         _level.OnLevelUp += HandleLevelUp;
+        statusManager.OnHeal += HandleHeal;
     }
 
     // 購読解除
@@ -289,6 +298,7 @@ public partial class Freya : UnitBase, IPausable
     {
         GameStateManager.OnStateChanged -= HandleStateChanged;
         _level.OnLevelUp -= HandleLevelUp;
+        statusManager.OnHeal -= HandleHeal;
     }
 
     private void HandleStateChanged(GameState newState)
@@ -310,16 +320,26 @@ public partial class Freya : UnitBase, IPausable
     {
         PlaySE(_levelUpSE.SEName, _levelUpSE.Volume);
 
-        if(_isImmediateEnhancement)
+        if (_isImmediateEnhancement)
         {
             TryOpenEnhanceUI();
         }
+        else
+        {
+            if (EffectManager.instance != null) _activeLevelUPEffect = EffectManager.instance.Play("LevelUp", transform.position, transform);
+        }
     }
+
+    private void HandleHeal()
+    {
+        if (EffectManager.instance != null) _activeHealEffect = EffectManager.instance.Play("Heal", transform.position, transform);
+    }
+    #endregion
 
     // 強化項目UIを表示
     private void TryOpenEnhanceUI()
     {
-        if(_level.EnhancementPoints > 0)
+        if (_level.EnhancementPoints > 0)
         {
             OnEnhancementRequest?.Invoke(_level.EnhancementPoints);
         }
@@ -346,7 +366,7 @@ public partial class Freya : UnitBase, IPausable
 
     private void PlayEffect(EffectInstance effectInstance, string effectName, Vector3 position, Transform target = null)
     {
-        if(EffectManager.instance == null && effectInstance != null) return;
+        if (EffectManager.instance == null && effectInstance != null) return;
 
         effectInstance = EffectManager.instance.Play(effectName, position, target);
     }
@@ -360,5 +380,15 @@ public partial class Freya : UnitBase, IPausable
     private bool IsMatchingState(States state)
     {
         return _stateMachine.CurrentState.key == _stateNames[state];
+    }
+    
+    // --- シーンビューに方向を描画(テスト用) ---
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)_dashDirection);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)Direction);
     }
 }

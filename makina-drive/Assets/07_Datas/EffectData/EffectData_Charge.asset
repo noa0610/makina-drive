@@ -22,5 +22,5 @@ MonoBehaviour:
   useRandomOffset: 0
   randomRange: 0.2
   initialEulerAngles: {x: 0, y: 0, z: 0}
-  ignoreFlip: 0
-  mirrorRotation: 1
+  ignoreFlip: 1
+  mirrorRotation: 0

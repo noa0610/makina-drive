@@ -42,4 +42,10 @@ public class VisualSettingsManager : SingletonBehavior<VisualSettingsManager>
         _settings.showDamageText = value;
         SaveSettings();
     }
+
+    public void SetIsImmediateEnhancement(bool value)
+    {
+        _settings.isImmediateEnhancement = value;
+        SaveSettings();
+    }
 }

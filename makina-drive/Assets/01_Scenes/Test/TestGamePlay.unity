@@ -3607,16 +3607,16 @@ RectTransform:
   m_GameObject: {fileID: 936961994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 540}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &939935026
 GameObject:
   m_ObjectHideFlags: 0
@@ -5058,7 +5058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7086080463068566095, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7906714124229956738, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
       propertyPath: m_Pivot.x
@@ -6092,16 +6092,16 @@ RectTransform:
   m_GameObject: {fileID: 1498821218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 540}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1498821223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9503,26 +9503,6 @@ PrefabInstance:
       propertyPath: '_effectList.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: da56117b6ce2429469761561df7531b9, type: 2}
-    - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
-      propertyPath: _effectPrefabs.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
-      propertyPath: '_effectPrefabs.Array.data[0]'
-      value: 
-      objectReference: {fileID: 5281396037125272937, guid: 5d0182a2f406c234f8e9b2514bdbfa6e, type: 3}
-    - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
-      propertyPath: '_effectPrefabs.Array.data[1]'
-      value: 
-      objectReference: {fileID: -2314390020868481657, guid: ad1b8ebb569923841a4598bf9f122e9a, type: 3}
-    - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
-      propertyPath: '_effectPrefabs.Array.data[2]'
-      value: 
-      objectReference: {fileID: -1812819809742433352, guid: e339d467ca53736498131da511cac5ba, type: 3}
-    - target: {fileID: 2557478394769152166, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
-      propertyPath: '_effectPrefabs.Array.data[3]'
-      value: 
-      objectReference: {fileID: -6482861368532436815, guid: d2b7049f0a2c39245bfc0d5a81467444, type: 3}
     - target: {fileID: 2690040234636734578, guid: 205e27f5e9bdcbd4582479e98361dd64, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

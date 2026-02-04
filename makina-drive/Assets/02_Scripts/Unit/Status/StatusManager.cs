@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
@@ -9,6 +10,7 @@ public class StatusManager
 {
     private Dictionary<Status, StatusInfo> _statusAmounts = new();
     private UnitTags unitTags;
+    public Action OnHeal;
     public StatusManager Initialize(UnitStatusData data)
     {
         _statusAmounts.Clear();
@@ -108,6 +110,7 @@ public class StatusManager
     public void TakeHeal(float value)
     {
         _statusAmounts[Status.HP].CurrentAmount += value;
+        OnHeal?.Invoke();
     }
 
     /// <returns>死亡したかどうか</returns>

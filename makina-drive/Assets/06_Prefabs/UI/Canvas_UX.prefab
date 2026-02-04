@@ -5507,6 +5507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnhancementPointsView
   _target: {fileID: 0}
+  _panel: {fileID: 3929302361554766502}
   _text: {fileID: 5063595825897690250}
 --- !u!1 &6373121697347137705
 GameObject:

@@ -44,4 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d107cf64add4f44b29825bb1aa3694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
-  _effectList: []
+  _effectPrefabs:
+  - {fileID: 5281396037125272937, guid: 5d0182a2f406c234f8e9b2514bdbfa6e, type: 3}
+  - {fileID: -2314390020868481657, guid: ad1b8ebb569923841a4598bf9f122e9a, type: 3}
+  - {fileID: -1812819809742433352, guid: e339d467ca53736498131da511cac5ba, type: 3}
+  - {fileID: -6482861368532436815, guid: d2b7049f0a2c39245bfc0d5a81467444, type: 3}
+  - {fileID: -7564602876979237037, guid: 37a5e47bd40c52b44a8fddd62be25249, type: 3}
+  - {fileID: 8380349199765251665, guid: df1c86bd812d83249989dfef5048e63f, type: 3}

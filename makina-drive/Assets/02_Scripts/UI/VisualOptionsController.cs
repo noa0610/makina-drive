@@ -5,6 +5,7 @@ public class VisualOptionsController : MonoBehaviour
 {
     [SerializeField] private Toggle _hpBarToggle;
     [SerializeField] private Toggle _damageTextToggle;
+    [SerializeField] private Toggle _immediateEnhanceToggle;
 
     private void Start()
     {
@@ -14,6 +15,7 @@ public class VisualOptionsController : MonoBehaviour
         // 初期値の繁栄
         _hpBarToggle.isOn = settings.showHPBar;
         _damageTextToggle.isOn = settings.showDamageText;
+        _immediateEnhanceToggle.isOn = settings.isImmediateEnhancement;
 
         // 値変更のイベント登録
         _hpBarToggle.onValueChanged.AddListener(val =>
@@ -24,6 +26,11 @@ public class VisualOptionsController : MonoBehaviour
         _damageTextToggle.onValueChanged.AddListener(val =>
         {
             manager.SetShowDamageText(val);
+        });
+
+        _immediateEnhanceToggle.onValueChanged.AddListener(val =>
+        {
+            manager.SetIsImmediateEnhancement(val);
         });
     }
 }
