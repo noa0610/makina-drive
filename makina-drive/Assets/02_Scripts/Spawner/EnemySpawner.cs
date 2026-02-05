@@ -28,7 +28,8 @@ public class EnemySpawner : MonoBehaviour
     [Header("エンドレス敵生成情報リスト")]
     [SerializeField] private List<WaveData> _endlessWaves = new List<WaveData>();
 
-# if UNITY_EDITOR
+
+#if UNITY_EDITOR
     [Header("Debug")]
     [SerializeField] private bool _notStatusUP = false;
 # endif
@@ -205,11 +206,13 @@ public class EnemySpawner : MonoBehaviour
     {
         if (info.unitBase == null) return;
 
-        List<UnitBase> groupList = new List<UnitBase>();
+        // List<UnitBase> groupList = new List<UnitBase>();
 
         float powerMultiplier = _currentWaveNumber * info.statusRate;
 
         int randomSpawnCount = UnityEngine.Random.Range(info.minSpawnCount, info.maxSpawnCount + 1);
+
+        List<UnitBase> spawnGroup = new List<UnitBase>(); // 生成する敵を格納する一時リスト
 
         for (int j = 0; j < randomSpawnCount; j++)
         {
@@ -232,7 +235,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 unit.ApplyWaveStatus(currentWaveMultiplier, _statusUp);
             }
-            
+
             // HPバーを生成
             if (UnitManager.instance != null) UnitManager.instance.CreateHPBar(unit, _showHPBar);
 
@@ -242,14 +245,18 @@ public class EnemySpawner : MonoBehaviour
             // クリアフラグ付与
             unit.IsClearTarget = info.isClearTarget;
 
-            groupList.Add(unit);
+            // groupList.Add(unit);
+            spawnGroup.Add(unit);
         }
 
         // 実行回数をカウント
         _currentSpawnCounts[index]++;
 
-        // まとめて配置を実行
-        info.comp.target = _targetObject;
-        info.comp.Execute(groupList);
+        if (info.comp != null && spawnGroup.Count > 0)
+        {
+            // まとめて配置を実行
+            info.comp.target = _targetObject;
+            info.comp.Execute(spawnGroup);
+        }
     }
 }

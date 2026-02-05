@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 長方形の形状になるようにユニットを生成
+/// 長方形の形状になるように均等にユニットを生成
 /// </summary>
 [Serializable]
 public class SpawnRectangle : ISpawnComponent
@@ -13,16 +13,38 @@ public class SpawnRectangle : ISpawnComponent
     
     public List<UnitBase> Execute(List<UnitBase> pool)
     {
-        foreach (var unit in pool)
-        {
-            Vector3 pos = Vector3.zero;
-            float side = UnityEngine.Random.value;if (side < 0.25f) pos = new Vector3(-_size.x / 2, UnityEngine.Random.Range(-_size.y / 2, _size.y / 2)); // 左
-            else if (side < 0.5f) pos = new Vector3(_size.x / 2, UnityEngine.Random.Range(-_size.y / 2, _size.y / 2));  // 右
-            else if (side < 0.75f) pos = new Vector3(UnityEngine.Random.Range(-_size.x / 2, _size.x / 2), _size.y / 2); // 上側
-            else pos = new Vector3(UnityEngine.Random.Range(-_size.x / 2, _size.x / 2), -_size.y / 2);                  // 下側
+        float width = _size.x;
+        float height = _size.y;
+        float perimeter = (width + height) * 2f; // 外周の合計
 
-            unit.transform.position = target.transform.position + pos;
+        float step = perimeter / pool.Count; // 一体辺りの間隔
+
+        for (int i = 0; i < pool.Count; i++)
+        {
+            float distance = step * i;
+            Vector3 pos = CalculatePointOnRect(distance, width, height);
+            pool[i].transform.position = target.transform.position + pos;
         }
         return pool;
+    }
+
+    private Vector3 CalculatePointOnRect(float d, float w, float h)
+    {
+        float halfW = w / 2f;
+        float halfH = h / 2f;
+
+        // 右上を起点に時計回りに配置していくロジック
+
+        if(d < w) // 上辺
+            return new Vector3(-halfW + d, halfH, 0);
+        d -= w;
+        if(d < h) // 右辺
+            return new Vector3(halfW, halfH - d, 0);
+        d -= h;
+        if(d < w) // 下辺
+            return new Vector3(halfW - d, -halfH, 0);
+        d -= w;
+                  // 右辺
+        return new Vector3(-halfW, -halfH + d, 0);
     }
 }

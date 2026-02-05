@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d822f27b98a97824384fab64efea2ccb, type: 3}
+  m_Name: TestWaveData
+  m_EditorClassIdentifier: Assembly-CSharp::WaveData
+  waveName: 1Wave
+  spawnInfos:
+  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    comp:
+      rid: 4698670711885004873
+    spawnCount: 1
+    minSpawnCount: 10
+    maxSpawnCount: 10
+    spawnTime: 3
+    spawnEndTime: 0
+    spawnInterval: 0.001
+    statusOverrides: []
+    statusRate: 0
+    destroyTime: 0
+    spawneEffectName: 
+    FirstSpawneSEName: 
+    isClearTarget: 0
+  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    comp:
+      rid: 4698670711885004872
+    spawnCount: 1
+    minSpawnCount: 10
+    maxSpawnCount: 10
+    spawnTime: 10
+    spawnEndTime: 0
+    spawnInterval: 0.01
+    statusOverrides: []
+    statusRate: 0
+    destroyTime: 0
+    spawneEffectName: 
+    FirstSpawneSEName: 
+    isClearTarget: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4698670711885004872
+      type: {class: SpawnRectangle, ns: , asm: Assembly-CSharp}
+      data:
+        _size: {x: 20, y: 15}
+    - rid: 4698670711885004873
+      type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
+      data:
+        _radiusX: 10
+        _radiusY: 7
+        _startAngle: 0
+        _jitter: 0.5
