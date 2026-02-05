@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class WaveData
+[CreateAssetMenu(menuName = "MakinaDrive/WaveData")]
+public class WaveData : ScriptableObject
 {
     public string waveName;
     public List<UnitSpawnInfo> spawnInfos = new List<UnitSpawnInfo>();
