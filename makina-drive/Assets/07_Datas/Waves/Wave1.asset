@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d822f27b98a97824384fab64efea2ccb, type: 3}
+  m_Name: Wave1
+  m_EditorClassIdentifier: Assembly-CSharp::WaveData
+  waveName: Wave1
+  spawnInfos:
+  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    comp:
+      rid: 4698670731528765515
+    spawnCount: 10
+    minSpawnCount: 1
+    maxSpawnCount: 3
+    spawnTime: 0
+    spawnEndTime: 0
+    spawnInterval: 1
+    statusOverrides:
+    - type: 0
+      multiplier: 1.2
+      addition: 10
+    - type: 2
+      multiplier: 1.1
+      addition: 0
+    - type: 4
+      multiplier: 1.1
+      addition: 0
+    - type: 5
+      multiplier: 1.1
+      addition: 0
+    waveIncreaseRate: 0.1
+    destroyTime: 0
+    spawneEffectName: 
+    FirstSpawneSEName: 
+    isClearTarget: 0
+  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    comp:
+      rid: 4698670731528765516
+    spawnCount: 1
+    minSpawnCount: 10
+    maxSpawnCount: 10
+    spawnTime: 10
+    spawnEndTime: 0
+    spawnInterval: 0.1
+    statusOverrides:
+    - type: 0
+      multiplier: 1.5
+      addition: 10
+    - type: 2
+      multiplier: 1.5
+      addition: 0
+    - type: 4
+      multiplier: 2
+      addition: 0
+    - type: 5
+      multiplier: 1.1
+      addition: 0
+    waveIncreaseRate: 0.2
+    destroyTime: 0
+    spawneEffectName: 
+    FirstSpawneSEName: 
+    isClearTarget: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4698670731528765515
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 4698670731528765516
+      type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
+      data:
+        _radiusX: 10
+        _radiusY: 7
+        _startAngle: 0
+        _jitter: 0.5

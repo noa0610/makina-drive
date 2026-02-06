@@ -55,7 +55,7 @@ public class TutorialEnemySpawner : MonoBehaviour
         {
             UnitBase unit = Instantiate(info.unitBase);
 
-            unit.DropExp = info.unitBase.UnitStatusData.baseExp * (1 + info.statusRate);
+            unit.DropExp = info.unitBase.UnitStatusData.baseExp * (1 + info.waveIncreaseRate);
             unit.IsClearTarget = info.isClearTarget;
 
             if (info.destroyTime > 0) unit.SetLazyDeath(info.destroyTime);

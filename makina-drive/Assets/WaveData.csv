@@ -1,0 +1,3 @@
+WaveName,PrefabName,Count,Min,Max,Start,End,Interval,StatusRate,Destroy,Effect,SE,IsClear,StatusOverrides,CompClass
+Wave1,Enemy_Normal_Comp,10,1,3,0,0,1,0.1,0,,,FALSE,"HP:1.2:10;ATK:1.1:0,Speed:1.1:0,DashSpeed:1.1:0",SpawnRandom
+Wave1,Enemy_Normal_Comp,1,10,10,10,0,0.1,0.2,0,,,FALSE,"HP:1.5:10;ATK:1.5:0,Speed:2.0:0,DashSpeed:1.1:0",SpawnOval
