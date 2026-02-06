@@ -279,22 +279,16 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     // 敵ウェーブ生成専用
     public void ApplyWaveStatus(float multiplier, List<Status> targets = null)
     {
-        if (statusManager == null) return;
+        if (statusManager == null || targets == null || targets.Count == 0) return;
 
-        // ウェーブ生成時に強化するステータスのリスト（なければ自動設定）
-        List<Status> activeTargets = targets;
-        if (activeTargets == null)
-        {
-            activeTargets = new List<Status>
-            {
-            Status.MaxHP,
-            Status.ATK,
-            Status.Speed,
-            Status.DashSpeed
-            };
-        }
+        statusManager.ApplyStatusMultiplier(targets, multiplier);
+        statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));
+    }
+    public void ApplyWaveStatus(List<StatusOverride> overrides)
+    {
+        if(statusManager == null || overrides == null || overrides.Count == 0) return;
 
-        statusManager.ApplyStatusMultiplier(activeTargets, multiplier);
+        statusManager.ApplyStatusOverride(overrides);
         statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));
     }
 

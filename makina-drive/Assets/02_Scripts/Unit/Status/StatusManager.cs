@@ -22,7 +22,7 @@ public class StatusManager
         {
             hp.SetMax(mHp.CurrentAmount);
 
-            if(after > before)
+            if (after > before)
             {
                 float diff = after - before;
                 hp.CurrentAmount += diff;
@@ -85,7 +85,7 @@ public class StatusManager
     {
         if (TryGetStatus(status, out var info))
         {
-            info.CurrentAmount += value; 
+            info.CurrentAmount += value;
             Debug.Log($"Status {status} changed by {value}. New value: {info.CurrentAmount}");
         }
         else
@@ -130,13 +130,27 @@ public class StatusManager
     // 特定のステータスを一括強化適用
     public void ApplyStatusMultiplier(List<Status> statuses, float multiplier)
     {
-        foreach(var type in statuses)
+        foreach (var type in statuses)
         {
-            if(TryGetStatus(type, out var info))
+            if (TryGetStatus(type, out var info))
             {
                 // TemporaryChangedは1.0がデフォルトなので、そこに加算する
                 // multiplierが0.1なら1.1倍、1.0なら2倍として適用
                 info.SetMultiplier(1f + multiplier);
+            }
+        }
+    }
+
+    public void ApplyStatusOverride(List<StatusOverride> overrides)
+    {
+        if (overrides == null) return;
+
+        foreach (var so in overrides)
+        {
+            if (TryGetStatus(so.type, out var info))
+            {
+                // StatusOverride の値をそのまま StatusInfo に適用
+                info.SetOverride(so.addition, so.multiplier);
             }
         }
     }

@@ -23,8 +23,20 @@ MonoBehaviour:
     spawnTime: 3
     spawnEndTime: 0
     spawnInterval: 0.001
-    statusOverrides: []
-    statusRate: 0
+    statusOverrides:
+    - type: 1
+      multiplier: 1.1
+      addition: 0
+    - type: 2
+      multiplier: 1.1
+      addition: 0
+    - type: 4
+      multiplier: 1.1
+      addition: 0
+    - type: 5
+      multiplier: 1.1
+      addition: 0
+    statusRate: 0.05
     destroyTime: 0
     spawneEffectName: 
     FirstSpawneSEName: 
@@ -38,8 +50,20 @@ MonoBehaviour:
     spawnTime: 10
     spawnEndTime: 0
     spawnInterval: 0.01
-    statusOverrides: []
-    statusRate: 0
+    statusOverrides:
+    - type: 1
+      multiplier: 2
+      addition: 0
+    - type: 2
+      multiplier: 2
+      addition: 0
+    - type: 4
+      multiplier: 2
+      addition: 0
+    - type: 5
+      multiplier: 2
+      addition: 0
+    statusRate: 0.05
     destroyTime: 0
     spawneEffectName: 
     FirstSpawneSEName: 

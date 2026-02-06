@@ -16,7 +16,7 @@ public class EnhanceManager
     public List<EnhanceData> GetRandomChoices(EnhanceInventory inventory, int count = 3)
     {
         var candidates = new List<EnhanceData>();
-
+        
         foreach (var e in allEnhances)
         {
             if(e.maxLevel == 0 || inventory.GetLevel(e) < e.maxLevel)

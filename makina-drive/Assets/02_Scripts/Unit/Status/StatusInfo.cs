@@ -123,6 +123,12 @@ public class StatusInfo
         _temporaryRatio = ratio;
         _dirty = true;
     }
+    public void SetOverride(float addition, float ratio)
+    {
+        _temporaryChanged = addition;
+        _temporaryRatio = ratio;
+        _dirty = true;
+    }
     public void SetDefault(float defaultAmount)
     {
         _defaultAmount = defaultAmount;

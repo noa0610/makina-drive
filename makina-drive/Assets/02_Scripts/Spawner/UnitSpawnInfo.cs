@@ -25,11 +25,11 @@ public class UnitSpawnInfo
     public float spawnInterval = 1;    // 生成間隔
 
     public List<StatusOverride> statusOverrides = new List<StatusOverride>();
-    public float statusRate;           // ステータス強化倍率
+    public float waveIncreaseRate;     // ウェーブごとのステータス強化倍率
     public float destroyTime;          // 生成後に消去する時間指定（0で消去しない）
 
     public string spawneEffectName;    // 敵生成時のエフェクト名
-    public string FirstSpawneSEName;         // 最初の生成時のSE名
+    public string FirstSpawneSEName;   // 最初の生成時のSE名
 
     [Header("クリア条件設定")]
     public bool isClearTarget; // この設定をした敵をすべて倒すとクリア
