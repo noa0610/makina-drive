@@ -23,6 +23,7 @@ MonoBehaviour:
     spawnTime: 0
     spawnEndTime: 0
     spawnInterval: 1
+    spawnDelay: 1
     statusOverrides:
     - type: 0
       multiplier: 1.2
@@ -38,6 +39,7 @@ MonoBehaviour:
       addition: 0
     waveIncreaseRate: 0.1
     destroyTime: 0
+    previewEffectName: GenerationNotice
     spawneEffectName: 
     FirstSpawneSEName: 
     isClearTarget: 0
@@ -50,6 +52,7 @@ MonoBehaviour:
     spawnTime: 10
     spawnEndTime: 0
     spawnInterval: 0.1
+    spawnDelay: 1
     statusOverrides:
     - type: 0
       multiplier: 1.5
@@ -65,6 +68,7 @@ MonoBehaviour:
       addition: 0
     waveIncreaseRate: 0.2
     destroyTime: 0
+    previewEffectName: GenerationNotice
     spawneEffectName: 
     FirstSpawneSEName: 
     isClearTarget: 0

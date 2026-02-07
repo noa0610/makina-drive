@@ -13,6 +13,31 @@ public class SpawnOval : ISpawnComponent
     [SerializeField] private float _radiusY = 7f;  // 盾の半径
     [SerializeField, Range(0, 360)] private float _startAngle = 0f; // 開始地点をずらす
     [SerializeField] private float _jitter = 0.5f; // 均等の中にも少しランダム性を出す
+
+    
+    public List<Vector3> GetPositions(int count)
+    {
+        List<Vector3> positions = new List<Vector3>();
+        if (count <= 0) return positions;
+
+        float angleStep = 360f / count;
+        Vector3 center = target != null ? target.transform.position : Vector3.zero;
+
+        for (int i = 0; i < count; i++)
+        {
+            float angle = (_startAngle + (angleStep * i)) * Mathf.Deg2Rad;
+            float currentJitterX = UnityEngine.Random.Range(-_jitter, _jitter);
+            float currentJitterY = UnityEngine.Random.Range(-_jitter, _jitter);
+
+            Vector3 offset = new Vector3(
+                Mathf.Cos(angle) * _radiusX + currentJitterX, 
+                Mathf.Sin(angle) * _radiusY + currentJitterY,
+                0
+            );
+            positions.Add(center + offset);
+        }
+        return positions;
+    }
     
     public List<UnitBase> Execute(List<UnitBase> pool)
     {   

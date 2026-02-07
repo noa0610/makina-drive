@@ -10,6 +10,27 @@ public class SpawnRectangle : ISpawnComponent
 {
     public GameObject target { get; set; }
     [SerializeField] private Vector2 _size = new Vector2(20, 15);
+
+    
+    public List<Vector3> GetPositions(int count)
+    {
+        List<Vector3> positions = new List<Vector3>();
+        if (count <= 0) return positions;
+
+        float width = _size.x;
+        float height = _size.y;
+        float perimeter = (width + height) * 2f; // 外周の合計
+
+        float step = perimeter / count; // 一体辺りの間隔
+
+        for (int i = 0; i < count; i++)
+        {
+            float distance = step * i;
+            Vector3 pos = CalculatePointOnRect(distance, width, height);
+            positions.Add(target.transform.position + pos);
+        }
+        return positions;
+    }
     
     public List<UnitBase> Execute(List<UnitBase> pool)
     {

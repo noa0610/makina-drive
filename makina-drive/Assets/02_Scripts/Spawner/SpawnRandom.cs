@@ -10,7 +10,16 @@ using UnityEngine;
 public class SpawnRandom : ISpawnComponent
 {
     public GameObject target { get; set; }
-    public SpawnRandom() { }
+    
+    public List<Vector3> GetPositions(int count)
+    {
+        List<Vector3> positions = new List<Vector3>();
+        for(int i = 0; i < count; i++)
+        {
+            positions.Add(SpawnUtils.GetRandomOffScreenPosition(target));
+        }
+        return positions;
+    }
 
     public List<UnitBase> Execute(List<UnitBase> pool)
     {

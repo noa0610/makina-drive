@@ -23,6 +23,41 @@ public class SpawnSide : ISpawnComponent
     [SerializeField] private SpawnDirection spawnDirection;
     public GameObject target { get; set; }
 
+    public List<Vector3> GetPositions(int count)
+    {
+        List<Vector3> positions = new List<Vector3>();
+        if (count <= 0) return positions;
+
+        Camera cam = Camera.main;
+        for(int i = 0; i < count; i++)
+        {
+            Vector3 viewportPos = new Vector3(0.5f, 0.5f, 10);
+
+            switch (spawnDirection)
+            {
+                case SpawnDirection.Right: viewportPos.x = 1.1f; break;
+                case SpawnDirection.Left: viewportPos.x = -0.1f; break;
+                case SpawnDirection.Up: viewportPos.y = 1.1f; break;
+                case SpawnDirection.Down: viewportPos.y = -0.1f; break;
+                case SpawnDirection.UpperRight: viewportPos = new Vector3(1.1f, 1.1f, 10); break;
+                case SpawnDirection.UpperLeft: viewportPos = new Vector3(-0.1f, 1.1f, 10); break;
+                case SpawnDirection.LowerRight: viewportPos = new Vector3(1.1f, -0.1f, 10); break;
+                case SpawnDirection.LowerLeft: viewportPos = new Vector3(-0.1f, -0.1f, 10); break;
+            }
+
+            // 上下左右のみの場合は、もう一方の軸をランダムにする
+            if (spawnDirection == SpawnDirection.Right || spawnDirection == SpawnDirection.Left)
+                viewportPos.y = UnityEngine.Random.value;
+            else if (spawnDirection == SpawnDirection.Up || spawnDirection == SpawnDirection.Down)
+                viewportPos.x = UnityEngine.Random.value;
+
+            Vector3 worldPos = cam.ViewportToWorldPoint(viewportPos);
+            worldPos.z = 0;
+            positions.Add(worldPos);
+        }
+        return positions;
+    }
+
     public List<UnitBase> Execute(List<UnitBase> pool)
     {
         Camera cam = Camera.main;
