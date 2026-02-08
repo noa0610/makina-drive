@@ -78,7 +78,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (info.isClearTarget)
                 {
-                    _totalClearTargetCount += info.spawnCount * info.minSpawnCount;
+                    _totalClearTargetCount += info.processCount * info.minSpawnCount;
                 }
             }
         }
@@ -169,6 +169,8 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
+            if(_endlessWaves == null) return null;
+            
             // エンドレス用のリスト内でループさせる
             int endlessIndex = (index - _normalWaves.Count) % _endlessWaves.Count;
             return _endlessWaves[endlessIndex];
@@ -190,15 +192,15 @@ public class EnemySpawner : MonoBehaviour
         {
             var info = currentWave.spawnInfos[i];
 
-            // 生成終了時間を過ぎたか、生成回数上限の場合はスキップ
-            if ((info.spawnEndTime > 0 && timeInWave >= info.spawnEndTime) || _currentSpawnCounts[i] >= info.spawnCount) continue;
+            // 処理終了時間を過ぎたか、処理回数上限の場合はスキップ
+            if ((info.processEndTime > 0 && timeInWave >= info.processEndTime) || _currentSpawnCounts[i] >= info.processCount) continue;
 
-            // 生成開始時間のチェック
-            if (timeInWave < info.spawnTime) continue;
+            // 処理開始時間のチェック
+            if (timeInWave < info.processStartTime) continue;
 
             _spawnTimers[i] += Time.deltaTime;
 
-            if (_spawnTimers[i] >= info.spawnInterval)
+            if (_spawnTimers[i] >= info.processInterval)
             {
                 ProcessSpawnStep(info, i).Forget();
                 _spawnTimers[i] = 0;
@@ -339,6 +341,12 @@ public class EnemySpawner : MonoBehaviour
         {
             PlayEffect(previewEffect, position);
         }
+        
+        // SE再生
+        if(info.FirstProcessSEName != null && SoundManager.instance != null)
+        {
+            SoundManager.instance.PlaySE(info.FirstProcessSEName ,info.FirstProcessSEVolume);
+        }
 
         // 指定時間待機
         if (info.spawnDelay > 0)
@@ -354,8 +362,6 @@ public class EnemySpawner : MonoBehaviour
         {
             PlayEffect(info.spawneEffectName, position);
         }
-
-        // TODO SE再生
 
 
         // 初期化処理の実行

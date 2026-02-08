@@ -60,4 +60,28 @@ public class SpawnOval : ISpawnComponent
         }
         return pool;
     }
+
+    public void ApplyParameters(string paramString)
+    {
+        if (string.IsNullOrEmpty(paramString)) return;
+
+        // 「radiusX:10;radiusY:7」のような形式を想定
+        string[] pairs = paramString.Split(';');
+        foreach(string pair in pairs)
+        {
+            string[] kv = pair.Split(':');
+            if(kv.Length < 2) continue;
+
+            string key = kv[0].Trim().ToLower();
+            string value = kv[1].Trim();
+
+            switch(key)
+            {
+                case "radiusx": float.TryParse(value, out _radiusX); break;
+                case "radiusy": float.TryParse(value, out _radiusY); break;
+                case "startangle": float.TryParse(value, out _startAngle); break;
+                case "jitter": float.TryParse(value, out _jitter); break;
+            }
+        }
+    }
 }

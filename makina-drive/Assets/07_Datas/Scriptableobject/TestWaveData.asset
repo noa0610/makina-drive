@@ -40,7 +40,7 @@ MonoBehaviour:
     waveIncreaseRate: 0
     destroyTime: 0
     previewEffectName: GenerationNotice
-    spawneEffectName: 
+    spawneEffectName: SpawnLanding
     FirstSpawneSEName: 
     isClearTarget: 0
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
@@ -69,7 +69,7 @@ MonoBehaviour:
     waveIncreaseRate: 0
     destroyTime: 0
     previewEffectName: GenerationNotice
-    spawneEffectName: 
+    spawneEffectName: SpawnLanding
     FirstSpawneSEName: 
     isClearTarget: 0
   references:

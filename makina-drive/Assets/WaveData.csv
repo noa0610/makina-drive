@@ -1,3 +1,15 @@
-WaveName,PrefabName,Count,Min,Max,Start,End,Interval,StatusRate,Destroy,Effect,SE,IsClear,StatusOverrides,CompClass
-Wave1,Enemy_Normal_Comp,10,1,3,0,0,1,0.1,0,,,FALSE,"HP:1.2:10;ATK:1.1:0,Speed:1.1:0,DashSpeed:1.1:0",SpawnRandom
-Wave1,Enemy_Normal_Comp,1,10,10,10,0,0.1,0.2,0,,,FALSE,"HP:1.5:10;ATK:1.5:0,Speed:2.0:0,DashSpeed:1.1:0",SpawnOval
+[0] WaveName,[1] PrefabName,[2] ProcessStartTime,[3] ProcessCount,[4] ProcessIntervalInterval,[5] SpawnMin,[6] SpawnMax,[7] ProcessEndTime,[8] SpawnDelay,[9] WaveIncreaseRate,[10] DestroyTime,[11] IsClear,[12] PreviewEffectName,[13] SpawneEffectName,[14] FirstProcessSEName,[15] FirstProcessSEVolume,[16] StatusOverrides,[17] CompClass,[18] CompClass.ApplyParameters
+Wave1,Enemy_Normal_Comp,0,15,1,1,1,0,0,0,0,FALSE,,,,0.5,"MaxHP:1.0:0;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnRandom,
+Wave1,Enemy_Normal_Comp,5,5,1,1,1,0,0,0,0,FALSE,,,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnRandom,
+Wave1,Enemy_Normal_Comp,15,3,0.5,1,1,0,0,0,0,FALSE,,,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnRandom,
+Wave1,Enemy_Normal_Comp,20,3,0.5,1,1,0,0,0,0,FALSE,,,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnSide,spawnDirection:Right
+Wave1,Enemy_Normal_Comp,20,3,0.5,1,1,0,0,0,0,FALSE,,,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnSide,spawnDirection:Left
+Wave1,Enemy_Normal_Comp,25,3,0.5,1,1,0,0,0,0,FALSE,,,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnSide,spawnDirection:Up
+Wave1,Enemy_Normal_Comp,25,3,0.5,1,1,0,0,0,0,FALSE,,,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnSide,spawnDirection:Down
+Wave1,Enemy_Normal_Comp,30,1,0,15,15,0,1,0,0,FALSE,GenerationNotice,SpawnLanding,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnRectangle,sizex:18;sizey:12
+Wave1,Enemy_Normal_Comp,40,5,0.5,1,1,0,0,0,0,FALSE,,,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnSide,spawnDirection:Up
+Wave1,Enemy_Normal_Comp,40,5,0.5,1,1,0,0,0,0,FALSE,,,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnSide,spawnDirection:Down
+Wave1,Enemy_Normal_Comp,45,5,0.5,1,1,0,0,0,0,FALSE,,,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnSide,spawnDirection:Right
+Wave1,Enemy_Normal_Comp,45,5,0.5,1,1,0,0,0,0,FALSE,,,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnSide,spawnDirection:Left
+Wave1,Enemy_Normal_Comp,50,5,1,1,1,0,0,0,0,FALSE,,,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnRandom,
+Wave1,Boss_Normal_Comp,59,1,0,1,1,0,0,0,0,TRUE,GenerationNotice,SpawnLanding,,0.5,"MaxHP:1.0:00;ATK:1.0:0,Speed:1.0:0,DashSpeed:1.0:0",SpawnRandom,

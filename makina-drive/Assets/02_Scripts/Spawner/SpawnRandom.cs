@@ -29,4 +29,9 @@ public class SpawnRandom : ISpawnComponent
         }
         return pool;
     }
+
+    public void ApplyParameters(string paramString)
+    {
+        if (string.IsNullOrEmpty(paramString)) return;
+    }
 }

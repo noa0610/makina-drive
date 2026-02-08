@@ -29,7 +29,7 @@ public class SpawnSide : ISpawnComponent
         if (count <= 0) return positions;
 
         Camera cam = Camera.main;
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
             Vector3 viewportPos = new Vector3(0.5f, 0.5f, 10);
 
@@ -88,5 +88,35 @@ public class SpawnSide : ISpawnComponent
             unit.transform.position = worldPos;
         }
         return pool;
+    }
+
+    public void ApplyParameters(string paramString)
+    {
+        if (string.IsNullOrEmpty(paramString)) return;
+
+        // 「spawnDirection:Right」や「spawnDirection:LowerLeft」のような形式を想定
+        string[] pairs = paramString.Split(';');
+        foreach (string pair in pairs)
+        {
+            string[] kv = pair.Split(':');
+            if (kv.Length < 2) continue;
+
+            string key = kv[0].Trim().ToLower();
+            string value = kv[1].Trim();
+
+            switch (key)
+            {
+                case "spawnDirection":
+                    if(Enum.TryParse(value, true, out SpawnDirection result))
+                    {
+                        this.spawnDirection = result;
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"SpawnSide: '{value}' は有効な方向ではありません。");
+                    }
+                    break;
+            }
+        }
     }
 }

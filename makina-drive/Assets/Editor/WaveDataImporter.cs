@@ -113,34 +113,45 @@ public class WaveDataImporter : EditorWindow
 
             // 1: PrefabName
             info.unitBase = FindEnemyPrefab(data[1]);
-            // 2: Count (生成処理回数)
-            info.spawnCount = int.Parse(data[2]);
-            // 3: Min (同時最小数)
-            info.minSpawnCount = int.Parse(data[3]);
-            // 4: Max (同時最大数)
-            info.maxSpawnCount = int.Parse(data[4]);
-            // 5: Start (開始時間)
-            info.spawnTime = float.Parse(data[5]);
-            // 6: End (終了時間)
-            info.spawnEndTime = float.Parse(data[6]);
-            // 7: Interval (間隔)
-            info.spawnInterval = float.Parse(data[7]);
-            // 8: StatusRate (ウェーブ強化倍率)
-            info.waveIncreaseRate = float.Parse(data[8]);
-            // 9: Destroy (自動消去)
-            info.destroyTime = float.Parse(data[9]);
-            // 10: Effect
-            info.spawneEffectName = data[10];
-            // 11: SE
-            info.FirstSpawneSEName = data[11];
-            // 12: IsClear
-            info.isClearTarget = bool.Parse(data[12]);
+            // 2: Start (開始時間)
+            info.processStartTime = float.Parse(data[2]);
+            // 3: Count (処理回数)
+            info.processCount = int.Parse(data[3]);
+            // 4: Interval (処理間隔)
+            info.processInterval = float.Parse(data[4]);
+            // 5: Min (同時最小数)
+            info.minSpawnCount = int.Parse(data[5]);
+            // 6: Max (同時最大数)
+            info.maxSpawnCount = int.Parse(data[6]);
+            // 7: End (終了時間)
+            info.processEndTime = float.Parse(data[7]);
+            // 8: SpawnDelay (生成ディレイ)
+            info.spawnDelay = float.Parse(data[8]);
+            // 9: StatusRate (ウェーブ強化倍率)
+            info.waveIncreaseRate = float.Parse(data[9]);
+            // 10: Destroy (自動消去)
+            info.destroyTime = float.Parse(data[10]);
+            // 11: IsClear（クリア設定）
+            info.isClearTarget = bool.Parse(data[11]);
 
-            // 13: StatusOverrides の解析 ("HP:1.2:10;ATK:1.1:0")
-            info.statusOverrides = ParseStatusOverrides(data[13]);
+            // 12: PreviewEffect（生成予告エフェクト）
+            info.previewEffectName = data[12];
+            // 13: SpawneEffect（敵生成時エフェクト）
+            info.spawneEffectName = data[13];
+            // 14: SEName（処理開始時のSE名）
+            info.FirstProcessSEName = data[14];
+            // 15: SEVolume（処理開始時のSE音量）
+            info.FirstProcessSEVolume = float.Parse(data[15]);
 
-            // 14: CompClass (生成ロジック) のインスタンス化
-            info.comp = CreateSpawnComponent(data[14]);
+
+            // 16: StatusOverrides の解析 (設定例："HP:1.2:10;ATK:1.1:0")
+            info.statusOverrides = ParseStatusOverrides(data[16]);
+
+            // 17: CompClass (生成ロジック) のインスタンス化
+            info.comp = CreateSpawnComponent(data[17]);
+
+            // 18: CompClass.paramData（生成ロジックのパラメータ設定）
+            info.comp.ApplyParameters(data[18]);
 
             wave.spawnInfos.Add(info);
         }

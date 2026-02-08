@@ -13,4 +13,8 @@ public interface ISpawnComponent
     public List<Vector3> GetPositions(int count);
     // 旧：ユニットリストから配置する
     public List<UnitBase> Execute(List<UnitBase> pool);
+
+    // 文字データからパラメータを設定する（CVS読み込み用）
+
+    public void ApplyParameters(string paramString);
 }

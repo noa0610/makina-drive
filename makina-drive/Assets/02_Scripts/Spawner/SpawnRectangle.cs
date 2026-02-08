@@ -9,7 +9,7 @@ using UnityEngine;
 public class SpawnRectangle : ISpawnComponent
 {
     public GameObject target { get; set; }
-    [SerializeField] private Vector2 _size = new Vector2(20, 15);
+    [SerializeField] private Vector2 _size = new Vector2(10, 7);
 
     
     public List<Vector3> GetPositions(int count)
@@ -67,5 +67,27 @@ public class SpawnRectangle : ISpawnComponent
         d -= w;
                   // 右辺
         return new Vector3(-halfW, -halfH + d, 0);
+    }
+
+    public void ApplyParameters(string paramString)
+    {
+        if (string.IsNullOrEmpty(paramString)) return;
+
+        // 「sizex:10;sizey:7」のような形式を想定
+        string[] pairs = paramString.Split(';');
+        foreach(string pair in pairs)
+        {
+            string[] kv = pair.Split(':');
+            if(kv.Length < 2) continue;
+
+            string key = kv[0].Trim().ToLower();
+            string value = kv[1].Trim();
+
+            switch(key)
+            {
+                case "sizex": float.TryParse(value, out _size.x); break;
+                case "sizey": float.TryParse(value, out _size.y); break;
+            }
+        }
     }
 }

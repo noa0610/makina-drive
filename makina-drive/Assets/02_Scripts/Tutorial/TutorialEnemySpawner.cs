@@ -31,15 +31,15 @@ public class TutorialEnemySpawner : MonoBehaviour
 
     private async UniTaskVoid SpawneLoop(UnitSpawnInfo info, GameObject target, CancellationToken ct)
     {
-        for (int i = 0; i < info.spawnCount; i++)
+        for (int i = 0; i < info.processCount; i++)
         {
             if (ct.IsCancellationRequested) break;
 
             SpawnGroup(info, target);
 
-            if (i < info.spawnCount - 1)
+            if (i < info.processCount - 1)
             {
-                await UniTask.Delay((int)(info.spawnInterval * 1000), cancellationToken: ct);
+                await UniTask.Delay((int)(info.processInterval * 1000), cancellationToken: ct);
             }
         }
         _isSpawning = false; // 生成終了
