@@ -31,16 +31,16 @@ public class UnitSpawnInfo
 
     public float waveIncreaseRate;     // ウェーブごとのステータス強化倍率
     public List<StatusOverride> statusOverrides = new List<StatusOverride>();
-    public float destroyTime;          // 生成後に消去する時間指定（0で消去しない）
-
+    
     [Header("経験値設定")]
     public float expAdditionPerWave;   // ウェーブごとの経験値加算値
     public float expMultiplierPerWave; // ウェーブごとの倍率上昇(0.1=10%)
-    
+
+    [Header("自動消去時間")]
+    public float destroyTime;          // 生成後に消去する時間指定（0で消去しない）    
     [Header("クリア条件設定")]
-    public bool isClearTarget; // この設定をした敵をすべて倒すとクリア
-
-
+    public bool isClearTarget;         // この設定をした敵をすべて倒すとクリア
+    
     [Header("エフェクト設定")]
     public string previewEffectName;          // 生成予告のエフェクト名
     public string spawneEffectName;           // 敵生成時のエフェクト名

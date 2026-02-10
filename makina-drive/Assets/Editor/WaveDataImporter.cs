@@ -137,20 +137,25 @@ public class WaveDataImporter : EditorWindow
             info.waveIncreaseRate = float.Parse(data[11]);
             // 12: StatusOverrides の解析 (設定例："HP:1.2:10;ATK:1.1:0")
             info.statusOverrides = ParseStatusOverrides(data[12]);
+            
+            // 13: ExpAdditionPerWave (ウェーブ経験値加算値)
+            info.expAdditionPerWave = float.Parse(data[13]);
+            // 14: ExpMultiplierPerWave (ウェーブ経験値上昇倍率)
+            info.expMultiplierPerWave = float.Parse(data[14]);
 
-            // 13: Destroy (自動消去)
-            info.destroyTime = float.Parse(data[13]);
-            // 14: IsClear（クリア設定）
-            info.isClearTarget = bool.Parse(data[14]);
+            // 15: Destroy (自動消去)
+            info.destroyTime = float.Parse(data[15]);
+            // 16: IsClear（クリア設定）
+            info.isClearTarget = bool.Parse(data[16]);
 
-            // 15: PreviewEffect（生成予告エフェクト）
-            info.previewEffectName = data[15];
-            // 16: SpawneEffect（敵生成時エフェクト）
-            info.spawneEffectName = data[16];
-            // 17: SEName（処理開始時のSE名）
-            info.FirstProcessSEName = data[17];
-            // 18: SEVolume（処理開始時のSE音量）
-            info.FirstProcessSEVolume = float.Parse(data[18]);
+            // 17: PreviewEffect（生成予告エフェクト）
+            info.previewEffectName = data[17];
+            // 18: SpawneEffect（敵生成時エフェクト）
+            info.spawneEffectName = data[18];
+            // 19: SEName（処理開始時のSE名）
+            info.FirstProcessSEName = data[19];
+            // 20: SEVolume（処理開始時のSE音量）
+            info.FirstProcessSEVolume = float.Parse(data[20]);
 
 
             wave.spawnInfos.Add(info);

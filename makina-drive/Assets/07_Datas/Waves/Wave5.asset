@@ -16,7 +16,7 @@ MonoBehaviour:
   spawnInfos:
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670801130618892
+      rid: 4698670822941786207
     processStartTime: 1
     processCount: 5
     processInterval: 0.5
@@ -24,12 +24,13 @@ MonoBehaviour:
     maxSpawnCount: 1
     processEndTime: 0
     spawnDelay: 0
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -37,7 +38,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
@@ -46,7 +48,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670801130618893
+      rid: 4698670822941786208
     processStartTime: 5
     processCount: 1
     processInterval: 1
@@ -54,12 +56,13 @@ MonoBehaviour:
     maxSpawnCount: 8
     processEndTime: 0
     spawnDelay: 1
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -67,7 +70,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: GenerationNotice
@@ -76,7 +80,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670801130618894
+      rid: 4698670822941786209
     processStartTime: 10
     processCount: 5
     processInterval: 1
@@ -84,12 +88,13 @@ MonoBehaviour:
     maxSpawnCount: 1
     processEndTime: 0
     spawnDelay: 0
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -97,7 +102,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
@@ -106,7 +112,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670801130618895
+      rid: 4698670822941786210
     processStartTime: 15
     processCount: 1
     processInterval: 1
@@ -114,12 +120,13 @@ MonoBehaviour:
     maxSpawnCount: 8
     processEndTime: 0
     spawnDelay: 1
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -127,7 +134,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: GenerationNotice
@@ -136,7 +144,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670801130618896
+      rid: 4698670822941786211
     processStartTime: 20
     processCount: 3
     processInterval: 0.5
@@ -144,12 +152,13 @@ MonoBehaviour:
     maxSpawnCount: 2
     processEndTime: 0
     spawnDelay: 0
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -157,7 +166,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
@@ -166,7 +176,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670801130618897
+      rid: 4698670822941786212
     processStartTime: 20
     processCount: 3
     processInterval: 0.5
@@ -174,12 +184,13 @@ MonoBehaviour:
     maxSpawnCount: 2
     processEndTime: 0
     spawnDelay: 0
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -187,7 +198,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
@@ -196,7 +208,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670801130618898
+      rid: 4698670822941786213
     processStartTime: 25
     processCount: 3
     processInterval: 3
@@ -204,12 +216,13 @@ MonoBehaviour:
     maxSpawnCount: 4
     processEndTime: 0
     spawnDelay: 1
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -217,7 +230,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: GenerationNotice
@@ -226,7 +240,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670801130618899
+      rid: 4698670822941786214
     processStartTime: 30
     processCount: 5
     processInterval: 1
@@ -234,12 +248,13 @@ MonoBehaviour:
     maxSpawnCount: 1
     processEndTime: 0
     spawnDelay: 0
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -247,7 +262,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
@@ -256,7 +272,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670801130618900
+      rid: 4698670822941786215
     processStartTime: 40
     processCount: 3
     processInterval: 0.5
@@ -264,12 +280,13 @@ MonoBehaviour:
     maxSpawnCount: 2
     processEndTime: 0
     spawnDelay: 0
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -277,7 +294,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
@@ -286,7 +304,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670801130618901
+      rid: 4698670822941786216
     processStartTime: 40
     processCount: 3
     processInterval: 0.5
@@ -294,12 +312,13 @@ MonoBehaviour:
     maxSpawnCount: 2
     processEndTime: 0
     spawnDelay: 0
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -307,7 +326,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
@@ -316,7 +336,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670801130618902
+      rid: 4698670822941786217
     processStartTime: 45
     processCount: 1
     processInterval: 1
@@ -324,12 +344,13 @@ MonoBehaviour:
     maxSpawnCount: 6
     processEndTime: 0
     spawnDelay: 1
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -337,7 +358,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: GenerationNotice
@@ -346,7 +368,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670801130618903
+      rid: 4698670822941786218
     processStartTime: 45
     processCount: 1
     processInterval: 1
@@ -354,12 +376,13 @@ MonoBehaviour:
     maxSpawnCount: 4
     processEndTime: 0
     spawnDelay: 1
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -367,7 +390,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: GenerationNotice
@@ -376,7 +400,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670801130618904
+      rid: 4698670822941786219
     processStartTime: 50
     processCount: 5
     processInterval: 1
@@ -384,12 +408,13 @@ MonoBehaviour:
     maxSpawnCount: 1
     processEndTime: 0
     spawnDelay: 0
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -397,7 +422,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
@@ -406,7 +432,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 8498992996510341214, guid: f64d37c61833653418ca02824fe8a7bc, type: 3}
     comp:
-      rid: 4698670801130618905
+      rid: 4698670822941786220
     processStartTime: 59
     processCount: 1
     processInterval: 1
@@ -414,12 +440,13 @@ MonoBehaviour:
     maxSpawnCount: 1
     processEndTime: 0
     spawnDelay: 0
+    waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
       multiplier: 2.5
       addition: 0
     - type: 2
-      multiplier: 2.2
+      multiplier: 1.85
       addition: 0
     - type: 4
       multiplier: 1.8
@@ -427,7 +454,8 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.8
       addition: 0
-    waveIncreaseRate: 0.5
+    expAdditionPerWave: 6
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 1
     previewEffectName: GenerationNotice
@@ -437,63 +465,63 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4698670801130618892
+    - rid: 4698670822941786207
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670801130618893
+    - rid: 4698670822941786208
       type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
       data:
         _radiusX: 15
         _radiusY: 12
         _startAngle: 0
         _jitter: 0.5
-    - rid: 4698670801130618894
+    - rid: 4698670822941786209
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670801130618895
+    - rid: 4698670822941786210
       type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
       data:
         _radiusX: 15
         _radiusY: 12
         _startAngle: 0
         _jitter: 0.5
-    - rid: 4698670801130618896
+    - rid: 4698670822941786211
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670801130618897
+    - rid: 4698670822941786212
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670801130618898
+    - rid: 4698670822941786213
       type: {class: SpawnRectangle, ns: , asm: Assembly-CSharp}
       data:
         _size: {x: 10, y: 8}
-    - rid: 4698670801130618899
+    - rid: 4698670822941786214
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670801130618900
+    - rid: 4698670822941786215
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670801130618901
+    - rid: 4698670822941786216
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670801130618902
+    - rid: 4698670822941786217
       type: {class: SpawnRectangle, ns: , asm: Assembly-CSharp}
       data:
         _size: {x: 16, y: 13}
-    - rid: 4698670801130618903
+    - rid: 4698670822941786218
       type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
       data:
         _radiusX: 10
         _radiusY: 8
         _startAngle: 0
         _jitter: 0.5
-    - rid: 4698670801130618904
+    - rid: 4698670822941786219
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670801130618905
+    - rid: 4698670822941786220
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 

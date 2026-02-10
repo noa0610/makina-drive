@@ -7,8 +7,9 @@ using UnityEngine;
 [Serializable]
 public class PlayerLevel
 {
-    [SerializeField] private float _farstNextLevelExp = 10;
-    [SerializeField] private float _nextLevelExpRate = 1.2f;
+    [SerializeField] private float _baseExp = 20;
+    [SerializeField] private float _linearWeight = 8f;      // レベルのに比例して増える分
+    [SerializeField] private float _quadraticWeight = 2f;   // レベルの2乗で増える分
     [SerializeField] private int _maxLevel = 100;
     private UnitBase _player;
 
@@ -22,12 +23,13 @@ public class PlayerLevel
     public event Action<float, float> OnExpChanged; // 現在地、最大値
     public event Action<int> OnEnhancementPointsChanged;
 
-    public PlayerLevel(UnitBase player, float farstNextExp = 10f, float exptoNextLevelRate = 1.2f)
+    public PlayerLevel(UnitBase player, float baseExp = 20f, float linearWeight = 8f, float quadraticWeight = 2f)
     {
         _player = player;
-        _farstNextLevelExp = farstNextExp;
-        _nextLevelExpRate = exptoNextLevelRate;
-        ExpToNextLevel = _farstNextLevelExp;
+        _baseExp = baseExp;
+        _linearWeight = linearWeight;
+        _quadraticWeight = quadraticWeight;
+        NextLevelCalculations();
         Debug.Log(ExpToNextLevel);
     }
 
@@ -36,8 +38,7 @@ public class PlayerLevel
         if (amount <= 0 && CurrentLevel >= _maxLevel) return;
 
         
-        Debug.Log($"farst NextLevelExp : {_farstNextLevelExp}");
-        Debug.Log($"NextLevelExpRate : {_nextLevelExpRate}");
+        Debug.Log($"BaseExp : {_baseExp}");
 
         // 安全のためのカウンター（無限ループ防止)
         int safetyCounter = 0;
@@ -79,16 +80,10 @@ public class PlayerLevel
     // 次のレベルの計算
     private void NextLevelCalculations()
     {
-        ExpToNextLevel = ExpToNextLevel * _nextLevelExpRate;
+        ExpToNextLevel = _baseExp + 
+                     (_linearWeight * CurrentLevel) + 
+                     (_quadraticWeight * Mathf.Pow(CurrentLevel, 2));
         Debug.Log($"Next Level Exp : {ExpToNextLevel}");
-    }
-
-    // ステータスの強化
-    public void ApplyUpgrade(Status status, float value)
-    {
-        if (_nextLevelExpRate <= 1.0f) _nextLevelExpRate = 1.1f;
-
-        _player.statusManager.AddValue(status, value);
     }
 
     // 強化権を消費しイベント発火

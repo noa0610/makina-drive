@@ -21,8 +21,9 @@ public partial class Freya : UnitBase, IPausable
 
 
     [Header("レベルアップ")]
-    [SerializeField] private float _farstNextLevelExp = 10;
-    [SerializeField] private float _nextLevelExpRate = 1.2f;
+    [SerializeField] private float _baseExp = 20;
+    [SerializeField] private float _linearWeight = 8f;      // レベルのに比例して増える分
+    [SerializeField] private float _quadraticWeight = 2f;   // レベルの2乗で増える分
     [SerializeField] private bool _isImmediateEnhancement = true; // 強化項目を即座に表示するか
     public PlayerLevel _level;
     public EnhanceInventory _inventory;
@@ -173,7 +174,7 @@ public partial class Freya : UnitBase, IPausable
     protected override void AfterAwake()
     {
         base.AfterAwake();
-        _level = new PlayerLevel(this, _farstNextLevelExp, _nextLevelExpRate);
+        _level = new PlayerLevel(this, _baseExp, _linearWeight, _quadraticWeight);
         _inventory = new EnhanceInventory();
         Rigidbody2D.freezeRotation = true;
 
