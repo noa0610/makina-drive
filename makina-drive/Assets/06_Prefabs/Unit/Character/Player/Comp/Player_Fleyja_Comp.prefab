@@ -218,6 +218,7 @@ MonoBehaviour:
   _coll2D: {fileID: 1618555290113839414}
   _farstNextLevelExp: 30
   _nextLevelExpRate: 1.2
+  _isImmediateEnhancement: 1
   _level:
     _farstNextLevelExp: 0
     _nextLevelExpRate: 0
@@ -286,12 +287,8 @@ MonoBehaviour:
   FallAttack_bulletData: {fileID: 11400000, guid: d002c1e852608954ca620647b8319738, type: 2}
   _fallAttackTime: 1
   _deadGameOverDelay: 1
-  _ChargeParticle: {fileID: 2236257326295335633, guid: 58a2f56938ac8fa4f85a76eb178c1d61, type: 3}
-  _ChargeParticleDeleteTime: 0.7
-  _BoosterEffect: {fileID: 11400000, guid: 5299e7ba26fcc0d4b85e39bbdda4d345, type: 2}
   _jumpBoosterEffectPoint: {fileID: 1363386472849061810}
-  _jumpAttackBoosterEffect: {fileID: 11400000, guid: f9035fd9f01aa824a9bf83267537aad0, type: 2}
-  _jumpAttackEffectPoint: {fileID: 8071845793786918133}
+  _FallAttackBoosterEffectPoint: {fileID: 8071845793786918133}
   _N1_AttackSE:
     SEName: "\u901A\u5E38\u653B\u6483\uFF081\u6BB5\u968E\uFF09"
     Volume: 0.5

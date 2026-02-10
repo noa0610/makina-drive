@@ -6,9 +6,6 @@ using Cysharp.Threading.Tasks;
 using UniRx;
 using Unity.VisualScripting;
 
-
-
-
 #if UNITY_EDITOR
 using UnityEditor;
 # endif
@@ -169,8 +166,8 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            if(_endlessWaves == null) return null;
-            
+            if (_endlessWaves == null) return null;
+
             // エンドレス用のリスト内でループさせる
             int endlessIndex = (index - _normalWaves.Count) % _endlessWaves.Count;
             return _endlessWaves[endlessIndex];
@@ -208,95 +205,95 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-//     /// <summary>
-//     /// 敵生成処理
-//     /// </summary>
-//     private void SpawnGroup(int index, UnitSpawnInfo info)
-//     {
-//         if (info.unitBase == null) return;
+    //     /// <summary>
+    //     /// 敵生成処理
+    //     /// </summary>
+    //     private void SpawnGroup(int index, UnitSpawnInfo info)
+    //     {
+    //         if (info.unitBase == null) return;
 
-//         int randomSpawnCount = UnityEngine.Random.Range(info.minSpawnCount, info.maxSpawnCount + 1);
+    //         int randomSpawnCount = UnityEngine.Random.Range(info.minSpawnCount, info.maxSpawnCount + 1);
 
-//         List<UnitBase> spawnGroup = new List<UnitBase>(); // 生成する敵を格納する一時リスト
+    //         List<UnitBase> spawnGroup = new List<UnitBase>(); // 生成する敵を格納する一時リスト
 
-//         for (int j = 0; j < randomSpawnCount; j++)
-//         {
-//             UnitBase unit = Instantiate(info.unitBase);
+    //         for (int j = 0; j < randomSpawnCount; j++)
+    //         {
+    //             UnitBase unit = Instantiate(info.unitBase);
 
-//             // ウェーブ数に応じた強化倍率の計算
-//             // 例： statusRate = 0.1 → ウェーブ2で0.2（1.2倍の強化）、ウェーブ10で1.0 (2.0倍の強化)
-//             float waveProgression = _currentWaveNumber * info.waveIncreaseRate;
+    //             // ウェーブ数に応じた強化倍率の計算
+    //             // 例： statusRate = 0.1 → ウェーブ2で0.2（1.2倍の強化）、ウェーブ10で1.0 (2.0倍の強化)
+    //             float waveProgression = _currentWaveNumber * info.waveIncreaseRate;
 
-//             // エディターでのみステータス強化のON/OFF可、ビルド後は常に強化を適用
-//             bool shouldApplyStatus = true;
-// # if UNITY_EDITOR
-//             if (_notStatusUP) shouldApplyStatus = false;
+    //             // エディターでのみステータス強化のON/OFF可、ビルド後は常に強化を適用
+    //             bool shouldApplyStatus = true;
+    // # if UNITY_EDITOR
+    //             if (_notStatusUP) shouldApplyStatus = false;
 
-// #endif
-//             // ステータス強化処理
-//             if (shouldApplyStatus && waveProgression > 0)
-//             {
-//                 List<StatusOverride> currentOverrrides = new List<StatusOverride>();
+    // #endif
+    //             // ステータス強化処理
+    //             if (shouldApplyStatus && waveProgression > 0)
+    //             {
+    //                 List<StatusOverride> currentOverrrides = new List<StatusOverride>();
 
-//                 foreach (var so in info.statusOverrides)
-//                 {
-//                     StatusOverride calculatedSo = new StatusOverride
-//                     {
-//                         type = so.type,
-//                         // 倍率 = 1.0 + (設定された増加分 * ウェーブ進行度)
-//                         // 例： multiplierが1.2(0.2増)なら、ウェーブ数 * 0.2 となる
-//                         multiplier = 1f + ((so.multiplier - 1f) * (1f + waveProgression)),
-//                         addition = so.addition * (1f + waveProgression)
-//                     };
-//                     currentOverrrides.Add(calculatedSo);
-//                 }
+    //                 foreach (var so in info.statusOverrides)
+    //                 {
+    //                     StatusOverride calculatedSo = new StatusOverride
+    //                     {
+    //                         type = so.type,
+    //                         // 倍率 = 1.0 + (設定された増加分 * ウェーブ進行度)
+    //                         // 例： multiplierが1.2(0.2増)なら、ウェーブ数 * 0.2 となる
+    //                         multiplier = 1f + ((so.multiplier - 1f) * (1f + waveProgression)),
+    //                         addition = so.addition * (1f + waveProgression)
+    //                     };
+    //                     currentOverrrides.Add(calculatedSo);
+    //                 }
 
-//                 // 強化量を適用
-//                 if (currentOverrrides.Count > 0)
-//                 {
-//                     unit.ApplyWaveStatus(currentOverrrides);
-//                 }
-//                 else if (info.waveIncreaseRate > 0)
-//                 {
-//                     if (_statusUp == null || _statusUp.Count == 0)
-//                     {
-//                         Debug.Log("強化するステータスが設定されていません。強化対象としてMaxHP, Atk, Speed, DashSpeedを指定します。");
-//                         _statusUp = new List<Status>{
-//                             Status.MaxHP,
-//                             Status.ATK,
-//                             Status.Speed,
-//                             Status.DashSpeed
-//                         };
-//                     }
-//                     unit.ApplyWaveStatus(waveProgression, _statusUp);
-//                 }
-//             }
+    //                 // 強化量を適用
+    //                 if (currentOverrrides.Count > 0)
+    //                 {
+    //                     unit.ApplyWaveStatus(currentOverrrides);
+    //                 }
+    //                 else if (info.waveIncreaseRate > 0)
+    //                 {
+    //                     if (_statusUp == null || _statusUp.Count == 0)
+    //                     {
+    //                         Debug.Log("強化するステータスが設定されていません。強化対象としてMaxHP, Atk, Speed, DashSpeedを指定します。");
+    //                         _statusUp = new List<Status>{
+    //                             Status.MaxHP,
+    //                             Status.ATK,
+    //                             Status.Speed,
+    //                             Status.DashSpeed
+    //                         };
+    //                     }
+    //                     unit.ApplyWaveStatus(waveProgression, _statusUp);
+    //                 }
+    //             }
 
-//             // ウェーブ数に応じて経験値増加
-//             unit.DropExp = info.unitBase.UnitStatusData.baseExp * (1 + _currentWaveNumber * info.waveIncreaseRate);
+    //             // ウェーブ数に応じて経験値増加
+    //             unit.DropExp = info.unitBase.UnitStatusData.baseExp * (1 + _currentWaveNumber * info.waveIncreaseRate);
 
-//             // HPバーを生成
-//             if (UnitManager.instance != null) UnitManager.instance.CreateHPBar(unit, _showHPBar);
+    //             // HPバーを生成
+    //             if (UnitManager.instance != null) UnitManager.instance.CreateHPBar(unit, _showHPBar);
 
-//             // 0以上の値であれば時間経過で死亡させる
-//             if (info.destroyTime > 0) unit.SetLazyDeath(info.destroyTime);
+    //             // 0以上の値であれば時間経過で死亡させる
+    //             if (info.destroyTime > 0) unit.SetLazyDeath(info.destroyTime);
 
-//             // クリアフラグ付与
-//             unit.IsClearTarget = info.isClearTarget;
+    //             // クリアフラグ付与
+    //             unit.IsClearTarget = info.isClearTarget;
 
-//             spawnGroup.Add(unit);
-//         }
+    //             spawnGroup.Add(unit);
+    //         }
 
-//         // 実行回数をカウント
-//         _currentSpawnCounts[index]++;
+    //         // 実行回数をカウント
+    //         _currentSpawnCounts[index]++;
 
-//         if (info.comp != null && spawnGroup.Count > 0)
-//         {
-//             // まとめて配置を実行
-//             info.comp.target = _targetObject;
-//             info.comp.Execute(spawnGroup);
-//         }
-//     }
+    //         if (info.comp != null && spawnGroup.Count > 0)
+    //         {
+    //             // まとめて配置を実行
+    //             info.comp.target = _targetObject;
+    //             info.comp.Execute(spawnGroup);
+    //         }
+    //     }
 
     /// <summary>
     /// 設定された数の敵を生成
@@ -318,8 +315,6 @@ public class EnemySpawner : MonoBehaviour
         // 各座標に対して生成処理を実行
         foreach (var pos in spawnPositions)
         {
-            // 完了を待たずに（火を噴くように）次々生成開始する場合は UniTaskVoid をそのまま呼ぶ
-            // 同時に出したいので await はせず、個別に走らせる
             SpawnIndividualUnit(info, pos).Forget();
         }
 
@@ -341,11 +336,11 @@ public class EnemySpawner : MonoBehaviour
         {
             PlayEffect(previewEffect, position);
         }
-        
+
         // SE再生
-        if(info.FirstProcessSEName != null && SoundManager.instance != null)
+        if (info.FirstProcessSEName != null && SoundManager.instance != null)
         {
-            SoundManager.instance.PlaySE(info.FirstProcessSEName ,info.FirstProcessSEVolume);
+            SoundManager.instance.PlaySE(info.FirstProcessSEName, info.FirstProcessSEVolume);
         }
 
         // 指定時間待機
@@ -391,11 +386,17 @@ public class EnemySpawner : MonoBehaviour
             else
             {
                 unit.ApplyWaveStatus(CalculateWaveMultiplier(info), _statusUp);
+                Debug.Log("旧強化ロジックが呼ばれています。");
             }
         }
 
         // 経験値設定
-        unit.DropExp = info.unitBase.UnitStatusData.baseExp * (1 + _currentWaveNumber * info.waveIncreaseRate);
+        float baseExp = info.unitBase.UnitStatusData.baseExp;
+        // (基礎経験値 + ウェーブ加算) * (1 + ウェーブ倍率)
+        float waveBonus = (_currentWaveNumber - 1) * info.expAdditionPerWave;
+        float waveMultiplier = 1f * ((_currentWaveNumber - 1) * info.expMultiplierPerWave);
+        unit.DropExp = (baseExp + waveBonus) * waveMultiplier;
+        // Debug.Log($"{unit.name} Exp: {unit.DropExp} (Base:{baseExp}, Bonus:{waveBonus}, Mult:{waveMultiplier})");
 
         // HPバー
         if (UnitManager.instance != null)

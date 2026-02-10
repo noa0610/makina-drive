@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d822f27b98a97824384fab64efea2ccb, type: 3}
+  m_Name: Wave7
+  m_EditorClassIdentifier: Assembly-CSharp::WaveData
+  waveName: Wave7
+  spawnInfos:
+  - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    comp:
+      rid: 4698670801130618890
+    processStartTime: 3
+    processCount: 5
+    processInterval: 0.75
+    minSpawnCount: 1
+    maxSpawnCount: 1
+    processEndTime: 0
+    spawnDelay: 0
+    statusOverrides:
+    - type: 1
+      multiplier: 3
+      addition: 0
+    - type: 2
+      multiplier: 2.75
+      addition: 0
+    - type: 4
+      multiplier: 2
+      addition: 0
+    - type: 5
+      multiplier: 2
+      addition: 0
+    waveIncreaseRate: 0.5
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    comp:
+      rid: 4698670801130618891
+    processStartTime: 5
+    processCount: 5
+    processInterval: 1
+    minSpawnCount: 1
+    maxSpawnCount: 2
+    processEndTime: 0
+    spawnDelay: 0
+    statusOverrides:
+    - type: 1
+      multiplier: 3
+      addition: 0
+    - type: 2
+      multiplier: 2.75
+      addition: 0
+    - type: 4
+      multiplier: 2
+      addition: 0
+    - type: 5
+      multiplier: 2
+      addition: 0
+    waveIncreaseRate: 0.5
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
+  references:
+    version: 2
+    RefIds:
+    - rid: 4698670801130618890
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 4698670801130618891
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 

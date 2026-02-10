@@ -109,7 +109,11 @@ public class StatusManager
     }
     public void TakeHeal(float value)
     {
-        _statusAmounts[Status.HP].CurrentAmount += value;
+        var hpInfo = _statusAmounts[Status.HP];
+        var maxHp = ReadValue(Status.MaxHP);
+
+        // 現在のHP + 回復量 が最大HPを超えないようにセット
+        hpInfo.CurrentAmount = MathF.Min(hpInfo.CurrentAmount + value, maxHp);
         OnHeal?.Invoke();
     }
 
@@ -134,9 +138,8 @@ public class StatusManager
         {
             if (TryGetStatus(type, out var info))
             {
-                // TemporaryChangedは1.0がデフォルトなので、そこに加算する
-                // multiplierが0.1なら1.1倍、1.0なら2倍として適用
-                info.SetMultiplier(1f + multiplier);
+                // multiplierが1.1なら1.1倍、2.0なら2倍として適用
+                info.SetMultiplier(multiplier);
             }
         }
     }
@@ -147,6 +150,8 @@ public class StatusManager
 
         foreach (var so in overrides)
         {
+            if (so.type == Status.HP) continue;
+
             if (TryGetStatus(so.type, out var info))
             {
                 // StatusOverride の値をそのまま StatusInfo に適用

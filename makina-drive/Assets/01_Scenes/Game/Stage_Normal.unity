@@ -375,7 +375,7 @@ PrefabInstance:
       objectReference: {fileID: 509183779}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: _normalWaves.Array.size
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: _endlessWaves.Array.size
@@ -385,6 +385,30 @@ PrefabInstance:
       propertyPath: '_normalWaves.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: 2e9ec3fe8aa15e746bd3e6900ae9cf97, type: 2}
+    - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
+      propertyPath: '_normalWaves.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: aec58a4d09012b84eb42593977fb1d0a, type: 2}
+    - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
+      propertyPath: '_normalWaves.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b0a8cc087a9c3364babdf815ff1c997c, type: 2}
+    - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
+      propertyPath: '_normalWaves.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 92e72820c823a654f92baa7b7bf095b4, type: 2}
+    - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
+      propertyPath: '_normalWaves.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6db269962015b4c4b9e0db37adfc351a, type: 2}
+    - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
+      propertyPath: '_normalWaves.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 99c00537a13a36c46aa1858d2fffb97c, type: 2}
+    - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
+      propertyPath: '_normalWaves.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: eb25de727c79d9640b7a3e140b6d340f, type: 2}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: _normalWaves.Array.data[1].spawnInfos.Array.data[0].statusRate
       value: 0.025
@@ -1813,8 +1837,12 @@ PrefabInstance:
       value: Timer
       objectReference: {fileID: 0}
     - target: {fileID: 6707437097309610417, guid: b14ac1b1acd6ee04994c8c2135bb6a5b, type: 3}
-      propertyPath: countSecondMultiple
+      propertyPath: isDoubleSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6707437097309610417, guid: b14ac1b1acd6ee04994c8c2135bb6a5b, type: 3}
+      propertyPath: countSecondMultiple
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

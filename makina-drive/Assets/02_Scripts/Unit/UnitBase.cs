@@ -282,14 +282,14 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         if (statusManager == null || targets == null || targets.Count == 0) return;
 
         statusManager.ApplyStatusMultiplier(targets, multiplier);
-        statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));
+        // statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));
     }
     public void ApplyWaveStatus(List<StatusOverride> overrides)
     {
         if(statusManager == null || overrides == null || overrides.Count == 0) return;
 
         statusManager.ApplyStatusOverride(overrides);
-        statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));
+        // statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));
     }
 
     #endregion

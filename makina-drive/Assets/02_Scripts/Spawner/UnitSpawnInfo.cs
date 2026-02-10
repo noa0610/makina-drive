@@ -29,9 +29,13 @@ public class UnitSpawnInfo
     [Tooltip("予告エフェクト発生から敵が生成されるまでの時間")]
     public float spawnDelay = 1.0f;    // 生成ディレイ時間
 
-    public List<StatusOverride> statusOverrides = new List<StatusOverride>();
     public float waveIncreaseRate;     // ウェーブごとのステータス強化倍率
+    public List<StatusOverride> statusOverrides = new List<StatusOverride>();
     public float destroyTime;          // 生成後に消去する時間指定（0で消去しない）
+
+    [Header("経験値設定")]
+    public float expAdditionPerWave;   // ウェーブごとの経験値加算値
+    public float expMultiplierPerWave; // ウェーブごとの倍率上昇(0.1=10%)
     
     [Header("クリア条件設定")]
     public bool isClearTarget; // この設定をした敵をすべて倒すとクリア

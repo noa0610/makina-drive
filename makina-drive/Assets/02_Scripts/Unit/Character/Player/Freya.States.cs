@@ -419,8 +419,11 @@ public partial class Freya
         var fall = new Idle_LazyChange(Triggers.jumpConplete.ToString(), _fallTime);
         fall.OnCompleted += () =>
         {
-            _activeJumpEffect.Stop();
-            _activeJumpEffect = null;
+            if (_activeJumpEffect != null)
+            {
+                _activeJumpEffect.Stop();
+                _activeJumpEffect = null;
+            }
 
             if (EffectManager.instance != null) _activeFallAttackBoosterEffect = EffectManager.instance.Play("FallAttackBooster", _FallAttackBoosterEffectPoint.transform.position, _FallAttackBoosterEffectPoint.transform, this.transform);
 
@@ -443,8 +446,11 @@ public partial class Freya
         });
         fallAttack.OnCompleted += () =>
         {
-            _activeFallAttackBoosterEffect.Stop();
-            _activeFallAttackBoosterEffect = null;
+            if (_activeFallAttackBoosterEffect != null)
+            {
+                _activeFallAttackBoosterEffect.Stop();
+                _activeFallAttackBoosterEffect = null;
+            }
         };
         _stateMachine.AddState(States.fallAttack, fallAttack, new string[] { "SPA" });
         #endregion
