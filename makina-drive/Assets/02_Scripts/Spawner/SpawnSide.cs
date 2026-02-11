@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 指定した方向からユニットを生成
+/// 画面外の指定した方向からユニットを生成
 /// </summary>
 [Serializable]
 public class SpawnSide : ISpawnComponent

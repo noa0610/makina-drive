@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ランダムな方向からユニットを生成
+/// 画面外のランダムな方向からユニットを生成
 /// </summary>
 [Serializable]
 public class SpawnRandom : ISpawnComponent
