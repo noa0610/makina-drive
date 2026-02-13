@@ -161,7 +161,7 @@ MonoBehaviour:
   _attackRange: 8
   _attackCreatePos: 1.5
   _stateChangeTime: 2
-  _attackIntervalTime: 2
+  _attackIntervalTime: 3
   _attackBulletData: {fileID: 11400000, guid: 139113a34678f8d488847b81407a95eb, type: 2}
   _ignoreStan: 0
   _stanTime: 0.5

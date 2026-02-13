@@ -323,7 +323,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// 敵個体の生成予告、生成フロー
+    /// 敵個体ごとのの生成予告、生成フロー処理
     /// </summary>
     /// <param name="info"></param>
     /// <param name="position"></param>

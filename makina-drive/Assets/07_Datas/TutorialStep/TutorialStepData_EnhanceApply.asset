@@ -26,14 +26,23 @@ MonoBehaviour:
     unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
       rid: 7857002649216614466
-    spawnCount: 10
-    sameTimeSpawnCount: 1
-    spawnTime: 0
-    spawnEndTime: 0
-    spawnInterval: 0.5
-    statusRate: 0
+    processStartTime: 0
+    processCount: 5
+    processInterval: 1
+    minSpawnCount: 3
+    maxSpawnCount: 3
+    processEndTime: 0
+    spawnDelay: 0
+    waveIncreaseRate: 0
+    statusOverrides: []
+    expAdditionPerWave: 0
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
   showExplanationWindow: 1
   stopGameDuringWindow: 1
   isInvincible: 1

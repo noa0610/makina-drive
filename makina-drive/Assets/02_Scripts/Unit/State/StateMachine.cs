@@ -166,12 +166,13 @@ public class StateMachine : IStateMachine
 
     public StateInfo GetStateInfo(IState state)
     {
-        foreach(var info in _stateMap.Values)
+        foreach (var info in _stateMap.Values)
         {
-            if(info.Instance == state) return info;
+            if (info.Instance == state) return info;
         }
         return default;
     }
+
 
     public void Awake(string startStateKey = "idle", bool log = false)
     {

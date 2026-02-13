@@ -16,7 +16,7 @@ MonoBehaviour:
   spawnInfos:
   - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
     comp:
-      rid: 4698670869129200519
+      rid: 4698670889428582478
     processStartTime: 3
     processCount: 5
     processInterval: 0.75
@@ -38,7 +38,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 0
     isClearTarget: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670869129200520
+      rid: 4698670889428582479
     processStartTime: 5
     processCount: 5
     processInterval: 1
@@ -70,7 +70,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 0
     isClearTarget: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670869129200521
+      rid: 4698670889428582480
     processStartTime: 10
     processCount: 1
     processInterval: 1
@@ -102,7 +102,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 17.5
     isClearTarget: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
     comp:
-      rid: 4698670869129200522
+      rid: 4698670889428582481
     processStartTime: 15
     processCount: 3
     processInterval: 1
@@ -134,7 +134,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 0
     isClearTarget: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670869129200523
+      rid: 4698670889428582482
     processStartTime: 20
     processCount: 3
     processInterval: 0.75
@@ -166,7 +166,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 0
     isClearTarget: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670869129200524
+      rid: 4698670889428582483
     processStartTime: 20
     processCount: 3
     processInterval: 0.75
@@ -198,7 +198,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 0
     isClearTarget: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
     comp:
-      rid: 4698670869129200525
+      rid: 4698670889428582484
     processStartTime: 30
     processCount: 3
     processInterval: 1
@@ -230,7 +230,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 0
     isClearTarget: 0
@@ -240,7 +240,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670869129200526
+      rid: 4698670889428582485
     processStartTime: 35
     processCount: 1
     processInterval: 1
@@ -262,7 +262,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 0
     isClearTarget: 0
@@ -272,7 +272,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670869129200527
+      rid: 4698670889428582486
     processStartTime: 40
     processCount: 1
     processInterval: 1
@@ -294,7 +294,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 17.5
     isClearTarget: 0
@@ -304,7 +304,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
     comp:
-      rid: 4698670869129200528
+      rid: 4698670889428582487
     processStartTime: 45
     processCount: 3
     processInterval: 1
@@ -326,7 +326,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 0
     isClearTarget: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670869129200529
+      rid: 4698670889428582488
     processStartTime: 50
     processCount: 3
     processInterval: 0.75
@@ -358,7 +358,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 0
     isClearTarget: 0
@@ -368,7 +368,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670869129200530
+      rid: 4698670889428582489
     processStartTime: 50
     processCount: 3
     processInterval: 0.75
@@ -390,7 +390,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 0
     isClearTarget: 0
@@ -400,7 +400,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670869129200531
+      rid: 4698670889428582490
     processStartTime: 52.5
     processCount: 1
     processInterval: 1
@@ -422,7 +422,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 0
     isClearTarget: 0
@@ -432,7 +432,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
     comp:
-      rid: 4698670869129200532
+      rid: 4698670889428582491
     processStartTime: 55
     processCount: 1
     processInterval: 0.1
@@ -454,7 +454,7 @@ MonoBehaviour:
     - type: 5
       multiplier: 1.5
       addition: 0
-    expAdditionPerWave: 13
+    expAdditionPerWave: 27
     expMultiplierPerWave: 0.3
     destroyTime: 0
     isClearTarget: 0
@@ -465,60 +465,60 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4698670869129200519
+    - rid: 4698670889428582478
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670869129200520
+    - rid: 4698670889428582479
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670869129200521
+    - rid: 4698670889428582480
       type: {class: SpawnRectangle, ns: , asm: Assembly-CSharp}
       data:
         _size: {x: 23, y: 17}
-    - rid: 4698670869129200522
+    - rid: 4698670889428582481
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670869129200523
+    - rid: 4698670889428582482
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670869129200524
+    - rid: 4698670889428582483
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670869129200525
+    - rid: 4698670889428582484
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670869129200526
+    - rid: 4698670889428582485
       type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
       data:
         _radiusX: 10
         _radiusY: 8
         _startAngle: 0
         _jitter: 0.5
-    - rid: 4698670869129200527
+    - rid: 4698670889428582486
       type: {class: SpawnRectangle, ns: , asm: Assembly-CSharp}
       data:
         _size: {x: 23, y: 17}
-    - rid: 4698670869129200528
+    - rid: 4698670889428582487
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670869129200529
+    - rid: 4698670889428582488
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670869129200530
+    - rid: 4698670889428582489
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670869129200531
+    - rid: 4698670889428582490
       type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
       data:
         _radiusX: 10
         _radiusY: 8
         _startAngle: 0
         _jitter: 0.5
-    - rid: 4698670869129200532
+    - rid: 4698670889428582491
       type: {class: SpawnRandomRange, ns: , asm: Assembly-CSharp}
       data:
         _maxDistance: 3

@@ -25,15 +25,24 @@ MonoBehaviour:
   spawneEnemy:
     unitBase: {fileID: 3718649643212116859, guid: 669bda440a2b7be49b511052417adc46, type: 3}
     comp:
-      rid: 7857002602136862788
-    spawnCount: 3
-    sameTimeSpawnCount: 1
-    spawnTime: 0
-    spawnEndTime: 0
-    spawnInterval: 0.1
-    statusRate: 0
+      rid: 4698670889428582635
+    processStartTime: 0
+    processCount: 1
+    processInterval: 1
+    minSpawnCount: 3
+    maxSpawnCount: 3
+    processEndTime: 0
+    spawnDelay: 1
+    waveIncreaseRate: 0
+    statusOverrides: []
+    expAdditionPerWave: 0
+    expMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
+    previewEffectName: GenerationNotice
+    spawneEffectName: SpawnLanding
+    FirstProcessSEName: SpawnNotice
+    FirstProcessSEVolume: 0.5
   showExplanationWindow: 1
   stopGameDuringWindow: 1
   isInvincible: 1
@@ -41,6 +50,10 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 7857002602136862788
-      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
-      data: 
+    - rid: 4698670889428582635
+      type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
+      data:
+        _radiusX: 10
+        _radiusY: 7
+        _startAngle: 0
+        _jitter: 0.5

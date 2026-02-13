@@ -240,13 +240,13 @@ public partial class Freya
 
         /* 待機 */
         var idle = new Idle();
-        _stateMachine.AddState(States.idle, idle);
+        _stateMachine.AddState(States.idle, idle, new string[] { "CanDodge", "CanJump" });
 
         /* 移動 */
         var move = new MoveFree(true);
         move.SetAccel(_accel);
         move.SetDecel(_decel);
-        _stateMachine.AddState(States.move, move, new string[] { "MV" });
+        _stateMachine.AddState(States.move, move, new string[] { "MV", "CanDodge", "CanJump" });
 
         /* 回避 */
         var dodge = new MoveInvincible(_invincibleTime, _dodgeRecoveryTime, false, Triggers.dodgeCancel.ToString());
@@ -284,7 +284,7 @@ public partial class Freya
         {
             PlaySE(_N1_AttackSE.SEName, _N1_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.N1_attack, N_attack1, new string[] { "NA", "NA1" });
+        _stateMachine.AddState(States.N1_attack, N_attack1, new string[] { "NA", "NA1" , "CanDodge"});
 
         /* 通常攻撃2 */
         N_attack2 = new ShootCombo(N2_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
@@ -297,7 +297,7 @@ public partial class Freya
         {
             PlaySE(_N2_AttackSE.SEName, _N2_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.N2_attack, N_attack2, new string[] { "NA", "NA2" });
+        _stateMachine.AddState(States.N2_attack, N_attack2, new string[] { "NA", "NA2" , "CanDodge"});
 
         /* 通常攻撃3 */
         N_attack3 = new ShootCombo(N3_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
@@ -310,7 +310,7 @@ public partial class Freya
         {
             PlaySE(_N3_AttackSE.SEName, _N3_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.N3_attack, N_attack3, new string[] { "NA", "NA3" });
+        _stateMachine.AddState(States.N3_attack, N_attack3, new string[] { "NA", "NA3" , "CanDodge"});
         #endregion
 
         #region   ===== DashN_Attack State =====
@@ -326,7 +326,7 @@ public partial class Freya
         {
             PlaySE(_N1_AttackSE.SEName, _N1_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.dashN1_Attack, DashN1_attack, new string[] { _dashAttackTag, "DA1" });
+        _stateMachine.AddState(States.dashN1_Attack, DashN1_attack, new string[] { _dashAttackTag, "DA1" , "CanDodge"});
 
         /* ダッシュ通常攻撃2 */
         DashN2_attack = new ShootCombo(DashN2_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
@@ -339,7 +339,7 @@ public partial class Freya
         {
             PlaySE(_N2_AttackSE.SEName, _N2_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.dashN2_Attack, DashN2_attack, new string[] { _dashAttackTag, "DA2" });
+        _stateMachine.AddState(States.dashN2_Attack, DashN2_attack, new string[] { _dashAttackTag, "DA2" , "CanDodge"});
 
         /* ダッシュ通常攻撃3 */
         DashN3_attack = new ShootCombo(DashN3_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
@@ -352,7 +352,7 @@ public partial class Freya
         {
             PlaySE(_N3_AttackSE.SEName, _N3_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.dashN3_Attack, DashN3_attack, new string[] { _dashAttackTag, "DA3" });
+        _stateMachine.AddState(States.dashN3_Attack, DashN3_attack, new string[] { _dashAttackTag, "DA3" , "CanDodge"});
         #endregion
 
         #region   ===== Charge_Attack State =====
@@ -369,7 +369,7 @@ public partial class Freya
             if (CameraDirector.instance != null) CameraDirector.instance.PlayShake();
             PlaySE(_Charge_AttackSE.SEName, _Charge_AttackSE.Volume);
         });
-        _stateMachine.AddState(States.charge_Attack, Charge_Attack, new string[] { "CA" });
+        _stateMachine.AddState(States.charge_Attack, Charge_Attack, new string[] { "CA" , "CanDodge"});
 
         /* チャージダッシュ攻撃 */
         Charge_DashAttack = new ShootCombo_Extra(_ChargeDash_bulletData, _ChargeDash_Extra_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
@@ -384,7 +384,7 @@ public partial class Freya
             if (CameraDirector.instance != null) CameraDirector.instance.PlayShake();
             PlaySE(_Charge_DashAttackSE.SEName, _Charge_DashAttackSE.Volume);
         });
-        _stateMachine.AddState(States.charge_DashAttack, Charge_DashAttack, new string[] { "CA", "CDA" });
+        _stateMachine.AddState(States.charge_DashAttack, Charge_DashAttack, new string[] { "CA", "CDA" , "CanDodge"});
         #endregion
 
         #region   ===== Jump State =====

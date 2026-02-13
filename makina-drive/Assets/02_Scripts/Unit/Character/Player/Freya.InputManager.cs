@@ -93,9 +93,12 @@ public partial class Freya
                 // すでに回避中
                 return;
             }
-            PlaySE(_DodgeSE.SEName, _DodgeSE.Volume);
-            _stateMachine.ChangeState(Triggers.dodgeInput);
-            statusManager.AddValue(Status.Stamina, -_dodgeStaminaLostAmount);
+
+            if (_stateMachine.ChangeState(Triggers.dodgeInput))
+            {
+                statusManager.AddValue(Status.Stamina, -_dodgeStaminaLostAmount);
+                PlaySE(_DodgeSE.SEName, _DodgeSE.Volume);
+            }
         }
     }
 
@@ -122,6 +125,7 @@ public partial class Freya
     private void OnJump(InputValue value) => OnJump(value.isPressed);
     public void OnJump(bool isPressed)
     {
+
         if (isPressed)
         {
             if (IsMatchingState(States.jumpfallAim))
@@ -132,24 +136,36 @@ public partial class Freya
                 return;
             }
 
-            if (statusManager.ReadValue(Status.Stamina) < _jumpStaminaLostAmount)
+            if (IsMatchingState(States.idle) || IsMatchingState(States.move))
             {
-                // スタミナ不足
-                return;
-            }
-            IsRecovery = false;
-            PlaySE(_JumpSE.SEName, _JumpSE.Volume);
-            statusManager.AddValue(Status.Stamina, -_jumpStaminaLostAmount);
 
-            if (EffectManager.instance != null) _activeJumpEffect = EffectManager.instance.Play("JumpBooster", _jumpBoosterEffectPoint.transform.position, _jumpBoosterEffectPoint.transform, this.transform);
-            _stateMachine.ChangeState(Triggers.jumpInput);
+                if (statusManager.ReadValue(Status.Stamina) < _jumpStaminaLostAmount)
+                {
+                    // スタミナ不足
+                    return;
+                }
+                
+                if (_stateMachine.ChangeState(Triggers.jumpInput))
+                {
+                    IsRecovery = false;
+                    PlaySE(_JumpSE.SEName, _JumpSE.Volume);
+                    statusManager.AddValue(Status.Stamina, -_jumpStaminaLostAmount);
+
+                    if (EffectManager.instance != null)
+                    _activeJumpEffect =EffectManager.instance.Play("JumpBooster",
+                                                _jumpBoosterEffectPoint.transform.position,
+                                                _jumpBoosterEffectPoint.transform,
+                                                this.transform);
+                }
+            }
         }
+
     }
 
     private void OnSkillDisplay(InputValue value) => OnSkillDisplay(value.isPressed);
     public void OnSkillDisplay(bool isPressed)
     {
-        if(isPressed)
+        if (isPressed)
         {
             TryOpenEnhanceUI();
         }

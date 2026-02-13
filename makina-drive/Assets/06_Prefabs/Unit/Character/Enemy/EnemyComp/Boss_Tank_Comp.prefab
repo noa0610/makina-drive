@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: _attackBulletData
       value: 
       objectReference: {fileID: 11400000, guid: c8d99a465f542324f93caec7eb0868af, type: 2}
+    - target: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+      propertyPath: _attackIntervalTime
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8326528613432991453, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
       propertyPath: m_Radius
       value: 1.5

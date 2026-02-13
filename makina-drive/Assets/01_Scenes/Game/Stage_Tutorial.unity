@@ -2567,6 +2567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialEnemySpawner
   _showHPBar: 1
+  _defaultPreviewEffect: 
 --- !u!4 &1278923610
 Transform:
   m_ObjectHideFlags: 0
