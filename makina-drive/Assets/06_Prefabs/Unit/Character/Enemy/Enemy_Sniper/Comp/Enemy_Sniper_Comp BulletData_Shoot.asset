@@ -17,7 +17,11 @@ MonoBehaviour:
   originalstatus:
     hp: 1
     time: 10
-    damage: 3
+    damage: 2.5
     speed: 3
     knockback: 0
     maxHitsPerUnit: 1
+    hitDelayTime: 0
+    performHitStop: 0
+    hitStopTime: 0
+    attackTag: []

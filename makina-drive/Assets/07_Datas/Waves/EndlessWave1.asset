@@ -10,132 +10,100 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d822f27b98a97824384fab64efea2ccb, type: 3}
-  m_Name: Wave1
+  m_Name: EndlessWave1
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
-  waveName: Wave1
+  waveName: EndlessWave1
   spawnInfos:
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670869129200563
-    processStartTime: 0
-    processCount: 8
-    processInterval: 2
-    minSpawnCount: 1
-    maxSpawnCount: 1
-    processEndTime: 0
-    spawnDelay: 0
-    waveIncreaseRate: 0.5
-    statusOverrides:
-    - type: 1
-      multiplier: 1
-      addition: 0
-    - type: 2
-      multiplier: 1
-      addition: 0
-    - type: 4
-      multiplier: 1
-      addition: 0
-    - type: 5
-      multiplier: 1
-      addition: 0
-    expAdditionPerWave: 0
-    expMultiplierPerWave: 0
-    destroyTime: 0
-    isClearTarget: 0
-    previewEffectName: 
-    spawneEffectName: 
-    FirstProcessSEName: 
-    FirstProcessSEVolume: 0.5
-  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
-    comp:
-      rid: 4698670869129200564
+      rid: 4698670869129200611
     processStartTime: 5
     processCount: 5
     processInterval: 1
     minSpawnCount: 1
-    maxSpawnCount: 1
+    maxSpawnCount: 2
     processEndTime: 0
     spawnDelay: 0
     waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
-      multiplier: 1
+      multiplier: 3.4
       addition: 0
     - type: 2
-      multiplier: 1
+      multiplier: 2.1
       addition: 0
     - type: 4
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
     - type: 5
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
-    expAdditionPerWave: 0
-    expMultiplierPerWave: 0
+    expAdditionPerWave: 11
+    expMultiplierPerWave: 0.5
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
     spawneEffectName: 
     FirstProcessSEName: 
     FirstProcessSEVolume: 0.5
-  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+  - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670869129200565
+      rid: 4698670869129200612
     processStartTime: 10
-    processCount: 3
-    processInterval: 0.5
+    processCount: 4
+    processInterval: 1
     minSpawnCount: 1
-    maxSpawnCount: 1
+    maxSpawnCount: 2
     processEndTime: 0
     spawnDelay: 0
     waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
-      multiplier: 1
+      multiplier: 3.4
       addition: 0
     - type: 2
-      multiplier: 1
+      multiplier: 2.1
       addition: 0
     - type: 4
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
     - type: 5
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
-    expAdditionPerWave: 0
-    expMultiplierPerWave: 0
+    expAdditionPerWave: 11
+    expMultiplierPerWave: 0.5
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
     spawneEffectName: 
     FirstProcessSEName: 
     FirstProcessSEVolume: 0.5
-  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+  - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
     comp:
-      rid: 4698670869129200566
+      rid: 4698670869129200613
     processStartTime: 15
     processCount: 3
-    processInterval: 0.5
+    processInterval: 1
     minSpawnCount: 1
-    maxSpawnCount: 1
+    maxSpawnCount: 2
     processEndTime: 0
     spawnDelay: 0
     waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
-      multiplier: 1
+      multiplier: 3.4
       addition: 0
     - type: 2
-      multiplier: 1
+      multiplier: 2.1
       addition: 0
     - type: 4
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
     - type: 5
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
-    expAdditionPerWave: 0
-    expMultiplierPerWave: 0
+    expAdditionPerWave: 11
+    expMultiplierPerWave: 0.5
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
@@ -144,94 +112,94 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670869129200567
+      rid: 4698670869129200614
     processStartTime: 20
-    processCount: 3
-    processInterval: 0.5
-    minSpawnCount: 1
-    maxSpawnCount: 1
-    processEndTime: 0
-    spawnDelay: 0
-    waveIncreaseRate: 0.5
-    statusOverrides:
-    - type: 1
-      multiplier: 1
-      addition: 0
-    - type: 2
-      multiplier: 1
-      addition: 0
-    - type: 4
-      multiplier: 1
-      addition: 0
-    - type: 5
-      multiplier: 1
-      addition: 0
-    expAdditionPerWave: 0
-    expMultiplierPerWave: 0
-    destroyTime: 0
-    isClearTarget: 0
-    previewEffectName: 
-    spawneEffectName: 
-    FirstProcessSEName: 
-    FirstProcessSEVolume: 0.5
-  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
-    comp:
-      rid: 4698670869129200568
-    processStartTime: 25
     processCount: 5
     processInterval: 1
     minSpawnCount: 1
-    maxSpawnCount: 1
+    maxSpawnCount: 2
     processEndTime: 0
     spawnDelay: 0
     waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
-      multiplier: 1
+      multiplier: 3.4
       addition: 0
     - type: 2
-      multiplier: 1
+      multiplier: 2.1
       addition: 0
     - type: 4
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
     - type: 5
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
-    expAdditionPerWave: 0
-    expMultiplierPerWave: 0
+    expAdditionPerWave: 11
+    expMultiplierPerWave: 0.5
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
     spawneEffectName: 
     FirstProcessSEName: 
     FirstProcessSEVolume: 0.5
-  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+  - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670869129200569
+      rid: 4698670869129200615
+    processStartTime: 25
+    processCount: 4
+    processInterval: 1
+    minSpawnCount: 1
+    maxSpawnCount: 2
+    processEndTime: 0
+    spawnDelay: 0
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.4
+      addition: 0
+    - type: 2
+      multiplier: 2.1
+      addition: 0
+    - type: 4
+      multiplier: 1.7
+      addition: 0
+    - type: 5
+      multiplier: 1.7
+      addition: 0
+    expAdditionPerWave: 11
+    expMultiplierPerWave: 0.5
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    comp:
+      rid: 4698670869129200616
     processStartTime: 30
     processCount: 3
-    processInterval: 0.5
+    processInterval: 1
     minSpawnCount: 1
-    maxSpawnCount: 1
+    maxSpawnCount: 2
     processEndTime: 0
     spawnDelay: 0
     waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
-      multiplier: 1
+      multiplier: 3.4
       addition: 0
     - type: 2
-      multiplier: 1
+      multiplier: 2.1
       addition: 0
     - type: 4
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
     - type: 5
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
-    expAdditionPerWave: 0
-    expMultiplierPerWave: 0
+    expAdditionPerWave: 11
+    expMultiplierPerWave: 0.5
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
@@ -240,94 +208,94 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670869129200570
+      rid: 4698670869129200617
     processStartTime: 35
     processCount: 5
     processInterval: 1
     minSpawnCount: 1
-    maxSpawnCount: 1
+    maxSpawnCount: 2
     processEndTime: 0
     spawnDelay: 0
     waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
-      multiplier: 1
+      multiplier: 3.4
       addition: 0
     - type: 2
-      multiplier: 1
+      multiplier: 2.1
       addition: 0
     - type: 4
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
     - type: 5
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
-    expAdditionPerWave: 0
-    expMultiplierPerWave: 0
+    expAdditionPerWave: 11
+    expMultiplierPerWave: 0.5
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
     spawneEffectName: 
     FirstProcessSEName: 
     FirstProcessSEVolume: 0.5
-  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+  - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670869129200571
+      rid: 4698670869129200618
     processStartTime: 40
-    processCount: 3
-    processInterval: 0.5
-    minSpawnCount: 1
-    maxSpawnCount: 1
-    processEndTime: 0
-    spawnDelay: 0
-    waveIncreaseRate: 0.5
-    statusOverrides:
-    - type: 1
-      multiplier: 1
-      addition: 0
-    - type: 2
-      multiplier: 1
-      addition: 0
-    - type: 4
-      multiplier: 1
-      addition: 0
-    - type: 5
-      multiplier: 1
-      addition: 0
-    expAdditionPerWave: 0
-    expMultiplierPerWave: 0
-    destroyTime: 0
-    isClearTarget: 0
-    previewEffectName: 
-    spawneEffectName: 
-    FirstProcessSEName: 
-    FirstProcessSEVolume: 0.5
-  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
-    comp:
-      rid: 4698670869129200572
-    processStartTime: 45
-    processCount: 5
+    processCount: 4
     processInterval: 1
     minSpawnCount: 1
-    maxSpawnCount: 1
+    maxSpawnCount: 2
     processEndTime: 0
     spawnDelay: 0
     waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
-      multiplier: 1
+      multiplier: 3.4
       addition: 0
     - type: 2
-      multiplier: 1
+      multiplier: 2.1
       addition: 0
     - type: 4
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
     - type: 5
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
-    expAdditionPerWave: 0
-    expMultiplierPerWave: 0
+    expAdditionPerWave: 11
+    expMultiplierPerWave: 0.5
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    comp:
+      rid: 4698670869129200619
+    processStartTime: 45
+    processCount: 3
+    processInterval: 1
+    minSpawnCount: 1
+    maxSpawnCount: 2
+    processEndTime: 0
+    spawnDelay: 0
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.4
+      addition: 0
+    - type: 2
+      multiplier: 2.1
+      addition: 0
+    - type: 4
+      multiplier: 1.7
+      addition: 0
+    - type: 5
+      multiplier: 1.7
+      addition: 0
+    expAdditionPerWave: 11
+    expMultiplierPerWave: 0.5
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
@@ -336,7 +304,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670869129200573
+      rid: 4698670869129200620
     processStartTime: 50
     processCount: 5
     processInterval: 1
@@ -347,99 +315,125 @@ MonoBehaviour:
     waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
-      multiplier: 1
+      multiplier: 3.4
       addition: 0
     - type: 2
-      multiplier: 1
+      multiplier: 2.1
       addition: 0
     - type: 4
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
     - type: 5
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
-    expAdditionPerWave: 0
-    expMultiplierPerWave: 0
+    expAdditionPerWave: 11
+    expMultiplierPerWave: 0.5
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: 
     spawneEffectName: 
     FirstProcessSEName: 
     FirstProcessSEVolume: 0.5
-  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+  - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 4698670869129200574
+      rid: 4698670869129200621
     processStartTime: 55
-    processCount: 1
-    processInterval: 0.1
-    minSpawnCount: 5
-    maxSpawnCount: 5
+    processCount: 4
+    processInterval: 1
+    minSpawnCount: 1
+    maxSpawnCount: 2
     processEndTime: 0
-    spawnDelay: 1
+    spawnDelay: 0
     waveIncreaseRate: 0.5
     statusOverrides:
     - type: 1
-      multiplier: 1
+      multiplier: 3.4
       addition: 0
     - type: 2
-      multiplier: 1
+      multiplier: 2.1
       addition: 0
     - type: 4
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
     - type: 5
-      multiplier: 1
+      multiplier: 1.7
       addition: 0
-    expAdditionPerWave: 0
-    expMultiplierPerWave: 0
+    expAdditionPerWave: 11
+    expMultiplierPerWave: 0.5
     destroyTime: 0
     isClearTarget: 0
-    previewEffectName: GenerationNotice
-    spawneEffectName: SpawnLanding
-    FirstProcessSEName: SpawnNotice
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    comp:
+      rid: 4698670869129200622
+    processStartTime: 59
+    processCount: 3
+    processInterval: 1
+    minSpawnCount: 1
+    maxSpawnCount: 2
+    processEndTime: 0
+    spawnDelay: 0
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.4
+      addition: 0
+    - type: 2
+      multiplier: 2.1
+      addition: 0
+    - type: 4
+      multiplier: 1.7
+      addition: 0
+    - type: 5
+      multiplier: 1.7
+      addition: 0
+    expAdditionPerWave: 11
+    expMultiplierPerWave: 0.5
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
     FirstProcessSEVolume: 0.5
   references:
     version: 2
     RefIds:
-    - rid: 4698670869129200563
+    - rid: 4698670869129200611
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670869129200564
+    - rid: 4698670869129200612
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670869129200565
-      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
-      data:
-        spawnDirection: 0
-    - rid: 4698670869129200566
+    - rid: 4698670869129200613
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670869129200567
-      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
-      data:
-        spawnDirection: 0
-    - rid: 4698670869129200568
+    - rid: 4698670869129200614
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670869129200569
-      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
-      data:
-        spawnDirection: 0
-    - rid: 4698670869129200570
+    - rid: 4698670869129200615
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670869129200571
-      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
-      data:
-        spawnDirection: 0
-    - rid: 4698670869129200572
+    - rid: 4698670869129200616
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670869129200573
+    - rid: 4698670869129200617
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670869129200574
-      type: {class: SpawnRandomRange, ns: , asm: Assembly-CSharp}
-      data:
-        _maxDistance: 3
-        _minDistance: 9
+    - rid: 4698670869129200618
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 4698670869129200619
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 4698670869129200620
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 4698670869129200621
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 4698670869129200622
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 

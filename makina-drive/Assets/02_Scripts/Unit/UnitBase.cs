@@ -49,6 +49,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public event Action<UnitBase> OnUnitDeath;           // 個別の死亡イベント
     private bool IsLazyDead = false;
     private float lazyDeadTime = 0;
+    private float deadTimer = 0;
     public float DropExp { get; set; } // 敵が保持する経験値量
     #endregion
 
@@ -178,9 +179,13 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         }
 
         // 死亡タイマー
-        if (IsLazyDead && dt >= lazyDeadTime)
+        if (IsLazyDead)
         {
-            OnDeath();
+            deadTimer += dt;
+            if (deadTimer >= lazyDeadTime)
+            {
+                OnForcedDeath();
+            }
         }
 
         AfterUpdate();
@@ -262,6 +267,23 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         }
     }
 
+    public virtual void OnForcedDeath()
+    {
+        // 死亡通知を飛ばす
+        OnUnitDeath?.Invoke(this);
+        OnAnyUnitDeath?.Invoke(this);
+
+        if (_status.unitName != null)
+        {
+            Debug.Log($"{_status.unitName}が死亡した");
+        }
+        else
+        {
+            Debug.Log($"{_status.name}が死亡した");
+        }
+    }
+
+
     // 死亡タイマーをセット
     public void SetLazyDeath(float deadTime)
     {
@@ -286,7 +308,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     }
     public void ApplyWaveStatus(List<StatusOverride> overrides)
     {
-        if(statusManager == null || overrides == null || overrides.Count == 0) return;
+        if (statusManager == null || overrides == null || overrides.Count == 0) return;
 
         statusManager.ApplyStatusOverride(overrides);
         // statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));

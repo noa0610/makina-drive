@@ -129,6 +129,15 @@ public partial class Enemy_Tank : UnitBase
         Destroy(this.gameObject);
     }
 
+    public override void OnForcedDeath()
+    {
+        base.OnForcedDeath();
+        
+        UnitManager.instance.RemoveUnit(this);
+        Destroy(this.gameObject);
+    }
+
+
     protected override void AfterUpdate()
     {
         base.AfterUpdate();

@@ -19,7 +19,7 @@ MonoBehaviour:
   hp: 16
   atk: 1
   def: 0
-  speed: 0.3
+  speed: 0.5
   dashSpeed: 0.7
   collectionRange: 0
   stamina: 1

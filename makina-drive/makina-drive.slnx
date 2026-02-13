@@ -2,8 +2,8 @@
   <Project Path="UniRx.csproj" />
   <Project Path="MackySoft.SerializeReferenceExtensions.Editor.csproj" />
   <Project Path="UniTask.csproj" />
-  <Project Path="UniTask.Linq.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="UniTask.Linq.csproj" />
   <Project Path="UniTask.Addressables.csproj" />
   <Project Path="UniRx.Examples.csproj" />
   <Project Path="Assembly-CSharp-firstpass.csproj" />
