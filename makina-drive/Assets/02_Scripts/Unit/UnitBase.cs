@@ -115,9 +115,10 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         InitDirection();
 
         // ひとまず固定値
-        const float RECOVERY_RATE = 10f;
+        const float RECOVERY_RATE = 1f;
         const float RECOVERY_DELAY = 1f;
-        _recoveryStatus = new RecoveryStatus(statusManager, Status.Stamina, RECOVERY_RATE, RECOVERY_DELAY);
+        _recoveryStatus = new RecoveryStatus(statusManager);
+        _recoveryStatus.SetRecovery(Status.Stamina, RECOVERY_RATE, 0.5f, RECOVERY_DELAY);
 
 #if UNITY_EDITOR
         // ログ設定切り替え可
