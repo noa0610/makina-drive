@@ -57,7 +57,7 @@ public class EnhanceUIController : MonoBehaviour
 
         _uiPanel.SetActive(true);
         Time.timeScale = 0;
-        _applier = new EnhanceApplier(_player.statusManager, _player._inventory);
+        _applier = new EnhanceApplier(_player.statusManager, _player._inventory, _player.recoveryStatus);
         RefreshUI();
     }
 

@@ -2802,6 +2802,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 172502d950dd7da49bd4d4bb593f8c57, type: 2}
   - {fileID: 11400000, guid: 3321f7e04b3283d48a9cc54022e5a3be, type: 2}
   - {fileID: 11400000, guid: 155997c7b65be68449b7cfba6221ffa1, type: 2}
+  - {fileID: 11400000, guid: 027cac03800279b4b8122b9cd4d580b2, type: 2}
+  - {fileID: 11400000, guid: 8acb20944327d5043b7612a65e79ed05, type: 2}
   _closeUIButton: {fileID: 5755200675465113154}
   _slots:
   - {fileID: 4158681198859322268}

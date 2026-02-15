@@ -115,10 +115,11 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         InitDirection();
 
         // ひとまず固定値
-        const float RECOVERY_RATE = 1f;
+        const float RECOVERY_RATE = 0.25f;
         const float RECOVERY_DELAY = 1f;
+        const float RECOVERY_PERCENT = 0.5f;
         _recoveryStatus = new RecoveryStatus(statusManager);
-        _recoveryStatus.SetRecovery(Status.Stamina, RECOVERY_RATE, 0.5f, RECOVERY_DELAY);
+        _recoveryStatus.SetRecovery(Status.Stamina, RECOVERY_RATE, RECOVERY_PERCENT, 0.2f, RECOVERY_DELAY);
 
 #if UNITY_EDITOR
         // ログ設定切り替え可
@@ -296,6 +297,17 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     {
         IsInvincible = isInvincible;
     }
+
+    // ステータス自動回復の値を変更
+    public void SetRecoveryMultiplier(Status status, float multiplier)
+    {
+        _recoveryStatus.UpdateMultiplier(status, multiplier);
+    }
+    public void AddRecoveryBaseRate(Status status, float addValue)
+    {
+        _recoveryStatus.AddBaseRate(status, addValue);
+    }
+
 
     public virtual void GainExp(float amount) { }
 
