@@ -9,6 +9,7 @@ public class EnhanceUIController : MonoBehaviour
     [SerializeField] private GameObject _uiPanel; // 選択画面のパネル
     [SerializeField] private List<EnhanceData> _allEnhanceList; // 全強化データ
     [SerializeField] private Button _closeUIButton;
+    [SerializeField] private VisualInfo _ApplySE; // 強化時のSE
 
     // UI側の各スロット（3択分）
     [SerializeField] private List<EnhanceChoiceSlot> _slots;
@@ -55,6 +56,7 @@ public class EnhanceUIController : MonoBehaviour
     {
         if (_uiPanel.activeSelf) return;
 
+        GameStateManager.instance.ChangeState(GameState.EnhanceSelect);
         _uiPanel.SetActive(true);
         Time.timeScale = 0;
         _applier = new EnhanceApplier(_player.statusManager, _player._inventory, _player.recoveryStatus);
@@ -87,8 +89,13 @@ public class EnhanceUIController : MonoBehaviour
         // 強化を適用
         _applier.Apply(selectedData);
 
+        if(SoundManager.instance != null) SoundManager.instance.PlaySE(_ApplySE.SEName, _ApplySE.Volume);
+
         // 強化権を消費
         _player._level.ConsumeEnhancementPoint();
+
+        // 選択肢をリセット
+        _manager.ResetChoices();
 
         // 強化権があれば続けて表示
         if (_player._level.EnhancementPoints > 0)
@@ -99,6 +106,7 @@ public class EnhanceUIController : MonoBehaviour
         {
             // UIを閉じて再開
             CloseUI();
+            GameStateManager.instance.ChangeState(GameState.Play);
         }
     }
 
@@ -115,7 +123,7 @@ public class EnhanceUIController : MonoBehaviour
         CloseUI();
     }
 
-    // クリア後は表示を停止させる
+    // クリア後は表示処理を停止させる
     private void HandleStateChanged(GameState gameState)
     {
         if (gameState == GameState.Clear)

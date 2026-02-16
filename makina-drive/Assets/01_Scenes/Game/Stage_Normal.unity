@@ -1870,7 +1870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6707437097309610417, guid: b14ac1b1acd6ee04994c8c2135bb6a5b, type: 3}
       propertyPath: isDoubleSpeed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6707437097309610417, guid: b14ac1b1acd6ee04994c8c2135bb6a5b, type: 3}
       propertyPath: countSecondMultiple

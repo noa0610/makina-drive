@@ -10,8 +10,9 @@ public enum GameState
     Clear,
     GameOver,
     Pause,
+    EnhanceSelect,
     TutorialPlay,
-    TutorialPause
+    TutorialPause,
 }
 
 /// <summary>

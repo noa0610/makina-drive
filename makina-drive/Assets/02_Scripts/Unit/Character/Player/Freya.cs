@@ -274,6 +274,7 @@ public partial class Freya : UnitBase, IPausable
 
         _isDead = true;
         _coll2D.isTrigger = true;
+        Pause();
 
         await UniTask.Delay(TimeSpan.FromSeconds(_deadGameOverDelay));
 
@@ -314,6 +315,14 @@ public partial class Freya : UnitBase, IPausable
             {
                 _stateMachine.SetStateDirectLazy(States.idle.ToString());
             }
+        }
+        else if (newState == GameState.Pause || newState == GameState.TutorialPause || newState == GameState.EnhanceSelect)
+        {
+            Pause();
+        }
+        else if (newState == GameState.Play || newState == GameState.TutorialPlay)
+        {
+            Play();
         }
     }
 

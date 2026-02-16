@@ -165,11 +165,15 @@ public class TutorialEnemySpawner : MonoBehaviour
     // 生成済みの敵を削除
     public void DestroyAllEnemy()
     {
-        foreach (var unit in _spawnedUnits)
+        // リストのコピーを作成してループを回す（リスト操作競合防止）
+        var tempUnits = new List<UnitBase>(_spawnedUnits);
+        foreach (var unit in tempUnits)
         {
             if (unit != null) unit.SetLazyDeath(0);
         }
         _spawnedUnits.Clear();
+
+        _isSpawning = false;
     }
 
     private void OnDestroy()

@@ -2805,6 +2805,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 027cac03800279b4b8122b9cd4d580b2, type: 2}
   - {fileID: 11400000, guid: 8acb20944327d5043b7612a65e79ed05, type: 2}
   _closeUIButton: {fileID: 5755200675465113154}
+  _ApplySE:
+    SEName: "\u30D1\u30EF\u30FC\u30A2\u30C3\u30D7"
+    Volume: 0.5
   _slots:
   - {fileID: 4158681198859322268}
   - {fileID: 4244739583065855195}

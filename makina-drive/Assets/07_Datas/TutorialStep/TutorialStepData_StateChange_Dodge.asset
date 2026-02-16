@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e228f4ea5860b45b53895e07368180, type: 3}
+  m_Name: TutorialStepData_StateChange_Dodge
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialStepData
+  windowText: "[Shift]\u3067\u300C\u56DE\u907F\u300D\u3092\u3059\u308B\u3002\n\u56DE\u907F\u4E2D\u306F\u6575\u306E\u653B\u6483\u3092\u53D7\u3051\u306A\u3044\u3002\n"
+  centerText: "\u56DE\u907F\u3092\u3057\u3066\u307F\u3088\u3046\u3002"
+  subText: "Shift\u30AD\u30FC\u3067\u56DE\u907F"
+  conditionType: 1
+  taskCount: 3
+  targetPoint: []
+  targetStateTag:
+  - DG
+  targetAttackTag: 
+  targetUnitName: 
+  targetUnitTag: 0
+  spawneEnemy:
+    unitBase: {fileID: 3718649643212116859, guid: 669bda440a2b7be49b511052417adc46, type: 3}
+    comp:
+      rid: 4698670946716483652
+    processStartTime: 0
+    processCount: 1
+    processInterval: 1
+    minSpawnCount: 5
+    maxSpawnCount: 5
+    processEndTime: 0
+    spawnDelay: 1
+    waveIncreaseRate: 0
+    statusOverrides: []
+    expAdditionPerWave: 0
+    expMultiplierPerWave: 0
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: GenerationNotice
+    spawneEffectName: SpawnLanding
+    FirstProcessSEName: SpawnNotice
+    FirstProcessSEVolume: 0.5
+  showExplanationWindow: 1
+  stopGameDuringWindow: 1
+  isInvincible: 1
+  showFailureWindow: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4698670946716483652
+      type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
+      data:
+        _radiusX: 10
+        _radiusY: 7
+        _startAngle: 0
+        _jitter: 0.5

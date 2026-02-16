@@ -58,20 +58,19 @@ public class TutorialManager : MonoBehaviour
         // 敵全滅処理を登録
         _enemySpawner.OnAllEnemyDead += () =>
         {
-            if (_steps.Count <= _currentStepIndex) return;
+            // セットアップ中、またはタスククリア済みの場合はスルー
+            if (_isSetUp || _taskClear || _steps.Count <= _currentStepIndex) return;
 
             var step = _steps[_currentStepIndex];
 
-            // 現在のステップが敵生成を行う設定でない場合は全滅イベントを無視
+            // 現在のステップが敵生成を行う設定でない場合は全滅イベントをスルー
             if (step.spawneEnemy == null || step.spawneEnemy.unitBase == null)
             {
                 return;
             }
 
-            if (!_taskClear)
-            {
-                RetryStepAsync().Forget();
-            }
+            // 敵全滅時の処理
+            RetryStepAsync().Forget();
         };
 
         // レベルアップ強化適用処理を登録
@@ -117,7 +116,7 @@ public class TutorialManager : MonoBehaviour
             if (step.showExplanationWindow && step.stopGameDuringWindow)
             {
                 GameStateManager.instance.ChangeState(GameState.TutorialPause);
-                // Time.timeScale = 0;
+                Time.timeScale = 0;
                 wasPaused = true;
             }
 
@@ -165,7 +164,7 @@ public class TutorialManager : MonoBehaviour
         }
         _spawnedTriggers.Clear();
     }
-    
+
     // エリア侵入処理
     public void OnAreaReached(Vector3 position)
     {

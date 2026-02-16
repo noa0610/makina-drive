@@ -92,14 +92,14 @@ public class TutorialUI : MonoBehaviour
         {
             // ウィンドウ表示
             await FadeAsync(_windowGroup, 1, _fadeDuration);
-
+            
             // 何らかのキー入力
             await UniTask.WaitUntil(() => Input.anyKeyDown, cancellationToken: ct);
             Debug.Log("windowEnd");
 
             // ウィンドウを閉じる
             await FadeAsync(_windowGroup, 0, _fadeDuration);
-            await UniTask.Delay(TimeSpan.FromSeconds(_displayDelay), cancellationToken: ct);
+            await UniTask.Delay(TimeSpan.FromSeconds(_displayDelay), ignoreTimeScale: true, cancellationToken: ct);
         }
 
         UpdateCountText(0, step.taskCount);
