@@ -10,12 +10,23 @@ public class EnhanceDataEditor : Editor
         // 元のデータの参照を取得
         EnhanceData data = (EnhanceData)target;
 
-        // 共通項目の表示
+        // 項目名
         data.enhanceName = EditorGUILayout.TextField("項目名", data.enhanceName);
 
+        // 説明
         EditorGUILayout.LabelField("説明");
         data.discription = EditorGUILayout.TextArea(data.discription, GUILayout.Height(60));
 
+        // アイコン
+        data.icon = (Sprite)EditorGUILayout.ObjectField("アイコン", data.icon, typeof(Sprite), false);
+        if (data.icon != null)
+        {
+            // インスペクター上に小さなプレビュー画像を表示
+            Rect rect = GUILayoutUtility.GetRect(64, 64, GUILayout.ExpandWidth(false));
+            GUI.DrawTexture(rect, AssetPreview.GetAssetPreview(data.icon));
+        }
+
+        // 最大レベル
         data.maxLevel = EditorGUILayout.IntField("最大レベル(0で無限)", data.maxLevel);
 
         // 区切り線

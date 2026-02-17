@@ -8,6 +8,7 @@ public class EnhanceData : ScriptableObject
 {
     public string enhanceName;            // 項目名
     [TextArea] public string discription; // 説明
+    public Sprite icon;                   // アイコン
 
     public EnhanceType type;
 

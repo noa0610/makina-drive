@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f934b82eddea5469aca4b5237382b3, type: 3}
   m_Name: Enhance_DashSpeedUp
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
-  enhanceName: "\u30C0\u30C3\u30B7\u30E5\u901F\u5EA6"
+  enhanceName: "\u30DC\u30A4\u30E9\u30FC\u30B9\u30E9\u30B9\u30BF\u30FC"
   discription: "\u30C9\u30E9\u30A4\u30D6\u30C0\u30C3\u30B7\u30E5\u306E\u79FB\u52D5\u901F\u5EA6\u304C\n10%\u30A2\u30C3\u30D7\u3059\u308B\u3002\uFF08\u6700\u592750%\u30A2\u30C3\u30D7\uFF09"
+  icon: {fileID: 5901323728722048983, guid: c579d952fc1552c4a96e7fad7e520cce, type: 3}
   type: 0
   targetStatus: 5
   ratioPerLevel: 1

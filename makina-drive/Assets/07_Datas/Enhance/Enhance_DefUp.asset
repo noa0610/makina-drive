@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f934b82eddea5469aca4b5237382b3, type: 3}
   m_Name: Enhance_DefUp
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
-  enhanceName: "\u9632\u5FA1\u529B"
+  enhanceName: "\u6545\u56FD\u306E\u30A2\u30FC\u30DE\u30FC"
   discription: "\u6575\u304B\u3089\u53D7\u3051\u308B\u30C0\u30E1\u30FC\u30B8\u3092\n5%\u8EFD\u6E1B\u3059\u308B\u3002(\u6700\u592730%\u8EFD\u6E1B)"
+  icon: {fileID: -2757887451555568444, guid: 149557a08c67a814082a96cda6aa9f8c, type: 3}
   type: 0
   targetStatus: 7
   ratioPerLevel: -0.05

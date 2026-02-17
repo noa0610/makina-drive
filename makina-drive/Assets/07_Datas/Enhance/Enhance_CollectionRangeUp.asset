@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f934b82eddea5469aca4b5237382b3, type: 3}
   m_Name: Enhance_CollectionRangeUp
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
-  enhanceName: "\u56DE\u53CE\u7BC4\u56F2"
+  enhanceName: "\u6280\u8853\u8005\u306E\u30B0\u30ED\u30FC\u30D6"
   discription: "\u30A2\u30A4\u30C6\u30E0\u306E\u56DE\u53CE\u7BC4\u56F2\u304C\n1m\u5E83\u304F\u306A\u308B\u3002\uFF08\u6700\u59275m\u62E1\u5927\uFF09"
+  icon: {fileID: -7516271193572666277, guid: b8558069fe03141439dac903d26bdfd5, type: 3}
   type: 0
   targetStatus: 8
   ratioPerLevel: 2

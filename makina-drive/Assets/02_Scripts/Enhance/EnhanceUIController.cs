@@ -106,7 +106,6 @@ public class EnhanceUIController : MonoBehaviour
         {
             // UIを閉じて再開
             CloseUI();
-            GameStateManager.instance.ChangeState(GameState.Play);
         }
     }
 
@@ -114,6 +113,7 @@ public class EnhanceUIController : MonoBehaviour
     private void CloseUI()
     {
         _uiPanel.SetActive(false);
+        GameStateManager.instance.ChangeState(GameState.Play);
         Time.timeScale = 1;
         OnEnhanceApply?.Invoke();
     }

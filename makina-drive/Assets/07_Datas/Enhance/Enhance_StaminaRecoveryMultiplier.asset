@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f934b82eddea5469aca4b5237382b3, type: 3}
   m_Name: Enhance_StaminaRecoveryMultiplier
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
-  enhanceName: "\u30B9\u30BF\u30DF\u30CA\u56DE\u5FA9\u901F\u5EA6"
+  enhanceName: "\u30B9\u30C1\u30FC\u30E0\u30D6\u30FC\u30B9\u30BF\u30FC"
   discription: "\u30B9\u30BF\u30DF\u30CA\u56DE\u5FA9\u901F\u5EA6\u304C20%\u30A2\u30C3\u30D7\u3059\u308B\u3002\n\uFF08\u6700\u5927200%\u30A2\u30C3\u30D7\uFF09"
+  icon: {fileID: 4365544765984126881, guid: 78372fc6c6a1c084386bf79cc62bdd41, type: 3}
   type: 4
   targetStatus: 9
   ratioPerLevel: 0.02

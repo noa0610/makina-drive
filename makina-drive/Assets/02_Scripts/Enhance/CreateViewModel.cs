@@ -9,7 +9,8 @@ public class EnhanceViewModelFactory
         {
             name = data.enhanceName,
             description = data.discription,
-            currentLevel = inventory.GetLevel(data)
+            currentLevel = inventory.GetLevel(data),
+            icon = data.icon
         };
     }
 
