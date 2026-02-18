@@ -35,7 +35,12 @@ public class StatusManager
         AddStatus(Status.ATK, data.atk);
         AddStatus(Status.DEF, data.def);
         AddStatus(Status.CollectionRange, data.collectionRange);
-        AddStatus(Status.Stamina, data.stamina, false);
+        var stamina = AddStatus(Status.Stamina, data.stamina, false, true);
+        var mStamina = AddStatus(Status.MaxStamina, data.maxStamina, true, true);
+        mStamina.OnAmountChanged += (before, after) =>
+        {
+            stamina.SetMax(after);
+        };
         AddStatus(Status.knockbackMultiplier, data.knockbackMultiplier);
         AddStatus(Status.knockbackResistance, data.knockbackResistance);
         AddStatus(Status.Lv, 1);

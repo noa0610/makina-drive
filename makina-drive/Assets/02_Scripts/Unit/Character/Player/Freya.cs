@@ -227,7 +227,7 @@ public partial class Freya : UnitBase, IPausable
         {
             if (_inputDash == false || statusManager.ReadValue(Status.Stamina) <= 0)
             {
-                IsRecovery = true;
+                _recoveryStatus.SetLock(Status.Stamina, false);
                 stateMachine.ChangeState(Triggers.dashCancel);
             }
             statusManager.AddValue(Status.Stamina, -_dashStaminaFrameLostAmount);
@@ -274,6 +274,7 @@ public partial class Freya : UnitBase, IPausable
 
         _isDead = true;
         _coll2D.isTrigger = true;
+        IsRecovery = false;
         Pause();
 
         await UniTask.Delay(TimeSpan.FromSeconds(_deadGameOverDelay));

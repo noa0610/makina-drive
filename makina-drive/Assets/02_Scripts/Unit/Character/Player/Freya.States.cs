@@ -267,7 +267,7 @@ public partial class Freya
         };
         drivedash.OnCompleted += () =>
         {
-            IsRecovery = true;
+            _recoveryStatus.SetLock(Status.Stamina, false);
         };
         _stateMachine.AddState(States.drivedash, drivedash, new string[] { "DD" });
 
@@ -430,7 +430,7 @@ public partial class Freya
             // すり抜け解除
             if (_coll2D != null)
                 _coll2D.isTrigger = false;
-            IsRecovery = true;
+            _recoveryStatus.SetLock(Status.Stamina, false);
             // 無敵解除
             SetInvincible(false);
         };

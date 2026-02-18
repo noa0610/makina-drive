@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f934b82eddea5469aca4b5237382b3, type: 3}
   m_Name: Enhance_HPRecoveryRate
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
-  enhanceName: "HP\u81EA\u52D5\u56DE\u5FA9"
-  discription: "HP\u30921\u79D2\u3054\u3068\u306B\u53D6\u5F97\u6570\xD71\u56DE\u5FA9\u3059\u308B\u3002\n\uFF08\u6700\u5927\u6BCE\u79D23\u56DE\u5FA9\uFF09"
-  icon: {fileID: 7627683275842373084, guid: 346abd9f70084fb41ac73a91b5a6e3c8, type: 3}
+  enhanceName: "\u3044\u306E\u3061\u306E\u7403\u6839"
+  discription: "HP\u3092\u6BCE\u79D21\u56DE\u5FA9\u3059\u308B\u3002\n\uFF08\u6700\u5927\u6BCE\u79D23\u56DE\u5FA9\uFF09"
+  icon: {fileID: -1328020039774297929, guid: 2ad11af865110f14ab42e0666f846dbd, type: 3}
   type: 3
   targetStatus: 0
   ratioPerLevel: 1

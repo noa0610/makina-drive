@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f934b82eddea5469aca4b5237382b3, type: 3}
   m_Name: Enhance_Heal
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
-  enhanceName: "\u56DE\u5FA9 "
+  enhanceName: "\u65B0\u7DD1\u306E\u307F\u306A\u3082\u3068"
   discription: "\u73FE\u5728\u306EHP\u3092\u6700\u5927HP\u306E\n30%\u56DE\u5FA9\u3059\u308B\u3002"
-  icon: {fileID: 7627683275842373084, guid: 346abd9f70084fb41ac73a91b5a6e3c8, type: 3}
+  icon: {fileID: 4642702901029079348, guid: 73df7a2417311b34595432475b7ac01b, type: 3}
   type: 2
   targetStatus: 0
   ratioPerLevel: 0

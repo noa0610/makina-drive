@@ -107,7 +107,7 @@ public partial class Freya
     {
         if (isPressed)
         {
-            IsRecovery = false;
+            _recoveryStatus.SetLock(Status.Stamina, true);
             _inputDash = true;
             _stateMachine.ChangeState(Triggers.dashInput);
         }
@@ -115,7 +115,7 @@ public partial class Freya
         {
             if (IsMatchingState(States.drivedash))
             {
-                IsRecovery = true;
+                _recoveryStatus.SetLock(Status.Stamina, false);
             }
             _inputDash = false;
             _stateMachine.ChangeState(Triggers.dashCancel);
@@ -147,7 +147,7 @@ public partial class Freya
                 
                 if (_stateMachine.ChangeState(Triggers.jumpInput))
                 {
-                    IsRecovery = false;
+                    _recoveryStatus.SetLock(Status.Stamina, true);
                     PlaySE(_JumpSE.SEName, _JumpSE.Volume);
                     statusManager.AddValue(Status.Stamina, -_jumpStaminaLostAmount);
 

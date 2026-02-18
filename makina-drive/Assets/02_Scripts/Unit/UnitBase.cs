@@ -114,12 +114,8 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         RegisterStats();
         InitDirection();
 
-        // ひとまず固定値
-        const float RECOVERY_RATE = 0.25f;
-        const float RECOVERY_DELAY = 1f;
-        const float RECOVERY_PERCENT = 0.5f;
-        _recoveryStatus = new RecoveryStatus(statusManager);
-        _recoveryStatus.SetRecovery(Status.Stamina, RECOVERY_RATE, RECOVERY_PERCENT, 0.2f, RECOVERY_DELAY);
+        _recoveryStatus = new RecoveryStatus(_statusManager);
+        InitializeDefaultRecovery();
 
 #if UNITY_EDITOR
         // ログ設定切り替え可
@@ -151,6 +147,21 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         transform.localScale = scale;
     }
 
+    private void InitializeDefaultRecovery()
+    {
+        // スタミナの初期回復設定
+        _recoveryStatus.SetRecovery(
+            Status.Stamina,
+            baseRate: 10.0f,      // 秒間回復量
+            percentRate: 0f,      // 最大値に対する割合回復
+            multiplier: 1.0f,     // 初期倍率1.0
+            delay: 0.5f,          // スタミナ使用後、回復が始まるまでの待機時間
+            penaltyDelay: 1.0f,   // 値が0になった時の追加待機
+            isPulse: false,       // 継続的に回復させる
+            maxValueGetter: () => _statusManager.ReadValue(Status.MaxStamina)
+        );
+    }
+
     protected virtual void Start()
     {
 
@@ -176,7 +187,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
         if (IsRecovery)
         {
-            // スタミナの自動回復
+            // ステータスの自動回復
             _recoveryStatus?.Tick(dt);
         }
 

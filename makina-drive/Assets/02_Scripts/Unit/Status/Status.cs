@@ -11,6 +11,7 @@ public enum Status
     Lv,
     DamageRatio,
     CollectionRange,
+    MaxStamina,
     Stamina,
     knockbackMultiplier,
     knockbackResistance

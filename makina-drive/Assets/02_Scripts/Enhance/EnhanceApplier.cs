@@ -83,7 +83,7 @@ public class EnhanceApplier
             Func<float> maxValueGetter = data.targetStatus switch
             {
                 Status.HP => () => _statusManager.ReadValue(Status.MaxHP),
-                Status.Stamina => () => _statusManager.ReadValue(Status.Stamina),
+                Status.Stamina => () => _statusManager.ReadValue(Status.MaxStamina),
                 _ => () => float.MaxValue
             };
 
@@ -111,8 +111,38 @@ public class EnhanceApplier
     // 回復効率を増加
     private void ApplyRecoveryMultiplier(EnhanceData data)
     {
+        if (!_statusManager.TryGetStatus(data.targetStatus, out var info)) return;
+
         // 例: 2回取得 → 1.0 + 0.1 * 2 = 1.2 (回復速度120%)
-        float newMultiplier = 1f + (data.ratioPerLevel + _inventory.GetLevel(data));
-        _recoveryStatus.UpdateMultiplier(data.targetStatus, newMultiplier);
+        float totalMultiplier = 1f + (data.ratioPerLevel * _inventory.GetLevel(data));
+
+        // 初回登録
+        if (!_recoveryStatus.IsRegistered(data.targetStatus))
+        {
+            InitializeRecovery(data.targetStatus);
+        }
+
+        _recoveryStatus.UpdateMultiplier(data.targetStatus, totalMultiplier);
+    }
+
+    private void InitializeRecovery(Status targetStatus)
+    {
+        Func<float> maxValueGetter = targetStatus switch
+        {
+            Status.HP => () => _statusManager.ReadValue(Status.MaxHP),
+            Status.Stamina => () => _statusManager.ReadValue(Status.MaxStamina),
+            _ => () => float.MaxValue
+        };
+
+        _recoveryStatus.SetRecovery(
+            targetStatus,
+            baseRate: 0,
+            percentRate: 0,
+            multiplier: 1.0f,
+            delay: 0.5f,
+            penaltyDelay: 1.0f,
+            isPulse: false,
+            maxValueGetter: maxValueGetter
+        );
     }
 }
