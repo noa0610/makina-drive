@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int _currentWaveNumber = 1; // ウェーブ数
     [SerializeField] private TimerCount _timer;
     [SerializeField] private VisualInfo _clearTargetKillSE;
+    [SerializeField] private string _clearTargetKillEffect;
     [SerializeField] private VisualInfo _clearSE;
     [SerializeField] private bool _showHPBar = false; // HPバーの表示
     [SerializeField] private string _defaultPreviewEffect; // 基本の生成予告エフェクト
@@ -88,7 +89,16 @@ public class EnemySpawner : MonoBehaviour
         if (unit.IsClearTarget)
         {
             _currentClearTargetKill++;
-            if (SoundManager.instance && _clearTargetKillSE.SEName != null) SoundManager.instance.PlaySE(_clearTargetKillSE.SEName, _clearTargetKillSE.Volume);
+            if (SoundManager.instance && _clearTargetKillSE.SEName != null)
+            {
+                SoundManager.instance.PlaySE(_clearTargetKillSE.SEName, _clearTargetKillSE.Volume);
+                Debug.Log("クリア対象撃破SE");
+            }
+
+            if(EffectManager.instance && !string.IsNullOrEmpty(_clearTargetKillEffect))
+            {
+                EffectManager.instance.Play(_clearTargetKillEffect, unit.transform.position);
+            }
 
             Debug.Log($"クリア対象撃破 現在：{_currentClearTargetKill} / {_totalClearTargetCount}");
 

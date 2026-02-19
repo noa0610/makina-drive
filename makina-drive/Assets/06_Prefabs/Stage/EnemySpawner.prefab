@@ -50,7 +50,8 @@ MonoBehaviour:
   _timer: {fileID: 0}
   _clearTargetKillSE:
     SEName: "\u30DC\u30B9\u6483\u7834"
-    Volume: 0.5
+    Volume: 1
+  _clearTargetKillEffect: BossDead
   _clearSE:
     SEName: "\u30B2\u30FC\u30E0\u30AF\u30EA\u30A2"
     Volume: 0.5

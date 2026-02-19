@@ -16,7 +16,7 @@ MonoBehaviour:
   spawnInfos:
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670889428582595
+      rid: 4698671025843339459
     processStartTime: 5
     processCount: 10
     processInterval: 0.75
@@ -48,7 +48,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670889428582596
+      rid: 4698671025843339460
     processStartTime: 10
     processCount: 5
     processInterval: 1
@@ -80,7 +80,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670889428582597
+      rid: 4698671025843339461
     processStartTime: 15
     processCount: 1
     processInterval: 1
@@ -112,7 +112,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670889428582598
+      rid: 4698671025843339462
     processStartTime: 20
     processCount: 5
     processInterval: 1
@@ -144,7 +144,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
     comp:
-      rid: 4698670889428582599
+      rid: 4698671025843339463
     processStartTime: 25
     processCount: 5
     processInterval: 1
@@ -176,7 +176,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
     comp:
-      rid: 4698670889428582600
+      rid: 4698671025843339464
     processStartTime: 25
     processCount: 5
     processInterval: 1
@@ -208,7 +208,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670889428582601
+      rid: 4698671025843339465
     processStartTime: 30
     processCount: 3
     processInterval: 1
@@ -240,7 +240,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670889428582602
+      rid: 4698671025843339466
     processStartTime: 30
     processCount: 3
     processInterval: 1
@@ -272,7 +272,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
     comp:
-      rid: 4698670889428582603
+      rid: 4698671025843339467
     processStartTime: 35
     processCount: 3
     processInterval: 1
@@ -304,7 +304,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670889428582604
+      rid: 4698671025843339468
     processStartTime: 40
     processCount: 10
     processInterval: 0.5
@@ -336,7 +336,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
     comp:
-      rid: 4698670889428582605
+      rid: 4698671025843339469
     processStartTime: 45
     processCount: 1
     processInterval: 1
@@ -368,7 +368,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670889428582606
+      rid: 4698671025843339470
     processStartTime: 50
     processCount: 3
     processInterval: 1
@@ -400,7 +400,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670889428582607
+      rid: 4698671025843339471
     processStartTime: 50
     processCount: 3
     processInterval: 1
@@ -432,7 +432,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670889428582608
+      rid: 4698671025843339472
     processStartTime: 50
     processCount: 3
     processInterval: 1
@@ -464,7 +464,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 4698670889428582609
+      rid: 4698671025843339473
     processStartTime: 50
     processCount: 3
     processInterval: 1
@@ -496,7 +496,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 9087530350985796, guid: fb22ab883f2aea9458cbffef28fe6d5a, type: 3}
     comp:
-      rid: 4698670889428582610
+      rid: 4698671025843339474
     processStartTime: 55
     processCount: 1
     processInterval: 0.1
@@ -521,14 +521,14 @@ MonoBehaviour:
     expAdditionPerWave: 23
     expMultiplierPerWave: 0.25
     destroyTime: 0
-    isClearTarget: 0
+    isClearTarget: 1
     previewEffectName: GenerationNotice
     spawneEffectName: SpawnLanding
     FirstProcessSEName: SpawnNotice
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 8498992996510341214, guid: f64d37c61833653418ca02824fe8a7bc, type: 3}
     comp:
-      rid: 4698670889428582611
+      rid: 4698671025843339475
     processStartTime: 55
     processCount: 1
     processInterval: 0.1
@@ -553,7 +553,7 @@ MonoBehaviour:
     expAdditionPerWave: 23
     expMultiplierPerWave: 0.25
     destroyTime: 0
-    isClearTarget: 0
+    isClearTarget: 1
     previewEffectName: GenerationNotice
     spawneEffectName: SpawnLanding
     FirstProcessSEName: SpawnNotice
@@ -561,67 +561,67 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4698670889428582595
+    - rid: 4698671025843339459
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670889428582596
+    - rid: 4698671025843339460
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670889428582597
+    - rid: 4698671025843339461
       type: {class: SpawnRectangle, ns: , asm: Assembly-CSharp}
       data:
         _size: {x: 10, y: 8}
-    - rid: 4698670889428582598
+    - rid: 4698671025843339462
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670889428582599
+    - rid: 4698671025843339463
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670889428582600
+    - rid: 4698671025843339464
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670889428582601
+    - rid: 4698671025843339465
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670889428582602
+    - rid: 4698671025843339466
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670889428582603
+    - rid: 4698671025843339467
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670889428582604
+    - rid: 4698671025843339468
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 4698670889428582605
+    - rid: 4698671025843339469
       type: {class: SpawnRectangle, ns: , asm: Assembly-CSharp}
       data:
         _size: {x: 16, y: 12}
-    - rid: 4698670889428582606
+    - rid: 4698671025843339470
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670889428582607
+    - rid: 4698671025843339471
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670889428582608
+    - rid: 4698671025843339472
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670889428582609
+    - rid: 4698671025843339473
       type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
       data:
         spawnDirection: 0
-    - rid: 4698670889428582610
+    - rid: 4698671025843339474
       type: {class: SpawnRandomRange, ns: , asm: Assembly-CSharp}
       data:
         _maxDistance: 3
         _minDistance: 9
-    - rid: 4698670889428582611
+    - rid: 4698671025843339475
       type: {class: SpawnRandomRange, ns: , asm: Assembly-CSharp}
       data:
         _maxDistance: 3
