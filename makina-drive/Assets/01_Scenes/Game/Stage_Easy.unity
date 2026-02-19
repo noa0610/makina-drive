@@ -375,7 +375,7 @@ PrefabInstance:
       objectReference: {fileID: 509183779}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: _normalWaves.Array.size
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: _endlessWaves.Array.size
@@ -384,23 +384,23 @@ PrefabInstance:
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: '_normalWaves.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 2e9ec3fe8aa15e746bd3e6900ae9cf97, type: 2}
+      objectReference: {fileID: 11400000, guid: c8c648af2b677fc428c2e237eef66d5e, type: 2}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: '_normalWaves.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: aec58a4d09012b84eb42593977fb1d0a, type: 2}
+      objectReference: {fileID: 11400000, guid: f812d08e8a229cb4d9244f3d107a12c3, type: 2}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: '_normalWaves.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: b0a8cc087a9c3364babdf815ff1c997c, type: 2}
+      objectReference: {fileID: 11400000, guid: 25bacae237a2ef94297a8a2808291a08, type: 2}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: '_normalWaves.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: 92e72820c823a654f92baa7b7bf095b4, type: 2}
+      objectReference: {fileID: 11400000, guid: aeaebb070e1c47f479c1821d98e96578, type: 2}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: '_normalWaves.Array.data[4]'
       value: 
-      objectReference: {fileID: 11400000, guid: 6db269962015b4c4b9e0db37adfc351a, type: 2}
+      objectReference: {fileID: 11400000, guid: 7f8e8a861280c5f4180ce29131e96a34, type: 2}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: '_normalWaves.Array.data[5]'
       value: 
@@ -424,7 +424,7 @@ PrefabInstance:
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: '_endlessWaves.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 636396631657e704a9c115753e780e78, type: 2}
+      objectReference: {fileID: 11400000, guid: 1a9dc04c3706c0c47ab10a6a5bb961b6, type: 2}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: _normalWaves.Array.data[1].spawnInfos.Array.data[0].statusRate
       value: 0.025
@@ -1632,6 +1632,10 @@ PrefabInstance:
     - target: {fileID: 4415520704607769882, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
       propertyPath: m_fontSizeBase
       value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952278629928303704, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
+      propertyPath: _targetSceneName
+      value: Stage_Easy
       objectReference: {fileID: 0}
     - target: {fileID: 5451103100569877929, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
       propertyPath: m_AnchorMax.x

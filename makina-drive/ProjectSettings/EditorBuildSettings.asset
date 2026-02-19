@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/01_Scenes/Game/Stage_Endless.unity
     guid: b1ae928410b899149b1f310c3ca4c956
   - enabled: 1
+    path: Assets/01_Scenes/Game/Stage_Easy.unity
+    guid: fca976f6dc6cb9144b65c9b3f3128060
+  - enabled: 1
     path: Assets/01_Scenes/Game/Stage_Tutorial.unity
     guid: ad9e163131a3c32449e2e7dd348f0c17
   - enabled: 0
