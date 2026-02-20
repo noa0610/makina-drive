@@ -10,7 +10,6 @@ using Cysharp.Threading.Tasks;
 /// </summary>
 public class CameraMove : MonoBehaviour
 {
-    // TODO ジャンプ攻撃時カメラを引いたり寄せたりできる処理の制作
     [Header("Player GameObject")]
     [SerializeField] private float SmoothSpeed = 0.125f; // カメラの追従速度を滑らかにするための係数
     [SerializeField] private Vector3 OFFSET; // カメラとプレイヤーの相対的な位置を設定するオフセット
@@ -27,6 +26,7 @@ public class CameraMove : MonoBehaviour
     private Camera _cam;
     private bool _isFrozen = false;
     private float _defaultSize;
+    private CameraMove _cameraMove;
 
     private void Awake()
     {
@@ -73,5 +73,14 @@ public class CameraMove : MonoBehaviour
     public void Shake(float duration, float strength)
     {
         transform.DOShakePosition(duration, strength);
+    }
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Return))
+        { 
+            // _cameraMove = this.gameObject.GetComponent<CameraMove>();
+            // _cameraMove.enabled = false;
+        }
     }
 }

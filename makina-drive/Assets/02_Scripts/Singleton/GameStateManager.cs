@@ -31,6 +31,12 @@ public class GameStateManager : SingletonBehavior<GameStateManager>
         Application.targetFrameRate = 60;
     }
 
+    protected void Start()
+    {
+        Time.timeScale = 1;
+    }
+
+
     public void ChangeState(GameState nextGameState)
     {
         _gameState = nextGameState;
