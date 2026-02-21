@@ -12,18 +12,33 @@ public class Bullet : MonoBehaviour
     [Header("Collision Layers")]
     [SerializeField, Tooltip("常に衝突可能なレイヤー")]
     protected LayerMask _canHitLayer;
+
     [SerializeField, Tooltip("初期方向")]
     protected Vector2 _direction;
+
+    [SerializeField, Tooltip("エフェクト名")]
+    protected string _effectName;
+
+    [SerializeField, Tooltip("エフェクト発生地点")]
+    protected Transform _effectPoint;
+
+    [SerializeField, Tooltip("削除と同時にエフェクト削除")]
+    protected bool _destroyEffectSimultaneously;
+
+    [SerializeField, Tooltip("ヒットエフェクト名")]
+    protected string _hitEffectName;
     #endregion
 
     #region === Fields ===
     protected LayerMask _targetLayer;
     protected BulletStatus _status;
-    protected ObjectHitCounter _hitCounter = new ();
+    protected ObjectHitCounter _hitCounter = new();
     protected float _currentHP;
     protected float _elapsedTime;   // 経過時間
     protected float KnockbackForce; // ノックバック威力
     protected UnitBase _parent;
+    protected EffectInstance _bulletEffect;
+    protected EffectInstance _hitEffect;
     #endregion
 
     #region === Properties ===
@@ -68,6 +83,19 @@ public class Bullet : MonoBehaviour
     {
         // Ensure orientation matches direction when invoked
         OrientToDirection(_direction);
+
+        Transform playPoint;
+        if (_effectPoint)
+        {
+            playPoint = _effectPoint;
+        }
+        else
+        {
+            playPoint = this.gameObject.transform;
+        }
+
+        if (EffectManager.instance != null && !string.IsNullOrEmpty(_effectName))
+            _bulletEffect = EffectManager.instance.Play(_effectName, playPoint.position, playPoint);
     }
 
     public virtual void FixedUpdate()
@@ -81,7 +109,7 @@ public class Bullet : MonoBehaviour
         UpdateLifetime();
 
         // 発射したユニットが消えたときに弾を消去
-        if(_parent == null && isParentDeadBulleDestroy)
+        if (_parent == null && isParentDeadBulleDestroy)
         {
             Destroy(gameObject);
         }
@@ -186,17 +214,25 @@ public class Bullet : MonoBehaviour
             Vector2 pushdir = (target.transform.position - transform.position).normalized;
 
             UnitManager.instance.AddDamage(target, _parent, _status.damage, pushdir, KnockbackForce, _status);
-            // Debug.Log($"parent:{_parent.name}");
+            // Debug.Log($"parent:{_parent.name}");            
 
+            if (EffectManager.instance != null && !string.IsNullOrEmpty(_hitEffectName))
+                _hitEffect = EffectManager.instance.Play(_hitEffectName, target.transform.position, target.transform);
 
             if (Hit()) NotifyDestoy();
         }
     }
     #endregion
 
-        #region === Destroy & Cleanup ===
+    #region === Destroy & Cleanup ===
     public virtual void NotifyDestoy()
     {
+        if (_destroyEffectSimultaneously)
+        {
+            _bulletEffect.Stop();
+            _bulletEffect = null;
+        }
+
         if (OnDestoryHandle != null)
             OnDestoryHandle(this);
         else if (gameObject != null)

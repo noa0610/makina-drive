@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6828549159962999541}
+  - component: {fileID: -7757421359462575718}
   - component: {fileID: 2714092159960417476}
   - component: {fileID: 5410368440870704043}
   - component: {fileID: 2582418611760888210}
-  - component: {fileID: -7757421359462575718}
   m_Layer: 0
   m_Name: Player_Fleyja_Comp Bullet_FallAttackShock
   m_TagString: Untagged
@@ -34,8 +34,32 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6780050181807928938}
+  - {fileID: 6259916708518810497}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7757421359462575718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4244560238905889917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165a37c6a41d154458ec67072e8cf86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  _canHitLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _direction: {x: 0, y: 0}
+  _effectName: FallAttack
+  _effectPoint: {fileID: 6259916708518810497}
+  _destroyEffectSimultaneously: 0
+  _hitEffectName: 
+  CanSelfMove: 1
+  isParentDeadBulleDestroy: 0
+  Knockback: 0
 --- !u!212 &2714092159960417476
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -157,23 +181,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-7757421359462575718
-MonoBehaviour:
+--- !u!1 &5703779742637354812
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4244560238905889917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 165a37c6a41d154458ec67072e8cf86a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  _canHitLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  _direction: {x: 0, y: 0}
-  CanSelfMove: 1
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6259916708518810497}
+  m_Layer: 0
+  m_Name: EffectPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6259916708518810497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5703779742637354812}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6828549159962999541}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1227713975333701669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -229,6 +267,10 @@ PrefabInstance:
     - target: {fileID: 6603980563740685288, guid: f483c58d4251e1944a6bbb66794e29d1, type: 3}
       propertyPath: m_Name
       value: Ps_Test_JumpShock
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603980563740685288, guid: f483c58d4251e1944a6bbb66794e29d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

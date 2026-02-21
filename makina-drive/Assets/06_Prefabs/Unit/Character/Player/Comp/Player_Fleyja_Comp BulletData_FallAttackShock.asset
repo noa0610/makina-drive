@@ -23,6 +23,6 @@ MonoBehaviour:
     maxHitsPerUnit: 1
     hitDelayTime: 0
     performHitStop: 1
-    hitStopTime: 0.25
+    hitStopTime: 0.05
     attackTag:
     - FA
