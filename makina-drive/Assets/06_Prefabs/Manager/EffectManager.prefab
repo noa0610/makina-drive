@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6680743470506122321}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -55,3 +55,9 @@ MonoBehaviour:
   - {fileID: 4685843026184915455, guid: 8db9d263747ef074cb35ea04bebe6375, type: 3}
   - {fileID: -6766276861607783933, guid: 39fc4e83cf43ada46b55f1c73f099d4c, type: 3}
   - {fileID: 1459455862083402775, guid: c4d11395bc98054428b884e0ea3283e2, type: 3}
+  - {fileID: 434948446140427171, guid: 8f47478c6867cd7429cd1356ee356ae8, type: 3}
+  - {fileID: 8249608742384134117, guid: 2854c4ca707bb6e4bbeb325c3a488e44, type: 3}
+  - {fileID: 8748082434890882651, guid: e43c9baca80047f40bef72ae99096d83, type: 3}
+  - {fileID: 7535077795217235699, guid: 83cc97078a6f9d24eafa1edd783f268f, type: 3}
+  - {fileID: 3751047109366886208, guid: 41dc65832bb66734cbe0c760e59760b1, type: 3}
+  - {fileID: 1358426957084789806, guid: 69c35f3a2505f1e44a79ed3e3dcc1a29, type: 3}

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2763e9bab5cb8e645ac129f74735c745, type: 3}
-  m_Name: EffectData_Heal
+  m_Name: EffectData_FixedPosition_BossDead
   m_EditorClassIdentifier: Assembly-CSharp::EffectDataBase
-  effectName: Heal
+  effectName: BossDead
   startDelay: 0
-  duration: 2
+  duration: 3
   loopForever: 0
   stopType: 0
-  attachType: 1
+  attachType: 0
   offset: {x: 0, y: 0, z: 0}
   useRandomOffset: 0
-  randomRange: 0.2
+  randomRange: 0
   initialEulerAngles: {x: 0, y: 0, z: 0}
-  ignoreFlip: 1
+  ignoreFlip: 0
   mirrorRotation: 0

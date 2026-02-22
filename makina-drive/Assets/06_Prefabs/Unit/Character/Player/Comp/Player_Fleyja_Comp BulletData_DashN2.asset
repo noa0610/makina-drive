@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player_Fleyja_Comp BulletData_DashN2
   m_EditorClassIdentifier: Assembly-CSharp::BulletData
   bulletName: TestBullet_DashN2
-  prefab: {fileID: 7172799108212829760, guid: 0366ad499103df64aa9e2c29371ebf2c, type: 3}
+  prefab: {fileID: 7060476144657927969, guid: 0366ad499103df64aa9e2c29371ebf2c, type: 3}
   originalstatus:
     hp: 999
     time: 1
