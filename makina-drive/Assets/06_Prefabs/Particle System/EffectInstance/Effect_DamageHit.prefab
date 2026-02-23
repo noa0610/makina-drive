@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3577059348858082000, guid: 2b2ee4c15896b1444b16fe7f95590747, type: 3}
       propertyPath: m_Name
-      value: Effect_AttackHit Variant
+      value: Effect_DamageHit
       objectReference: {fileID: 0}
     - target: {fileID: 5700042220808689235, guid: 2b2ee4c15896b1444b16fe7f95590747, type: 3}
       propertyPath: m_LocalPosition.x
@@ -77,4 +77,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0082b5916a82b84f9b0ebb5202c0c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectInstance
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: 194937fd76bc8e0439bf6568b1497000, type: 2}

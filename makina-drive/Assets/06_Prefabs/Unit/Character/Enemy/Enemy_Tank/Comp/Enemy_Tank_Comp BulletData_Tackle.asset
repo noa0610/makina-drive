@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy_Tank_Comp BulletData_Tackle
   m_EditorClassIdentifier: Assembly-CSharp::BulletData
   bulletName: Tackle
-  prefab: {fileID: 4211501614757638222, guid: 073c11501ee6a454ebba153475a9bcad, type: 3}
+  prefab: {fileID: 1950034088516192313, guid: 073c11501ee6a454ebba153475a9bcad, type: 3}
   originalstatus:
     hp: 999
     time: 999
@@ -21,3 +21,7 @@ MonoBehaviour:
     speed: 0
     knockback: 5
     maxHitsPerUnit: 1
+    hitDelayTime: 0
+    performHitStop: 0
+    hitStopTime: 0
+    attackTag: []

@@ -51,6 +51,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _direction: {x: 0, y: 0}
+  _effectName: 
+  _effectPoint: {fileID: 0}
+  _destroyEffectSimultaneously: 0
+  _hitEffectName: 
   CanSelfMove: 1
   isParentDeadBulleDestroy: 0
   Knockback: 0
@@ -136,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5641952013905062793, guid: 7da23e8b854859f48b6ca50ed2fbb7fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.83
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 5641952013905062793, guid: 7da23e8b854859f48b6ca50ed2fbb7fa, type: 3}
       propertyPath: m_LocalPosition.z

@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465311439893422303, guid: 564e2cb30280af443bdb8a779c69a328, type: 3}
       propertyPath: m_Name
-      value: Effect_ChargeAttack_Extra Variant
+      value: Effect_Attack_Charge_Extra
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -77,4 +77,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0082b5916a82b84f9b0ebb5202c0c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectInstance
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: 56f81c997107e9a48b058a023d516a27, type: 2}

@@ -227,8 +227,9 @@ public class Bullet : MonoBehaviour
     #region === Destroy & Cleanup ===
     public virtual void NotifyDestoy()
     {
-        if (_destroyEffectSimultaneously)
+        if (_destroyEffectSimultaneously && _bulletEffect != null)
         {
+            Debug.Log("BulletEffectStop");
             _bulletEffect.Stop();
             _bulletEffect = null;
         }
@@ -241,7 +242,12 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-
+        if (_destroyEffectSimultaneously && _bulletEffect != null)
+        {
+            Debug.Log("BulletEffectStop");
+            _bulletEffect.Stop();
+            _bulletEffect = null;
+        }
     }
 
     public void Dispose()

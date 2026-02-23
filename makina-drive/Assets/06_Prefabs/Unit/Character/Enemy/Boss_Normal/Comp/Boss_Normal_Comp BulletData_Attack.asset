@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boss_Normal_Comp BulletData_Attack
   m_EditorClassIdentifier: Assembly-CSharp::BulletData
   bulletName: Enemy_NormalBullet_Attack
-  prefab: {fileID: 1432112067623354893, guid: 8aad9c95e24f9114aa6cc8ae368b034f, type: 3}
+  prefab: {fileID: 1660520995763377985, guid: 8aad9c95e24f9114aa6cc8ae368b034f, type: 3}
   originalstatus:
     hp: 999
     time: 1
@@ -21,3 +21,7 @@ MonoBehaviour:
     speed: 0
     knockback: 0
     maxHitsPerUnit: 1
+    hitDelayTime: 0
+    performHitStop: 0
+    hitStopTime: 0
+    attackTag: []

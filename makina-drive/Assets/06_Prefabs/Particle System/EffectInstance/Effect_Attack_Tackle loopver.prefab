@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6531617260525135614, guid: d3a274b40ff597748997b087dccd1cab, type: 3}
       propertyPath: m_Name
-      value: Effect_TE_TackleAttack loopver Variant
+      value: Effect_Attack_Tackle loopver
       objectReference: {fileID: 0}
     - target: {fileID: 7098423109439065941, guid: d3a274b40ff597748997b087dccd1cab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -77,4 +77,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0082b5916a82b84f9b0ebb5202c0c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectInstance
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: 64264f9078ce7194f84b1b7b13898635, type: 2}

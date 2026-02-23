@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy_Normal_Comp BulletData_Attack
   m_EditorClassIdentifier: Assembly-CSharp::BulletData
   bulletName: Enemy_NormalBullet_Attack
-  prefab: {fileID: 1432112067623354893, guid: 7e09aadea002fd84e8f51454e431af60, type: 3}
+  prefab: {fileID: -4423002930058259770, guid: 7e09aadea002fd84e8f51454e431af60, type: 3}
   originalstatus:
     hp: 999
     time: 1

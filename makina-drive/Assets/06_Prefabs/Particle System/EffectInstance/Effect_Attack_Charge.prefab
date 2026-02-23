@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4193847855079864382, guid: 373bc17dd48a32d45a5b60b5205f9824, type: 3}
       propertyPath: m_Name
-      value: Effect_ChargeAttack Variant
+      value: Effect_Attack_Charge
       objectReference: {fileID: 0}
     - target: {fileID: 4288903953120976047, guid: 373bc17dd48a32d45a5b60b5205f9824, type: 3}
       propertyPath: m_LocalPosition.x
@@ -77,4 +77,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0082b5916a82b84f9b0ebb5202c0c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectInstance
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: 2c20010c0f1b27441b52d6fcccc2f381, type: 2}

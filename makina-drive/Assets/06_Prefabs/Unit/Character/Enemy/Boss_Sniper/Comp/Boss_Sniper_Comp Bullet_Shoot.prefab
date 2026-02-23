@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2383955235206624718}
+  - component: {fileID: 4852771228298297618}
   - component: {fileID: 468983105768042992}
   - component: {fileID: 7888907913945701783}
-  - component: {fileID: 4852771228298297618}
   - component: {fileID: 2559461450640758178}
   m_Layer: 0
   m_Name: Boss_Sniper_Comp Bullet_Shoot
@@ -36,6 +36,29 @@ Transform:
   - {fileID: 7796549667366469842}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4852771228298297618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4259549554468383244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165a37c6a41d154458ec67072e8cf86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  _canHitLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _direction: {x: 0, y: 0}
+  _effectName: Shot
+  _effectPoint: {fileID: 0}
+  _destroyEffectSimultaneously: 0
+  _hitEffectName: 
+  CanSelfMove: 1
+  isParentDeadBulleDestroy: 1
+  Knockback: 0
 --- !u!212 &468983105768042992
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -130,25 +153,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.05}
   m_Radius: 0.5
---- !u!114 &4852771228298297618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4259549554468383244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 165a37c6a41d154458ec67072e8cf86a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  _canHitLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  _direction: {x: 0, y: 0}
-  CanSelfMove: 1
-  isParentDeadBulleDestroy: 0
-  Knockback: 0
 --- !u!50 &2559461450640758178
 Rigidbody2D:
   serializedVersion: 5

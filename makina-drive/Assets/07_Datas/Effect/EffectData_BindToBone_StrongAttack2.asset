@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2763e9bab5cb8e645ac129f74735c745, type: 3}
-  m_Name: EffectData_FollowTarget_NormalAttack1
+  m_Name: EffectData_BindToBone_StrongAttack2
   m_EditorClassIdentifier: Assembly-CSharp::EffectDataBase
-  effectName: NormalAttack1
+  effectName: StrongAttack2
   startDelay: 0
   duration: 2
   loopForever: 0
