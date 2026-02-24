@@ -15,6 +15,7 @@ public class EffectInstance : MonoBehaviour
 
     private Transform _target;          // 位置参照対象
     private Transform _directionTarget; // 向き参照対象（指定がない場合、targetの向きを参照）
+    private Vector3 _baseScale = Vector3.one;
     private float _timer;
     private float _delayTimer;
     private bool _isStarted;
@@ -28,6 +29,16 @@ public class EffectInstance : MonoBehaviour
     {
         GetComponentsInChildren(true, _particles);
         GetComponentsInChildren(true, _renderers);
+
+        // エフェクトスケーリングモード変更（Hierarchyにし、サイズ変更の影響をまとめて受ける）
+        foreach (var p in _particles)
+        {
+            if (p != null)
+            {
+                var main = p.main;
+                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+            }
+        }
     }
 
     // エフェクトの再生開始
@@ -40,7 +51,7 @@ public class EffectInstance : MonoBehaviour
         _isStopping = false;
 
         UpdateTransform();
-        
+
         if (_data.startDelay > 0)
         {
             _isStarted = false;
@@ -71,6 +82,12 @@ public class EffectInstance : MonoBehaviour
         {
             _isStarted = true;
         }
+    }
+
+    public void SetScale(Vector3 size)
+    {
+        _baseScale = size;
+        transform.localScale = _baseScale;
     }
 
     private void FixedUpdate()
@@ -113,7 +130,7 @@ public class EffectInstance : MonoBehaviour
     {
         Vector3 finalOffset = _data.offset;
         bool isFlipped = IsFlipped();
-        if(isFlipped && !_data.ignoreFlip)
+        if (isFlipped && !_data.ignoreFlip)
         {
             finalOffset.x *= -1;
         }
@@ -153,13 +170,23 @@ public class EffectInstance : MonoBehaviour
         // (反転をScaleで行う場合)
         if (_data.attachType == EffectAttachType.BindToBone)
         {
-            transform.localScale = _target.localScale;
+            // ボーンのスケール × 基準サイズ
+            if (_target != null)
+            {
+                transform.localScale = Vector3.Scale(_target.localScale, _baseScale);
+            }
         }
         else if (!_data.ignoreFlip)
         {
-            Vector3 scale = Vector3.one;
-            if (isFlipped) scale.x = -1;
+            // 反転フラグ × 基準サイズ
+            Vector3 scale = _baseScale;
+            if (IsFlipped()) scale.x *= -1;
             transform.localScale = scale;
+        }
+        else
+        {
+            // 反転無視の場合は基準サイズのみ適用
+            transform.localScale = _baseScale;
         }
     }
 
@@ -172,7 +199,7 @@ public class EffectInstance : MonoBehaviour
             // Z軸回転の鏡写し（2Dゲームで一般的な、進行方向に対する反転）
             // 例：30度で右上に飛ぶエフェクトなら、反転時は150度で左上に飛ぶようにする
             angles.z = 180f - angles.z;
-            
+
             // Y 軸なども反転させる場合はここに追加する
             // angles.y += 180f; 
         }

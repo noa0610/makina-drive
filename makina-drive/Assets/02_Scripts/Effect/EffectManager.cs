@@ -21,7 +21,7 @@ public class EffectManager : SingletonBehavior<EffectManager>
     }
 
     // エフェクトを再生
-    public EffectInstance Play(string effectName, Vector3 position, Transform target = null, Transform directionTarget = null)
+    public EffectInstance Play(string effectName, Vector3 position, Transform target = null, Transform directionTarget = null, Vector3? size = null)
     {
         if (!_prefabMap.TryGetValue(effectName, out var prefab))
         {
@@ -32,6 +32,9 @@ public class EffectManager : SingletonBehavior<EffectManager>
         // プールから取得
         EffectInstance instance = GetFromPool(prefab);
 
+        // サイズ設定
+        instance.SetScale(size ?? Vector3.one);
+        
         // 生成位置設定
         Vector3 spawnPos = position;
         if (instance.EffectData.useRandomOffset)
@@ -47,7 +50,7 @@ public class EffectManager : SingletonBehavior<EffectManager>
         instance.OnEffectComplete += HandleEffectComplete;
 
         instance.Play(target, directionTarget ?? target);
-        
+
         return instance;
     }
 
@@ -55,12 +58,12 @@ public class EffectManager : SingletonBehavior<EffectManager>
     {
         string key = prefab.EffectData.effectName;
 
-        if(!_poolMap.ContainsKey(key))
+        if (!_poolMap.ContainsKey(key))
         {
             _poolMap[key] = new Stack<EffectInstance>();
         }
 
-        if(_poolMap[key].Count > 0)
+        if (_poolMap[key].Count > 0)
         {
             EffectInstance pooledInstance = _poolMap[key].Pop();
             pooledInstance.gameObject.SetActive(true);
@@ -85,8 +88,8 @@ public class EffectManager : SingletonBehavior<EffectManager>
         string key = instance.EffectData.effectName;
 
         instance.gameObject.SetActive(false);
-        
-        if(!_poolMap.ContainsKey(key))
+
+        if (!_poolMap.ContainsKey(key))
         {
             _poolMap[key] = new Stack<EffectInstance>();
         }

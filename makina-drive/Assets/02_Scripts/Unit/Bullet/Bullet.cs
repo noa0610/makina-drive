@@ -19,6 +19,9 @@ public class Bullet : MonoBehaviour
     [SerializeField, Tooltip("エフェクト名")]
     protected string _effectName;
 
+    [SerializeField, Tooltip("エフェクトサイズ")]
+    protected Vector3 _effectSize = new Vector3(1, 1, 1);
+
     [SerializeField, Tooltip("エフェクト発生地点")]
     protected Transform _effectPoint;
 
@@ -95,7 +98,7 @@ public class Bullet : MonoBehaviour
         }
 
         if (EffectManager.instance != null && !string.IsNullOrEmpty(_effectName))
-            _bulletEffect = EffectManager.instance.Play(_effectName, playPoint.position, playPoint);
+            _bulletEffect = EffectManager.instance.Play(_effectName, playPoint.position, playPoint, size: _effectSize);
     }
 
     public virtual void FixedUpdate()

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5558071337527642818}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2.45, z: 0}
+  m_LocalPosition: {x: 0, y: 2.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84,6 +84,7 @@ MonoBehaviour:
     m_Bits: 0
   _direction: {x: 0, y: 0}
   _effectName: TackleAttackLoop
+  _effectSize: {x: 2, y: 2, z: 2}
   _effectPoint: {fileID: 7929024369224564843}
   _destroyEffectSimultaneously: 1
   _hitEffectName: 
@@ -176,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7098423109439065941, guid: d3a274b40ff597748997b087dccd1cab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.45
+      value: 2.04
       objectReference: {fileID: 0}
     - target: {fileID: 7098423109439065941, guid: d3a274b40ff597748997b087dccd1cab, type: 3}
       propertyPath: m_LocalPosition.z

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2763e9bab5cb8e645ac129f74735c745, type: 3}
   m_Name: EffectData_BindToBone_DriveDash
   m_EditorClassIdentifier: Assembly-CSharp::EffectDataBase
-  effectName: LevelUp
+  effectName: DriveDash
   startDelay: 0
-  duration: 2
-  loopForever: 0
+  duration: 0
+  loopForever: 1
   stopType: 0
   attachType: 2
   offset: {x: 0, y: 0, z: 0}

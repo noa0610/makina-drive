@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2806456688692571539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 496335943704601211}
+  m_Layer: 0
+  m_Name: EffectPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &496335943704601211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2806456688692571539}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.09, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4933355919257563642}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8991714181502785301
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +65,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5729105709836218283}
+  - {fileID: 496335943704601211}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3176918685846204399
@@ -52,6 +84,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _direction: {x: 0, y: 0}
+  _effectName: ChargeAttack
+  _effectPoint: {fileID: 496335943704601211}
+  _destroyEffectSimultaneously: 0
+  _hitEffectName: 
   CanSelfMove: 1
   isParentDeadBulleDestroy: 0
   Knockback: 0
@@ -198,9 +234,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ps_ChargeAttack
       objectReference: {fileID: 0}
+    - target: {fileID: 4193847855079864382, guid: 373bc17dd48a32d45a5b60b5205f9824, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4288903953120976047, guid: 373bc17dd48a32d45a5b60b5205f9824, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.69
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 4288903953120976047, guid: 373bc17dd48a32d45a5b60b5205f9824, type: 3}
       propertyPath: m_LocalPosition.y

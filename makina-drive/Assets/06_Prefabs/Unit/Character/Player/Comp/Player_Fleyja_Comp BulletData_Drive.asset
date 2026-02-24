@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player_Fleyja_Comp BulletData_Drive
   m_EditorClassIdentifier: Assembly-CSharp::BulletData
   bulletName: DriveDash
-  prefab: {fileID: 870608494624893475, guid: 1596575086d65764b94c2990257906f7, type: 3}
+  prefab: {fileID: 1174492689969987241, guid: 1596575086d65764b94c2990257906f7, type: 3}
   originalstatus:
     hp: 9999
     time: 9999

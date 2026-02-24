@@ -53,6 +53,7 @@ MonoBehaviour:
     m_Bits: 0
   _direction: {x: 0, y: 0}
   _effectName: Shot
+  _effectSize: {x: 1.5, y: 1.5, z: 1.5}
   _effectPoint: {fileID: 0}
   _destroyEffectSimultaneously: 0
   _hitEffectName: 
@@ -191,6 +192,10 @@ PrefabInstance:
     - target: {fileID: 273024868515458077, guid: 4baca45b96d81cb4dbaf06e7cb0c6e20, type: 3}
       propertyPath: m_Name
       value: PS_Shot
+      objectReference: {fileID: 0}
+    - target: {fileID: 273024868515458077, guid: 4baca45b96d81cb4dbaf06e7cb0c6e20, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5310884452604238172, guid: 4baca45b96d81cb4dbaf06e7cb0c6e20, type: 3}
       propertyPath: m_LocalPosition.x
