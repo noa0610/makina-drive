@@ -237,6 +237,9 @@ MonoBehaviour:
   _dashStaminaFrameLostAmount: 0.5
   _createPos: 1
   _attackAccel: 20
+  _arrowPrefab: {fileID: 782915453901095039, guid: ae0559cd6dccb964fa30ea3acef6586d, type: 3}
+  _arrowDistance: 2
+  _showArrow: 1
   N1_bulletData: {fileID: 11400000, guid: 024495779c314cc499b6f217cee454ec, type: 2}
   N1_inputReceptionTime: 0.3
   N1_stateChangeTime: 0.8
@@ -324,6 +327,9 @@ MonoBehaviour:
   _levelUpSE:
     SEName: "\u30EC\u30D9\u30EB\u30A2\u30C3\u30D7"
     Volume: 0.5
+  _DamageSE:
+    SEName: "\u30D7\u30EC\u30A4\u30E4\u30FC\u30C0\u30E1\u30FC\u30B8"
+    Volume: 0.8
   _DaedSE:
     SEName: "\u6B7B\u4EA1"
     Volume: 0.5

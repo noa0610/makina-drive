@@ -48,6 +48,10 @@ public partial class Freya : UnitBase, IPausable
     [Header("攻撃共通")]
     [SerializeField] private float _createPos = 4f;
     [SerializeField] private float _attackAccel = 5f;
+    [SerializeField] private GameObject _arrowPrefab; // 攻撃方向を表示する矢印
+    [SerializeField] private float _arrowDistance = 1.5f;
+    [SerializeField] private bool _showArrow = true;
+    private DirectionIndicator _indicatorInstance;
 
 
     [Header("通常攻撃１")]
@@ -148,6 +152,7 @@ public partial class Freya : UnitBase, IPausable
     private EffectInstance _activeChargeEffect;
     private EffectInstance _activeLevelUPEffect;
     private EffectInstance _activeHealEffect;
+    private EffectInstance _activeDamageEffect;
     private GameObject _childParticle;
 
     [Header("SE")]
@@ -162,6 +167,7 @@ public partial class Freya : UnitBase, IPausable
     [SerializeField] private VisualInfo _Charge_DashAttackSE;
     [SerializeField] private VisualInfo _ChargeCompletedSE;
     [SerializeField] private VisualInfo _levelUpSE;
+    [SerializeField] private VisualInfo _DamageSE;
     [SerializeField] private VisualInfo _DaedSE;
 
     private string _dashAttackTag = "DA";
@@ -178,7 +184,19 @@ public partial class Freya : UnitBase, IPausable
         _inventory = new EnhanceInventory();
         Rigidbody2D.freezeRotation = true;
 
-        Debug.Log("Set Level");
+        // 攻撃方向UI表示
+        if(_arrowPrefab != null)
+        {
+            GameObject obj = Instantiate(_arrowPrefab);
+            _indicatorInstance = obj.GetComponent<DirectionIndicator>();
+
+            if(_indicatorInstance == null)
+            {
+                _indicatorInstance = obj.AddComponent<DirectionIndicator>();
+            }
+
+            _indicatorInstance.Setup(this, _arrowDistance, _showArrow);
+        }
     }
 
     protected override void Start()
@@ -254,6 +272,13 @@ public partial class Freya : UnitBase, IPausable
     public override void GainExp(float amount)
     {
         _level.AddExp(amount);
+    }
+
+    protected override void OnTakeDamage(IUnit from, float damage, Vector2 pushdir, float knockbackForce = 0)
+    {
+        base.OnTakeDamage(from, damage, pushdir, knockbackForce);
+        PlaySE(_DamageSE.SEName, _DamageSE.Volume);
+        if (EffectManager.instance != null) _activeDamageEffect = EffectManager.instance.Play("DamageHit", transform.position, transform);
     }
 
     // HPが0のときに処理

@@ -30,6 +30,9 @@ public class TutorialManager : MonoBehaviour
     private bool _isSetUp = false;   // セットアップの重複防止用
     private bool _taskClear = false; // タスククリア判定の重複防止用
 
+    private enum StepState { Active, SuccessProcessing, FailureProcessing }
+    private StepState _currentStepState = StepState.Active;
+
     private CancellationTokenSource _cts;
 
     private void Start()
@@ -58,19 +61,7 @@ public class TutorialManager : MonoBehaviour
         // 敵全滅処理を登録
         _enemySpawner.OnAllEnemyDead += () =>
         {
-            // セットアップ中、またはタスククリア済みの場合はスルー
-            if (_isSetUp || _taskClear || _steps.Count <= _currentStepIndex) return;
-
-            var step = _steps[_currentStepIndex];
-
-            // 現在のステップが敵生成を行う設定でない場合は全滅イベントをスルー
-            if (step.spawneEnemy == null || step.spawneEnemy.unitBase == null)
-            {
-                return;
-            }
-
-            // 敵全滅時の処理
-            RetryStepAsync().Forget();
+            CheckAllEnemyDeadAsync().Forget();
         };
 
         // レベルアップ強化適用処理を登録
@@ -92,6 +83,7 @@ public class TutorialManager : MonoBehaviour
         try
         {
             _taskClear = false;
+            _currentStepState = StepState.Active; // ここでアクティブに戻す
             var step = _steps[index];
             _currenActiontCount.Value = 0;
 
@@ -233,6 +225,25 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    // 敵の全滅時の判定（成功判定を優先）
+    private async UniTaskVoid CheckAllEnemyDeadAsync()
+    {
+        // すでに成功・失敗処理中なら無視
+        if (_currentStepState != StepState.Active || _isSetUp || _taskClear) return;
+
+        // 1フレーム待機して、同じフレーム内のダメージによる成功判定を優先させる
+        await UniTask.Yield();
+
+        // 待機後に成功フラグが立っていたら、全滅による失敗処理は行わない
+        if (_taskClear || _currentStepState != StepState.Active) return;
+
+        var step = _steps[_currentStepIndex];
+        if (step.spawneEnemy == null || step.spawneEnemy.unitBase == null) return;
+
+        // 失敗処理
+        RetryStepAsync().Forget();
+    }
+
     // 敵撃破イベントを受け取りカウント
     private void HandleEnemyDefeated(UnitBase unit)
     {
@@ -281,17 +292,19 @@ public class TutorialManager : MonoBehaviour
     // カウントアップ
     public void AddCount()
     {
-        if (_taskClear) return;
+        if (_taskClear || _currentStepState != StepState.Active) return;
 
         _currenActiontCount.Value++;
 
         if (_countUpSE.SEName != null) SoundManager.instance.PlaySE(_countUpSE.SEName, _countUpSE.Volume);
 
-        if (_currenActiontCount.Value >= _steps[_currentStepIndex].taskCount && _taskClear == false)
+        // 目標値に達したかチェック
+        if (_currenActiontCount.Value >= _steps[_currentStepIndex].taskCount)
         {
+            _taskClear = true;
+            _currentStepState = StepState.SuccessProcessing; // 成功状態へ
             if (_stepClearSE.SEName != null) SoundManager.instance.PlaySE(_stepClearSE.SEName, _stepClearSE.Volume);
             CompleteStepAsync().Forget();
-            _taskClear = true;
         }
     }
 
@@ -301,14 +314,17 @@ public class TutorialManager : MonoBehaviour
         _arrow.gameObject.SetActive(false);
         // クリアUIを表示
         await _ui.ShowSuccessFeedbackAsync(_cts.Token);
-        NextStepAsync().Forget();
+
+        await NextStepAsync();
     }
 
     // リトライ処理
     private async UniTaskVoid RetryStepAsync()
     {
-        var step = _steps[_currentStepIndex];
+        if (_currentStepState != StepState.Active) return;
+        _currentStepState = StepState.FailureProcessing; // 失敗状態へ
 
+        var step = _steps[_currentStepIndex];
         if (step.showFailureWindow)
         {
             // 失敗UIを表示
@@ -320,7 +336,7 @@ public class TutorialManager : MonoBehaviour
     }
 
     // 次のステップへ
-    private async UniTaskVoid NextStepAsync()
+    private async UniTask NextStepAsync()
     {
         await _ui.HideTaskHUDAsync();
 
