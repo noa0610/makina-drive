@@ -329,6 +329,7 @@ public partial class Freya : UnitBase, IPausable
         statusManager.OnHeal -= HandleHeal;
     }
 
+    // ゲーム状態遷移ハンドル
     private void HandleStateChanged(GameState newState)
     {
         if (newState == GameState.Clear)
@@ -400,11 +401,12 @@ public partial class Freya : UnitBase, IPausable
         }
     }
 
-    private void PlayEffect(EffectInstance effectInstance, string effectName, Vector3 position, Transform target = null)
+    private void RecheckMoveInput()
     {
-        if (EffectManager.instance == null && effectInstance != null) return;
-
-        effectInstance = EffectManager.instance.Play(effectName, position, target);
+        if(MoveDirection != Vector2.zero)
+        {
+            _stateMachine.LazyChange(Triggers.moveInput);
+        }
     }
 
 

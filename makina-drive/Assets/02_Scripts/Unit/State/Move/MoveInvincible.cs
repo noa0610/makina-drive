@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -23,6 +24,7 @@ public class MoveInvincible : MoveStateBase
     private float _time;
     private bool _isBlock = true;
 
+    public event Action OnCompleted;
 
     public bool IsStopInExit { get => _isStopInExit; set => _isStopInExit = value; }
 
@@ -96,6 +98,7 @@ public class MoveInvincible : MoveStateBase
 
         if (_isStopInExit && rigidbody2D != null)
             rigidbody2D.linearVelocity = Vector2.zero;
+        OnCompleted?.Invoke();
     }
 
     // 状態変更をブロックする

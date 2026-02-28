@@ -252,6 +252,7 @@ public partial class Freya
         var dodge = new MoveInvincible(_invincibleTime, _dodgeRecoveryTime, false, Triggers.dodgeCancel.ToString());
         dodge.SetAccel(_dodgeAccel);
         dodge.SetDecel(_dodgeDecel);
+        dodge.OnCompleted += RecheckMoveInput;
         _stateMachine.AddState(States.dodge, dodge, new string[] { "DG" });
 
         /* ドライブダッシュ */
@@ -269,6 +270,7 @@ public partial class Freya
         {
             _recoveryStatus.SetLock(Status.Stamina, false);
         };
+        drivedash.OnCompleted += RecheckMoveInput;
         _stateMachine.AddState(States.drivedash, drivedash, new string[] { "DD" });
 
         #region   ===== N_Attack State =====
@@ -284,6 +286,8 @@ public partial class Freya
         {
             PlaySE(_N1_AttackSE.SEName, _N1_AttackSE.Volume);
         });
+        N_attack1.OnCompleted += RecheckMoveInput;
+        N_attack1.OnTransitionOpened += RecheckMoveInput;
         _stateMachine.AddState(States.N1_attack, N_attack1, new string[] { "NA", "NA1" , "CanDodge"});
 
         /* 通常攻撃2 */
@@ -297,6 +301,8 @@ public partial class Freya
         {
             PlaySE(_N2_AttackSE.SEName, _N2_AttackSE.Volume);
         });
+        N_attack2.OnCompleted += RecheckMoveInput;
+        N_attack2.OnTransitionOpened += RecheckMoveInput;
         _stateMachine.AddState(States.N2_attack, N_attack2, new string[] { "NA", "NA2" , "CanDodge"});
 
         /* 通常攻撃3 */
@@ -310,6 +316,8 @@ public partial class Freya
         {
             PlaySE(_N3_AttackSE.SEName, _N3_AttackSE.Volume);
         });
+        N_attack3.OnCompleted += RecheckMoveInput;
+        N_attack3.OnTransitionOpened += RecheckMoveInput;
         _stateMachine.AddState(States.N3_attack, N_attack3, new string[] { "NA", "NA3" , "CanDodge"});
         #endregion
 
@@ -326,6 +334,8 @@ public partial class Freya
         {
             PlaySE(_N1_AttackSE.SEName, _N1_AttackSE.Volume);
         });
+        DashN1_attack.OnCompleted += RecheckMoveInput;
+        DashN1_attack.OnTransitionOpened += RecheckMoveInput;
         _stateMachine.AddState(States.dashN1_Attack, DashN1_attack, new string[] { _dashAttackTag, "DA1" , "CanDodge"});
 
         /* ダッシュ通常攻撃2 */
@@ -339,6 +349,8 @@ public partial class Freya
         {
             PlaySE(_N2_AttackSE.SEName, _N2_AttackSE.Volume);
         });
+        DashN2_attack.OnCompleted += RecheckMoveInput;
+        DashN2_attack.OnTransitionOpened += RecheckMoveInput;
         _stateMachine.AddState(States.dashN2_Attack, DashN2_attack, new string[] { _dashAttackTag, "DA2" , "CanDodge"});
 
         /* ダッシュ通常攻撃3 */
@@ -352,6 +364,8 @@ public partial class Freya
         {
             PlaySE(_N3_AttackSE.SEName, _N3_AttackSE.Volume);
         });
+        DashN3_attack.OnCompleted += RecheckMoveInput;
+        DashN3_attack.OnTransitionOpened += RecheckMoveInput;
         _stateMachine.AddState(States.dashN3_Attack, DashN3_attack, new string[] { _dashAttackTag, "DA3" , "CanDodge"});
         #endregion
 
@@ -369,6 +383,7 @@ public partial class Freya
             if (CameraDirector.instance != null) CameraDirector.instance.PlayShake();
             PlaySE(_Charge_AttackSE.SEName, _Charge_AttackSE.Volume);
         });
+        Charge_Attack.OnCompleted += RecheckMoveInput;
         _stateMachine.AddState(States.charge_Attack, Charge_Attack, new string[] { "CA" , "CanDodge"});
 
         /* チャージダッシュ攻撃 */
@@ -384,6 +399,7 @@ public partial class Freya
             if (CameraDirector.instance != null) CameraDirector.instance.PlayShake();
             PlaySE(_Charge_DashAttackSE.SEName, _Charge_DashAttackSE.Volume);
         });
+        Charge_DashAttack.OnCompleted += RecheckMoveInput;
         _stateMachine.AddState(States.charge_DashAttack, Charge_DashAttack, new string[] { "CA", "CDA" , "CanDodge"});
         #endregion
 
@@ -452,6 +468,7 @@ public partial class Freya
                 _activeFallAttackBoosterEffect = null;
             }
         };
+        fallAttack.OnCompleted += RecheckMoveInput;
         _stateMachine.AddState(States.fallAttack, fallAttack, new string[] { "SPA" });
         #endregion
 

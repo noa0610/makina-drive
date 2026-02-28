@@ -44,6 +44,8 @@ public class ShootCombo : ShootOnMoveBase
     protected Vector2 _initialDirection; // ステート開始時移動方向
 
     public event Action OnCompleted;
+    public event Action OnTransitionOpened;
+    private bool _hasNotifiedTransitionOpen = false;
 
     protected float _time;
 
@@ -134,7 +136,7 @@ public class ShootCombo : ShootOnMoveBase
         _ComboStateChange = false;
         _time = 0;
         _isBlock = true;
-        
+        _hasNotifiedTransitionOpen = false;
 
         if (rigidbody2D != null && _accel > 0)
         {
@@ -193,9 +195,12 @@ public class ShootCombo : ShootOnMoveBase
         }
         else if (_changeState == ChangeState.Buffering)
         {
-            if (_time >= _stateChangeTime)
+            if (!_hasNotifiedTransitionOpen &&_time >= _stateChangeTime)
             {
                 Debug.Log("StateChangeTime");
+                
+                _hasNotifiedTransitionOpen = true;
+                OnTransitionOpened?.Invoke();
                 // 遷移可能な状態に移行
                 _changeState = ChangeState.Change;
             }
