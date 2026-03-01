@@ -132,12 +132,12 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         switch (_StartDirection)
         {
             case StartDirection.Left:
-                MoveDirection = Vector2.left;
+                // MoveDirection = Vector2.left;
                 Direction = Vector2.left;
 
                 break;
             case StartDirection.Right:
-                MoveDirection = Vector2.right;
+                // MoveDirection = Vector2.right;
                 Direction = Vector2.right;
                 break;
         }

@@ -171,6 +171,7 @@ public partial class Freya : UnitBase, IPausable
     [SerializeField] private VisualInfo _DaedSE;
 
     private string _dashAttackTag = "DA";
+    private const string TAG_NO_STAMINA_RECOVERY = "NoStaminaRecovery";
 
     private Vector2 _dashDirection = Vector2.right;
     private bool _inputDash = false;
@@ -185,12 +186,12 @@ public partial class Freya : UnitBase, IPausable
         Rigidbody2D.freezeRotation = true;
 
         // 攻撃方向UI表示
-        if(_arrowPrefab != null)
+        if (_arrowPrefab != null)
         {
             GameObject obj = Instantiate(_arrowPrefab);
             _indicatorInstance = obj.GetComponent<DirectionIndicator>();
 
-            if(_indicatorInstance == null)
+            if (_indicatorInstance == null)
             {
                 _indicatorInstance = obj.AddComponent<DirectionIndicator>();
             }
@@ -202,12 +203,13 @@ public partial class Freya : UnitBase, IPausable
     protected override void Start()
     {
         ApplySettings();
+        InitializeStaminaAutoLock();
     }
 
     // 設定を反映させる
     private void ApplySettings()
     {
-        if(VisualSettingsManager.instance != null)
+        if (VisualSettingsManager.instance != null)
         {
             _isImmediateEnhancement = VisualSettingsManager.instance.Settings.isImmediateEnhancement;
         }
@@ -245,7 +247,6 @@ public partial class Freya : UnitBase, IPausable
         {
             if (_inputDash == false || statusManager.ReadValue(Status.Stamina) <= 0)
             {
-                _recoveryStatus.SetLock(Status.Stamina, false);
                 stateMachine.ChangeState(Triggers.dashCancel);
             }
             statusManager.AddValue(Status.Stamina, -_dashStaminaFrameLostAmount);
@@ -401,9 +402,25 @@ public partial class Freya : UnitBase, IPausable
         }
     }
 
+    // スタミナ回復停止ステートチェック
+    private void InitializeStaminaAutoLock()
+    {
+        _stateMachine.OnStateChanged += (StateInfo info) =>
+        {
+            // 現在のステートが "NoStaminaRecovery" タグを持っているかチェック
+            bool shouldLock = info.HasTag(TAG_NO_STAMINA_RECOVERY);
+
+            // タグの有無に合わせて、スタミナ回復のロック状態を同期する
+            _recoveryStatus.SetLock(Status.Stamina, shouldLock);
+
+            // Debug.Log($"State Changed: {info.key}, StaminaLock: {shouldLock}");
+        };
+    }
+
+    // 移動入力があった時ステート遷移
     private void RecheckMoveInput()
     {
-        if(MoveDirection != Vector2.zero)
+        if (MoveDirection != Vector2.zero)
         {
             _stateMachine.LazyChange(Triggers.moveInput);
         }
@@ -419,7 +436,7 @@ public partial class Freya : UnitBase, IPausable
     {
         return _stateMachine.CurrentState.key == _stateNames[state];
     }
-    
+
     // --- シーンビューに方向を描画(テスト用) ---
     private void OnDrawGizmos()
     {

@@ -253,7 +253,7 @@ public partial class Freya
         dodge.SetAccel(_dodgeAccel);
         dodge.SetDecel(_dodgeDecel);
         dodge.OnCompleted += RecheckMoveInput;
-        _stateMachine.AddState(States.dodge, dodge, new string[] { "DG" });
+        _stateMachine.AddState(States.dodge, dodge, new string[] { "DG" , TAG_NO_STAMINA_RECOVERY});
 
         /* ドライブダッシュ */
         drivedash = new DashAttack(Dash_bulletData, AttackLayer, true, Triggers.dashCancel.ToString());
@@ -266,12 +266,8 @@ public partial class Freya
             if (CameraDirector.instance != null) CameraDirector.instance.PlayFreezeEffect(0.15f).Forget(); ;
             PlaySE(_DashSE.SEName, _DashSE.Volume);
         };
-        drivedash.OnCompleted += () =>
-        {
-            _recoveryStatus.SetLock(Status.Stamina, false);
-        };
         drivedash.OnCompleted += RecheckMoveInput;
-        _stateMachine.AddState(States.drivedash, drivedash, new string[] { "DD" });
+        _stateMachine.AddState(States.drivedash, drivedash, new string[] { "DD" , TAG_NO_STAMINA_RECOVERY});
 
         #region   ===== N_Attack State =====
 
@@ -288,7 +284,7 @@ public partial class Freya
         });
         N_attack1.OnCompleted += RecheckMoveInput;
         N_attack1.OnTransitionOpened += RecheckMoveInput;
-        _stateMachine.AddState(States.N1_attack, N_attack1, new string[] { "NA", "NA1" , "CanDodge"});
+        _stateMachine.AddState(States.N1_attack, N_attack1, new string[] { "NA", "NA1", "CanDodge" });
 
         /* 通常攻撃2 */
         N_attack2 = new ShootCombo(N2_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
@@ -303,7 +299,7 @@ public partial class Freya
         });
         N_attack2.OnCompleted += RecheckMoveInput;
         N_attack2.OnTransitionOpened += RecheckMoveInput;
-        _stateMachine.AddState(States.N2_attack, N_attack2, new string[] { "NA", "NA2" , "CanDodge"});
+        _stateMachine.AddState(States.N2_attack, N_attack2, new string[] { "NA", "NA2", "CanDodge" });
 
         /* 通常攻撃3 */
         N_attack3 = new ShootCombo(N3_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
@@ -318,7 +314,7 @@ public partial class Freya
         });
         N_attack3.OnCompleted += RecheckMoveInput;
         N_attack3.OnTransitionOpened += RecheckMoveInput;
-        _stateMachine.AddState(States.N3_attack, N_attack3, new string[] { "NA", "NA3" , "CanDodge"});
+        _stateMachine.AddState(States.N3_attack, N_attack3, new string[] { "NA", "NA3", "CanDodge" });
         #endregion
 
         #region   ===== DashN_Attack State =====
@@ -336,7 +332,7 @@ public partial class Freya
         });
         DashN1_attack.OnCompleted += RecheckMoveInput;
         DashN1_attack.OnTransitionOpened += RecheckMoveInput;
-        _stateMachine.AddState(States.dashN1_Attack, DashN1_attack, new string[] { _dashAttackTag, "DA1" , "CanDodge"});
+        _stateMachine.AddState(States.dashN1_Attack, DashN1_attack, new string[] { _dashAttackTag, "DA1", "CanDodge" });
 
         /* ダッシュ通常攻撃2 */
         DashN2_attack = new ShootCombo(DashN2_bulletData, AttackLayer, Triggers.attackConplete.ToString(), Triggers.attackInput.ToString());
@@ -351,7 +347,7 @@ public partial class Freya
         });
         DashN2_attack.OnCompleted += RecheckMoveInput;
         DashN2_attack.OnTransitionOpened += RecheckMoveInput;
-        _stateMachine.AddState(States.dashN2_Attack, DashN2_attack, new string[] { _dashAttackTag, "DA2" , "CanDodge"});
+        _stateMachine.AddState(States.dashN2_Attack, DashN2_attack, new string[] { _dashAttackTag, "DA2", "CanDodge" });
 
         /* ダッシュ通常攻撃3 */
         DashN3_attack = new ShootCombo(DashN3_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
@@ -366,7 +362,7 @@ public partial class Freya
         });
         DashN3_attack.OnCompleted += RecheckMoveInput;
         DashN3_attack.OnTransitionOpened += RecheckMoveInput;
-        _stateMachine.AddState(States.dashN3_Attack, DashN3_attack, new string[] { _dashAttackTag, "DA3" , "CanDodge"});
+        _stateMachine.AddState(States.dashN3_Attack, DashN3_attack, new string[] { _dashAttackTag, "DA3", "CanDodge" });
         #endregion
 
         #region   ===== Charge_Attack State =====
@@ -384,7 +380,7 @@ public partial class Freya
             PlaySE(_Charge_AttackSE.SEName, _Charge_AttackSE.Volume);
         });
         Charge_Attack.OnCompleted += RecheckMoveInput;
-        _stateMachine.AddState(States.charge_Attack, Charge_Attack, new string[] { "CA" , "CanDodge"});
+        _stateMachine.AddState(States.charge_Attack, Charge_Attack, new string[] { "CA", "CanDodge" });
 
         /* チャージダッシュ攻撃 */
         Charge_DashAttack = new ShootCombo_Extra(_ChargeDash_bulletData, _ChargeDash_Extra_bulletData, AttackLayer, Triggers.attackConplete.ToString(), "");
@@ -400,7 +396,7 @@ public partial class Freya
             PlaySE(_Charge_DashAttackSE.SEName, _Charge_DashAttackSE.Volume);
         });
         Charge_DashAttack.OnCompleted += RecheckMoveInput;
-        _stateMachine.AddState(States.charge_DashAttack, Charge_DashAttack, new string[] { "CA", "CDA" , "CanDodge"});
+        _stateMachine.AddState(States.charge_DashAttack, Charge_DashAttack, new string[] { "CA", "CDA", "CanDodge" });
         #endregion
 
         #region   ===== Jump State =====
@@ -417,7 +413,7 @@ public partial class Freya
 
             if (EffectManager.instance != null) _activeFallAimEffect = EffectManager.instance.Play("AimCursor", transform.position, transform);
         };
-        _stateMachine.AddState(States.jumpstart, jumpstart);
+        _stateMachine.AddState(States.jumpstart, jumpstart, TAG_NO_STAMINA_RECOVERY);
 
         /* 落下狙い */
         var jumpfallAim = new MoveFree(true);
@@ -429,7 +425,7 @@ public partial class Freya
             _activeFallAimEffect.Stop();
             _activeFallAimEffect = null;
         };
-        _stateMachine.AddState(States.jumpfallAim, jumpfallAim);
+        _stateMachine.AddState(States.jumpfallAim, jumpfallAim, TAG_NO_STAMINA_RECOVERY);
 
         /* 落下 */
         var fall = new Idle_LazyChange(Triggers.jumpConplete.ToString(), _fallTime);
@@ -446,11 +442,10 @@ public partial class Freya
             // すり抜け解除
             if (_coll2D != null)
                 _coll2D.isTrigger = false;
-            _recoveryStatus.SetLock(Status.Stamina, false);
             // 無敵解除
             SetInvincible(false);
         };
-        _stateMachine.AddState(States.fall, fall);
+        _stateMachine.AddState(States.fall, fall, TAG_NO_STAMINA_RECOVERY);
 
         /* 落下攻撃 */
         var fallAttack = new ShootForward_LazyChange(FallAttack_bulletData, AttackLayer, Triggers.jumpCancel.ToString(), _fallAttackTime);
