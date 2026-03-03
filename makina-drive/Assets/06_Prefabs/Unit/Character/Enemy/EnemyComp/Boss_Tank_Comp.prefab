@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: _attackIntervalTime
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+      propertyPath: _blowbackBulletData
+      value: 
+      objectReference: {fileID: 11400000, guid: 963a7e14178ec8441a045ba8a483a9dd, type: 2}
     - target: {fileID: 8326528613432991453, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
       propertyPath: m_Radius
       value: 1.5

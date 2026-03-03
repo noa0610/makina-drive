@@ -77,6 +77,21 @@ public class UnitManager : SingletonBehavior<UnitManager>
         {
             DamageTextView(finalDamage, target);
         }
+
+        // ノックバック処理
+        bool isDead = target.statusManager.ReadValue(Status.HP) <= 0;
+        if (isDead || knockbackForce <= 0) return;
+
+        // ステートマシンから"blowback"キーのステート情報を取得
+        if(target.stateMachine.StateMap.TryGetValue("blowback", out var stateInfo))
+        {
+            if(stateInfo.Instance is Blowback blowbackState)
+            {
+                // データをセットし遷移トリガーを引く
+                blowbackState.PrepareBlowback(knockbackForce, pushdir);
+                target.stateMachine.ChangeState("toBlowback");
+            }
+        }
     }
 
     public void AddDamage(UnitBase target, UnitBase from, float damage)

@@ -110,7 +110,7 @@ public partial class Enemy_Tank
         _stateMachine.AddState(States.stan, stun);
 
         /* 吹き飛ばし */
-        blowback = new Blowback(Rigidbody2D, Triggers.toChase.ToString(), 1f, true);
+        blowback = new Blowback(_blowbackBulletData, Rigidbody2D, Triggers.toChase.ToString(), 1f, true);
         blowback.SetMaxDistance(_blowbackMaxDistance);
         _stateMachine.AddState(States.blowback, blowback);
 

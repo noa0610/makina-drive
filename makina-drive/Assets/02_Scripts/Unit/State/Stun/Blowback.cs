@@ -1,24 +1,40 @@
 using System;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
 
 public class Blowback : Idle_LazyChange
 {
-    [SerializeField] private Vector2 _velocity;
-    [SerializeField] private float _maxDistance;
-    [SerializeField] private float _minAttackSpeed = 2.0f;     // 攻撃が有効な最小速度
-    [SerializeField] private float _attackRadius = 0.5f;       // 攻撃範囲
-    [SerializeField] private float _blowbackHitKnockbackforce; // 吹き飛ばしにヒットした相手へのノックバックの威力
-    
+    [SerializeField] private BulletData _blowbackBulletData;
+    [SerializeField] private float _maxDistance;               // 移動距離上限
+    [SerializeField] private float _minAttackSpeed = 0.1f;     // ステート終了速度
+    [SerializeField] private float _decelerationRate = 5.0f;   // 減速の強さ
+
+    private Bullet _activeBullet;
+    private float _initialSpeed;           // 初速度
+    private float _currentKnockbackForce; // この吹き飛び自体の威力
+    private Vector2 _velocity;
     private Vector2 _startPos;
     private Rigidbody2D _rb;
 
-    public Blowback(Rigidbody2D rigidbody2D, string lazyChange, float lazyChangeTime, bool isBlock = false) 
-        : base (lazyChange, lazyChangeTime, isBlock = false)
+    public Blowback(BulletData bulletData, Rigidbody2D rigidbody2D, string lazyChange, float lazyChangeTime, bool isBlock = false)
+        : base(lazyChange, lazyChangeTime, isBlock)
     {
+        _blowbackBulletData = bulletData;
         _rb = rigidbody2D;
         _lazyChange = lazyChange;
-        _time = lazyChangeTime;
+        _lazyChangeTime = lazyChangeTime;
         _isBlock = isBlock;
+    }
+
+    public void PrepareBlowback(float force, Vector2 direction)
+    {
+        _currentKnockbackForce = force;
+        _velocity = direction * force;
+    }
+
+    public void SetBulletData(BulletData bulletData)
+    {
+        _blowbackBulletData = bulletData;
     }
 
     public void SetMaxDistance(float maxDistance)
@@ -26,78 +42,87 @@ public class Blowback : Idle_LazyChange
         _maxDistance = maxDistance;
     }
 
-    public void SetVelocity(float power, Vector2 direction)
+    public void SetMinAttackSpeed(float minAttackSpeed)
     {
-        _velocity = direction * power;
-    }
-
-    public void SetRB2(Rigidbody2D rigidbody2D)
-    {
-        _rb = rigidbody2D;
+        _minAttackSpeed = minAttackSpeed;
     }
 
     public override void Enter(IState previousIState, UnitBase parent)
     {
+        base.Enter(previousIState, parent);
         _startPos = parent.transform.position;
+        _rb.linearVelocity = _velocity;
+        _initialSpeed = _velocity.magnitude;
+
+        // 吹き飛び攻撃用の弾生成
+        if (_blowbackBulletData != null && _blowbackBulletData.prefab != null)
+        {
+            _activeBullet = GameObject.Instantiate(_blowbackBulletData.prefab, parent.transform.position, Quaternion.identity);
+            if (_activeBullet is BlowbackBullet bBullet)
+            {
+                bBullet.SetBulletStatus(_blowbackBulletData, parent.AttackLayer);
+                bBullet.SetupBlowback(parent, _currentKnockbackForce, _initialSpeed, _blowbackBulletData.originalstatus);
+                bBullet.SetParent(parent);
+                bBullet.Invoke();
+                // bBullet.SetKnockbackForce(parent.statusManager.ReadValue(Status.knockbackMultiplier));
+                Debug.Log($"BlowbackBullet : {_activeBullet.name}");
+            }
+
+            // 生成直後の向き設定
+            UpdateBulletTransform(parent);
+        }
 
         Debug.Log($"velocity : {_velocity}");
         Debug.Log($"rigidbody : {_rb}");
-
-        _rb.linearVelocity = _velocity;
         Debug.Log($"rigidbody linerVelocity {_rb.linearVelocity}");
     }
 
     public override void Stay(UnitBase parent, float deltaTime)
     {
-        _rb.linearVelocity = Vector2.Lerp(_rb.linearVelocity, Vector2.zero, deltaTime * 5f);
+        _rb.linearVelocity = Vector2.Lerp(_rb.linearVelocity, Vector2.zero, deltaTime * _decelerationRate);
+
+        // 弾を追従させる
+        UpdateBulletTransform(parent);
 
         // 速度がほぼ0なら遷移
-        if(_rb.linearVelocity.magnitude < 0.1f)
+        if (_rb.linearVelocity.magnitude < _minAttackSpeed)
         {
+            _isBlock = false;
             parent.stateMachine.LazyChange(_lazyChange);
+            return;
         }
 
         // 移動距離が最大をこえたら遷移
-        if(Vector2.Distance(_startPos, parent.transform.position) >= _maxDistance)
+        if (Vector2.Distance(_startPos, parent.transform.position) >= _maxDistance)
         {
-            _rb.linearVelocity = Vector2.zero;
+            _isBlock = false;
             parent.stateMachine.LazyChange(_lazyChange);
-        }
-
-        if(_rb.linearVelocity.magnitude > _minAttackSpeed)
-        {
-            ChackCollisionWithOthers(parent);
         }
     }
 
     public override void Exit(IState nextState, UnitBase parent)
     {
         _rb.linearVelocity = Vector2.zero;
+
+        if (_activeBullet != null)
+        {
+            _activeBullet.NotifyDestoy();
+            _activeBullet = null;
+        }
     }
 
-    // 同じタグのユニットに攻撃
-    private void ChackCollisionWithOthers(UnitBase parent)
+    // 弾を追従させ、移動方向を向かせる
+    private void UpdateBulletTransform(UnitBase parent)
     {
-        // 自分の周囲のユニットを検知
-        Collider2D[] hits = Physics2D.OverlapCircleAll(parent.transform.position, _attackRadius);
+        if (_activeBullet == null) return;
 
-        foreach (var hit in hits)
+        _activeBullet.transform.position = parent.transform.position;
+
+        Vector2 moveDir = _rb.linearVelocity;
+        if (moveDir.sqrMagnitude > 0.01f)
         {
-            if (hit.gameObject == parent.gameObject) continue;
-
-            if (hit.TryGetComponent<UnitBase>(out var target))
-            {
-                
-                Debug.Log($"Blowback {parent.name}. tag {parent.statusManager.ReadUnitTag()}. to BlowbackTarget {target.name}. tag {target.statusManager.ReadUnitTag()}.");
-
-                // タグが自分と違う場合はスルー
-                if(target.statusManager.ReadUnitTag() != parent.statusManager.ReadUnitTag()) continue;
-
-
-                // 自分の攻撃力で相手にダメージを与える
-                float damage = parent.UnitStatusData.atk;
-                UnitManager.instance.AddDamage(target, parent, damage);
-            }
+            float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
+            _activeBullet.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 }

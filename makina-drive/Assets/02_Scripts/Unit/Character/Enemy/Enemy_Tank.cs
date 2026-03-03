@@ -30,6 +30,7 @@ public partial class Enemy_Tank : UnitBase
     [SerializeField] private float _stanTime = 0.5f;
 
     [Header("吹き飛ばし")]
+    [SerializeField] private BulletData _blowbackBulletData;
     [SerializeField] private float _blowbackMaxDistance = 30f;
 
     [Header("経験値アイテム")]
@@ -84,13 +85,13 @@ public partial class Enemy_Tank : UnitBase
     {
         base.OnTakeDamage(from, damage, pushdir, knockbackForce);
 
+        // ノックバック処理
         if (knockbackForce > 0)
         {
-            blowback.SetVelocity(knockbackForce, pushdir);
             PlaySE(_BlowbackSE.SEName, _BlowbackSE.Volume);
-            _stateMachine.ChangeState(Triggers.toBlowback);
         }
 
+        // スタン状態移行
         if (damage > 0 && !_ignoreStan)
         {
             PlaySE(_DamageSE.SEName, _DamageSE.Volume);

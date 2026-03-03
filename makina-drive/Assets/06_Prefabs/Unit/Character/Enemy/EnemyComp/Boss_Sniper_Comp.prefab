@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: _dropProbability
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+      propertyPath: _blowbackBulletData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ac752966c776f348873d4a85795d4ec, type: 2}
     - target: {fileID: 753259553863552762, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
       propertyPath: m_SortingOrder
       value: 1

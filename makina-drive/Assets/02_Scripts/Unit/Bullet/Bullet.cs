@@ -219,6 +219,7 @@ public class Bullet : MonoBehaviour
             UnitManager.instance.AddDamage(target, _parent, _status.damage, pushdir, KnockbackForce, _status);
             // Debug.Log($"parent:{_parent.name}");            
 
+            // ヒットエフェクト
             if (EffectManager.instance != null && !string.IsNullOrEmpty(_hitEffectName))
                 _hitEffect = EffectManager.instance.Play(_hitEffectName, target.transform.position, target.transform);
 

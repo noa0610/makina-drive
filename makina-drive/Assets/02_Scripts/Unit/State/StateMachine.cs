@@ -151,7 +151,7 @@ public class StateMachine : IStateMachine
         {
             var prevKey = _currentState.key;
             _currentState = state;
-            _anim.OnSetState(target); // ★アニメーション委譲（直接セット時）
+            _anim.OnSetState(target);
             _currentState.state.Enter(tmp, _parent);
             return true;
         }

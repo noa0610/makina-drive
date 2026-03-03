@@ -74,10 +74,12 @@ MonoBehaviour:
   _attackBulletData: {fileID: 11400000, guid: 50a6df22d0b39ed4f9528ddafb9551d1, type: 2}
   _ignoreStan: 0
   _stanTime: 0.5
+  _blowbackBulletData: {fileID: 11400000, guid: 8622cb9076b39a240ad39ef4bdf9f440, type: 2}
   _blowbackMaxDistance: 30
   _expItem: {fileID: 4917892835222408703, guid: a428fbd1c0b2360488024408b87f946c, type: 3}
   _healItem: {fileID: 608883955796000916, guid: 5396f12c3e91dd14e995d3420170b6a6, type: 3}
   _dropProbability: 0.075
+  _hpSlider: {fileID: 0}
   _AttackSE:
     SEName: "\u30A8\u30CD\u30DF\u30FC\u30A2\u30BF\u30C3\u30AF"
     Volume: 0.4

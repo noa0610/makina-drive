@@ -165,6 +165,7 @@ MonoBehaviour:
   _attackBulletData: {fileID: 11400000, guid: 139113a34678f8d488847b81407a95eb, type: 2}
   _ignoreStan: 0
   _stanTime: 0.5
+  _blowbackBulletData: {fileID: 11400000, guid: 4b27ece2dfec20f4eb7ea48fe7920984, type: 2}
   _blowbackMaxDistance: 30
   _expItem: {fileID: 4917892835222408703, guid: a428fbd1c0b2360488024408b87f946c, type: 3}
   _healItem: {fileID: 608883955796000916, guid: 5396f12c3e91dd14e995d3420170b6a6, type: 3}

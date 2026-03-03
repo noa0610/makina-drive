@@ -32,6 +32,7 @@ public partial class Enemy_Normal : UnitBase
     [SerializeField] private float _stanTime = 0.5f;
 
     [Header("吹き飛ばし")]
+    [SerializeField] private BulletData _blowbackBulletData;
     [SerializeField] private float _blowbackMaxDistance = 30f;
 
     [Header("経験値アイテム")]
@@ -40,10 +41,6 @@ public partial class Enemy_Normal : UnitBase
     [Header("回復アイテム")]
     [SerializeField] private HealItem _healItem;
     [SerializeField] private float _dropProbability = 0.075f;
-
-    [Header("UI")]
-    [SerializeField] private EnemyHPSlider _hpSlider;
-
 
     [Header("SE")]
     [SerializeField] private VisualInfo _AttackSE;
@@ -77,19 +74,6 @@ public partial class Enemy_Normal : UnitBase
                 }
             }
         }
-
-        if(_hpSlider != null)
-        {
-            _hpSlider.SetUP(this.statusManager);
-        }
-    }
-
-    public void ConfigureHPBar(bool show)
-    {
-        if(_hpSlider)
-        {
-            _hpSlider.SetVisible(show);
-        }
     }
 
     public void SetTarget(UnitBase target)
@@ -102,13 +86,13 @@ public partial class Enemy_Normal : UnitBase
     {
         base.OnTakeDamage(from, damage, pushdir, knockbackForce);
 
+        // ノックバック処理
         if (knockbackForce > 0)
         {
-            blowback.SetVelocity(knockbackForce, pushdir);
             PlaySE(_BlowbackSE.SEName, _BlowbackSE.Volume);
-            _stateMachine.ChangeState(Triggers.toBlowback);
         }
 
+        // スタン状態移行
         if (damage > 0 && !_ignoreStan)
         {
             PlaySE(_DamageSE.SEName, _DamageSE.Volume);

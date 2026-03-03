@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: _attackBulletData
       value: 
       objectReference: {fileID: 11400000, guid: 0e47a02fa0c07164e835c8ba64e1a8bb, type: 2}
+    - target: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+      propertyPath: _blowbackBulletData
+      value: 
+      objectReference: {fileID: 11400000, guid: 78064161a6411c745b029bdb6e1d097b, type: 2}
     - target: {fileID: 2016745056494116332, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
       propertyPath: m_Radius
       value: 0.75
