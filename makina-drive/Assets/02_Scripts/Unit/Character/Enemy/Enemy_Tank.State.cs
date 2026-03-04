@@ -32,7 +32,7 @@ public partial class Enemy_Tank
         var idleTrigger = new[]
         {
             (Triggers.toChase, States.chase, ""),
-            (Triggers.toStan, States.stan, ""),
+            (Triggers.toStan, States.stan, "toIdle"),
             (Triggers.toBlowback, States.blowback, ""),
             (Triggers.died, States.dead, "")
         };
@@ -58,7 +58,7 @@ public partial class Enemy_Tank
         };
         var stanTrigger = new[]
         {
-            (Triggers.toIdle, States.idle, ""),
+            (Triggers.toIdle, States.idle, "toIdle"),
             (Triggers.toBlowback, States.blowback, ""),
             (Triggers.died, States.dead, "")
         };

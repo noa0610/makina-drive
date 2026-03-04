@@ -210,9 +210,6 @@ public class Bullet : MonoBehaviour
                 return;
             }
 
-            // ノックバック威力の計算
-            KnockbackForce = KnockbackForce - target.statusManager.ReadValue(Status.knockbackResistance);
-
             // 吹き飛ばす方向
             Vector2 pushdir = (target.transform.position - transform.position).normalized;
 

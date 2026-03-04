@@ -90,6 +90,7 @@ public partial class Enemy_Normal : UnitBase
         if (knockbackForce > 0)
         {
             PlaySE(_BlowbackSE.SEName, _BlowbackSE.Volume);
+            return;
         }
 
         // スタン状態移行

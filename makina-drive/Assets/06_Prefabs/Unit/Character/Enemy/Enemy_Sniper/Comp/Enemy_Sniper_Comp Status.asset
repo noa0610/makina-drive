@@ -22,9 +22,10 @@ MonoBehaviour:
   speed: 0.5
   dashSpeed: 0.7
   collectionRange: 0
+  maxStamina: 100
   stamina: 1
   knockbackMultiplier: 0
-  knockbackResistance: 2
+  knockbackResistance: 7
   damageTakeScale: 1
   baseExp: 20
   tags: 2

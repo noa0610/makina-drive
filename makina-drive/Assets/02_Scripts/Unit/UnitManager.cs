@@ -50,10 +50,28 @@ public class UnitManager : SingletonBehavior<UnitManager>
     /// <param name="damage"></param>
     public void AddDamage(UnitBase target, UnitBase from, float damage, Vector2 pushdir, float knockbackForce = 0, BulletStatus? bulletStatus = null) // BulletStatus? → 弾情報がないダメージ配慮
     {
+        // 無敵時間の場合は無視
+        if(target == null || target.IsInvincible) return;
+
+        // ダメージ計算
         float finalDamage = FinalDamageCalculation(damage,
                                                    from.statusManager.ReadValue(Status.ATK),
                                                    target.statusManager.ReadValue(Status.DEF),
                                                    target.statusManager.ReadValue(Status.DamageRatio));
+
+        // ノックバック威力計算
+        float finalKnockback = knockbackForce;
+        if(from != null)
+        {
+            float fromKnockbackMult = from.statusManager.ReadValue(Status.knockbackMultiplier);
+            finalKnockback *= fromKnockbackMult;
+        }
+        float targetKnockbackResist = target.statusManager.ReadValue(Status.knockbackResistance);
+
+        // (基本威力 * 倍率) - 耐性
+        finalKnockback = Mathf.Max(0, finalKnockback - targetKnockbackResist);
+
+
         if (_damegeLog)
         {
             Debug.Log($"{target.name} : Take Damage {finalDamage}.  HP: {target.statusManager.ReadValue(Status.HP) - damage} /{target.statusManager.ReadValue(Status.MaxHP)}");
@@ -80,7 +98,7 @@ public class UnitManager : SingletonBehavior<UnitManager>
 
         // ノックバック処理
         bool isDead = target.statusManager.ReadValue(Status.HP) <= 0;
-        if (isDead || knockbackForce <= 0) return;
+        if (isDead || finalKnockback < 0) return;
 
         // ステートマシンから"blowback"キーのステート情報を取得
         if(target.stateMachine.StateMap.TryGetValue("blowback", out var stateInfo))
@@ -88,7 +106,7 @@ public class UnitManager : SingletonBehavior<UnitManager>
             if(stateInfo.Instance is Blowback blowbackState)
             {
                 // データをセットし遷移トリガーを引く
-                blowbackState.PrepareBlowback(knockbackForce, pushdir);
+                blowbackState.PrepareBlowback(finalKnockback, pushdir);
                 target.stateMachine.ChangeState("toBlowback");
             }
         }
