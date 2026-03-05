@@ -53,6 +53,7 @@ MonoBehaviour:
     m_Bits: 0
   _direction: {x: 0, y: 0}
   _effectName: Shot
+  _effectSize: {x: 1, y: 1, z: 1}
   _effectPoint: {fileID: 0}
   _destroyEffectSimultaneously: 1
   _hitEffectName: 

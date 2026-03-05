@@ -50,13 +50,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _direction: {x: 0, y: 0}
+  CanSelfMove: 1
+  isParentDeadBulleDestroy: 1
   _effectName: Blowback
   _effectSize: {x: 1, y: 1, z: 1}
   _effectPoint: {fileID: 8243643686346402472}
   _destroyEffectSimultaneously: 1
-  _hitEffectName: 
-  CanSelfMove: 1
-  isParentDeadBulleDestroy: 1
+  _hitEffectName: DamageHit2
+  _hitSE:
+    SEName: "\u5439\u304D\u98DB\u3070\u3057"
+    Volume: 1
   Knockback: 0
   _minDamageSpeed: 2
   _maxDamageSpeed: 50

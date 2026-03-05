@@ -170,6 +170,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
                     audioSource.volume = volume;
                     audioSource.Play();
                     _seData[seName].playedTime = Time.realtimeSinceStartup;
+                    // Debug.Log($"PlaySE Name: {seName}");
                 }
                 //else
                 //    Debug.LogWarning("SoundManager: All SE AudioSources are in use!");

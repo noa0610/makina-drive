@@ -9,13 +9,21 @@ using Unity.VisualScripting;
 public class Bullet : MonoBehaviour
 {
     #region === Inspector ===
-    [Header("Collision Layers")]
+    [Header("基本設定")]
     [SerializeField, Tooltip("常に衝突可能なレイヤー")]
     protected LayerMask _canHitLayer;
 
     [SerializeField, Tooltip("初期方向")]
     protected Vector2 _direction;
+    
+    [SerializeField, Tooltip("移動を行う")] 
+    public bool CanSelfMove = true;
 
+    [SerializeField, Tooltip("ユニット消滅で弾を削除")]
+    public bool isParentDeadBulleDestroy = false;
+
+
+    [Header("エフェクト設定")]
     [SerializeField, Tooltip("エフェクト名")]
     protected string _effectName;
 
@@ -30,6 +38,10 @@ public class Bullet : MonoBehaviour
 
     [SerializeField, Tooltip("ヒットエフェクト名")]
     protected string _hitEffectName;
+
+    [Header("SE設定")]
+    [SerializeField, Tooltip("削除と同時にエフェクト削除")]
+    protected VisualInfo _hitSE;
     #endregion
 
     #region === Fields ===
@@ -48,8 +60,6 @@ public class Bullet : MonoBehaviour
     public Transform Transform => transform;
     public UnitBase Parent => _parent;
     public LayerMask TargetLayer { get => _targetLayer; set => _targetLayer = value; }
-    public bool CanSelfMove = true;
-    public bool isParentDeadBulleDestroy = false; // 発射したユニットが消えたら弾を削除
     public float Damage => _status.damage;
     public float Knockback;
     #endregion
@@ -219,6 +229,13 @@ public class Bullet : MonoBehaviour
             // ヒットエフェクト
             if (EffectManager.instance != null && !string.IsNullOrEmpty(_hitEffectName))
                 _hitEffect = EffectManager.instance.Play(_hitEffectName, target.transform.position, target.transform);
+
+            // ヒットSE
+            if(SoundManager.instance != null && _hitSE.SEName != null)
+            {
+                Debug.Log("BulletHit PlaySE");
+                SoundManager.instance.PlaySE(_hitSE.SEName, _hitSE.Volume);
+            }
 
             if (Hit()) NotifyDestoy();
         }

@@ -31,6 +31,7 @@ public partial class Enemy_Normal : UnitBase
     [SerializeField] private bool _ignoreStan = false; // スタン状態を無視
     [SerializeField] private float _stanTime = 0.5f;
 
+
     [Header("吹き飛ばし")]
     [SerializeField] private BulletData _blowbackBulletData;
     [SerializeField] private float _blowbackMaxDistance = 30f;

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BlowbackBullet : Bullet
 {
+    [Header("吹き飛ばしダメージ用設定")]
     [Tooltip("ここで設定した速度より遅いとダメージ無し")]
     [SerializeField] private float _minDamageSpeed = 3.0f;
 
@@ -50,6 +51,13 @@ public class BlowbackBullet : Bullet
                 // ヒットエフェクト
                 if (EffectManager.instance != null && !string.IsNullOrEmpty(_hitEffectName))
                     EffectManager.instance.Play(_hitEffectName, target.transform.position);
+
+                // ヒットSE
+                if (SoundManager.instance != null && _hitSE.SEName != null)
+                {
+                    Debug.Log("BulletHit PlaySE");
+                    SoundManager.instance.PlaySE(_hitSE.SEName, _hitSE.Volume);
+                }
 
                 // ヒット回数カウント
                 if (Hit()) NotifyDestoy();

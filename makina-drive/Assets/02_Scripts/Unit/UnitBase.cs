@@ -75,6 +75,13 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     #endregion
 
 
+    [Header("死亡")]
+    [SerializeField] private string _deadEffect;
+    [SerializeField] private Transform _deadEffectPoint;
+    [SerializeField] private Vector3 _effectSize = new Vector3(1, 1, 1);
+    private EffectInstance _activeDeadEffect;
+
+
 #if UNITY_EDITOR
     #region === Debug ===
     [Header("Debug")]
@@ -269,6 +276,19 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         // 死亡通知を飛ばす
         OnUnitDeath?.Invoke(this);
         OnAnyUnitDeath?.Invoke(this);
+
+        Transform playPoint;
+        if (_deadEffectPoint)
+        {
+            playPoint = _deadEffectPoint;
+        }
+        else
+        {
+            playPoint = this.gameObject.transform;
+        }
+
+        if (EffectManager.instance != null && !string.IsNullOrEmpty(_deadEffect))
+            _activeDeadEffect = EffectManager.instance.Play(_deadEffect, playPoint.position, playPoint, size: _effectSize);
 
         if (_status.unitName != null)
         {
