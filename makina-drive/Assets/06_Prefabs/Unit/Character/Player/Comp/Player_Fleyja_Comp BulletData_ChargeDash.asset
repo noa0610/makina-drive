@@ -23,7 +23,7 @@ MonoBehaviour:
     maxHitsPerUnit: 1
     hitDelayTime: 0
     performHitStop: 1
-    hitStopTime: 0.2
+    hitStopTime: 0.1
     attackTag:
     - CA
     - DA

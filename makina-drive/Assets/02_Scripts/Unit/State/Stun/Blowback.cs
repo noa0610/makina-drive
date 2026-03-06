@@ -6,7 +6,7 @@ public class Blowback : Idle_LazyChange
 {
     [SerializeField] private BulletData _blowbackBulletData;
     [SerializeField] private float _maxDistance;               // 移動距離上限
-    [SerializeField] private float _minAttackSpeed = 0.1f;     // ステート終了速度
+    [SerializeField] private float _minAttackSpeed = 0.2f;     // ステート終了速度
     [SerializeField] private float _decelerationRate = 5.0f;   // 減速の強さ
 
     private Bullet _activeBullet;

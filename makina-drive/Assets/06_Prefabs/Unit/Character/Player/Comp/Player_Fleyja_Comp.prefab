@@ -213,6 +213,9 @@ MonoBehaviour:
   _shootDir: {x: 1, y: 0}
   KnockbackForce: 0
   _StartDirection: 1
+  _deadEffect: 
+  _deadEffectPoint: {fileID: 0}
+  _effectSize: {x: 1, y: 1, z: 1}
   _enableVisuableInvincible: 0
   _currentState: 
   _coll2D: {fileID: 1618555290113839414}
@@ -237,8 +240,8 @@ MonoBehaviour:
   _dashStaminaFrameLostAmount: 0.5
   _createPos: 1
   _attackAccel: 20
-  _arrowPrefab: {fileID: 782915453901095039, guid: ae0559cd6dccb964fa30ea3acef6586d, type: 3}
-  _arrowDistance: 2
+  _arrowPrefab: {fileID: 8097341719250063462, guid: cd42be49f56ecf947a3d9333f4a85ad5, type: 3}
+  _arrowDistance: 3
   _showArrow: 1
   N1_bulletData: {fileID: 11400000, guid: 024495779c314cc499b6f217cee454ec, type: 2}
   N1_inputReceptionTime: 0.3

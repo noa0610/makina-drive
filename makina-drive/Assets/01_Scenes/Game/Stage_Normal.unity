@@ -1199,6 +1199,10 @@ PrefabInstance:
       value: -0.092532426
       objectReference: {fileID: 0}
     - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
+      propertyPath: _arrowDistance
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923251840479748366, guid: 46bd9fd7ddf0271459248f1c59a7593a, type: 3}
       propertyPath: _Charge_bulletData
       value: 
       objectReference: {fileID: 11400000, guid: 2f2672dbe7bc4ca489c6a852a7d6dfe1, type: 2}
