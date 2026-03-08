@@ -1613,14 +1613,6 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 1753348807}
-    - target: {fileID: 3229687780786659272, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 3303555508608236830, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 35
-      objectReference: {fileID: 0}
     - target: {fileID: 3328044799306461262, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
       propertyPath: _target
       value: 
@@ -1630,16 +1622,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1753348807}
     - target: {fileID: 3784372293011787059, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3784372293011787059, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4415520704607769882, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 5451103100569877929, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1657,20 +1641,16 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1753348807}
+    - target: {fileID: 5591479712872927076, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
+      propertyPath: _direction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6530578308023039440, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
       propertyPath: m_Name
       value: Canvas_UX
       objectReference: {fileID: 0}
-    - target: {fileID: 6530578308023039440, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
+    - target: {fileID: 7086080463068566095, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7797975317477244382, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7797975317477244382, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7906714124229956738, guid: e873a9a19a20d724699c140c28f0c7e7, type: 3}

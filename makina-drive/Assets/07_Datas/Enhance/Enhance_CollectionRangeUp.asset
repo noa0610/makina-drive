@@ -17,6 +17,6 @@ MonoBehaviour:
   icon: {fileID: -7516271193572666277, guid: b8558069fe03141439dac903d26bdfd5, type: 3}
   type: 0
   targetStatus: 8
-  ratioPerLevel: 2
+  ratioPerLevel: 1
   healRatio: 0
   maxLevel: 5

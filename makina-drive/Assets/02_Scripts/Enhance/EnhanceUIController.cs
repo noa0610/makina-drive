@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum LayoutDirection { Up, Down }
+public enum LayoutAlignment { Top, Center, Bottom }
 public class EnhanceUIController : MonoBehaviour
 {
     [SerializeField] private Freya _player;
@@ -11,12 +13,22 @@ public class EnhanceUIController : MonoBehaviour
     [SerializeField] private Button _closeUIButton;
     [SerializeField] private VisualInfo _ApplySE; // 強化時のSE
 
+    [Header("Status Summary Settings")]
+    [SerializeField] private StatusDisplayConfiguration _displayConfig;
+    [SerializeField] private Transform _statusSummaryContainer; // UIを並べる親
+    [SerializeField] private StatusSummarySlot _statusSlotPrefab; // 1行分のUIプレハブ
+    [SerializeField] private LayoutDirection _direction = LayoutDirection.Down;
+    [SerializeField] private LayoutAlignment _alignment = LayoutAlignment.Center;
+    [SerializeField] private float _spacing = 50f;                // プレハブ同士の間隔
+
     // UI側の各スロット（3択分）
     [SerializeField] private List<EnhanceChoiceSlot> _slots;
 
     private EnhanceManager _manager;
     private EnhanceApplier _applier;
     private EnhanceViewModelFactory _factory;
+    private StatusSummaryProvider _summaryProvider;
+    private List<StatusSummarySlot> _activeStatusSlots = new();
     private bool _isStop;
     public event Action OnEnhanceApply;
 
@@ -33,7 +45,8 @@ public class EnhanceUIController : MonoBehaviour
         // Startで購読することで、Freya側の初期化完了を待つ
         _player.OnEnhancementRequest += OpenUI;
         GameStateManager.OnStateChanged += HandleStateChanged;
-        
+
+        _summaryProvider = new StatusSummaryProvider(_player.statusManager);
         ApplySettings();
     }
 
@@ -61,6 +74,7 @@ public class EnhanceUIController : MonoBehaviour
         Time.timeScale = 0;
         _applier = new EnhanceApplier(_player.statusManager, _player._inventory, _player.recoveryStatus);
         RefreshUI();
+        UpdateStatusSummary();
     }
 
     // 選択肢を生成して表示（更新）
@@ -83,13 +97,69 @@ public class EnhanceUIController : MonoBehaviour
         }
     }
 
+    // ステータス表示の更新
+    private void UpdateStatusSummary()
+    {
+        var summaries = _summaryProvider.GetSummary(new List<StatusDisplayConfiguration> { _displayConfig });
+
+        foreach (var slot in _activeStatusSlots) slot.gameObject.SetActive(false);
+
+        // スロットの生成、更新
+        for (int i = 0; i < summaries.Count; i++)
+        {
+            if (i >= _activeStatusSlots.Count)
+            {
+                _activeStatusSlots.Add(Instantiate(_statusSlotPrefab, _statusSummaryContainer));
+            }
+
+            _activeStatusSlots[i].Setup(summaries[i]);
+            _activeStatusSlots[i].gameObject.SetActive(true);
+        }
+
+        // レイアウト計算
+        ApplyLayout(_activeStatusSlots);
+    }
+
+    // ステータス表示スロットのレイアウトの計算
+    private void ApplyLayout(List<StatusSummarySlot> slots)
+    {
+        int Count = slots.Count;
+        if (Count == 0) return;
+
+        // 全体の高さ
+        float totalHeight = (Count - 1) * _spacing;
+
+        // 開始位置のオフセット計算
+        float startOffset = _alignment switch
+        {
+            LayoutAlignment.Top => 0,
+            LayoutAlignment.Center => totalHeight * 0.5f,
+            LayoutAlignment.Bottom => totalHeight,
+            _ => 0
+        };
+
+        // 方向
+        float dirMultiplier = _direction == LayoutDirection.Down ? -1f : 1f;
+
+        // スロットの位置をセット
+        for(int i = 0; i < Count; i++)
+        {
+            float yPos = (startOffset - (i * _spacing)) * dirMultiplier;
+            slots[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, yPos);
+        }
+    }
+
+
     // ボタン選択後の処理
     private void OnChoiceSelected(EnhanceData selectedData)
     {
         // 強化を適用
         _applier.Apply(selectedData);
 
-        if(SoundManager.instance != null) SoundManager.instance.PlaySE(_ApplySE.SEName, _ApplySE.Volume);
+        // ステータス表示更新
+        UpdateStatusSummary();
+
+        if (SoundManager.instance != null) SoundManager.instance.PlaySE(_ApplySE.SEName, _ApplySE.Volume);
 
         // 強化権を消費
         _player._level.ConsumeEnhancementPoint();
