@@ -15,31 +15,49 @@ MonoBehaviour:
   settings:
   - targetStatus: 1
     displayName: "\u6700\u5927HP"
-    icon: {fileID: 7627683275842373084, guid: 346abd9f70084fb41ac73a91b5a6e3c8, type: 3}
+    icon: {fileID: 4606908045521496030, guid: 43311fd9c22b1f944892548b466a4864, type: 3}
     type: 1
     isInvertedBenefit: 0
+    displaySource: 0
   - targetStatus: 2
     displayName: "\u653B\u6483\u529B"
-    icon: {fileID: 7627683275842373084, guid: 346abd9f70084fb41ac73a91b5a6e3c8, type: 3}
+    icon: {fileID: 712035800519618848, guid: 8d9f4a3beb6d72b4cb64f4e0f8e9d1cb, type: 3}
     type: 1
     isInvertedBenefit: 0
+    displaySource: 0
   - targetStatus: 7
     displayName: "\u9632\u5FA1\u529B"
-    icon: {fileID: 7627683275842373084, guid: 346abd9f70084fb41ac73a91b5a6e3c8, type: 3}
+    icon: {fileID: -6717884257390833292, guid: c7eca15b88f0e084ea67863f62b32e1d, type: 3}
     type: 1
     isInvertedBenefit: 1
+    displaySource: 0
   - targetStatus: 4
     displayName: "\u79FB\u52D5\u901F\u5EA6"
-    icon: {fileID: 7627683275842373084, guid: 346abd9f70084fb41ac73a91b5a6e3c8, type: 3}
+    icon: {fileID: 2371641743025836735, guid: c24b7fc44d82ba04999dcea28ca3ffbf, type: 3}
     type: 1
     isInvertedBenefit: 0
+    displaySource: 0
   - targetStatus: 5
     displayName: "\u30C0\u30C3\u30B7\u30E5\u901F\u5EA6"
-    icon: {fileID: 7627683275842373084, guid: 346abd9f70084fb41ac73a91b5a6e3c8, type: 3}
+    icon: {fileID: -2425481851891217239, guid: 6abc5ddafc0df934fb739c02f0c931aa, type: 3}
     type: 1
     isInvertedBenefit: 0
+    displaySource: 0
   - targetStatus: 8
     displayName: "\u56DE\u53CE\u7BC4\u56F2"
-    icon: {fileID: 7627683275842373084, guid: 346abd9f70084fb41ac73a91b5a6e3c8, type: 3}
+    icon: {fileID: 6977829799311990860, guid: f7ff6e8c6e37faf498507439b269dd71, type: 3}
     type: 0
     isInvertedBenefit: 0
+    displaySource: 0
+  - targetStatus: 0
+    displayName: "\u81EA\u52D5\u56DE\u5FA9"
+    icon: {fileID: 2307141134847714313, guid: 218980a2db17e964ebd5dcf78cc5aed3, type: 3}
+    type: 0
+    isInvertedBenefit: 0
+    displaySource: 1
+  - targetStatus: 10
+    displayName: "\u30B9\u30BF\u30DF\u30CA\u56DE\u5FA9\u901F\u5EA6"
+    icon: {fileID: 5728413031370984604, guid: d9bccf3d2e4fea543b42717ece7bcbcc, type: 3}
+    type: 1
+    isInvertedBenefit: 0
+    displaySource: 1

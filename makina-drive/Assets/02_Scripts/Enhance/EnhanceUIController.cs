@@ -46,7 +46,7 @@ public class EnhanceUIController : MonoBehaviour
         _player.OnEnhancementRequest += OpenUI;
         GameStateManager.OnStateChanged += HandleStateChanged;
 
-        _summaryProvider = new StatusSummaryProvider(_player.statusManager);
+        _summaryProvider = new StatusSummaryProvider(_player.statusManager, _player._inventory);
         ApplySettings();
     }
 

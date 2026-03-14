@@ -28,4 +28,5 @@ MonoBehaviour:
   knockbackResistance: 14
   damageTakeScale: 1
   baseExp: 80
+  scoreValue: 2500
   tags: 2

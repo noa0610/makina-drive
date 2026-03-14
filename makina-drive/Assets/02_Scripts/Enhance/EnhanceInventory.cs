@@ -18,4 +18,9 @@ public class EnhanceInventory
         }
         _levels[date]++;
     }
+
+    public IEnumerable<EnhanceData> GetAllAcquiredData()
+    {
+        return _levels.Keys;
+    }
 }

@@ -47,6 +47,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     private float _originalAnimatorSpeed = 1f;
     public static event Action<UnitBase> OnAnyUnitDeath; // ユニット死亡イベント
     public event Action<UnitBase> OnUnitDeath;           // 個別の死亡イベント
+    public static event Action<int> OnEnemyDefeated;
     private bool IsLazyDead = false;
     private float lazyDeadTime = 0;
     private float deadTimer = 0;
@@ -276,6 +277,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         // 死亡通知を飛ばす
         OnUnitDeath?.Invoke(this);
         OnAnyUnitDeath?.Invoke(this);
+        OnEnemyDefeated?.Invoke(UnitStatusData.scoreValue);
 
         Transform playPoint;
         if (_deadEffectPoint)
