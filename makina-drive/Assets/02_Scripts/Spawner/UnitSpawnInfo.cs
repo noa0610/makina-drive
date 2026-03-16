@@ -36,6 +36,10 @@ public class UnitSpawnInfo
     public float expAdditionPerWave;   // ウェーブごとの経験値加算値
     public float expMultiplierPerWave; // ウェーブごとの倍率上昇(0.1=10%)
 
+    [Header("スコア設定")]
+    public int scoreAdditionPerWave;          // ウェーブごとのスコア加算値
+    public float scoreMultiplierPerWave;      // ウェーブごとのスコア倍率上昇(0.1=10%)
+
     [Header("自動消去時間")]
     public float destroyTime;          // 生成後に消去する時間指定（0で消去しない）    
     [Header("クリア条件設定")]

@@ -51,7 +51,9 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     private bool IsLazyDead = false;
     private float lazyDeadTime = 0;
     private float deadTimer = 0;
-    public float DropExp { get; set; } // 敵が保持する経験値量
+    public float DropExp { get; set; } // 敵が保持する経験値量（経験値アイテムとしてドロップ）
+    private int _currentScoreValue;    // 敵が保持するスコア（敵撃破時に加算）
+    public int CurrentScoreValue => _currentScoreValue;
     #endregion
 
     #region === Reactive & Direction ===
@@ -121,6 +123,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         _statusManager.Initialize(_status);
         RegisterStats();
         InitDirection();
+        _currentScoreValue = _status.scoreValue;
 
         _recoveryStatus = new RecoveryStatus(_statusManager);
         InitializeDefaultRecovery();
@@ -271,13 +274,15 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
     }
 
-
+    /// <summary>
+    /// 通常の死亡処理
+    /// </summary>
     public virtual void OnDeath()
     {
         // 死亡通知を飛ばす
         OnUnitDeath?.Invoke(this);
         OnAnyUnitDeath?.Invoke(this);
-        OnEnemyDefeated?.Invoke(UnitStatusData.scoreValue);
+        OnEnemyDefeated?.Invoke(_currentScoreValue);
 
         Transform playPoint;
         if (_deadEffectPoint)
@@ -302,6 +307,9 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         }
     }
 
+    /// <summary>
+    /// 敵対ユニットの攻撃以外の死亡処理
+    /// </summary>
     public virtual void OnForcedDeath()
     {
         // 死亡通知を飛ばす
@@ -341,7 +349,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
         _recoveryStatus.AddBaseRate(status, addValue);
     }
 
-
+    // 経験値取得処理
     public virtual void GainExp(float amount) { }
 
     // 敵ウェーブ生成専用
@@ -358,6 +366,12 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
         statusManager.ApplyStatusOverride(overrides);
         // statusManager.TakeHeal(statusManager.ReadValue(Status.MaxHP));
+    }
+
+    // スコア設定処理
+    public void SetScoreValue(int value)
+    {
+        _currentScoreValue = value;
     }
 
     #endregion

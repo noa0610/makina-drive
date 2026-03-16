@@ -399,14 +399,22 @@ public class EnemySpawner : MonoBehaviour
                 Debug.Log("旧強化ロジックが呼ばれています。");
             }
         }
+        int waveIndex = _currentWaveNumber - 1;
 
         // 経験値設定
         float baseExp = info.unitBase.UnitStatusData.baseExp;
         // (基礎経験値 + ウェーブ加算) * (1 + ウェーブ倍率)
-        float waveBonus = (_currentWaveNumber - 1) * info.expAdditionPerWave;
-        float waveMultiplier = 1f * ((_currentWaveNumber - 1) * info.expMultiplierPerWave);
+        float waveBonus = waveIndex * info.expAdditionPerWave;
+        float waveMultiplier = 1f * (waveIndex * info.expMultiplierPerWave);
         unit.DropExp = (baseExp + waveBonus) * waveMultiplier;
         // Debug.Log($"{unit.name} Exp: {unit.DropExp} (Base:{baseExp}, Bonus:{waveBonus}, Mult:{waveMultiplier})");
+
+        // スコア計算
+        float baseScore = unit.UnitStatusData.scoreValue;
+        // (基礎スコア + ウェーブ加算) * (1 + ウェーブ倍率)
+        float scoreBouns = waveIndex * info.scoreAdditionPerWave;
+        float scoreMultiplier = 1f + (waveIndex * info.scoreMultiplierPerWave);
+        unit.SetScoreValue(Mathf.RoundToInt((baseScore + scoreBouns) * scoreMultiplier));
 
         // HPバー
         if (UnitManager.instance != null)

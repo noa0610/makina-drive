@@ -2142,7 +2142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7627683275842373084, guid: 346abd9f70084fb41ac73a91b5a6e3c8, type: 3}
+  m_Sprite: {fileID: -8747994924650828514, guid: 838f589fb7089f94a8d1a5d367dcc245, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3970,6 +3970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScorePresenter
   _scoreManager: {fileID: 0}
   _scoreText: {fileID: 240790404267010778}
+  _prefix: 
 --- !u!1 &3992540583873642699
 GameObject:
   m_ObjectHideFlags: 0
@@ -5769,7 +5770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -750, y: 100}
+  m_AnchoredPosition: {x: -750, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5781972593084619272

@@ -103,7 +103,7 @@ public class WaveDataImporter : EditorWindow
 
         foreach (var data in rows)
         {
-            if(data.Length < 14)
+            if(data.Length < 2)
             {
                 Debug.LogWarning($"列が足りない行があります。Wave: {waveName}");
                 continue;
@@ -143,19 +143,24 @@ public class WaveDataImporter : EditorWindow
             // 14: ExpMultiplierPerWave (ウェーブ経験値上昇倍率)
             info.expMultiplierPerWave = float.Parse(data[14]);
 
-            // 15: Destroy (自動消去)
-            info.destroyTime = float.Parse(data[15]);
-            // 16: IsClear（クリア設定）
-            info.isClearTarget = bool.Parse(data[16]);
+            // 15: ScoreAdditionPerWave (ウェーブスコア加算値)
+            info.scoreAdditionPerWave = int.Parse(data[15]);
+            // 16: ScoreMultiplierPerWave (ウェーブスコア上昇倍率)
+            info.scoreMultiplierPerWave = float.Parse(data[16]);
 
-            // 17: PreviewEffect（生成予告エフェクト）
-            info.previewEffectName = data[17];
-            // 18: SpawneEffect（敵生成時エフェクト）
-            info.spawneEffectName = data[18];
-            // 19: SEName（処理開始時のSE名）
-            info.FirstProcessSEName = data[19];
-            // 20: SEVolume（処理開始時のSE音量）
-            info.FirstProcessSEVolume = float.Parse(data[20]);
+            // 17: Destroy (自動消去)
+            info.destroyTime = float.Parse(data[17]);
+            // 18: IsClear（クリア設定）
+            info.isClearTarget = bool.Parse(data[18]);
+
+            // 19: PreviewEffect（生成予告エフェクト）
+            info.previewEffectName = data[19];
+            // 20: SpawneEffect（敵生成時エフェクト）
+            info.spawneEffectName = data[20];
+            // 21: SEName（処理開始時のSE名）
+            info.FirstProcessSEName = data[21];
+            // 22: SEVolume（処理開始時のSE音量）
+            info.FirstProcessSEVolume = float.Parse(data[22]);
 
 
             wave.spawnInfos.Add(info);
