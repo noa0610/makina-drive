@@ -29,17 +29,13 @@ public class ScoreManager : MonoBehaviour
     // ゲームクリア時の処理
     public void SaveHighScore()
     {
-        int savedHighscore = PlayerPrefs.GetInt($"HighScore_{_stageId}", 0);
-        if (_currentScore > savedHighscore)
-        {
-            PlayerPrefs.SetInt($"HighScore_{_stageId}", _currentScore);
-            PlayerPrefs.Save();
-        }
+        HighScoreSaveDataManager.instance.UpdateHighScore(_stageId, _currentScore);
     }
 
+    // ハイスコア取得
     public int GetHighScore()
     {
-        return PlayerPrefs.GetInt($"HighScore_{_stageId}", 0);
+        return HighScoreSaveDataManager.instance.GetHighScore(_stageId);
     }
 
     public void OnDestroy()
