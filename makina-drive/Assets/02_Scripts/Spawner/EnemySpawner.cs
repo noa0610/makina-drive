@@ -23,6 +23,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private VisualInfo _clearTargetKillSE;
     [SerializeField] private string _clearTargetKillEffect;
     [SerializeField] private VisualInfo _clearSE;
+    [SerializeField] private bool _ignoreClear;       // クリア処理の無視
     [SerializeField] private bool _showHPBar = false; // HPバーの表示
     [SerializeField] private string _defaultPreviewEffect; // 基本の生成予告エフェクト
     [SerializeField] private List<Status> _statusUp = new List<Status>();
@@ -37,6 +38,12 @@ public class EnemySpawner : MonoBehaviour
 #if UNITY_EDITOR
     [Header("Debug")]
     [SerializeField] private bool _notStatusUP = false;
+
+    [Tooltip("開始したいWave番号(1～)")]
+    [SerializeField] private int _skipWaveCount = 1;      // 開始したいWave数
+    [Tooltip("そのWave内のどの生成情報から開始するか(0なら通常通り最初から)")]
+    [SerializeField] private int _skipSpawnInfoIndex = 0; // Wave内の開始インデックス(0なら最初から)
+    private bool _isInitialJumpApplied = false;             // デバッグジャンプを適用したか
 # endif
 
     private float _elapsedTime = 0;         // 経過時間
@@ -54,6 +61,14 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.Log("タイマーを指定してください。");
         }
+
+#if UNITY_EDITOR
+        // デバッグ用のジャンプ処理
+        if (_skipWaveCount > 1 || _skipSpawnInfoIndex > 0)
+        {
+            ApplyDebugJump();
+        }
+#endif
 
         CalculateTotalClearTargets();
 
@@ -95,7 +110,7 @@ public class EnemySpawner : MonoBehaviour
                 Debug.Log("クリア対象撃破SE");
             }
 
-            if(EffectManager.instance && !string.IsNullOrEmpty(_clearTargetKillEffect))
+            if (EffectManager.instance && !string.IsNullOrEmpty(_clearTargetKillEffect))
             {
                 EffectManager.instance.Play(_clearTargetKillEffect, unit.transform.position);
             }
@@ -113,6 +128,8 @@ public class EnemySpawner : MonoBehaviour
     {
         if (!_isCleared)
         {
+            if (_ignoreClear) return;
+
             Debug.Log($"ゲームクリア");
             GameStateManager.instance.ChangeState(GameState.Clear);
 
@@ -127,7 +144,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_isCleared) return;
+        if (_isCleared || !_ignoreClear) return;
 
         if (_timer != null)
         {
@@ -157,11 +174,26 @@ public class EnemySpawner : MonoBehaviour
         _currentSpawnCounts.Clear();
 
         WaveData currentWave = GetCurrentWaveData();
-        foreach (var info in currentWave.spawnInfos)
+        for (int i = 0; i < currentWave.spawnInfos.Count; i++)
         {
             _spawnTimers.Add(0f);
-            _currentSpawnCounts.Add(0);
+
+            int initialCount = 0;
+
+#if UNITY_EDITOR
+            // デバッグ指定されたWaveかつ、指定インデックスより前の項目の場合
+            if (!_isInitialJumpApplied && i < _skipSpawnInfoIndex)
+            {
+                // 実行回数を最大にしてスキップする
+                initialCount = currentWave.spawnInfos[i].processCount;
+            }
+#endif
+            _currentSpawnCounts.Add(initialCount);
         }
+
+#if UNITY_EDITOR
+    _isInitialJumpApplied = true; // 一度適用したら以降のWave切り替えでは通常通り動かす
+#endif
     }
 
     // ウェーブリストのデータ取得
@@ -451,4 +483,26 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+
+#if UNITY_EDITOR
+    /// <summary>
+    /// デバッグ用Waveスキップ処理
+    /// </summary>
+    private void ApplyDebugJump()
+    {
+        // Wave開始時間を計算 (例: Wave 2なら 60秒)
+        float targetTime = (_skipWaveCount - 1) * _waveDuration;
+
+        // TimerCountの時間を書き換え
+        _timer.SetTime(targetTime);
+        _elapsedTime = targetTime;
+        _currentWaveNumber = _skipWaveCount;
+
+        // Wave内進捗をリセットし、特定のインデックスをスキップ状態にする
+        ResetWaveProgress();
+
+        Debug.Log($"<color=yellow>Debug Jump:</color> Wave {_currentWaveNumber} " +
+                  $"(Index: {_skipSpawnInfoIndex}) から開始します。");
+    }
+#endif
 }

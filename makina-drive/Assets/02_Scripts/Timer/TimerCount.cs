@@ -12,7 +12,12 @@ public class TimerCount : MonoBehaviour
     public float countSecondMultiple = 2; // 倍速度
     public float currentTime => _currentTime;
 
-    void Update()
+    public void SetTime(float time)
+    {
+        _currentTime = time;
+    }
+
+    private void Update()
     {
         if (timerStop) return;
 

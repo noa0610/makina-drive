@@ -1,0 +1,442 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d822f27b98a97824384fab64efea2ccb, type: 3}
+  m_Name: EndlessWave6
+  m_EditorClassIdentifier: Assembly-CSharp::WaveData
+  waveName: EndlessWave6
+  spawnInfos:
+  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    comp:
+      rid: 2952382904731435085
+    processStartTime: 5
+    processCount: 1
+    processInterval: 0.5
+    minSpawnCount: 40
+    maxSpawnCount: 40
+    processEndTime: 0
+    spawnDelay: 1
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.9
+      addition: 0
+    - type: 2
+      multiplier: 2.6
+      addition: 0
+    - type: 4
+      multiplier: 1.95
+      addition: 0
+    - type: 5
+      multiplier: 1.95
+      addition: 0
+    expAdditionPerWave: 190
+    expMultiplierPerWave: 0.75
+    scoreAdditionPerWave: 80
+    scoreMultiplierPerWave: 0.75
+    destroyTime: 20
+    isClearTarget: 0
+    previewEffectName: GenerationNotice
+    spawneEffectName: SpawnLanding
+    FirstProcessSEName: SpawnNotice
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    comp:
+      rid: 2952382904731435086
+    processStartTime: 10
+    processCount: 3
+    processInterval: 0.5
+    minSpawnCount: 1
+    maxSpawnCount: 1
+    processEndTime: 0
+    spawnDelay: 0
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.9
+      addition: 0
+    - type: 2
+      multiplier: 2.6
+      addition: 0
+    - type: 4
+      multiplier: 1.95
+      addition: 0
+    - type: 5
+      multiplier: 1.95
+      addition: 0
+    expAdditionPerWave: 190
+    expMultiplierPerWave: 0.75
+    scoreAdditionPerWave: 80
+    scoreMultiplierPerWave: 0.75
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    comp:
+      rid: 2952382904731435087
+    processStartTime: 15
+    processCount: 1
+    processInterval: 0.5
+    minSpawnCount: 6
+    maxSpawnCount: 6
+    processEndTime: 0
+    spawnDelay: 1
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.9
+      addition: 0
+    - type: 2
+      multiplier: 2.6
+      addition: 0
+    - type: 4
+      multiplier: 1.95
+      addition: 0
+    - type: 5
+      multiplier: 1.95
+      addition: 0
+    expAdditionPerWave: 190
+    expMultiplierPerWave: 0.75
+    scoreAdditionPerWave: 80
+    scoreMultiplierPerWave: 0.75
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: GenerationNotice
+    spawneEffectName: SpawnLanding
+    FirstProcessSEName: SpawnNotice
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    comp:
+      rid: 2952382904731435088
+    processStartTime: 20
+    processCount: 3
+    processInterval: 0.5
+    minSpawnCount: 1
+    maxSpawnCount: 2
+    processEndTime: 0
+    spawnDelay: 0
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.9
+      addition: 0
+    - type: 2
+      multiplier: 2.6
+      addition: 0
+    - type: 4
+      multiplier: 1.95
+      addition: 0
+    - type: 5
+      multiplier: 1.95
+      addition: 0
+    expAdditionPerWave: 190
+    expMultiplierPerWave: 0.75
+    scoreAdditionPerWave: 80
+    scoreMultiplierPerWave: 0.75
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    comp:
+      rid: 2952382904731435089
+    processStartTime: 30
+    processCount: 10
+    processInterval: 0.5
+    minSpawnCount: 1
+    maxSpawnCount: 1
+    processEndTime: 0
+    spawnDelay: 0
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.9
+      addition: 0
+    - type: 2
+      multiplier: 2.6
+      addition: 0
+    - type: 4
+      multiplier: 1.95
+      addition: 0
+    - type: 5
+      multiplier: 1.95
+      addition: 0
+    expAdditionPerWave: 190
+    expMultiplierPerWave: 0.75
+    scoreAdditionPerWave: 80
+    scoreMultiplierPerWave: 0.75
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    comp:
+      rid: 2952382904731435090
+    processStartTime: 35
+    processCount: 1
+    processInterval: 1
+    minSpawnCount: 40
+    maxSpawnCount: 40
+    processEndTime: 0
+    spawnDelay: 1
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.9
+      addition: 0
+    - type: 2
+      multiplier: 2.6
+      addition: 0
+    - type: 4
+      multiplier: 1.95
+      addition: 0
+    - type: 5
+      multiplier: 1.95
+      addition: 0
+    expAdditionPerWave: 190
+    expMultiplierPerWave: 0.75
+    scoreAdditionPerWave: 80
+    scoreMultiplierPerWave: 0.75
+    destroyTime: 20
+    isClearTarget: 0
+    previewEffectName: GenerationNotice
+    spawneEffectName: SpawnLanding
+    FirstProcessSEName: SpawnNotice
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    comp:
+      rid: 2952382904731435091
+    processStartTime: 40
+    processCount: 1
+    processInterval: 0.5
+    minSpawnCount: 5
+    maxSpawnCount: 5
+    processEndTime: 0
+    spawnDelay: 1
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.9
+      addition: 0
+    - type: 2
+      multiplier: 2.6
+      addition: 0
+    - type: 4
+      multiplier: 1.95
+      addition: 0
+    - type: 5
+      multiplier: 1.95
+      addition: 0
+    expAdditionPerWave: 190
+    expMultiplierPerWave: 0.75
+    scoreAdditionPerWave: 80
+    scoreMultiplierPerWave: 0.75
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: GenerationNotice
+    spawneEffectName: SpawnLanding
+    FirstProcessSEName: SpawnNotice
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
+    comp:
+      rid: 2952382904731435092
+    processStartTime: 45
+    processCount: 3
+    processInterval: 1
+    minSpawnCount: 1
+    maxSpawnCount: 1
+    processEndTime: 0
+    spawnDelay: 0
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.9
+      addition: 0
+    - type: 2
+      multiplier: 2.6
+      addition: 0
+    - type: 4
+      multiplier: 1.95
+      addition: 0
+    - type: 5
+      multiplier: 1.95
+      addition: 0
+    expAdditionPerWave: 190
+    expMultiplierPerWave: 0.75
+    scoreAdditionPerWave: 80
+    scoreMultiplierPerWave: 0.75
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
+    comp:
+      rid: 2952382904731435093
+    processStartTime: 50
+    processCount: 1
+    processInterval: 0.5
+    minSpawnCount: 8
+    maxSpawnCount: 8
+    processEndTime: 0
+    spawnDelay: 1
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.9
+      addition: 0
+    - type: 2
+      multiplier: 2.6
+      addition: 0
+    - type: 4
+      multiplier: 1.95
+      addition: 0
+    - type: 5
+      multiplier: 1.95
+      addition: 0
+    expAdditionPerWave: 190
+    expMultiplierPerWave: 0.75
+    scoreAdditionPerWave: 80
+    scoreMultiplierPerWave: 0.75
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: GenerationNotice
+    spawneEffectName: SpawnLanding
+    FirstProcessSEName: SpawnNotice
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
+    comp:
+      rid: 2952382904731435094
+    processStartTime: 55
+    processCount: 5
+    processInterval: 0.5
+    minSpawnCount: 1
+    maxSpawnCount: 2
+    processEndTime: 0
+    spawnDelay: 0
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.9
+      addition: 0
+    - type: 2
+      multiplier: 2.6
+      addition: 0
+    - type: 4
+      multiplier: 1.95
+      addition: 0
+    - type: 5
+      multiplier: 1.95
+      addition: 0
+    expAdditionPerWave: 190
+    expMultiplierPerWave: 0.75
+    scoreAdditionPerWave: 80
+    scoreMultiplierPerWave: 0.75
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
+  - unitBase: {fileID: 8498992996510341214, guid: f64d37c61833653418ca02824fe8a7bc, type: 3}
+    comp:
+      rid: 2952382904731435095
+    processStartTime: 59
+    processCount: 1
+    processInterval: 1
+    minSpawnCount: 1
+    maxSpawnCount: 1
+    processEndTime: 0
+    spawnDelay: 0
+    waveIncreaseRate: 0.5
+    statusOverrides:
+    - type: 1
+      multiplier: 3.9
+      addition: 0
+    - type: 2
+      multiplier: 2.6
+      addition: 0
+    - type: 4
+      multiplier: 1.95
+      addition: 0
+    - type: 5
+      multiplier: 1.95
+      addition: 0
+    expAdditionPerWave: 190
+    expMultiplierPerWave: 0.75
+    scoreAdditionPerWave: 80
+    scoreMultiplierPerWave: 0.75
+    destroyTime: 0
+    isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
+  references:
+    version: 2
+    RefIds:
+    - rid: 2952382904731435085
+      type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
+      data:
+        _radiusX: 30
+        _radiusY: 24
+        _startAngle: 0
+        _jitter: 0.5
+    - rid: 2952382904731435086
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 2952382904731435087
+      type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
+      data:
+        _radiusX: 18
+        _radiusY: 13
+        _startAngle: 0
+        _jitter: 0.5
+    - rid: 2952382904731435088
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 2952382904731435089
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 2952382904731435090
+      type: {class: SpawnRectangle, ns: , asm: Assembly-CSharp}
+      data:
+        _size: {x: 30, y: 24}
+    - rid: 2952382904731435091
+      type: {class: SpawnRandomRange, ns: , asm: Assembly-CSharp}
+      data:
+        _maxDistance: 3
+        _minDistance: 9
+    - rid: 2952382904731435092
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 2952382904731435093
+      type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
+      data:
+        _radiusX: 18
+        _radiusY: 13
+        _startAngle: 0
+        _jitter: 0.5
+    - rid: 2952382904731435094
+      type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 2952382904731435095
+      type: {class: SpawnSide, ns: , asm: Assembly-CSharp}
+      data:
+        spawnDirection: 0

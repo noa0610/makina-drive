@@ -4,7 +4,13 @@ using UnityEngine;
 public class ExpItem : DropItem
 {
     [SerializeField] private float _expAmount;
+    [SerializeField] private UnitBase _debugTarget;
     public void SetExp(float amount) => _expAmount = amount;
+
+    private void Start()
+    {
+        Setup(_debugTarget);
+    }
 
     protected override void OnCollect(UnitBase target)
     {
