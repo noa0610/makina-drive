@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e228f4ea5860b45b53895e07368180, type: 3}
   m_Name: TutorialStepData_StateChange_NA3
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepData
-  windowText: "[J]\u3082\u3057\u304F\u306F[\u5DE6\u30AF\u30EA\u30C3\u30AF]\u3067\u524D\u65B9\u306B\u653B\u6483\u3059\u308B\u3002\n3\u56DE\u307E\u3067\u6D3E\u751F\u653B\u6483\u3092\u7E70\u308A\u51FA\u305B\u308B\u3002\n\u6D3E\u751F\u56DE\u6570\u304C\u5897\u3048\u308B\u305F\u3073\u306B\u653B\u6483\u306E\u5A01\u529B\u306F\u9AD8\u307E\u308B\u3002"
-  centerText: "3\u56DE\u76EE\u306E\u6D3E\u751F\u653B\u6483\u3092\u7E70\u308A\u51FA\u305D\u3046\u3002"
-  subText: "J\u30AD\u30FC\u3082\u3057\u304F\u306F\u5DE6\u30AF\u30EA\u30C3\u30AF\u3067\u653B\u6483\u3002"
+  windowText: "[J]\u3082\u3057\u304F\u306F[\u5DE6\u30AF\u30EA\u30C3\u30AF]\u3067\u524D\u65B9\u306B\u653B\u6483\u3059\u308B\u3002\n3\u56DE\u307E\u3067\u9023\u7D9A\u653B\u6483\u3092\u7E70\u308A\u51FA\u305B\u308B\u3002\n\u56DE\u6570\u304C\u5897\u3048\u308B\u305F\u3073\u306B\u653B\u6483\u306E\u5A01\u529B\u306F\u9AD8\u307E\u308B\u3002"
+  centerText: "3\u56DE\u76EE\u307E\u3067\u9023\u7D9A\u653B\u6483\u3092\u7E70\u308A\u51FA\u305D\u3046\u3002"
+  subText: "J\u3082\u3057\u304F\u306F\u5DE6\u30AF\u30EA\u30C3\u30AF\u3067\u653B\u6483"
+  tutorialVideo: {fileID: 32900000, guid: b46aa5c3fba6b034892b0b517ebc42a5, type: 3}
   conditionType: 1
   taskCount: 1
   targetPoint: []
@@ -27,14 +28,25 @@ MonoBehaviour:
     unitBase: {fileID: 0}
     comp:
       rid: -2
-    spawnCount: 0
-    sameTimeSpawnCount: 1
-    spawnTime: 0
-    spawnEndTime: 0
-    spawnInterval: 1
-    statusRate: 0
+    processStartTime: 0
+    processCount: 0
+    processInterval: 1
+    minSpawnCount: 1
+    maxSpawnCount: 1
+    processEndTime: 0
+    spawnDelay: 1
+    waveIncreaseRate: 0
+    statusOverrides: []
+    expAdditionPerWave: 0
+    expMultiplierPerWave: 0
+    scoreAdditionPerWave: 0
+    scoreMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
   showExplanationWindow: 1
   stopGameDuringWindow: 1
   isInvincible: 1

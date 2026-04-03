@@ -9,7 +9,10 @@ public class ExpItem : DropItem
 
     private void Start()
     {
-        Setup(_debugTarget);
+        if (_debugTarget != null)
+        {
+            Setup(_debugTarget);
+        }
     }
 
     protected override void OnCollect(UnitBase target)

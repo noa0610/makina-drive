@@ -17,7 +17,7 @@ MonoBehaviour:
   originalstatus:
     hp: 999
     time: 0.7
-    damage: 35
+    damage: 50
     speed: 0
     knockback: 50
     maxHitsPerUnit: 1

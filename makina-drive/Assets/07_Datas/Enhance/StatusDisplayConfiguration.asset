@@ -16,7 +16,7 @@ MonoBehaviour:
   - targetStatus: 1
     displayName: "\u6700\u5927HP"
     icon: {fileID: 4606908045521496030, guid: 43311fd9c22b1f944892548b466a4864, type: 3}
-    type: 1
+    type: 0
     isInvertedBenefit: 0
     displaySource: 0
   - targetStatus: 2

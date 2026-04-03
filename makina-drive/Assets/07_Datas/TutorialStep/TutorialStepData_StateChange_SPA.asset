@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e228f4ea5860b45b53895e07368180, type: 3}
   m_Name: TutorialStepData_StateChange_SPA
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepData
-  windowText: "\u30B9\u30BF\u30DF\u30CA\u304C80%\u6E9C\u307E\u3063\u3066\u3044\u308B\u3068\u304D\u306B\u3001\n[Q]\u3092\u62BC\u3059\u3068\u5FC5\u6BBA\u6280\u300C\u30B8\u30E3\u30F3\u30D7\u300D\u304C\u4F7F\u3048\u308B\u3002\n\u7A7A\u4E2D\u306B\u98DB\u3073\u4E0A\u304C\u3063\u305F\u5F8C\u3001\u72D9\u3044\u3092\u5B9A\u3081\u3066\n\u5E83\u7BC4\u56F2\u306B\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\u843D\u4E0B\u653B\u6483\u3092\u884C\u3046\u3002"
-  centerText: "\u30B8\u30E3\u30F3\u30D7\u3092\u4F7F\u304A\u3046\u3002"
-  subText: "Q\u3067\u30B8\u30E3\u30F3\u30D7\u3002"
+  windowText: "[Q]\u3092\u62BC\u3059\u3068\u5FC5\u6BBA\u6280\u300C\u30B8\u30E3\u30F3\u30D7\u300D\u304C\u4F7F\u3048\u308B\u3002\n\u7A7A\u4E2D\u306B\u98DB\u3073\u4E0A\u304C\u3063\u305F\u5F8C\u3001\u79FB\u52D5\u3067\u72D9\u3044\u3092\u5B9A\u3081\u3066\n\u3082\u3046\u4E00\u5EA6[Q]\u3067\u5E83\u7BC4\u56F2\u306B\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\u843D\u4E0B\u653B\u6483\u3092\u884C\u3046\u3002\n\u30B9\u30BF\u30DF\u30CA\u304C80%\u6E9C\u307E\u3063\u3066\u3044\u308B\u3068\u304D\u3060\u3051\u4F7F\u3048\u308B\u3002"
+  centerText: "\u30B8\u30E3\u30F3\u30D7\u304B\u3089\u306E\u843D\u4E0B\u653B\u6483\u3067\n\u5468\u308A\u306E\u6575\u3092\u5012\u305D\u3046\u3002"
+  subText: "Q\u3067\u30B8\u30E3\u30F3\u30D7"
+  tutorialVideo: {fileID: 32900000, guid: bf0fd261a25dfd845a35ec37524d95c6, type: 3}
   conditionType: 1
   taskCount: 1
   targetPoint: []
@@ -38,6 +39,8 @@ MonoBehaviour:
     statusOverrides: []
     expAdditionPerWave: 0
     expMultiplierPerWave: 0
+    scoreAdditionPerWave: 0
+    scoreMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: GenerationNotice
@@ -47,7 +50,7 @@ MonoBehaviour:
   showExplanationWindow: 1
   stopGameDuringWindow: 1
   isInvincible: 1
-  showFailureWindow: 0
+  showFailureWindow: 1
   references:
     version: 2
     RefIds:

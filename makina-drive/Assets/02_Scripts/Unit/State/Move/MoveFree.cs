@@ -17,7 +17,7 @@ public class MoveFree : MoveStateBase
     protected float _time = 0f;
 
     public event Action OnCompleted;
-    protected string _lazychange;
+    protected string _lazyChange;
 
     public bool IsStopInExit { get => _isStopInExit; set => _isStopInExit = value; }
 
@@ -26,20 +26,19 @@ public class MoveFree : MoveStateBase
         IsStopInExit = isStopInExit;
     }
 
-    public override void Exit(IState nextIState, UnitBase parent)
+    public override void Enter(IState previousIState, UnitBase parent)
     {
-        base.Enter(nextIState, parent);
-        if (_isStopInExit && rigidbody2D != null)
-            rigidbody2D.linearVelocity = Vector2.zero;
-
+        base.Enter(previousIState, parent);
+        _time = 0f;
         Action evt = null;
         evt = () =>
         {
-            parent.stateMachine.LazyChange(_lazychange);
+            parent.stateMachine.LazyChange(_lazyChange);
             OnCompleted -= evt;
         };
         OnCompleted += evt;
     }
+
 
     public override void Stay(UnitBase parent, float deltaTime)
     {
@@ -65,6 +64,15 @@ public class MoveFree : MoveStateBase
         }
     }
 
+
+    public override void Exit(IState nextIState, UnitBase parent)
+    {
+        base.Enter(nextIState, parent);
+        if (_isStopInExit && rigidbody2D != null)
+            rigidbody2D.linearVelocity = Vector2.zero;
+    }
+
+
     public MoveFree SetAccel(float accel)
     {
         _accel = Mathf.Max(0f, accel);
@@ -85,7 +93,7 @@ public class MoveFree : MoveStateBase
 
     public void SetLazyChange(string lazyChange, float delayTime)
     {
-        _lazychange = lazyChange;
+        _lazyChange = lazyChange;
         _delayTime = delayTime;
     }
 }

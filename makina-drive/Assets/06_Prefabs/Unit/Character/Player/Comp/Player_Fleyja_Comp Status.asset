@@ -20,11 +20,13 @@ MonoBehaviour:
   atk: 1
   def: 1
   speed: 3.5
-  dashSpeed: 9
+  dashSpeed: 10
   collectionRange: 2
+  maxStamina: 100
   stamina: 100
   knockbackMultiplier: 1.5
   knockbackResistance: 1000
   damageTakeScale: 1
   baseExp: 0
+  scoreValue: 0
   tags: 1

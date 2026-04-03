@@ -138,13 +138,13 @@ public class EnemySpawner : MonoBehaviour
                 SoundManager.instance.AllStopBGM();
                 if (_clearSE.SEName != null) SoundManager.instance.PlaySE(_clearSE.SEName, _clearSE.Volume);
             }
+            _isCleared = true;
         }
-        _isCleared = true;
     }
 
     private void Update()
     {
-        if (_isCleared || !_ignoreClear) return;
+        if (_isCleared) return;
 
         if (_timer != null)
         {
@@ -192,7 +192,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
 #if UNITY_EDITOR
-    _isInitialJumpApplied = true; // 一度適用したら以降のWave切り替えでは通常通り動かす
+        _isInitialJumpApplied = true; // 一度適用したら以降のWave切り替えでは通常通り動かす
 #endif
     }
 

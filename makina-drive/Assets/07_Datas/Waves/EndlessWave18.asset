@@ -16,7 +16,7 @@ MonoBehaviour:
   spawnInfos:
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 2952382904731435038
+      rid: 5545130777415517099
     processStartTime: 1
     processCount: 20
     processInterval: 7
@@ -50,7 +50,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 2952382904731435039
+      rid: 5545130777415517100
     processStartTime: 1
     processCount: 20
     processInterval: 10
@@ -84,7 +84,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
     comp:
-      rid: 2952382904731435040
+      rid: 5545130777415517101
     processStartTime: 1
     processCount: 20
     processInterval: 20
@@ -118,7 +118,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 2952382904731435041
+      rid: 5545130777415517102
     processStartTime: 5
     processCount: 3
     processInterval: 0.5
@@ -152,7 +152,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 2952382904731435042
+      rid: 5545130777415517103
     processStartTime: 10
     processCount: 1
     processInterval: 0.5
@@ -186,7 +186,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 2952382904731435043
+      rid: 5545130777415517104
     processStartTime: 15
     processCount: 2
     processInterval: 0.5
@@ -220,7 +220,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 9087530350985796, guid: fb22ab883f2aea9458cbffef28fe6d5a, type: 3}
     comp:
-      rid: 2952382904731435044
+      rid: 5545130777415517105
     processStartTime: 20
     processCount: 2
     processInterval: 0.25
@@ -254,7 +254,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 2952382904731435045
+      rid: 5545130777415517106
     processStartTime: 30
     processCount: 1
     processInterval: 1
@@ -288,7 +288,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 7510584472833335897, guid: c309be8c3f961bc4f8d672454b0782dd, type: 3}
     comp:
-      rid: 2952382904731435046
+      rid: 5545130777415517107
     processStartTime: 35
     processCount: 1
     processInterval: 0.25
@@ -322,7 +322,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 8498992996510341214, guid: f64d37c61833653418ca02824fe8a7bc, type: 3}
     comp:
-      rid: 2952382904731435047
+      rid: 5545130777415517108
     processStartTime: 40
     processCount: 2
     processInterval: 0.25
@@ -356,7 +356,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 108096202851362467, guid: 833da5901765ff8409e7ee51b4e51151, type: 3}
     comp:
-      rid: 2952382904731435048
+      rid: 5545130777415517109
     processStartTime: 50
     processCount: 1
     processInterval: 1
@@ -390,7 +390,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 226555038476547435, guid: f5f75a59b0358a942beb5c9173ecc542, type: 3}
     comp:
-      rid: 2952382904731435049
+      rid: 5545130777415517110
     processStartTime: 55
     processCount: 1
     processInterval: 0.5
@@ -424,7 +424,7 @@ MonoBehaviour:
     FirstProcessSEVolume: 0.5
   - unitBase: {fileID: 3715094653748942550, guid: 9bb12c63fa793754cbfaa1f1e4437a3d, type: 3}
     comp:
-      rid: 2952382904731435050
+      rid: 5545130777415517111
     processStartTime: 59
     processCount: 2
     processInterval: 0.25
@@ -459,55 +459,55 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2952382904731435038
+    - rid: 5545130777415517099
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 2952382904731435039
+    - rid: 5545130777415517100
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 2952382904731435040
+    - rid: 5545130777415517101
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 2952382904731435041
+    - rid: 5545130777415517102
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 2952382904731435042
+    - rid: 5545130777415517103
       type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
       data:
         _radiusX: 18
         _radiusY: 13
         _startAngle: 0
         _jitter: 0.5
-    - rid: 2952382904731435043
+    - rid: 5545130777415517104
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 2952382904731435044
+    - rid: 5545130777415517105
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 2952382904731435045
+    - rid: 5545130777415517106
       type: {class: SpawnRectangle, ns: , asm: Assembly-CSharp}
       data:
         _size: {x: 18, y: 15}
-    - rid: 2952382904731435046
+    - rid: 5545130777415517107
       type: {class: SpawnRandomRange, ns: , asm: Assembly-CSharp}
       data:
         _maxDistance: 3
         _minDistance: 9
-    - rid: 2952382904731435047
+    - rid: 5545130777415517108
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 2952382904731435048
+    - rid: 5545130777415517109
       type: {class: SpawnRandomRange, ns: , asm: Assembly-CSharp}
       data:
         _maxDistance: 3
         _minDistance: 9
-    - rid: 2952382904731435049
+    - rid: 5545130777415517110
       type: {class: SpawnOval, ns: , asm: Assembly-CSharp}
       data:
         _radiusX: 18
         _radiusY: 13
         _startAngle: 0
         _jitter: 0.5
-    - rid: 2952382904731435050
+    - rid: 5545130777415517111
       type: {class: SpawnRandom, ns: , asm: Assembly-CSharp}
       data: 

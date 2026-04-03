@@ -16,6 +16,12 @@ public class DirectionIndicator : MonoBehaviour
 
     public void Setup(UnitBase target, float distance, bool visible = true)
     {
+        // 以前のターゲットがあれば削除
+        if (_target != null)
+        {
+            _target.OnUnitDeath -= HandleTargetDeath;
+        }
+
         _target = target;
         _distance = distance;
         _isVisible = visible;
@@ -24,7 +30,7 @@ public class DirectionIndicator : MonoBehaviour
         // ユニット死亡時に自身を削除
         if (_target != null)
         {
-            _target.OnUnitDeath += _ => Destroy(gameObject);
+            _target.OnUnitDeath += HandleTargetDeath;
         }
     }
 
@@ -52,6 +58,22 @@ public class DirectionIndicator : MonoBehaviour
         if(_renderer != null && _renderer.enabled != _isVisible)
         {
             _renderer.enabled = _isVisible;
+        }
+    }
+
+    private void HandleTargetDeath(UnitBase unit)
+    {
+        if (this != null && gameObject != null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_target != null)
+        {
+            _target.OnUnitDeath -= HandleTargetDeath;
         }
     }
 }

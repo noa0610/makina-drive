@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e228f4ea5860b45b53895e07368180, type: 3}
   m_Name: TutorialStepData_MovetoArea_3count
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepData
-  windowText: "[W]\u3001[A]\u3001[S]\u3001[D]\u30AD\u30FC\u3067\n\u4E0A\u4E0B\u5DE6\u53F3\u306B\u79FB\u52D5\u3059\u308B\u3002"
+  windowText: "[W]\u3001[A]\u3001[S]\u3001[D]\u306E\u30AD\u30FC\u5165\u529B\u3067\n\u4E0A\u4E0B\u5DE6\u53F3\u306B\u79FB\u52D5\u3059\u308B\u3002"
   centerText: "\u79FB\u52D5\u3067\uFF13\u3064\u306E\u30A8\u30EA\u30A2\u5185\u306B\u5165\u308D\u3046\u3002"
-  subText: "WASD\u3067\u79FB\u52D5\u3002"
+  subText: "WASD\u3067\u79FB\u52D5"
+  tutorialVideo: {fileID: 32900000, guid: 7d87858cc0683fe478774db3cfc857d0, type: 3}
   conditionType: 0
   taskCount: 3
   targetPoint:
@@ -29,14 +30,25 @@ MonoBehaviour:
     unitBase: {fileID: 0}
     comp:
       rid: -2
-    spawnCount: 0
-    sameTimeSpawnCount: 1
-    spawnTime: 0
-    spawnEndTime: 0
-    spawnInterval: 1
-    statusRate: 0
+    processStartTime: 0
+    processCount: 0
+    processInterval: 1
+    minSpawnCount: 1
+    maxSpawnCount: 1
+    processEndTime: 0
+    spawnDelay: 1
+    waveIncreaseRate: 0
+    statusOverrides: []
+    expAdditionPerWave: 0
+    expMultiplierPerWave: 0
+    scoreAdditionPerWave: 0
+    scoreMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
+    previewEffectName: 
+    spawneEffectName: 
+    FirstProcessSEName: 
+    FirstProcessSEVolume: 0.5
   showExplanationWindow: 1
   stopGameDuringWindow: 1
   isInvincible: 1

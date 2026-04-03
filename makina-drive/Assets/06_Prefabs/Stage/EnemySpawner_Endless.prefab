@@ -57,12 +57,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
+      propertyPath: _skipWaveCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: _normalWaves.Array.size
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: _endlessWaves.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: '_normalWaves.Array.data[0]'
@@ -111,11 +115,11 @@ PrefabInstance:
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: '_endlessWaves.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: c685e9a711d65ba409a30cb0e6e4dbbf, type: 2}
+      objectReference: {fileID: 11400000, guid: 6838424237b7a3342889ab7c04aa0474, type: 2}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: '_endlessWaves.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: b67c61476dacdde4a9c9553e9926d336, type: 2}
+      objectReference: {fileID: 11400000, guid: e04db0b8185ff6d4e81ce1b8d0f119fe, type: 2}
     - target: {fileID: 4195258513890433148, guid: 4eab6e32ca2b21642acbea834ed1fed1, type: 3}
       propertyPath: '_endlessWaves.Array.data[3]'
       value: 

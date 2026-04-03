@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Video;
 
 /// <summary>
 /// チュートリアルのステップの情報をまとめるクラス
@@ -9,8 +10,11 @@ public class TutorialStepData : ScriptableObject
 {
     [Header("表示テキスト")]
     [TextArea] public string windowText; // ウィンドウ説明文
-    public string centerText;            // 現在の目的
+    [TextArea] public string centerText; // 現在の目的
     public string subText;               // 操作説明
+
+    [Header("動画表示")]
+    public VideoClip tutorialVideo;      // ステップごとの動画。nullなら表示しない。
 
     [Header("進行条件 (Task)")]
     public TutorialConditionType conditionType;

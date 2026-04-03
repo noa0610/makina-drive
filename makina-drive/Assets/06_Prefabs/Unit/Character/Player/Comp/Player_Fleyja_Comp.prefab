@@ -292,7 +292,7 @@ MonoBehaviour:
   _fallAimDecel: 30
   _fallAutoChangeTIme: 5
   _fallTime: 0.12
-  FallAttack_bulletData: {fileID: 11400000, guid: d002c1e852608954ca620647b8319738, type: 2}
+  FallAttack_bulletData: {fileID: 11400000, guid: e9bfffcd81cdadc43960127b0b35cbcd, type: 2}
   _fallAttackTime: 1
   _deadGameOverDelay: 1
   _jumpBoosterEffectPoint: {fileID: 1363386472849061810}

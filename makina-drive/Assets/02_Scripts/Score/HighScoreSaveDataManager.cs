@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using UnityEditor.Overlays;
 using UnityEngine;
 
 public class HighScoreSaveDataManager : SingletonBehavior<HighScoreSaveDataManager>
@@ -12,6 +11,8 @@ public class HighScoreSaveDataManager : SingletonBehavior<HighScoreSaveDataManag
     private readonly string _saveFileName = "savedata.dat";
     private readonly string _encryptionKey = "YourSecretKey123";
     private readonly byte[] _key = Encoding.UTF8.GetBytes("64109634827847798456398782385437");
+
+    public event Action OnDataChanged;
 
     protected override void Awake()
     {
@@ -30,9 +31,9 @@ public class HighScoreSaveDataManager : SingletonBehavior<HighScoreSaveDataManag
     public void UpdateHighScore(string stageId, int newScore)
     {
         int index = _currentSaveData.StageScores.FindIndex(s => s.StageId == stageId);
-        if(index >= 0)
+        if (index >= 0)
         {
-            if(newScore > _currentSaveData.StageScores[index].HighScore)
+            if (newScore > _currentSaveData.StageScores[index].HighScore)
             {
                 var entry = _currentSaveData.StageScores[index];
                 entry.HighScore = newScore;
@@ -42,7 +43,7 @@ public class HighScoreSaveDataManager : SingletonBehavior<HighScoreSaveDataManag
         }
         else
         {
-            _currentSaveData.StageScores.Add(new HighScoreSaveData.StageScoreEntry{ StageId = stageId, HighScore = newScore });
+            _currentSaveData.StageScores.Add(new HighScoreSaveData.StageScoreEntry { StageId = stageId, HighScore = newScore });
             Save();
         }
     }
@@ -57,11 +58,29 @@ public class HighScoreSaveDataManager : SingletonBehavior<HighScoreSaveDataManag
     private void Load()
     {
         string path = GetSavePath();
-        if(!File.Exists(path)) return;
+        if (!File.Exists(path)) return;
 
         byte[] encryptedData = File.ReadAllBytes(path);
         string json = Decrypt(encryptedData);
         _currentSaveData = JsonUtility.FromJson<HighScoreSaveData>(json);
+    }
+
+    public void DeleteHighScore(string stageId)
+    {
+        int index = _currentSaveData.StageScores.FindIndex(s => s.StageId == stageId);
+        if (index >= 0)
+        {
+            _currentSaveData.StageScores.RemoveAt(index);
+            Save();
+            OnDataChanged?.Invoke(); // 削除後に通知
+        }
+    }
+
+    public void DeleteAllHighScores()
+    {
+        _currentSaveData.StageScores.Clear(); // リストを初期化
+        Save();
+        OnDataChanged?.Invoke(); // 全てのPresenterに通知
     }
 
     private string GetSavePath() => Path.Combine(Application.persistentDataPath, _saveFileName);
@@ -76,13 +95,13 @@ public class HighScoreSaveDataManager : SingletonBehavior<HighScoreSaveDataManag
             byte[] iv = aes.IV;
 
             using (var encryptor = aes.CreateEncryptor(aes.Key, iv))
-            using(var ms = new MemoryStream())
+            using (var ms = new MemoryStream())
             {
                 // 戦闘にIVを書き込む
                 ms.Write(iv, 0, iv.Length);
 
                 using (var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
-                using(var sw = new StreamWriter(cs))
+                using (var sw = new StreamWriter(cs))
                 {
                     sw.Write(plainText);
                 }
@@ -97,7 +116,7 @@ public class HighScoreSaveDataManager : SingletonBehavior<HighScoreSaveDataManag
         using (Aes aes = Aes.Create())
         {
             aes.Key = _key;
-            byte[]iv = new byte[aes.BlockSize / 8];
+            byte[] iv = new byte[aes.BlockSize / 8];
 
             // IVを抽出
             Array.Copy(cipherText, 0, iv, 0, iv.Length);

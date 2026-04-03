@@ -253,7 +253,7 @@ public partial class Freya
         dodge.SetAccel(_dodgeAccel);
         dodge.SetDecel(_dodgeDecel);
         dodge.OnCompleted += RecheckMoveInput;
-        _stateMachine.AddState(States.dodge, dodge, new string[] { "DG" , TAG_NO_STAMINA_RECOVERY});
+        _stateMachine.AddState(States.dodge, dodge, new string[] { "DG", TAG_NO_STAMINA_RECOVERY });
 
         /* ドライブダッシュ */
         drivedash = new DashAttack(Dash_bulletData, AttackLayer, true, Triggers.dashCancel.ToString());
@@ -267,7 +267,7 @@ public partial class Freya
             PlaySE(_DashSE.SEName, _DashSE.Volume);
         };
         drivedash.OnCompleted += RecheckMoveInput;
-        _stateMachine.AddState(States.drivedash, drivedash, new string[] { "DD" , TAG_NO_STAMINA_RECOVERY});
+        _stateMachine.AddState(States.drivedash, drivedash, new string[] { "DD", TAG_NO_STAMINA_RECOVERY });
 
         #region   ===== N_Attack State =====
 
@@ -422,8 +422,11 @@ public partial class Freya
         jumpfallAim.SetLazyChange(Triggers.jumpInputNext.ToString(), _fallAutoChangeTIme);
         jumpfallAim.OnCompleted += () =>
         {
-            _activeFallAimEffect.Stop();
-            _activeFallAimEffect = null;
+            if (_activeFallAimEffect != null)
+            {
+                _activeFallAimEffect.Stop();
+                _activeFallAimEffect = null;
+            }
         };
         _stateMachine.AddState(States.jumpfallAim, jumpfallAim, TAG_NO_STAMINA_RECOVERY);
 

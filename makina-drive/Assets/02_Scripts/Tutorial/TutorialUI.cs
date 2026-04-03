@@ -4,7 +4,7 @@ using TMPro;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using System;
-using NUnit.Framework;
+using UnityEngine.Video;
 
 public class TutorialUI : MonoBehaviour
 {
@@ -28,6 +28,10 @@ public class TutorialUI : MonoBehaviour
     [SerializeField] private float _fadeDuration = 0.3f;
     [SerializeField] private float _displayDelay = 0.2f;
     [SerializeField] private bool _activeChange = false;
+
+    [Header("Video Settings")]
+    [SerializeField] private GameObject _videoRoot;     // RawImageなどを含む親オブジェクト
+    [SerializeField] private VideoPlayer _videoPlayer;  // 動画再生コンポーネント
 
     private void Awake()
     {
@@ -84,9 +88,13 @@ public class TutorialUI : MonoBehaviour
     // 説明ウィンドウ表示
     public async UniTask ShowStepVisualsAsync(TutorialStepData step, CancellationToken ct)
     {
+        // テキストセット
         _windowText.text = step.windowText;
         _centerText.text = step.centerText;
         _subText.text = step.subText;
+
+        // 動画セット
+        SetupVideo(step.tutorialVideo);
 
         if (step.showExplanationWindow)
         {
@@ -104,6 +112,25 @@ public class TutorialUI : MonoBehaviour
 
         UpdateCountText(0, step.taskCount);
         await FadeAsync(_taskGroup, 1, _fadeDuration);
+    }
+
+    // 動画データセットアップ
+    private void SetupVideo(VideoClip clip)
+    {
+        if (_videoRoot == null || _videoPlayer == null) return;
+
+        if (clip == null)
+        {
+            _videoRoot.SetActive(false);
+            _videoPlayer.Stop();
+        }
+        else
+        {
+            _videoRoot.SetActive(true);
+            _videoPlayer.clip = clip;
+            _videoPlayer.isLooping = true; // ループ再生
+            _videoPlayer.Play();
+        }
     }
 
     // タスク内容表示

@@ -2111,7 +2111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 675, y: 440}
+  m_AnchoredPosition: {x: 622, y: 440}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6297389392714700811
@@ -3154,6 +3154,9 @@ MonoBehaviour:
   _ApplySE:
     SEName: "\u30D1\u30EF\u30FC\u30A2\u30C3\u30D7"
     Volume: 0.5
+  _CancelSE:
+    SEName: "\u30AD\u30E3\u30F3\u30BB\u30EB"
+    Volume: 0.3
   _displayConfig: {fileID: 11400000, guid: 981a253850159314e98dd39d206953d8, type: 2}
   _statusSummaryContainer: {fileID: 484466157481777252}
   _statusSlotPrefab: {fileID: 8415907802991948564, guid: 3196bdfae9fa3944d809b002e1f8ce54, type: 3}
@@ -6525,8 +6528,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 810, y: 440}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 780, y: 440}
+  m_SizeDelta: {x: 260, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2391145354902440183
 CanvasRenderer:
@@ -7999,7 +8002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2279345798728042838
 RectTransform:
   m_ObjectHideFlags: 0

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Enhance_MaxHPUp
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
   enhanceName: "\u3053\u3053\u308D\u306E\u82B1"
-  discription: "\u6700\u5927HP\u304C15\u30A2\u30C3\u30D7\u3059\u308B\u3002\n\uFF08\u6700\u5927150\u30A2\u30C3\u30D7\uFF09"
+  discription: "\u6700\u5927HP\u304C20\u30A2\u30C3\u30D7\u3059\u308B\u3002\n\uFF08\u6700\u5927200\u30A2\u30C3\u30D7\uFF09"
   icon: {fileID: 3373568495408583166, guid: 20c80b02156330a468a320f5302963ca, type: 3}
   type: 0
   targetStatus: 1
-  ratioPerLevel: 15
+  ratioPerLevel: 20
   healRatio: 0
   maxLevel: 10

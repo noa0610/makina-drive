@@ -23,20 +23,32 @@ public class StatusSummaryProvider
         foreach (var setting in configs[0].settings)
         {
             float diff = 0;
+            float displayValue = 0;
+
             if (setting.displaySource == DisplaySource.StatusManager)
             {
                 if (!_statusManager.TryGetStatus(setting.targetStatus, out var info)) continue;
 
-
                 // 現在の最終的な値を取得
-                float currentValue = _statusManager.ReadValue(setting.targetStatus);
                 float baseValue = info.DefaultAmount;
+                float currentValue = _statusManager.ReadValue(setting.targetStatus);
                 diff = currentValue - baseValue;
+
+                // パーセント表示なら、(現在値 - 元の値) / 元の値 で「増加率」を出す
+                if (setting.type == DisplayValueType.Percent && baseValue != 0)
+                {
+                    displayValue = diff / baseValue;
+                }
+                else
+                {
+                    displayValue = diff;
+                }
             }
             else
             {
                 // 特定のステータスに対する関連データの ratioPerLevel×取得数 を合計する
                 diff = CalculateAccumulatedEnhance(setting.targetStatus);
+                displayValue = diff; // 累積値はそのまま表示
             }
 
             // 変化がほぼ0ならNone
@@ -48,7 +60,7 @@ public class StatusSummaryProvider
             {
                 icon = setting.icon,
                 name = setting.displayName,
-                diffValueText = (diff > 0 ? "+" : "") + FormatValue(diff, setting.type),
+                diffValueText = (diff > 0 ? "+" : "") + FormatValue(displayValue, setting.type),
                 changeState = state,
                 isInvertedBenefit = setting.isInvertedBenefit,
             });

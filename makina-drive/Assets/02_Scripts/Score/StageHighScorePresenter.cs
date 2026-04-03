@@ -9,6 +9,8 @@ public class StageHighScorePresenter : MonoBehaviour
 
     private void Start()
     {
+        if (HighScoreSaveDataManager.instance != null)
+            HighScoreSaveDataManager.instance.OnDataChanged += RefreshDisplay;
         RefreshDisplay();
     }
 
@@ -24,5 +26,11 @@ public class StageHighScorePresenter : MonoBehaviour
         {
             _displayScoreText.text = $"{_prefix}0";
         }
+    }
+
+    private void OnDisable()
+    {
+        if (HighScoreSaveDataManager.instance != null)
+            HighScoreSaveDataManager.instance.OnDataChanged -= RefreshDisplay;
     }
 }

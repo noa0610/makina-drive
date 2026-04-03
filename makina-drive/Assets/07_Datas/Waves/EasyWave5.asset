@@ -530,8 +530,8 @@ MonoBehaviour:
     processStartTime: 59
     processCount: 1
     processInterval: 0.1
-    minSpawnCount: 3
-    maxSpawnCount: 3
+    minSpawnCount: 1
+    maxSpawnCount: 1
     processEndTime: 0
     spawnDelay: 1
     waveIncreaseRate: 0.5

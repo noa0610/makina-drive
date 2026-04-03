@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e228f4ea5860b45b53895e07368180, type: 3}
   m_Name: TutorialStepData_StateChange_Dodge
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepData
-  windowText: "[Shift]\u3067\u300C\u56DE\u907F\u300D\u3092\u3059\u308B\u3002\n\u56DE\u907F\u4E2D\u306F\u6575\u306E\u653B\u6483\u3092\u53D7\u3051\u306A\u3044\u3002\n"
+  windowText: "[Shift]\u3067\u300C\u56DE\u907F\u300D\u3092\u3059\u308B\u3002\n\u56DE\u907F\u4E2D\u306F\u6575\u306E\u653B\u6483\u3092\u53D7\u3051\u306A\u3044\u3002\n20%\u306E\u30B9\u30BF\u30DF\u30CA\u3092\u6D88\u8CBB\u3059\u308B\u3002"
   centerText: "\u56DE\u907F\u3092\u3057\u3066\u307F\u3088\u3046\u3002"
-  subText: "Shift\u30AD\u30FC\u3067\u56DE\u907F"
+  subText: "Shift\u3067\u56DE\u907F"
+  tutorialVideo: {fileID: 32900000, guid: ad3d24f12c52e384582b7c29bf080b65, type: 3}
   conditionType: 1
   taskCount: 3
   targetPoint: []
@@ -38,6 +39,8 @@ MonoBehaviour:
     statusOverrides: []
     expAdditionPerWave: 0
     expMultiplierPerWave: 0
+    scoreAdditionPerWave: 0
+    scoreMultiplierPerWave: 0
     destroyTime: 0
     isClearTarget: 0
     previewEffectName: GenerationNotice

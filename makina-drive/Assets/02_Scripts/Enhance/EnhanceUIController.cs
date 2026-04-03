@@ -12,6 +12,7 @@ public class EnhanceUIController : MonoBehaviour
     [SerializeField] private List<EnhanceData> _allEnhanceList; // 全強化データ
     [SerializeField] private Button _closeUIButton;
     [SerializeField] private VisualInfo _ApplySE; // 強化時のSE
+    [SerializeField] private VisualInfo _CancelSE; // 強化を表示できない場合のSE
 
     [Header("Status Summary Settings")]
     [SerializeField] private StatusDisplayConfiguration _displayConfig;
@@ -69,10 +70,22 @@ public class EnhanceUIController : MonoBehaviour
     {
         if (_uiPanel.activeSelf) return;
 
+        // 選択肢取得
+        var choices = _manager.GetRandomChoices(_player._inventory, 3);
+
+        // 選択肢が一つもない場合（全強化のLvがMax）
+        if (choices == null || choices.Count == 0)
+        {
+            Debug.Log("選択可能な強化項目がありません。");
+            if (SoundManager.instance != null) SoundManager.instance.PlaySE(_CancelSE.SEName, _CancelSE.Volume);
+            return;
+        }
+
         GameStateManager.instance.ChangeState(GameState.EnhanceSelect);
         _uiPanel.SetActive(true);
         Time.timeScale = 0;
         _applier = new EnhanceApplier(_player.statusManager, _player._inventory, _player.recoveryStatus);
+
         RefreshUI();
         UpdateStatusSummary();
     }
@@ -80,7 +93,16 @@ public class EnhanceUIController : MonoBehaviour
     // 選択肢を生成して表示（更新）
     private void RefreshUI()
     {
+        // 選択肢取得
         var choices = _manager.GetRandomChoices(_player._inventory, 3);
+
+        // 選択肢が一つもない場合（全強化のLvがMax）
+        if (choices == null || choices.Count == 0)
+        {
+            Debug.Log("選択可能な強化項目がありません。");
+            CloseUI();
+            return;
+        }
 
         for (int i = 0; i < _slots.Count; i++)
         {
@@ -92,6 +114,7 @@ public class EnhanceUIController : MonoBehaviour
             }
             else
             {
+                // 選択肢の数がslots以下の場合は下の要素は非表示
                 _slots[i].gameObject.SetActive(false);
             }
         }
@@ -142,7 +165,7 @@ public class EnhanceUIController : MonoBehaviour
         float dirMultiplier = _direction == LayoutDirection.Down ? -1f : 1f;
 
         // スロットの位置をセット
-        for(int i = 0; i < Count; i++)
+        for (int i = 0; i < Count; i++)
         {
             float yPos = (startOffset - (i * _spacing)) * dirMultiplier;
             slots[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, yPos);

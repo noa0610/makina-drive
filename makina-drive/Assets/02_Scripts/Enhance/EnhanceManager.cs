@@ -32,6 +32,7 @@ public class EnhanceManager
 
         foreach (var e in allEnhances)
         {
+            // 上限に達していない選択肢のみ抽出
             if(e.maxLevel == 0 || inventory.GetLevel(e) < e.maxLevel)
             {
                 candidates.Add(e);

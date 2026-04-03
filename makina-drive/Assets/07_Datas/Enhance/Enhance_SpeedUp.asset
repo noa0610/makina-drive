@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Enhance_SpeedUp
   m_EditorClassIdentifier: Assembly-CSharp::EnhanceData
   enhanceName: "\u30AE\u30A2\u30D6\u30FC\u30C4"
-  discription: "\u79FB\u52D5\u901F\u5EA6\u304C15%\u30A2\u30C3\u30D7\u3059\u308B\u3002\n\uFF08\u6700\u592775%\u30A2\u30C3\u30D7\uFF09"
+  discription: "\u79FB\u52D5\u901F\u5EA6\u304C30%\u30A2\u30C3\u30D7\u3059\u308B\u3002\n\uFF08\u6700\u5927150%\u30A2\u30C3\u30D7\uFF09"
   icon: {fileID: 7902364575885455685, guid: b6ba8d3a99bb88f4cb25ddbe57415a81, type: 3}
   type: 0
   targetStatus: 4
-  ratioPerLevel: 0.42
+  ratioPerLevel: 1.05
   healRatio: 0
   maxLevel: 5
